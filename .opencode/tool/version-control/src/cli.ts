@@ -66,12 +66,17 @@ function isConventionalCommit(message: string) {
 function runGitCommit(argsFrom: string[]) {
   const cfg = loadConfig();
 
-  // Parse simple flags (support --no-verify or -n)
+  // Parse simple flags (support --no-verify or -n, and --dry-run/-d)
   let noVerify = false;
+  let dryRun = false;
   const filtered: string[] = [];
   for (const a of argsFrom) {
     if (a === '--no-verify' || a === '-n') {
       noVerify = true;
+      continue;
+    }
+    if (a === '--dry-run' || a === '-d') {
+      dryRun = true;
       continue;
     }
     filtered.push(a);
@@ -127,6 +132,11 @@ function runGitCommit(argsFrom: string[]) {
       console.log('Commit cancelled by user.');
       process.exit(0);
     }
+  }
+
+  if (dryRun) {
+    console.log('Dry run: commit not performed.');
+    process.exit(0);
   }
 
   // Prepare commit arguments

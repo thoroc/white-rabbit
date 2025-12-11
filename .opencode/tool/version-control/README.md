@@ -13,6 +13,7 @@ Behavior:
 
 - `status` runs `git status --porcelain` and prints changed files in porcelain format. If there are no changes, the command exits `0` and prints nothing.
 - `commit` runs `git add --all`, then checks for staged files (`git diff --cached --name-only`). If no files are staged, it prints `No changes to commit.` and exits `0`. Otherwise it runs `git commit -m "..."` and surfaces any git errors or hook failures.
+- `commit` also supports `--no-verify` (`-n`) to skip hooks and `--dry-run` (`-d`) to show what would be committed without performing the commit.
 
 Notes:
 
