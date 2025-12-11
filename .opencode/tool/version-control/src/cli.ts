@@ -1,6 +1,24 @@
 #!/usr/bin/env bun
 
 import { spawnSync } from 'child_process';
+import fs from 'fs';
+
+const CONFIG_PATH = '.opencode/tool/version-control/config.json';
+
+function loadConfig() {
+  try {
+    const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
+    return JSON.parse(raw);
+  } catch (err) {
+    return {
+      validateConventionalCommits: false,
+      kbPath: null,
+      bypassValidationWithExplicitApproval: false,
+      requireExplicitFileConfirmation: false,
+      kbFilenameConvention: 'lowercase-kebab',
+    };
+  }
+}
 
 function ensureGitRepo() {
   const rev = spawnSync('git', ['rev-parse', '--is-inside-work-tree'], { encoding: 'utf8' });
@@ -23,7 +41,31 @@ function runStatus() {
   process.exit(git.status || 1);
 }
 
+function promptYesNo(prompt: string) {
+  // Uses shell read so it works synchronously
+  const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
+  const out = spawnSync('sh', ['-c', cmd], { encoding: 'utf8', stdio: ['inherit', 'pipe', 'pipe'] });
+  if (out.status !== 0) return false;
+  const val = String(out.stdout || '').trim().toLowerCase();
+  return val === 'y' || val === 'yes';
+}
+
+function promptForString(prompt: string) {
+  const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
+  const out = spawnSync('sh', ['-c', cmd], { encoding: 'utf8', stdio: ['inherit', 'pipe', 'pipe'] });
+  if (out.status !== 0) return '';
+  return String(out.stdout || '').trim();
+}
+
+function isConventionalCommit(message: string) {
+  // Basic conventional commit regex: type(scope)?: subject
+  const re = /^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert|wip)(?:\([a-zA-Z0-9_\- ]+\))?:\s.+$/;
+  return re.test(message.trim());
+}
+
 function runGitCommit(argsFrom: string[]) {
+  const cfg = loadConfig();
+
   // Parse simple flags (support --no-verify or -n)
   let noVerify = false;
   const filtered: string[] = [];
@@ -36,6 +78,22 @@ function runGitCommit(argsFrom: string[]) {
   }
 
   const message = filtered.join(' ') || 'chore: commit from opencode tool';
+
+  // Validate conventional commit if enabled
+  if (cfg.validateConventionalCommits) {
+    if (!isConventionalCommit(message)) {
+      console.error('Commit message does not follow Conventional Commits format.');
+      if (cfg.bypassValidationWithExplicitApproval) {
+        const bypass = promptForString('Type BYPASS to override and continue:');
+        if (bypass !== 'BYPASS') {
+          console.error('Bypass not provided. Aborting commit.');
+          process.exit(1);
+        }
+      } else {
+        process.exit(1);
+      }
+    }
+  }
 
   // Stage all changes
   const add = spawnSync('git', ['add', '--all'], { encoding: 'utf8', stdio: 'pipe' });
@@ -61,6 +119,15 @@ function runGitCommit(argsFrom: string[]) {
   // Print staged files
   console.log('Staged files:');
   console.log(String(staged.stdout).trim());
+
+  // Confirm staged files if required
+  if (cfg.requireExplicitFileConfirmation) {
+    const ok = promptYesNo('Proceed to commit these files? (y/N)');
+    if (!ok) {
+      console.log('Commit cancelled by user.');
+      process.exit(0);
+    }
+  }
 
   // Prepare commit arguments
   const commitArgs = ['commit', ...(noVerify ? ['--no-verify'] : []), '-m', message];
