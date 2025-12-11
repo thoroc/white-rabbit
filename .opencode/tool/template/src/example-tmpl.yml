@@ -1,0 +1,10 @@
+version: "1"
+metadata:
+  name: example
+  description: An example template
+placeholders:
+  appName: MyApp
+  author: Unknown
+content: |
+  # {{appName}}
+  Created by {{author}}
