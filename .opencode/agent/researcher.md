@@ -43,3 +43,21 @@ Output files and behavior:
 - Templates: The researcher must use the YAML template file `.opencode/template/research-tmpl.yml`. All templates must live under `.opencode/template/` and must use the `-tmpl.yml` suffix (for example `research-tmpl.yml`).
 - When rendering outputs the researcher should load the specified template, populate its frontmatter and body fields, render the frontmatter as YAML at the top of the file, serialize the body into human-readable markdown sections, then save the resulting `.md` files into `.context/research/`. Do not modify files outside `.context/research/`.
 
+
+References & further reading
+
+- Local knowledge-base (agent-facing):
+  - `.opencode/knowledge-base/opencode-templates.md`
+  - `.opencode/knowledge-base/opencode-commands.md`
+  - `.opencode/knowledge-base/opencode-tools.md`
+  - `.opencode/knowledge-base/opencode-agents.md`
+  - `.opencode/knowledge-base/opencode-plugins.md`
+  - `.opencode/knowledge-base/knowledge-base-conventions.md`
+- Templates and rendering:
+  - `.opencode/template/research-tmpl.yml` (expected frontmatter and body schema)
+- Web sources and provenance:
+  - When using `webfetch`, include explicit `URL` + `accessed` date + short note; prefer primary sources and cross-check claims across independent sources.
+- Citation best-practices for agents:
+  - Numbered inline citations in findings that map to the `provenance` section in the generated Markdown output.
+
+(End of agent-facing references)

@@ -21,3 +21,17 @@ When you have a clear query, run focused research and return a structured report
 - Suggested follow-up queries and next steps
 
 If the topic is broad, propose a short search plan (3–6 queries) and ask for approval before fetching many sources. When using web sources include explicit URLs and access dates; flag paywalled or behind-auth sources and note contradictions or uncertainty.
+
+
+References & further reading
+
+- Agent guidance:
+  - `.opencode/agent/researcher.md` — researcher subagent behavior and output rules
+  - `.opencode/agent/feature.md` — feature subagent guidance when research informs a feature
+- Templates:
+  - `.opencode/template/research-tmpl.yml` — canonical rendering schema for research outputs
+  - `.opencode/template/feature-tmpl.yml` — feature spec schema (useful when research informs specs)
+- Knowledge-base:
+  - `.opencode/knowledge-base/opencode-templates.md` — template authoring guidance for agents
+  - `.opencode/knowledge-base/opencode-commands.md` — how commands inject files and shell output into prompts
+- Provenance best-practices: always include `URL`, `accessed` date, and a short note about source reliability.

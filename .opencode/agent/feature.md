@@ -33,3 +33,22 @@ Behaviors and constraints:
 - Keep responses concise and prioritized; favor actionable items.
 
 When invoked, expect the primary input to be the raw prompt text injected by the `/feature` command as `$ARGUMENTS`.
+
+
+References & further reading
+
+- Local knowledge-base (agent-facing):
+  - ` .opencode/knowledge-base/opencode-templates.md`
+  - ` .opencode/knowledge-base/opencode-commands.md`
+  - ` .opencode/knowledge-base/opencode-agents.md`
+  - ` .opencode/knowledge-base/opencode-tools.md`
+  - ` .opencode/knowledge-base/opencode-plugins.md`
+  - ` .opencode/knowledge-base/opencode-plugin.md`
+  - ` .opencode/knowledge-base/knowledge-base-conventions.md`
+- Templates:
+  - `.opencode/template/feature-tmpl.yml`
+  - `.opencode/template/research-tmpl.yml`
+- Agent operational guidance (concise): prefer low `temperature` for deterministic specs, write files under `.context/features/`, and follow filename conventions in `knowledge-base-conventions.md`.
+- Citation & provenance: when referencing external materials, include URLs and access dates; prefer primary and high-quality secondary sources.
+
+(End of agent-facing references)

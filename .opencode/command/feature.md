@@ -13,3 +13,17 @@ Behavior:
 - Do not overwrite existing files without explicit confirmation.
 
 User prompt: $ARGUMENTS
+
+
+References & further reading
+
+- Templates:
+  - `.opencode/template/feature-tmpl.yml` — canonical feature output schema and filename rules
+  - `.opencode/template/research-tmpl.yml` — researcher output schema (for background research used in features)
+- Agent guidance:
+  - `.opencode/agent/feature.md` — feature subagent behavior and filesystem rules
+  - `.opencode/agent/researcher.md` — researcher subagent expectations when providing evidence
+- Knowledge-base:
+  - `.opencode/knowledge-base/knowledge-base-conventions.md` — filename conventions for KB items
+  - `.opencode/knowledge-base/opencode-templates.md` — template authoring guidance
+- Best practices for agents: include explicit `source_prompt` and provenance when external research informs a feature.
