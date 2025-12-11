@@ -1,22 +1,32 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/chatgpt-5-mini",
-  "plugin": ["@tarquinen/opencode-smart-title", "@tarquinen/opencode-dcp"],
-  "experimental": {
-    "primary_tools": ["prune"]
-  },
-  "instructions": [
-    ".opencode/knowledge-base/opencode-agents.md",
-    ".opencode/knowledge-base/opencode-ai-plugin.md",
-    ".opencode/knowledge-base/opencode-ai-sdk.md",
-    ".opencode/knowledge-base/opencode-plugins.md",
-    ".opencode/knowledge-base/opencode-commands.md",
-    ".opencode/knowledge-base/opencode-tools.md",
-    ".opencode/knowledge-base/opencode-plugins.md",
-    ".opencode/knowledge-base/opencode-templates.md",
-    ".opencode/knowledge-base/opencode-tools.md"
-  ],
-  "tools": {
-    "commit": true
-  }
+    "$schema": "https://opencode.ai/config.json",
+    "model": "github-copilot/chatgpt-5-mini",
+    "plugin": ["@tarquinen/opencode-smart-title", "@tarquinen/opencode-dcp"],
+    "experimental": {
+        "primary_tools": ["prune"]
+    },
+    "instructions": [
+        ".opencode/knowledge-base/opencode-agents.md",
+        ".opencode/knowledge-base/opencode-ai-plugin.md",
+        ".opencode/knowledge-base/opencode-ai-sdk.md",
+        ".opencode/knowledge-base/opencode-plugins.md",
+        ".opencode/knowledge-base/opencode-commands.md",
+        ".opencode/knowledge-base/opencode-tools.md",
+        ".opencode/knowledge-base/opencode-plugins.md",
+        ".opencode/knowledge-base/opencode-templates.md",
+        ".opencode/knowledge-base/opencode-tools.md"
+    ],
+    "tools": {
+        "commit": true
+    },
+    "lsp":{
+      "markdown-oxide": {
+        "command": ["markdown-oxide"],
+        "extensions": [".md", ".markdown"]
+      },
+      "yaml": {
+        "command": ["yaml-language-server"],
+        "extensions": [".yaml", ".yml"]
+      }
+    }
 }

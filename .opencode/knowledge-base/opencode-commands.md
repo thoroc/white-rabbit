@@ -14,7 +14,7 @@ Purpose: concise reference for LLM agents that will create, invoke, or design Op
 - Global markdown: `~/.config/opencode/command/<name>.md`
 - JSON config: `opencode.json` under the top-level `command` key.
 
-Example project markdown (creates `/test`):
+### Example project markdown (creates `/test`):
 
 ```
 ---
@@ -25,7 +25,7 @@ model: anthropic/claude-3-5-sonnet-20241022
 Run the full test suite with coverage report and show any failures. Focus on the failing tests and suggest fixes.
 ```
 
-Example JSON command:
+### Example JSON command:
 
 ```
 { "command": { "test": { "template": "Run the full test suite with coverage...", "description": "Run tests with coverage", "agent": "build" } } }
@@ -74,11 +74,6 @@ Use these to build contextual, reproducible prompts that combine repo state, com
 ## Quick reference (LLM checklist)
 
 - Define command file: `.opencode/command/<name>.md` or add to `opencode.json`.
-- Use `$ARGUMENTS`, `$1`, `!`shell`` and `@file` to craft rich prompts.
+- Use `$ARGUMENTS`, `$1`, `!`shell``and`@file` to craft rich prompts.
 - Set `agent` and `subtask` to control execution context and permissions.
 - Prefer low temperature and targeted templates for code tasks; use higher creativity for brainstorming commands.
-
----
-
-File: `.opencode/knowledge-base/opencode-commands.md`
-Generated: summary targeted to LLM agents with examples and practical guidance.

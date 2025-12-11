@@ -5,164 +5,211 @@ import fs from 'fs';
 
 const CONFIG_PATH = '.opencode/tool/version-control/config.json';
 
-function loadConfig() {
-  try {
-    const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
-    return JSON.parse(raw);
-  } catch (err) {
-    return {
-      validateConventionalCommits: false,
-      kbPath: null,
-      bypassValidationWithExplicitApproval: false,
-      requireExplicitFileConfirmation: false,
-      kbFilenameConvention: 'lowercase-kebab',
-    };
-  }
-}
+type Config = {
+    validateConventionalCommits?: boolean;
+    kbPath?: string | null;
+    bypassValidationWithExplicitApproval?: boolean;
+    requireExplicitFileConfirmation?: boolean;
+    kbFilenameConvention?: string;
+};
 
-function ensureGitRepo() {
-  const rev = spawnSync('git', ['rev-parse', '--is-inside-work-tree'], { encoding: 'utf8' });
-  if (rev.status !== 0 || String(rev.stdout || '').trim() !== 'true') {
-    console.error('Not a git repository or git is not available in PATH.');
-    process.exit(1);
-  }
-}
-
-function runStatus() {
-  const git = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
-  if (git.status === 0) {
-    if (git.stdout && String(git.stdout).trim() !== '') {
-      process.stdout.write(git.stdout);
+const loadConfig = () => {
+    try {
+        const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
+        return JSON.parse(raw);
+    } catch (err) {
+        return {
+            validateConventionalCommits: false,
+            kbPath: null,
+            bypassValidationWithExplicitApproval: false,
+            requireExplicitFileConfirmation: false,
+            kbFilenameConvention: 'lowercase-kebab',
+        };
     }
-    process.exit(0);
-  }
+};
 
-  console.error('Unable to get git status:', git.stderr || `exit ${git.status}`);
-  process.exit(git.status || 1);
-}
-
-function promptYesNo(prompt: string) {
-  // Uses shell read so it works synchronously
-  const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
-  const out = spawnSync('sh', ['-c', cmd], { encoding: 'utf8', stdio: ['inherit', 'pipe', 'pipe'] });
-  if (out.status !== 0) return false;
-  const val = String(out.stdout || '').trim().toLowerCase();
-  return val === 'y' || val === 'yes';
-}
-
-function promptForString(prompt: string) {
-  const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
-  const out = spawnSync('sh', ['-c', cmd], { encoding: 'utf8', stdio: ['inherit', 'pipe', 'pipe'] });
-  if (out.status !== 0) return '';
-  return String(out.stdout || '').trim();
-}
-
-function isConventionalCommit(message: string) {
-  // Basic conventional commit regex: type(scope)?: subject
-  const re = /^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert|wip)(?:\([a-zA-Z0-9_\- ]+\))?:\s.+$/;
-  return re.test(message.trim());
-}
-
-function runGitCommit(argsFrom: string[]) {
-  const cfg = loadConfig();
-
-  // Parse simple flags (support --no-verify or -n, and --dry-run/-d)
-  let noVerify = false;
-  let dryRun = false;
-  const filtered: string[] = [];
-  for (const a of argsFrom) {
-    if (a === '--no-verify' || a === '-n') {
-      noVerify = true;
-      continue;
-    }
-    if (a === '--dry-run' || a === '-d') {
-      dryRun = true;
-      continue;
-    }
-    filtered.push(a);
-  }
-
-  const message = filtered.join(' ') || 'chore: commit from opencode tool';
-
-  // Validate conventional commit if enabled
-  if (cfg.validateConventionalCommits) {
-    if (!isConventionalCommit(message)) {
-      console.error('Commit message does not follow Conventional Commits format.');
-      if (cfg.bypassValidationWithExplicitApproval) {
-        const bypass = promptForString('Type BYPASS to override and continue:');
-        if (bypass !== 'BYPASS') {
-          console.error('Bypass not provided. Aborting commit.');
-          process.exit(1);
-        }
-      } else {
+const ensureGitRepo = () => {
+    const rev = spawnSync('git', ['rev-parse', '--is-inside-work-tree'], {
+        encoding: 'utf8',
+    });
+    if (rev.status !== 0 || String(rev.stdout || '').trim() !== 'true') {
+        console.error('Not a git repository or git is not available in PATH.');
         process.exit(1);
-      }
     }
-  }
+};
 
-  // Stage all changes
-  const add = spawnSync('git', ['add', '--all'], { encoding: 'utf8', stdio: 'pipe' });
-  if (add.status !== 0) {
-    if (add.stdout) process.stdout.write(add.stdout);
-    if (add.stderr) process.stderr.write(add.stderr);
-    console.error('git add failed with exit code', add.status);
-    process.exit(add.status || 1);
-  }
+const runStatus = () => {
+    const git = spawnSync('git', ['status', '--porcelain'], {
+        encoding: 'utf8',
+    });
+    if (git.status === 0) {
+        if (git.stdout && String(git.stdout).trim() !== '') {
+            process.stdout.write(git.stdout);
+        }
+        process.exit(0);
+    }
 
-  // Check for staged changes
-  const staged = spawnSync('git', ['diff', '--cached', '--name-only'], { encoding: 'utf8' });
-  if (staged.status !== 0) {
-    console.error('Failed to determine staged changes:', staged.stderr || `exit ${staged.status}`);
-    process.exit(staged.status || 1);
-  }
+    console.error(
+        'Unable to get git status:',
+        git.stderr || `exit ${git.status}`
+    );
+    process.exit(git.status || 1);
+};
 
-  if (!staged.stdout || String(staged.stdout).trim() === '') {
-    console.log('No changes to commit.');
-    process.exit(0);
-  }
+const promptYesNo = (prompt: string) => {
+    const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
+    const out = spawnSync('sh', ['-c', cmd], {
+        encoding: 'utf8',
+        stdio: ['inherit', 'pipe', 'pipe'],
+    });
+    if (out.status !== 0) return false;
+    const val = String(out.stdout || '')
+        .trim()
+        .toLowerCase();
+    return val === 'y' || val === 'yes';
+};
 
-  // Print staged files
-  console.log('Staged files:');
-  console.log(String(staged.stdout).trim());
+const promptForString = (prompt: string) => {
+    const cmd = `read -p "${prompt} " ans; printf "%s" "$ans"`;
+    const out = spawnSync('sh', ['-c', cmd], {
+        encoding: 'utf8',
+        stdio: ['inherit', 'pipe', 'pipe'],
+    });
+    if (out.status !== 0) return '';
+    return String(out.stdout || '').trim();
+};
 
-  // Confirm staged files if required
-  if (cfg.requireExplicitFileConfirmation) {
+const isConventionalCommit = (message: string) => {
+    const re =
+        /^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert|wip)(?:\([a-zA-Z0-9_\- ]+\))?:\s.+$/;
+    return re.test(message.trim());
+};
+
+const parseFlags = (argsFrom: string[]) => {
+    let noVerify = false;
+    let dryRun = false;
+    const filtered: string[] = [];
+    for (const a of argsFrom) {
+        if (a === '--no-verify' || a === '-n') {
+            noVerify = true;
+            continue;
+        }
+        if (a === '--dry-run' || a === '-d') {
+            dryRun = true;
+            continue;
+        }
+        filtered.push(a);
+    }
+    return { noVerify, dryRun, filtered };
+};
+
+const stageAll = () => {
+    const add = spawnSync('git', ['add', '--all'], {
+        encoding: 'utf8',
+        stdio: 'pipe',
+    });
+    if (add.status !== 0) {
+        if (add.stdout) process.stdout.write(add.stdout);
+        if (add.stderr) process.stderr.write(add.stderr);
+        console.error('git add failed with exit code', add.status);
+        process.exit(add.status || 1);
+    }
+};
+
+const getStagedFiles = (): string => {
+    const staged = spawnSync('git', ['diff', '--cached', '--name-only'], {
+        encoding: 'utf8',
+    });
+    if (staged.status !== 0) {
+        console.error(
+            'Failed to determine staged changes:',
+            staged.stderr || `exit ${staged.status}`
+        );
+        process.exit(staged.status || 1);
+    }
+    return String(staged.stdout || '');
+};
+
+const confirmStagedFiles = (cfg: Config) => {
+    if (!cfg.requireExplicitFileConfirmation) return true;
     const ok = promptYesNo('Proceed to commit these files? (y/N)');
-    if (!ok) {
-      console.log('Commit cancelled by user.');
-      process.exit(0);
+    return Boolean(ok);
+};
+
+const performCommit = (commitArgs: string[]) => {
+    const commit = spawnSync('git', commitArgs, {
+        encoding: 'utf8',
+        stdio: 'pipe',
+    });
+    if (commit.status === 0) {
+        if (commit.stdout) process.stdout.write(commit.stdout);
+        return 0;
     }
-  }
-
-  if (dryRun) {
-    console.log('Dry run: commit not performed.');
-    process.exit(0);
-  }
-
-  // Prepare commit arguments
-  const commitArgs = ['commit', ...(noVerify ? ['--no-verify'] : []), '-m', message];
-
-  // Run commit capturing output so we can surface git hook messages clearly
-  const commit = spawnSync('git', commitArgs, { encoding: 'utf8', stdio: 'pipe' });
-  if (commit.status === 0) {
     if (commit.stdout) process.stdout.write(commit.stdout);
-    process.exit(0);
-  }
+    if (commit.stderr) process.stderr.write(commit.stderr);
+    console.error('git commit failed with exit code', commit.status);
+    return commit.status || 1;
+};
 
-  // On failure, show stdout/stderr for diagnostics
-  if (commit.stdout) process.stdout.write(commit.stdout);
-  if (commit.stderr) process.stderr.write(commit.stderr);
-  console.error('git commit failed with exit code', commit.status);
-  process.exit(commit.status || 1);
-}
+const validateCommitMessage = (cfg: Config, message: string) => {
+    if (!cfg.validateConventionalCommits) return;
+    if (isConventionalCommit(message)) return;
+
+    console.error(
+        'Commit message does not follow Conventional Commits format.'
+    );
+    if (cfg.bypassValidationWithExplicitApproval) {
+        const bypass = promptForString('Type BYPASS to override and continue:');
+        if (bypass === 'BYPASS') return;
+        console.error('Bypass not provided. Aborting commit.');
+    }
+    process.exit(1);
+};
+
+const runGitCommit = (argsFrom: string[]) => {
+    const cfg = loadConfig();
+    const { noVerify, dryRun, filtered } = parseFlags(argsFrom);
+    const message = filtered.join(' ') || 'chore: commit from opencode tool';
+
+    validateCommitMessage(cfg, message);
+
+    stageAll();
+
+    const stagedOutput = getStagedFiles();
+    if (!stagedOutput || String(stagedOutput).trim() === '') {
+        console.log('No changes to commit.');
+        process.exit(0);
+    }
+
+    console.log('Staged files:');
+    console.log(String(stagedOutput).trim());
+
+    if (!confirmStagedFiles(cfg)) {
+        console.log('Commit cancelled by user.');
+        process.exit(0);
+    }
+
+    if (dryRun) {
+        console.log('Dry run: commit not performed.');
+        process.exit(0);
+    }
+
+    const commitArgs = [
+        'commit',
+        ...(noVerify ? ['--no-verify'] : []),
+        '-m',
+        message,
+    ];
+    const status = performCommit(commitArgs);
+    process.exit(status === 0 ? 0 : 1);
+};
 
 const args = process.argv.slice(2);
 ensureGitRepo();
 if (args.length > 0 && args[0] === 'status') {
-  runStatus();
+    runStatus();
 } else if (args.length > 0 && args[0] === 'commit') {
-  runGitCommit(args.slice(1));
+    runGitCommit(args.slice(1));
 } else {
-  // Backward-compatible default: treat args as commit message
-  runGitCommit(args);
+    runGitCommit(args);
 }

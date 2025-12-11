@@ -14,13 +14,13 @@ Purpose: a concise, agent-focused reference describing the built-in tools OpenCo
 - Per-agent: set `agent.<name>.tools` to override globals for that agent.
 - Use wildcards to control groups (e.g., `mymcp_*: false`).
 
-Example to disable dangerous tools globally:
+### Example to disable dangerous tools globally:
 
 ```
 { "tools": { "write": false, "bash": false, "webfetch": true } }
 ```
 
-Example to make `plan` agent read-only:
+### Example to make `plan` agent read-only:
 
 ```
 { "agent": { "plan": { "tools": { "write": false, "bash": false } } } }
@@ -74,8 +74,3 @@ Example to make `plan` agent read-only:
 - Request `ask` permission for risky commands in `bash` or for edits when designing a `plan` agent.
 - Remember `todowrite` is disabled for subagents by default — enable if planning multi-step changes.
 - Be aware of `.gitignore` and use `.ignore` to surface hidden files when needed.
-
----
-
-File: `.opencode/knowledge-base/opencode-tools.md`
-Generated: summary targeted to LLM agents with configuration examples, descriptions, and safe usage patterns.

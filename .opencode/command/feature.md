@@ -8,22 +8,22 @@ template_path: .opencode/template/feature-tmpl.yml
 This command delegates feature-spec generation to the centralized YAML template at `.opencode/template/feature-tmpl.yml`.
 
 Behavior:
+
 - The agent must read the user's prompt from `$ARGUMENTS`, render the template, and produce a Markdown feature specification.
 - Write the generated Markdown to `.context/features/<slug>.md` following the template's slug and overwrite rules.
 - Do not overwrite existing files without explicit confirmation.
 
 User prompt: $ARGUMENTS
 
-
-References & further reading
+## References & further reading
 
 - Templates:
-  - `.opencode/template/feature-tmpl.yml` — canonical feature output schema and filename rules
-  - `.opencode/template/research-tmpl.yml` — researcher output schema (for background research used in features)
+    - `.opencode/template/feature-tmpl.yml` — canonical feature output schema and filename rules
+    - `.opencode/template/research-tmpl.yml` — researcher output schema (for background research used in features)
 - Agent guidance:
-  - `.opencode/agent/feature.md` — feature subagent behavior and filesystem rules
-  - `.opencode/agent/researcher.md` — researcher subagent expectations when providing evidence
+    - `.opencode/agent/feature.md` — feature subagent behavior and filesystem rules
+    - `.opencode/agent/researcher.md` — researcher subagent expectations when providing evidence
 - Knowledge-base:
-  - `.opencode/knowledge-base/knowledge-base-conventions.md` — filename conventions for KB items
-  - `.opencode/knowledge-base/opencode-templates.md` — template authoring guidance
+    - `.opencode/knowledge-base/knowledge-base-conventions.md` — filename conventions for KB items
+    - `.opencode/knowledge-base/opencode-templates.md` — template authoring guidance
 - Best practices for agents: include explicit `source_prompt` and provenance when external research informs a feature.

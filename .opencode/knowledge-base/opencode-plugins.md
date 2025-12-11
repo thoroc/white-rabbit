@@ -21,7 +21,7 @@ The filename and exported functions are loaded as plugin entries.
 - `client`: Opencode SDK client for interacting with AI services.
 - `$`: Bun shell API for running commands.
 
-Example minimal plugin:
+### Example minimal plugin:
 
 ```
 import type { Plugin } from '@opencode-ai/plugin'
@@ -44,7 +44,7 @@ export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree
 - File events: `file.edited`, `file.watcher.updated`
 - Installation events: `installation.updated`
 - LSP events: `lsp.client.diagnostics`, `lsp.updated`
-- Message events: `message.*` variants (removed/updated/part.*)
+- Message events: `message.*` variants (removed/updated/part.\*)
 - Permission events: `permission.*`
 - Server events: `server.connected`
 - Session events: `session.created`, `session.idle`, `session.updated`, `session.diff`, etc.
@@ -96,8 +96,3 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 - Use `tool.execute.before` to intercept and gate tool usage.
 - Use `todo.updated` and `session.*` hooks to monitor agent activity.
 - Register custom tools via the `tool` helper and Zod schemas for strong typing.
-
----
-
-File: `.opencode/knowledge-base/opencode-plugins.md`
-Generated: summary targeted to LLM agents with examples and safety guidance.

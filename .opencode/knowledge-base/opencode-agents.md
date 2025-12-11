@@ -6,8 +6,8 @@ Purpose: a concise, actionable reference for LLM-based agents working with OpenC
 
 - Agents are specialized AI assistants configured for specific tasks and workflows.
 - Two agent types:
-  - Primary agents: the main assistants you interact with (e.g., `build`, `plan`).
-  - Subagents: invoked by primary agents or manually via `@name` (e.g., `general`, `explore`).
+    - Primary agents: the main assistants you interact with (e.g., `build`, `plan`).
+    - Subagents: invoked by primary agents or manually via `@name` (e.g., `general`, `explore`).
 - Agents control model, prompt, tools, permissions, and iteration behavior (agentic steps).
 
 ## Built-in Agents
@@ -28,53 +28,53 @@ Purpose: a concise, actionable reference for LLM-based agents working with OpenC
 - JSON: `opencode.json` top-level `agent` block.
 - Markdown: per-agent files in `~/.config/opencode/agent/` (global) or `.opencode/agent/` (project). The filename (without extension) becomes the agent name.
 
-Example JSON snippet (minimal):
+### Example JSON snippet (minimal):
 
-```
+```json
 {
-  "agent": {
-    "build": {
-      "mode": "primary",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "prompt": "{file:./prompts/build.txt}",
-      "tools": { "write": true, "edit": true, "bash": true }
-    },
-    "plan": {
-      "mode": "primary",
-      "model": "anthropic/claude-haiku-4-20250514",
-      "tools": { "write": false, "edit": false, "bash": false }
+    "agent": {
+        "build": {
+            "mode": "primary",
+            "model": "anthropic/claude-sonnet-4-20250514",
+            "prompt": "{file:./prompts/build.txt}",
+            "tools": { "write": true, "edit": true, "bash": true }
+        },
+        "plan": {
+            "mode": "primary",
+            "model": "anthropic/claude-haiku-4-20250514",
+            "tools": { "write": false, "edit": false, "bash": false }
+        }
     }
-  }
 }
 ```
 
-Example Markdown agent (project-level `.opencode/agent/review.md`):
+### Example Markdown agent (project-level `.opencode/agent/review.md`):
 
-```
+```yaml
 ---
 description: Reviews code for best practices and potential issues
 mode: subagent
 model: anthropic/claude-sonnet-4-20250514
 temperature: 0.1
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 You are in code review mode. Focus on:
-- Code quality and best practices
-- Potential bugs and edge cases
-- Performance implications
-- Security considerations
+    - Code quality and best practices
+    - Potential bugs and edge cases
+    - Performance implications
+    - Security considerations
 ```
 
 ## Important Options (what LLM agents should care about)
 
 - `description` (required): one-line description of agent purpose.
 - `temperature`: controls response creativity; recommended ranges:
-  - 0.0–0.2 for deterministic code analysis/planning
-  - 0.3–0.5 for balanced development tasks
-  - 0.6–1.0 for brainstorming/creative tasks
+    - 0.0–0.2 for deterministic code analysis/planning
+    - 0.3–0.5 for balanced development tasks
+    - 0.6–1.0 for brainstorming/creative tasks
 - `maxSteps`: limits agentic iterations; useful for cost control and forcing summarized outputs when reached.
 - `disable`: set to `true` to disable the agent.
 - `prompt`: custom system prompt file path (relative to config file).
@@ -126,8 +126,3 @@ You are in code review mode. Focus on:
 - Invoke `@explore` or `@general` for fast search/exploration tasks.
 - Configure `permission` per-agent to enforce safety (`ask`/`deny`/`allow`).
 - Use low `temperature` and `maxSteps` for deterministic, cost-controlled behavior.
-
----
-
-File: `.opencode/knowledge-base/opencode-agents.md`
-Generated: summary targeted to LLM agents with examples and operational guidance.
