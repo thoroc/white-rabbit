@@ -22,12 +22,12 @@ Creating a client
 - The SDK provides a factory for creating an authenticated client. Example:
 
 ```ts
-import { createOpenCodeClient } from '@opencode-ai/sdk'
+import { createOpenCodeClient } from "@opencode-ai/sdk";
 
 const client = createOpenCodeClient({
   token: process.env.OPENCODE_API_TOKEN,
   baseUrl: process.env.OPENCODE_API_URL, // optional override
-})
+});
 ```
 
 Authentication
@@ -79,17 +79,17 @@ TypeScript typing examples
 - Use exported types for strong checks:
 
 ```ts
-import { createOpenCodeClient, OpenCodeError } from '@opencode-ai/sdk'
+import { createOpenCodeClient, OpenCodeError } from "@opencode-ai/sdk";
 
-const client = createOpenCodeClient({ token: process.env.OPENCODE_API_TOKEN })
+const client = createOpenCodeClient({ token: process.env.OPENCODE_API_TOKEN });
 
 try {
-  const projects = await client.projects.list()
-  projects.forEach(p => console.log(p.id, p.name))
+  const projects = await client.projects.list();
+  projects.forEach((p) => console.log(p.id, p.name));
 } catch (err) {
   if (err instanceof OpenCodeError) {
-    console.error('API error', err.code, err.status)
-  } else throw err
+    console.error("API error", err.code, err.status);
+  } else throw err;
 }
 ```
 
@@ -98,12 +98,14 @@ API Cookbook — Practical Recipes
 Recipe 1 — List projects (CLI helper)
 
 ```ts
-import { createOpenCodeClient } from '@opencode-ai/sdk'
+import { createOpenCodeClient } from "@opencode-ai/sdk";
 
 async function main() {
-  const client = createOpenCodeClient({ token: process.env.OPENCODE_API_TOKEN })
-  const projects = await client.projects.list()
-  for (const p of projects) console.log(`${p.id}\t${p.name}`)
+  const client = createOpenCodeClient({
+    token: process.env.OPENCODE_API_TOKEN,
+  });
+  const projects = await client.projects.list();
+  for (const p of projects) console.log(`${p.id}\t${p.name}`);
 }
 ```
 
@@ -112,42 +114,59 @@ Recipe 2 — Scaffold a plugin (project-level plugin)
 - Create a file `./.opencode/plugin/my-plugin.ts` with the following:
 
 ```ts
-import type { Plugin } from '@opencode-ai/plugin'
+import type { Plugin } from "@opencode-ai/plugin";
 
-export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
+export const MyPlugin: Plugin = async ({
+  project,
+  client,
+  $,
+  directory,
+  worktree,
+}) => {
   // Initialization
-  console.log('MyPlugin initialized for', project.id)
+  console.log("MyPlugin initialized for", project.id);
 
   return {
     // Hook into file edits or commands
-    'command.executed': async (payload) => {
+    "command.executed": async (payload) => {
       // react to commands
     },
-  }
-}
+  };
+};
 ```
 
 - Register the plugin via the SDK or project UI:
 
 ```ts
-await client.plugins.register(projectId, { name: 'my-plugin', entry: '.opencode/plugin/my-plugin.ts' })
+await client.plugins.register(projectId, {
+  name: "my-plugin",
+  entry: ".opencode/plugin/my-plugin.ts",
+});
 ```
 
 Recipe 3 — Create an interactive session and send messages
 
 ```ts
-const session = await client.sessions.create(projectId, { model: 'gpt-like', name: 'dev-help' })
-await client.sessions.sendMessage(session.id, { role: 'user', content: 'Run tests and report failures' })
-const history = await client.sessions.history(session.id)
-console.log(history.map(m => m.content).join('\n---\n'))
+const session = await client.sessions.create(projectId, {
+  model: "gpt-like",
+  name: "dev-help",
+});
+await client.sessions.sendMessage(session.id, {
+  role: "user",
+  content: "Run tests and report failures",
+});
+const history = await client.sessions.history(session.id);
+console.log(history.map((m) => m.content).join("\n---\n"));
 ```
 
 Recipe 4 — Execute a named tool (run tests or linters)
 
 ```ts
-const result = await client.tools.execute(projectId, 'run-tests', { args: ['--watch', 'false'] })
-console.log('Tool output:', result.stdout)
-if (result.exitCode !== 0) throw new Error('Tests failed')
+const result = await client.tools.execute(projectId, "run-tests", {
+  args: ["--watch", "false"],
+});
+console.log("Tool output:", result.stdout);
+if (result.exitCode !== 0) throw new Error("Tests failed");
 ```
 
 Recipe 5 — Subscribe to project events (webhook-style)
@@ -155,23 +174,22 @@ Recipe 5 — Subscribe to project events (webhook-style)
 - Polling/subscription example using an SDK helper or webhook endpoint registration:
 
 ```ts
-await client.events.subscribe(projectId, 'file.edited', async (payload) => {
-  console.log('File edited:', payload.path, 'by', payload.author)
+await client.events.subscribe(projectId, "file.edited", async (payload) => {
+  console.log("File edited:", payload.path, "by", payload.author);
   // react, trigger CI, or open a todo
-})
+});
 ```
 
 Recipe 6 — Upload a file to the project
 
 ```ts
-const content = Buffer.from('console.log("hello")')
-await client.files.upload(projectId, 'src/hello.js', content)
+const content = Buffer.from('console.log("hello")');
+await client.files.upload(projectId, "src/hello.js", content);
 ```
 
 Repository installed dependencies (current)
 
 - The repository's current dependency list (from `package.json`) contains:
-
   - `@opencode-ai/plugin`: `1.0.146` (`.opencode/package.json:1`)
 
 Best practices & tips
@@ -185,8 +203,3 @@ References & further reading
 
 - Official SDK docs and API reference (link to the SDK repo/docs)
 - `@opencode-ai/plugin` — helper types and runtime for plugin development (`.opencode/plugin` patterns)
-
-Change log / Notes
-
-- This article expands the quick reference with a more detailed API overview and a cookbook of common tasks.
-- If you want, I can add concrete references to the SDK's source (type names and exact method signatures) by reading the installed package or the SDK repository.

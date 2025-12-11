@@ -20,15 +20,17 @@ Basic plugin structure
 - Typical function signature:
 
 ```ts
-export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
+import type { Plugin } from '@opencode-ai/plugin'
+
+export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   // initialization
   return {
     // hook implementations, e.g.:
     // 'command.executed': async (ev) => { ... }
     // 'file.edited': async (ev) => { ... }
     // 'tool': { ... } to register custom tools
-  }
-}
+  };
+};
 ```
 
 Common hooks and capabilities
@@ -64,12 +66,12 @@ Example (excerpt):
 ```ts
 export const BunTypescriptStarter = async ({ project, client, $ }) => {
   return {
-    'tool.execute.before': async (ev) => {
+    "tool.execute.before": async (ev) => {
       // Defensive: block attempts to read files named .env
       try {
         const path = ev?.args?.[0] || ev?.file;
-        if (typeof path === 'string' && path.endsWith('.env')) {
-          throw new Error('Access to .env blocked by plugin');
+        if (typeof path === "string" && path.endsWith(".env")) {
+          throw new Error("Access to .env blocked by plugin");
         }
       } catch (err) {
         throw err;
@@ -82,10 +84,3 @@ export const BunTypescriptStarter = async ({ project, client, $ }) => {
 Installed dependencies (from this repo `package.json`)
 
 - `@opencode-ai/plugin` ^1.0.146
-
-Notes & next steps
-
-- A starter plugin file was created at `.opencode/plugin/bun-typescript-starter.ts` (TypeScript). The project dependency list above is minimal — if you want the plugin to use OpenCode types, we can add `devDependencies` and a `tsconfig` tailored for Bun.
-- I did not add examples of registering a custom tool per your request. If you change your mind I can add a small typed `tool` example later.
-
-(Article updated.)

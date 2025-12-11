@@ -1,5 +1,5 @@
 template_version: 1
-description: "YAML template for feature subagent outputs. Instances are rendered to markdown files under .context/features/ using the frontmatter and sections defined here. This file follows the required `-tmpl.yml` suffix convention and must live under .opencode/template/."
+description: "Structured feature template (converted from freeform). This follows the research-style schema: explicit frontmatter, body sections, required_fields, and rendering notes. Use as canonical feature template going forward."
 agent: feature
 output_dir: .context/features
 filename_pattern: "{{slug}}.md"
@@ -9,65 +9,55 @@ required_fields:
   - slug
   - source_prompt
 
-template: |
-  ---
+frontmatter:
   title: "{{title}}"
   created_at: "{{created_at}}" # ISO 8601 UTC
   slug: "{{slug}}"
   source_prompt: |
     {{source_prompt}}
-  ---
 
-  ## Short Summary
-  {{short_summary}}
+body:
+  short_summary: "{{short_summary}}"
+  goals:
+    - "{{goal_1}}"
+  personas:
+    - "{{persona_1}}"
+  user_stories:
+    - "As a {{role}}, I want {{action}}, so that {{benefit}}"
+  acceptance_criteria:
+    - "{{acceptance_1}}"
+  implementation_plan:
+    backend:
+      - task: "{{backend_task_1}}"
+        estimate: "{{backend_estimate}}"
+    frontend:
+      - task: "{{frontend_task_1}}"
+        estimate: "{{frontend_estimate}}"
+    tests:
+      unit: "{{unit_tests}}"
+      integration: "{{integration_tests}}"
+      e2e: "{{e2e_tests}}"
+      manual: "{{manual_steps}}"
+  technical_considerations: "{{technical_considerations}}"
+  files:
+    - path: "{{file_path}}"
+      purpose: "{{purpose}}"
+  risks:
+    - risk: "{{risk_1}}"
+      mitigation: "{{mitigation_1}}"
+  alternatives:
+    - "{{alternative_1}}"
+  effort:
+    total: "{{estimated_effort}}"
+    milestones:
+      - name: "{{milestone_1}}"
+        date: "{{milestone_1_time}}"
+  reviewer_checklist:
+    - code_builds: false
+    - tests_added: false
+    - docs_updated: false
 
-  ## Goals
-  - {{goal_1}}
-
-  ## Target Users / Personas
-  - {{persona_1}}
-
-  ## User Stories
-  - As a {{role}}, I want {{action}}, so that {{benefit}}
-
-  ## Acceptance Criteria
-  - {{acceptance_1}}
-
-  ## Implementation Plan
-  - Backend: {{backend_task_1}} — {{backend_estimate}}
-  - Frontend: {{frontend_task_1}} — {{frontend_estimate}}
-  - Tests: {{test_task_1}} — {{test_estimate}}
-  - Docs: {{docs_task_1}} — {{docs_estimate}}
-
-  ## Technical Considerations
-  {{technical_considerations}}
-
-  ## Files To Change / Create
-  - {{file_path}} — {{purpose}}
-
-  ## Testing Plan
-  - Unit: {{unit_tests}}
-  - Integration: {{integration_tests}}
-  - E2E: {{e2e_tests}}
-  - Manual: {{manual_steps}}
-
-  ## Risks & Mitigations
-  - {{risk_1}} — Mitigation: {{mitigation_1}}
-
-  ## Alternatives & Suggested Improvements
-  - {{alternative_1}}
-
-  ## Estimated Effort & Milestones
-  - Total: {{estimated_effort}}
-  - Milestone 1: {{milestone_1}} — {{milestone_1_time}}
-
-  ## Reviewer Checklist
-  - [ ] Code builds
-  - [ ] Tests added and passing
-  - [ ] Documentation updated
-
-  ## Suggested PR Title
-  {{pr_title}}
-
-  ## Suggested PR Description
-  {{pr_description}}
+rendering_notes: |
+  - Ensure generated markdown includes the YAML frontmatter block using the keys in `required_fields`.
+  - Map `body` keys to corresponding sections in the markdown (for example, `body.short_summary` -> "## Short Summary").
+  - If additional placeholders are required, add them to `required_fields` so the validator can enforce presence in generated docs.
