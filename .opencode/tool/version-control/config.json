@@ -1,0 +1,7 @@
+{
+  "validateConventionalCommits": true,
+  "kbPath": ".opencode/knowledge-base/conventional-commits.md",
+  "bypassValidationWithExplicitApproval": true,
+  "requireExplicitFileConfirmation": true,
+  "kbFilenameConvention": "lowercase-kebab"
+}
