@@ -41,7 +41,9 @@ If the user provides specific files, commands, or repo context, incorporate them
 - The body of the Markdown must include: TL;DR, Key findings (with numbered inline citations), Provenance (numbered sources with short notes), and Suggested follow-ups.
 - Ensure the directory `.context/research/` exists; create it if missing, and limit writes to that directory to avoid modifying unrelated project files.
 - After writing the files, the agent must return in its response the relative path(s) of the created file(s) and a short note about any paywalled or behind-authentication sources encountered.
-- Templates: The researcher must use the YAML template file `.opencode/template/research-tmpl.yml`. All templates must live under `.opencode/template/` and must use the `-tmpl.yml` suffix (for example `research-tmpl.yml`).
+- Template: The researcher must generate Markdown artifacts by populating the YAML template `.opencode/template/research-tmpl.yml` (this remains the human-editable authoring source).
+- Validation: After writing the Markdown file(s) into `.context/research/`, the researcher must validate the generated document's frontmatter against the canonical JSON Schema `.opencode/schema/research.schema.json` by calling the opencode validator. Example invocation:
+    - `bun .opencode/tool/validate-doc.ts --schema .opencode/schema/research.schema.json --file .context/research/<generated-file>.md`
 - When rendering outputs the researcher should load the specified template, populate its frontmatter and body fields, render the frontmatter as YAML at the top of the file, serialize the body into human-readable markdown sections, then save the resulting `.md` files into `.context/research/`. Do not modify files outside `.context/research/`.
 
 ## References & further reading

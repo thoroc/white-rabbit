@@ -85,3 +85,7 @@ export const BunTypescriptStarter = async ({ project, client, $ }) => {
 ## Installed dependencies (from this repo `package.json`)
 
 - `@opencode-ai/plugin` ^1.0.146
+
+## Further reading
+
+- Official OpenCode docs: https://opencode.ai/docs

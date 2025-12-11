@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+    "$id": "https://opencode.local/.opencode/schema/research.schema.json",
+    "title": "Research Template Schema",
+    "type": "object",
+    "required": [
+        "template_version",
+        "agent",
+        "output_dir",
+        "filename_pattern",
+        "required_fields",
+        "frontmatter",
+        "body"
+    ],
+    "$defs": {
+        "sourceItem": {
+            "type": "object",
+            "properties": {
+                "url": { "type": "string", "format": "uri" },
+                "title": { "type": "string" },
+                "accessed": { "type": "string" },
+                "note": { "type": "string" }
+            },
+            "required": ["url"],
+            "additionalProperties": true
+        },
+        "findingItem": {
+            "type": "object",
+            "properties": {
+                "finding": { "type": "string" },
+                "confidence": { "type": "string" },
+                "citations": { "type": "array", "items": { "type": "integer" } }
+            },
+            "required": ["finding"],
+            "additionalProperties": true
+        },
+        "provenanceItem": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "integer" },
+                "title": { "type": "string" },
+                "url": { "type": "string", "format": "uri" },
+                "date": { "type": "string" },
+                "note": { "type": "string" }
+            },
+            "required": ["id", "title", "url"],
+            "additionalProperties": true
+        }
+    },
+    "properties": {
+        "template_version": { "type": "integer" },
+        "description": { "type": "string" },
+        "agent": { "type": "string" },
+        "output_dir": { "type": "string" },
+        "filename_pattern": { "type": "string" },
+        "required_fields": { "type": "array", "items": { "type": "string" } },
+        "frontmatter": {
+            "type": "object",
+            "required": ["title", "topic", "query", "created_at"],
+            "properties": {
+                "title": { "type": "string" },
+                "topic": { "type": "string" },
+                "query": { "type": "string" },
+                "created_at": { "type": "string" },
+                "sources": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/sourceItem" }
+                },
+                "confidence": { "type": "string" }
+            },
+            "additionalProperties": true
+        },
+        "body": {
+            "type": "object",
+            "properties": {
+                "tldr": { "type": "string" },
+                "key_findings": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/findingItem" }
+                },
+                "provenance": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/provenanceItem" }
+                },
+                "suggested_followups": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "additionalProperties": true
+        },
+        "rendering_notes": { "type": "string" }
+    },
+    "additionalProperties": true
+}

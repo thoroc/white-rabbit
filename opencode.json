@@ -1,16 +1,15 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "model": "github-copilot/chatgpt-5-mini",
     "plugin": ["@tarquinen/opencode-smart-title", "@tarquinen/opencode-dcp"],
     "experimental": {
         "primary_tools": ["prune"]
     },
     "instructions": [
         ".opencode/knowledge-base/coding-standards/typescript-bun.md",
+        ".opencode/knowledge-base/core/template.md",
         ".opencode/knowledge-base/opencode/agent.md",
         ".opencode/knowledge-base/opencode/command.md",
         ".opencode/knowledge-base/opencode/plugin.md",
-        ".opencode/knowledge-base/opencode/template.md",
         ".opencode/knowledge-base/opencode/tool.md",
         ".opencode/knowledge-base/opencode-ai/plugin.md",
         ".opencode/knowledge-base/opencode-ai/sdk.md",

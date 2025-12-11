@@ -96,3 +96,7 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 - Use `tool.execute.before` to intercept and gate tool usage.
 - Use `todo.updated` and `session.*` hooks to monitor agent activity.
 - Register custom tools via the `tool` helper and Zod schemas for strong typing.
+
+## Further reading
+
+- Official OpenCode docs: https://opencode.ai/docs

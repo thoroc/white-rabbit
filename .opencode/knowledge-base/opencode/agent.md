@@ -109,20 +109,6 @@ You are in code review mode. Focus on:
 - Debug agent: investigative tasks with read and selective bash access.
 - Docs agent: documentation authoring with file operations but no system commands.
 
-## Examples LLM Agents Should Know
+## Further reading
 
-- Documentation writer (subagent): `tools.bash=false` — focus on content and file writes.
-- Security auditor (subagent): `tools.write=false` and `tools.edit=false` — focus on identifying vulnerabilities and reporting.
-
-## How to Create Agents (CLI)
-
-- Run `opencode agent create` — interactive flow to scaffold an agent file (global or project).
-- Typical flow collects: target location, description, sample prompt, and tool permissions.
-
-## Quick Reference (for an LLM using or designing agents)
-
-- Switch to `plan` for read-only analysis and ask before edits.
-- Use `build` when you need the agent to perform edits and run commands.
-- Invoke `@explore` or `@general` for fast search/exploration tasks.
-- Configure `permission` per-agent to enforce safety (`ask`/`deny`/`allow`).
-- Use low `temperature` and `maxSteps` for deterministic, cost-controlled behavior.
+- Official OpenCode docs: https://opencode.ai/docs

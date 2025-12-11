@@ -203,3 +203,7 @@ await client.files.upload(projectId, 'src/hello.js', content);
 
 - Official SDK docs and API reference (link to the SDK repo/docs)
 - `@opencode-ai/plugin` — helper types and runtime for plugin development (`.opencode/plugin` patterns)
+
+## Further reading
+
+- Official OpenCode docs: https://opencode.ai/docs

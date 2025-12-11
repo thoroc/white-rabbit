@@ -3,6 +3,11 @@ description: Invoke centralized feature template to generate a feature specifica
 agent: feature
 subtask: true
 template_path: .opencode/template/feature-tmpl.yml
+schema_path: .opencode/schema/feature.schema.json
+
+# Validation
+# After generating the markdown file from the template, run the opencode validator to ensure the frontmatter conforms to the schema:
+# bun .opencode/tool/validate-doc.ts --schema .opencode/schema/feature.schema.json --file .context/features/<generated-file>.md
 ---
 
 This command delegates feature-spec generation to the centralized YAML template at `.opencode/template/feature-tmpl.yml`.

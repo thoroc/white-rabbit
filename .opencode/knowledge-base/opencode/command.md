@@ -77,3 +77,7 @@ Use these to build contextual, reproducible prompts that combine repo state, com
 - Use `$ARGUMENTS`, `$1`, `!`shell``and`@file` to craft rich prompts.
 - Set `agent` and `subtask` to control execution context and permissions.
 - Prefer low temperature and targeted templates for code tasks; use higher creativity for brainstorming commands.
+
+## Further reading
+
+- Official OpenCode docs: https://opencode.ai/docs

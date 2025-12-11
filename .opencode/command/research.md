@@ -35,9 +35,15 @@ If the topic is broad, propose a short search plan (3–6 queries) and ask for a
 - Agent guidance:
     - `.opencode/agent/researcher.md` — researcher subagent behavior and output rules
     - `.opencode/agent/feature.md` — feature subagent guidance when research informs a feature
-- Templates:
-    - `.opencode/template/research-tmpl.yml` — canonical rendering schema for research outputs
-    - `.opencode/template/feature-tmpl.yml` — feature spec schema (useful when research informs specs)
+- Templates (generation):
+    - `.opencode/template/research-tmpl.yml` — YAML template used to generate research Markdown artifacts
+    - `.opencode/template/feature-tmpl.yml` — feature spec template (used when research informs specs)
+- Schema (validation):
+    - `.opencode/schema/research.schema.json` — JSON Schema to validate generated research documents
+    - `.opencode/schema/feature.schema.json` — JSON Schema for feature documents
+- Validation step:
+  After rendering the Markdown from the template, validate the generated file's frontmatter against the schema using the opencode validator:
+    - `bun .opencode/tool/validate-doc.ts --schema .opencode/schema/research.schema.json --file .context/research/<generated-file>.md`
 - Knowledge-base:
     - `.opencode/knowledge-base/opencode-templates.md` — template authoring guidance for agents
     - `.opencode/knowledge-base/opencode-commands.md` — how commands inject files and shell output into prompts

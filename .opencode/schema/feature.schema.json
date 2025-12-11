@@ -1,0 +1,142 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+    "$id": "https://opencode.local/.opencode/schema/feature.schema.json",
+    "title": "Feature Document Schema",
+    "type": "object",
+    "required": ["title", "created_at", "slug", "source_prompt"],
+    "$defs": {
+        "frontmatter": {
+            "type": "object",
+            "properties": {
+                "title": { "type": "string" },
+                "created_at": { "type": "string", "format": "date-time" },
+                "slug": { "type": "string" },
+                "source_prompt": { "type": "string" }
+            },
+            "required": ["title", "created_at", "slug", "source_prompt"],
+            "additionalProperties": true
+        },
+        "implementationTask": {
+            "type": "object",
+            "properties": {
+                "task": { "type": "string" },
+                "estimate": { "type": "string" }
+            },
+            "required": ["task"],
+            "additionalProperties": true
+        },
+        "fileItem": {
+            "type": "object",
+            "properties": {
+                "path": { "type": "string" },
+                "purpose": { "type": "string" }
+            },
+            "required": ["path"],
+            "additionalProperties": true
+        },
+        "riskItem": {
+            "type": "object",
+            "properties": {
+                "risk": { "type": "string" },
+                "mitigation": { "type": "string" }
+            },
+            "required": ["risk"],
+            "additionalProperties": true
+        },
+        "milestone": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "date": { "type": "string" }
+            },
+            "required": ["name"],
+            "additionalProperties": true
+        },
+        "reviewerChecklist": {
+            "type": "object",
+            "properties": {
+                "code_builds": { "type": "boolean" },
+                "tests_added": { "type": "boolean" },
+                "docs_updated": { "type": "boolean" }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "template_version": { "type": "integer" },
+        "description": { "type": "string" },
+        "agent": { "type": "string" },
+        "output_dir": { "type": "string" },
+        "filename_pattern": { "type": "string" },
+        "required_fields": { "type": "array", "items": { "type": "string" } },
+        "frontmatter": { "$ref": "#/$defs/frontmatter" },
+        "body": {
+            "type": "object",
+            "properties": {
+                "short_summary": { "type": "string" },
+                "goals": { "type": "array", "items": { "type": "string" } },
+                "personas": { "type": "array", "items": { "type": "string" } },
+                "user_stories": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "acceptance_criteria": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "implementation_plan": {
+                    "type": "object",
+                    "properties": {
+                        "backend": {
+                            "type": "array",
+                            "items": { "$ref": "#/$defs/implementationTask" }
+                        },
+                        "frontend": {
+                            "type": "array",
+                            "items": { "$ref": "#/$defs/implementationTask" }
+                        },
+                        "tests": {
+                            "type": "object",
+                            "properties": {
+                                "unit": { "type": "string" },
+                                "integration": { "type": "string" },
+                                "e2e": { "type": "string" },
+                                "manual": { "type": "string" }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "technical_considerations": { "type": "string" },
+                "files": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/fileItem" }
+                },
+                "risks": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/riskItem" }
+                },
+                "alternatives": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "effort": {
+                    "type": "object",
+                    "properties": {
+                        "total": { "type": "string" },
+                        "milestones": {
+                            "type": "array",
+                            "items": { "$ref": "#/$defs/milestone" }
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "reviewer_checklist": { "$ref": "#/$defs/reviewerChecklist" }
+            },
+            "additionalProperties": true
+        },
+        "rendering_notes": { "type": "string" }
+    },
+    "additionalProperties": true
+}

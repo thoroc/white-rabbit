@@ -74,3 +74,7 @@ Purpose: a concise, agent-focused reference describing the built-in tools OpenCo
 - Request `ask` permission for risky commands in `bash` or for edits when designing a `plan` agent.
 - Remember `todowrite` is disabled for subagents by default — enable if planning multi-step changes.
 - Be aware of `.gitignore` and use `.ignore` to surface hidden files when needed.
+
+## Further reading
+
+- Official OpenCode docs: https://opencode.ai/docs
