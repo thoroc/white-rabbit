@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OpenCode Command Schema",
+    "type": "object",
+    "required": ["name", "description", "template"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9\-]+$",
+            "description": "Slugified command name (lowercase, dash-separated)"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Short one-line description of the command"
+        },
+        "agent": {
+            "type": "string",
+            "description": "Agent that should execute the command (e.g., build, plan)",
+            "default": "build"
+        },
+        "template": {
+            "type": "string",
+            "minLength": 10,
+            "description": "The prompt template or behavior string the command will run"
+        },
+        "usage": {
+            "type": "string",
+            "description": "Optional usage instructions"
+        },
+        "args": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Optional list of named args the command accepts"
+        }
+    },
+    "additionalProperties": false
+}

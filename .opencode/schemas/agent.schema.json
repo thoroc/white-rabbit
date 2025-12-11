@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OpenCode Agent Schema",
+    "type": "object",
+    "required": ["name", "description", "goal"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9\-]+$",
+            "description": "Slugified agent name (lowercase, dash-separated)"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Short one-line description"
+        },
+        "goal": {
+            "type": "string",
+            "minLength": 10,
+            "description": "What the agent should aim to achieve (detailed instructions)"
+        },
+        "mode": {
+            "type": "string",
+            "enum": ["primary", "subagent", "all"],
+            "default": "primary",
+            "description": "Execution mode for the agent"
+        },
+        "model": {
+            "type": "string",
+            "description": "Optional model identifier to use"
+        },
+        "tools": {
+            "type": "object",
+            "description": "Optional tools block (e.g. { \"write\": true, \"bash\": false })",
+            "additionalProperties": {
+                "oneOf": [{ "type": "boolean" }, { "type": "string" }]
+            }
+        },
+        "permissions": {
+            "type": "object",
+            "description": "Optional permissions object for fine-grained gating",
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": false
+}
