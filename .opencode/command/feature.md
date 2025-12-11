@@ -17,6 +17,10 @@ User prompt: $ARGUMENTS
 
 ## References & further reading
 
+- Relevant knowledge-base:
+    - `.opencode/knowledge-base/kb-conventions.md`
+    - `.opencode/knowledge-base/opencode/template.md`
+
 - Templates:
     - `.opencode/template/feature-tmpl.yml` — canonical feature output schema and filename rules
     - `.opencode/template/research-tmpl.yml` — researcher output schema (for background research used in features)

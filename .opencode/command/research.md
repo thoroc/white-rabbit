@@ -26,6 +26,12 @@ If the topic is broad, propose a short search plan (3–6 queries) and ask for a
 
 ## References & further reading
 
+- Relevant knowledge-base:
+    - `.opencode/knowledge-base/opencode/template.md`
+    - `.opencode/knowledge-base/opencode/command.md`
+    - `.opencode/knowledge-base/opencode-ai/sdk.md`
+    - `.opencode/knowledge-base/kb-conventions.md`
+
 - Agent guidance:
     - `.opencode/agent/researcher.md` — researcher subagent behavior and output rules
     - `.opencode/agent/feature.md` — feature subagent guidance when research informs a feature

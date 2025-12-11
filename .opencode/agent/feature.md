@@ -4,19 +4,19 @@ mode: subagent
 temperature: 0.25
 maxSteps: 6
 tools:
-  write: true
-  edit: true
-  read: true
-  webfetch: true
-  bash: true
+    write: true
+    edit: true
+    read: true
+    webfetch: true
+    bash: true
 permissions:
-  write: allow
-  edit: allow
-  read: allow
-  webfetch: allow
-  bash: allow
+    write: allow
+    edit: allow
+    read: allow
+    webfetch: allow
+    bash: allow
 allowed_paths:
-  - $CWD/.context/features
+    - $CWD/.context/features
 bash_allowed_cwd: $CWD
 ---
 
@@ -36,16 +36,22 @@ When invoked, expect the primary input to be the raw prompt text injected by the
 
 ## References & further reading
 
+- Relevant knowledge-base:
+    - `.opencode/knowledge-base/opencode/template.md`
+    - `.opencode/knowledge-base/opencode/command.md`
+    - `.opencode/knowledge-base/opencode/plugin.md`
+    - `.opencode/knowledge-base/kb-conventions.md`
+
 - Local knowledge-base (agent-facing):
-  - ` .opencode/knowledge-base/opencode-templates.md`
-  - ` .opencode/knowledge-base/opencode-commands.md`
-  - ` .opencode/knowledge-base/opencode-agents.md`
-  - ` .opencode/knowledge-base/opencode-tools.md`
-  - ` .opencode/knowledge-base/opencode-plugins.md`
-  - ` .opencode/knowledge-base/opencode-plugin.md`
-  - ` .opencode/knowledge-base/knowledge-base-conventions.md`
+    - ` .opencode/knowledge-base/opencode-templates.md`
+    - ` .opencode/knowledge-base/opencode-commands.md`
+    - ` .opencode/knowledge-base/opencode-agents.md`
+    - ` .opencode/knowledge-base/opencode-tools.md`
+    - ` .opencode/knowledge-base/opencode-plugins.md`
+    - ` .opencode/knowledge-base/opencode-plugin.md`
+    - ` .opencode/knowledge-base/knowledge-base-conventions.md`
 - Templates:
-  - `.opencode/template/feature-tmpl.yml`
-  - `.opencode/template/research-tmpl.yml`
+    - `.opencode/template/feature-tmpl.yml`
+    - `.opencode/template/research-tmpl.yml`
 - Agent operational guidance (concise): prefer low `temperature` for deterministic specs, write files under `.context/features/`, and follow filename conventions in `knowledge-base-conventions.md`.
 - Citation & provenance: when referencing external materials, include URLs and access dates; prefer primary and high-quality secondary sources.
