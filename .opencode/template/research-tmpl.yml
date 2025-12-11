@@ -1,0 +1,48 @@
+template_version: 1
+description: "YAML template for researcher subagent outputs. Instances should be rendered to markdown files under .context/research/ using the frontmatter and sections defined here. This file follows the required `-tmpl.yml` suffix convention and must live under .opencode/template/."
+agent: research
+output_dir: .context/research
+filename_pattern: "{{created_at | datetime('%Y%m%dT%H%M%S')}}_{{topic | slugify}}.md"
+required_fields:
+  - title
+  - topic
+  - query
+  - created_at
+
+frontmatter:
+  title: "{{title}}"
+  topic: "{{topic}}"
+  query: "{{query}}"
+  created_at: "{{created_at}}"
+  sources:
+    - url: "{{source_1_url}}"
+      title: "{{source_1_title}}"
+      accessed: "{{source_1_accessed}}"
+      note: "{{source_1_note}}"
+  confidence: "{{confidence}}"
+
+body:
+  tldr: "{{tldr}}"
+  key_findings:
+    - finding: "{{finding_1}}"
+      confidence: "{{finding_confidence_1}}"
+      citations:
+        - 1
+    - finding: "{{finding_2}}"
+      confidence: "{{finding_confidence_2}}"
+      citations:
+        - 2
+  provenance:
+    - id: 1
+      title: "{{source_1_title}}"
+      url: "{{source_1_url}}"
+      date: "{{source_1_date}}"
+      note: "{{source_1_note}}"
+  suggested_followups:
+    - "{{followup_1}}"
+    - "{{followup_2}}"
+
+rendering_notes: |
+  - When creating markdown files, the researcher subagent should render `frontmatter` as YAML frontmatter at the top of the file, then serialize `body` into human-readable markdown sections.
+  - Filenames must follow: `YYYYMMDDTHHMMSS_<slugified-topic>.md` and be saved in `.context/research/`.
+  - This file must always live under `.opencode/template/` and be named with the `-tmpl.yml` suffix.

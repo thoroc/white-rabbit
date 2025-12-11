@@ -1,0 +1,73 @@
+template_version: 1
+description: "YAML template for feature subagent outputs. Instances are rendered to markdown files under .context/features/ using the frontmatter and sections defined here. This file follows the required `-tmpl.yml` suffix convention and must live under .opencode/template/."
+agent: feature
+output_dir: .context/features
+filename_pattern: "{{slug}}.md"
+required_fields:
+  - title
+  - created_at
+  - slug
+  - source_prompt
+
+template: |
+  ---
+  title: "{{title}}"
+  created_at: "{{created_at}}" # ISO 8601 UTC
+  slug: "{{slug}}"
+  source_prompt: |
+    {{source_prompt}}
+  ---
+
+  ## Short Summary
+  {{short_summary}}
+
+  ## Goals
+  - {{goal_1}}
+
+  ## Target Users / Personas
+  - {{persona_1}}
+
+  ## User Stories
+  - As a {{role}}, I want {{action}}, so that {{benefit}}
+
+  ## Acceptance Criteria
+  - {{acceptance_1}}
+
+  ## Implementation Plan
+  - Backend: {{backend_task_1}} — {{backend_estimate}}
+  - Frontend: {{frontend_task_1}} — {{frontend_estimate}}
+  - Tests: {{test_task_1}} — {{test_estimate}}
+  - Docs: {{docs_task_1}} — {{docs_estimate}}
+
+  ## Technical Considerations
+  {{technical_considerations}}
+
+  ## Files To Change / Create
+  - {{file_path}} — {{purpose}}
+
+  ## Testing Plan
+  - Unit: {{unit_tests}}
+  - Integration: {{integration_tests}}
+  - E2E: {{e2e_tests}}
+  - Manual: {{manual_steps}}
+
+  ## Risks & Mitigations
+  - {{risk_1}} — Mitigation: {{mitigation_1}}
+
+  ## Alternatives & Suggested Improvements
+  - {{alternative_1}}
+
+  ## Estimated Effort & Milestones
+  - Total: {{estimated_effort}}
+  - Milestone 1: {{milestone_1}} — {{milestone_1_time}}
+
+  ## Reviewer Checklist
+  - [ ] Code builds
+  - [ ] Tests added and passing
+  - [ ] Documentation updated
+
+  ## Suggested PR Title
+  {{pr_title}}
+
+  ## Suggested PR Description
+  {{pr_description}}
