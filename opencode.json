@@ -6,27 +6,26 @@
         "primary_tools": ["prune"]
     },
     "instructions": [
-        ".opencode/knowledge-base/opencode-agents.md",
-        ".opencode/knowledge-base/opencode-ai-plugin.md",
-        ".opencode/knowledge-base/opencode-ai-sdk.md",
-        ".opencode/knowledge-base/opencode-plugins.md",
-        ".opencode/knowledge-base/opencode-commands.md",
-        ".opencode/knowledge-base/opencode-tools.md",
-        ".opencode/knowledge-base/opencode-plugins.md",
-        ".opencode/knowledge-base/opencode-templates.md",
-        ".opencode/knowledge-base/opencode-tools.md"
+        ".opencode/knowledge-base/coding-standards/typescript-bun.md",
+        ".opencode/knowledge-base/opencode/agent.md",
+        ".opencode/knowledge-base/opencode/command.md",
+        ".opencode/knowledge-base/opencode/plugin.md",
+        ".opencode/knowledge-base/opencode/template.md",
+        ".opencode/knowledge-base/opencode/tool.md",
+        ".opencode/knowledge-base/opencode-ai/plugin.md",
+        ".opencode/knowledge-base/opencode-ai/sdk.md",
     ],
     "tools": {
         "commit": true
     },
-    "lsp":{
-      "markdown-oxide": {
-        "command": ["markdown-oxide"],
-        "extensions": [".md", ".markdown"]
-      },
-      "yaml": {
-        "command": ["yaml-language-server"],
-        "extensions": [".yaml", ".yml"]
-      }
+    "lsp": {
+        "markdown-oxide": {
+            "command": ["markdown-oxide"],
+            "extensions": [".md", ".markdown"]
+        },
+        "yaml": {
+            "command": ["yaml-language-server"],
+            "extensions": [".yaml", ".yml"]
+        }
     }
 }
