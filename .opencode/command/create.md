@@ -17,8 +17,8 @@ This command will:
 
 Schemas (injected):
 
-- Agent schema: `@.opencode/schemas/agent.schema.json`
-- Command schema: `@.opencode/schemas/command.schema.json`
+- Agent schema: `@.opencode/schema/opencode-agent.schema.json`
+- Command schema: `@.opencode/schema/opencode-command.schema.json`
 
 Template (how the command runner should behave)
 

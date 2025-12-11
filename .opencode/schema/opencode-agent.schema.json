@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "OpenCode Agent Frontmatter Schema",
+    "description": "Validates the YAML frontmatter object at the top of an OpenCode agent file. This merged schema is a superset that accepts common fields used across agent frontmatter.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9\-]+$",
+            "description": "Slugified agent name (lowercase, dash-separated)"
+        },
+        "description": { "type": "string", "minLength": 5 },
+        "goal": {
+            "type": "string",
+            "minLength": 10,
+            "description": "What the agent should aim to achieve (detailed instructions)"
+        },
+        "mode": { "type": "string", "enum": ["primary", "subagent", "all"] },
+        "model": { "type": "string" },
+        "temperature": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maxSteps": { "type": "integer", "minimum": 1 },
+        "prompt": { "type": "string" },
+        "tools": {
+            "type": "object",
+            "description": "Optional tools block (e.g. { \"write\": true, \"bash\": false })",
+            "additionalProperties": {
+                "oneOf": [{ "type": "boolean" }, { "type": "string" }]
+            }
+        },
+        "permissions": {
+            "type": "object",
+            "description": "Optional permissions object for fine-grained gating",
+            "additionalProperties": {
+                "oneOf": [
+                    { "type": "string", "enum": ["allow", "deny", "ask"] },
+                    { "type": "boolean" },
+                    { "type": "object" }
+                ]
+            }
+        },
+        "disable": { "type": "boolean" }
+    },
+    "required": ["description"],
+    "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "OpenCode Command Schema",
+    "description": "Merged command schema for .opencode/command frontmatter and command metadata.",
+    "type": "object",
+    "properties": {
+        "name": { "type": "string", "pattern": "^[a-z0-9\-]+$" },
+        "description": { "type": "string", "minLength": 5 },
+        "agent": {
+            "type": "string",
+            "description": "Agent to run the command (e.g. build, plan)",
+            "default": "build"
+        },
+        "subtask": { "type": "boolean" },
+        "template": { "type": "string", "minLength": 10 },
+        "usage": { "type": "string" },
+        "args": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["description", "template"],
+    "additionalProperties": false
+}
