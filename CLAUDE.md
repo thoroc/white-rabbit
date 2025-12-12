@@ -3,6 +3,7 @@
 ## Domain path convention
 
 - The pure `opencode` related specs (domain=opencode) are to be under the path `*/opencode/*`. This include `agent`, `command`, `plugin` and `tool`.
+  - Exception: `.opencode/agent`, `.opencode/command`, `.opencode/plugin` and `.opencode/tool` cannot contain the domain in the path.
 - The `core` related specs (domain=core) are to be under the path `*/core/*`. This includes `checklist`, `knowledge-base`, `schema`, `template` and `task`.
 - The `docs` related specs (domain=docs) are to be under the path `*/docs/*`. This includes tutorial, guide, faq, how-to and overview.
 - the `dev` related specs (domain=dev) are to be under the path `*/dev/*`. This include instructions to write code, diagrams or manage project/issues

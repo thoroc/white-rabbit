@@ -1,0 +1,158 @@
+template_version: 1
+description: "Structured prompt quality assessment template. Used to evaluate prompts against clarity, specificity, actionability, completeness, and structure criteria. Supports iterative refinement workflows."
+agent: prompt-enhancer-expert
+output_dir: .context/prompt-evaluations
+filename_pattern: "{{slug}}.md"
+required_fields:
+  - original_prompt
+  - evaluated_at
+  - slug
+  - iteration
+
+frontmatter:
+  original_prompt: |
+    {{original_prompt}}
+  evaluated_at: "{{evaluated_at}}" # ISO 8601 UTC
+  slug: "{{slug}}"
+  iteration: "{{iteration}}" # Iteration number (1, 2, 3)
+  evaluation_type: "{{evaluation_type}}" # initial, enhanced, final
+
+body:
+  prompt_text: |
+    {{prompt_text}}
+
+  evaluation_scores:
+    clarity:
+      score: "{{clarity_score}}" # 1-10
+      justification: "{{clarity_justification}}"
+    specificity:
+      score: "{{specificity_score}}" # 1-10
+      justification: "{{specificity_justification}}"
+    actionability:
+      score: "{{actionability_score}}" # 1-10
+      justification: "{{actionability_justification}}"
+    completeness:
+      score: "{{completeness_score}}" # 1-10
+      justification: "{{completeness_justification}}"
+    structure:
+      score: "{{structure_score}}" # 1-10
+      justification: "{{structure_justification}}"
+    overall:
+      average_score: "{{average_score}}" # Calculated average
+      weighted_score: "{{weighted_score}}" # Optional weighted average
+
+  domain_analysis:
+    identified_domain: "{{identified_domain}}"
+    domain_confidence: "{{domain_confidence}}" # high, medium, low
+    key_concepts:
+      - "{{concept_1}}"
+      - "{{concept_2}}"
+
+  strengths:
+    - "{{strength_1}}"
+    - "{{strength_2}}"
+
+  weaknesses:
+    - "{{weakness_1}}"
+    - "{{weakness_2}}"
+
+  improvement_areas:
+    - category: "{{category_1}}"
+      description: "{{improvement_desc_1}}"
+      priority: "{{priority_1}}" # high, medium, low
+    - category: "{{category_2}}"
+      description: "{{improvement_desc_2}}"
+      priority: "{{priority_2}}"
+
+  brainstorming_insights:
+    agent_1_fundamental:
+      - "{{agent_1_insight_1}}"
+      - "{{agent_1_insight_2}}"
+    agent_2_practical:
+      - "{{agent_2_insight_1}}"
+      - "{{agent_2_insight_2}}"
+    agent_3_creative:
+      - "{{agent_3_insight_1}}"
+      - "{{agent_3_insight_2}}"
+    agent_4_analytical:
+      - "{{agent_4_insight_1}}"
+      - "{{agent_4_insight_2}}"
+
+  methodology_results:
+    mind_mapping:
+      central_concept: "{{mind_map_central}}"
+      branches:
+        - "{{mind_map_branch_1}}"
+        - "{{mind_map_branch_2}}"
+      connections: "{{mind_map_connections}}"
+
+    six_hats:
+      white_facts: "{{white_hat_analysis}}"
+      red_emotions: "{{red_hat_analysis}}"
+      black_risks: "{{black_hat_analysis}}"
+      yellow_benefits: "{{yellow_hat_analysis}}"
+      green_creative: "{{green_hat_analysis}}"
+      blue_process: "{{blue_hat_analysis}}"
+
+    scamper:
+      substitute: "{{scamper_substitute}}"
+      combine: "{{scamper_combine}}"
+      adapt: "{{scamper_adapt}}"
+      modify: "{{scamper_modify}}"
+      put_to_use: "{{scamper_put_to_use}}"
+      eliminate: "{{scamper_eliminate}}"
+      reverse: "{{scamper_reverse}}"
+
+  enhancement_suggestions:
+    - type: "{{suggestion_type_1}}" # add_context, clarify_goal, specify_format, etc.
+      description: "{{suggestion_desc_1}}"
+      example: "{{suggestion_example_1}}"
+    - type: "{{suggestion_type_2}}"
+      description: "{{suggestion_desc_2}}"
+      example: "{{suggestion_example_2}}"
+
+  recommended_patterns:
+    - pattern_name: "{{pattern_1}}"
+      rationale: "{{pattern_1_rationale}}"
+      application: "{{pattern_1_application}}"
+
+  quality_checklist:
+    goal_matches_intent: "{{goal_matches}}" # yes/no
+    deliverables_concrete: "{{deliverables_concrete}}" # yes/no
+    acceptance_criteria_provided: "{{acceptance_criteria}}" # yes/no
+    clarifying_questions_needed: "{{clarifying_questions}}" # yes/no
+    ready_for_use: "{{ready_for_use}}" # yes/no
+
+  next_steps:
+    - "{{next_step_1}}"
+    - "{{next_step_2}}"
+
+  comparison:
+    previous_iteration_score: "{{previous_score}}" # null for first iteration
+    score_improvement: "{{score_delta}}" # null for first iteration
+    continue_iteration: "{{continue_iteration}}" # yes/no
+
+rendering_notes: |
+  - This template supports iterative prompt evaluation workflows
+  - The evaluation_type field distinguishes initial, enhanced, and final evaluations
+  - All scores use a 1-10 scale as defined in knowledge-base/core/prompt-engineering.md
+  - The brainstorming_insights section captures output from multi-agent brainstorming
+  - The methodology_results section documents Mind Mapping, Six Hats, and SCAMPER outputs
+  - The comparison section tracks improvement across iterations
+  - For the first iteration, set previous_iteration_score and score_improvement to null
+  - The quality_checklist maps to the checklist defined in checklist/core/prompt-quality.md
+
+validation_notes: |
+  - All score fields must be integers between 1-10
+  - evaluation_type must be one of: initial, enhanced, final
+  - iteration must be a positive integer (1, 2, 3)
+  - domain_confidence must be one of: high, medium, low
+  - priority fields must be one of: high, medium, low
+  - continue_iteration must be yes or no
+  - All yes/no fields in quality_checklist must be "yes" or "no"
+
+example_usage: |
+  1. Initial evaluation: Use this template to assess the original prompt, set iteration=1, evaluation_type=initial
+  2. Enhanced evaluation: After enhancing, assess the new prompt with iteration=2, evaluation_type=enhanced
+  3. Final evaluation: After 3 iterations or when score improves significantly, use evaluation_type=final
+  4. Compare scores across iterations to decide whether to continue refinement
