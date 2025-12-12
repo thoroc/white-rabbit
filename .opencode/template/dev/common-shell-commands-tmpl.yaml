@@ -1,0 +1,331 @@
+# Common Shell Commands Template
+# Lightweight shell commands for quick project analysis without loading full task files
+
+# Resource Loader Discovery Fields
+type: template
+description: "Collection of lightweight shell commands for quick project context and technology detection"
+category: Reference
+tags: [template, shell, commands, analysis, detection]
+version: 2.0.0
+last_updated: 2025-11-19
+
+# Additional Metadata
+title: "Common Project Analysis Shell Commands"
+reference: "task/technology-detection.md"
+
+# Overview:
+# This template provides a curated collection of shell commands for quick project analysis.
+# These commands are designed to be fast, lightweight alternatives to full task agents when
+# you need immediate context about technology stack, dependencies, CI/CD setup, or infrastructure.
+
+# Structure Guidelines:
+# 1. Commands should be fast and lightweight (run in < 1 second typically)
+# 2. Use error suppression (2>/dev/null) to handle missing files/directories gracefully
+# 3. Limit output with head, tail, or grep to avoid overwhelming responses
+# 4. Structure output with echo statements for readability
+# 5. Commands should be safe to run in any project directory
+
+structure:
+  command_definition:
+    description: "Each command is a self-contained analysis tool"
+    format: |
+      command_name:
+        description: "What this command analyzes"
+        command: |
+          [Shell command with output formatting]
+    components:
+      description: "Human-readable explanation of command purpose"
+      command: "Shell command (can be multi-line with pipes)"
+
+# Command Categories:
+
+commands:
+  # Technology Stack Detection
+  
+  technology_stack:
+    description: "Programming Language Distribution Analysis"
+    purpose: "Identify primary programming languages used in the project"
+    command: |
+      echo "=== Technology Stack Analysis ===";
+      find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" -o -name "*.java" -o -name "*.kt" -o -name "*.go" -o -name "*.rs" -o -name "*.cpp" -o -name "*.c" -o -name "*.cs" -o -name "*.php" -o -name "*.rb" -o -name "*.swift" -o -name "*.dart" \) 2>/dev/null |
+      awk -F. '{print $NF}' |
+      sort |
+      uniq -c |
+      sort -nr |
+      head -10
+    output_format: "Count and extension, sorted by frequency"
+  
+  # Package Managers and Build Tools
+  
+  package_managers:
+    description: "Package Manager and Build Tool Detection"
+    purpose: "Identify package managers and build systems in use"
+    command: |
+      echo "=== Package Managers and Build Tools ===";
+      echo "## Node.js:"; ls -la package.json package-lock.json yarn.lock pnpm-lock.yaml bun.lockb 2>/dev/null || echo "- None found";
+      echo "## Python:"; ls -la requirements.txt requirements-dev.txt pyproject.toml Pipfile poetry.lock setup.py 2>/dev/null || echo "- None found";
+      echo "## Java:"; ls -la pom.xml build.gradle build.gradle.kts 2>/dev/null || echo "- None found";
+      echo "## Go:"; ls -la go.mod go.sum 2>/dev/null || echo "- None found";
+      echo "## Rust:"; ls -la Cargo.toml Cargo.lock 2>/dev/null || echo "- None found";
+      echo "## Ruby:"; ls -la Gemfile Gemfile.lock 2>/dev/null || echo "- None found"
+    output_format: "Grouped by language/ecosystem"
+  
+  # CI/CD Pipeline Detection
+  
+  cicd_detection:
+    description: "CI/CD Pipeline Configuration Detection"
+    purpose: "Find CI/CD configuration files and pipeline definitions"
+    command: |
+      echo "=== CI/CD Pipeline Detection ===";
+      echo "## GitHub Actions:"; find .github/workflows -name "*.yml" -o -name "*.yaml" 2>/dev/null || echo "- None found";
+      echo "## GitLab CI:"; find . -maxdepth 2 -name ".gitlab-ci.yml" 2>/dev/null || echo "- None found";
+      echo "## Jenkins:"; find . -name "Jenkinsfile*" -o -name "*.Jenkinsfile" 2>/dev/null || echo "- None found";
+      echo "## CircleCI:"; find . -name ".circleci/config.yml" 2>/dev/null || echo "- None found";
+      echo "## Travis CI:"; find . -name ".travis.yml" 2>/dev/null || echo "- None found";
+      echo "## Azure Pipelines:"; find . -name "azure-pipelines.yml" -o -name "azure-pipelines.yaml" 2>/dev/null || echo "- None found"
+    output_format: "Grouped by CI/CD platform"
+  
+  # Container and Orchestration
+  
+  docker_detection:
+    description: "Docker Configuration Detection"
+    purpose: "Find Docker and container-related configuration files"
+    command: |
+      echo "=== Container and Orchestration ===";
+      echo "## Docker Configuration:";
+      find . -name "Dockerfile*" -o -name "docker-compose*.yml" -o -name "docker-compose*.yaml" -o -name ".dockerignore" 2>/dev/null || echo "- None found";
+      echo "## Kubernetes:";
+      find . -name "*.k8s.yml" -o -name "*.k8s.yaml" -o -path "*/k8s/*" -name "*.yml" -o -path "*/k8s/*" -name "*.yaml" 2>/dev/null | head -5 || echo "- None found"
+    output_format: "Lists configuration files"
+  
+  # Infrastructure as Code
+  
+  iac_detection:
+    description: "Infrastructure as Code Detection"
+    purpose: "Identify IaC tools and configuration files"
+    command: |
+      echo "=== Infrastructure as Code ===";
+      echo "## Terraform:"; find . -name "*.tf" -o -name "*.tfvars" -o -name "terraform.tfstate" 2>/dev/null | head -5 || echo "- None found";
+      echo "## CloudFormation/CDK:"; find . -name "*.cf.yml" -o -name "cdk.json" -o -name "template.yml" -o -name "template.yaml" 2>/dev/null || echo "- None found";
+      echo "## Pulumi:"; find . -name "Pulumi.yaml" -o -name "Pulumi.*.yaml" 2>/dev/null || echo "- None found";
+      echo "## Ansible:"; find . -name "ansible.cfg" -o -name "playbook.yml" -o -path "*/playbooks/*" 2>/dev/null | head -3 || echo "- None found"
+    output_format: "Grouped by IaC tool"
+  
+  # Testing Frameworks
+  
+  test_frameworks:
+    description: "Testing Framework Detection"
+    purpose: "Identify test frameworks in package/dependency files"
+    command: |
+      echo "=== Testing Frameworks ===";
+      for file in package.json pyproject.toml requirements*.txt pom.xml build.gradle go.mod Cargo.toml; do
+        if [ -f "$file" ]; then
+          echo "## $file:";
+          grep -E -i "(jest|mocha|cypress|playwright|vitest|pytest|unittest|junit|testng|rspec|minitest|phpunit)" "$file" | head -5 || echo "- No test frameworks detected";
+          echo "";
+        fi;
+      done
+    output_format: "Grouped by package/dependency file"
+  
+  # Project Size and Complexity
+  
+  project_metrics:
+    description: "Basic Project Metrics"
+    purpose: "Get quick size and complexity indicators"
+    command: |
+      echo "=== Project Metrics ===";
+      echo "## File Counts:";
+      echo "Total files: $(find . -type f 2>/dev/null | wc -l)";
+      echo "Source files: $(find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.java" -o -name "*.go" -o -name "*.rs" \) 2>/dev/null | wc -l)";
+      echo "## Lines of Code (approximate):";
+      find . -type f \( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.java" -o -name "*.go" -o -name "*.rs" \) -exec wc -l {} + 2>/dev/null | tail -1 || echo "- Unable to calculate"
+    output_format: "File counts and total lines"
+  
+  # Database and Data Storage
+  
+  database_detection:
+    description: "Database and Data Storage Detection"
+    purpose: "Identify database configurations and ORM usage"
+    command: |
+      echo "=== Database and Data Storage ===";
+      echo "## Database Config Files:";
+      find . -name "*database*" -o -name "*db.config*" -o -name "*.sql" 2>/dev/null | head -10;
+      echo "## ORMs and Database Libraries:";
+      for file in package.json requirements.txt pyproject.toml pom.xml build.gradle; do
+        if [ -f "$file" ]; then
+          grep -E -i "(sequelize|typeorm|prisma|mongoose|sqlalchemy|django|hibernate|mybatis|gorm)" "$file" 2>/dev/null;
+        fi;
+      done
+    output_format: "Config files and library detection"
+
+# Guidelines:
+
+guidelines:
+  when_to_use:
+    - "Need quick project orientation without detailed analysis"
+    - "Want to avoid loading full task agents for simple queries"
+    - "Getting initial context before deeper investigation"
+    - "Commands are short, focused, and fast"
+    - "Working with unfamiliar codebases for first time"
+  
+  when_to_load_tasks:
+    - "Need comprehensive analysis with best practices"
+    - "Require detailed technology patterns and recommendations"
+    - "Working through full documentation requirements"
+    - "Need integration with specialized knowledge bases"
+    - "Generating structured reports or documentation"
+  
+  best_practices:
+    - "Run commands from project root directory"
+    - "Use 2>/dev/null to suppress error messages"
+    - "Pipe through head/tail to limit output size"
+    - "Add echo statements for readable section headers"
+    - "Test commands in different project types before use"
+
+# Command Patterns:
+
+command_patterns:
+  file_finding:
+    description: "Pattern for finding specific file types"
+    template: |
+      find . -name "pattern" -o -name "pattern2" 2>/dev/null
+    example: |
+      find . -name "*.tf" -o -name "*.tfvars" 2>/dev/null
+  
+  content_grepping:
+    description: "Pattern for searching file contents"
+    template: |
+      grep -E -i "pattern" filename 2>/dev/null
+    example: |
+      grep -E -i "(jest|mocha|cypress)" package.json 2>/dev/null
+  
+  counting_and_sorting:
+    description: "Pattern for frequency analysis"
+    template: |
+      command | awk '{print $FIELD}' | sort | uniq -c | sort -nr
+    example: |
+      find . -name "*.py" | awk -F. '{print $NF}' | sort | uniq -c | sort -nr
+  
+  conditional_checking:
+    description: "Pattern for checking file existence"
+    template: |
+      if [ -f "filename" ]; then action; fi
+    example: |
+      if [ -f "package.json" ]; then cat package.json; fi
+
+# Examples:
+
+example_quick_stack_check: |
+  # Quick technology stack identification
+  $ find . -type f \( -name "*.ts" -o -name "*.tsx" \) 2>/dev/null | wc -l
+  # Output: 247 (indicates TypeScript project)
+
+example_cicd_check: |
+  # Check for GitHub Actions workflows
+  $ find .github/workflows -name "*.yml" 2>/dev/null
+  # Output:
+  # .github/workflows/ci.yml
+  # .github/workflows/deploy.yml
+
+example_combined_analysis: |
+  # Run multiple commands for comprehensive overview
+  echo "=== Technology Stack ===" && \
+  find . -type f -name "*.ts" | wc -l && \
+  echo "=== Package Manager ===" && \
+  ls -la package.json 2>/dev/null && \
+  echo "=== CI/CD ===" && \
+  find .github/workflows -name "*.yml" 2>/dev/null
+
+# Customization:
+
+customization:
+  adding_new_commands:
+    - "Follow the same structure as existing commands"
+    - "Include descriptive echo statements"
+    - "Use error suppression (2>/dev/null)"
+    - "Test in various project types"
+    - "Document the command's purpose clearly"
+  
+  modifying_existing_commands:
+    - "Adjust file patterns for your tech stack"
+    - "Modify head/tail limits for output size"
+    - "Add additional tools or frameworks relevant to your projects"
+    - "Customize output formatting for your needs"
+  
+  project_specific_shortcuts:
+    description: "Create project-specific command aliases"
+    example: |
+      # In your shell profile or project scripts
+      alias stack="find . -type f -name '*.ts' | wc -l"
+      alias deps="cat package.json | jq .dependencies"
+
+# Integration:
+
+integration:
+  with_task_agents:
+    description: "Use shell commands first, then load tasks for deep analysis"
+    workflow: "Shell commands → Task agents (if needed) → Specialized agents"
+  
+  with_documentation_commands:
+    description: "Shell commands provide quick context for documentation generation"
+    note: "Documentation commands may use these internally for auto-detection"
+  
+  with_opencode_workflow:
+    description: "Part of progressive analysis strategy"
+    strategy: "Fast shell → Targeted search → Full task analysis"
+
+# Maintenance:
+
+maintenance:
+  review_frequency: "Quarterly or when new technologies/tools emerge"
+  update_triggers:
+    - "New package managers or build tools become popular"
+    - "New CI/CD platforms emerge"
+    - "New IaC tools gain adoption"
+    - "File patterns change in ecosystem"
+  version_control:
+    - "Track changes to command patterns"
+    - "Document why commands are added or removed"
+    - "Test commands after updates"
+
+# Best Practices Summary:
+
+best_practices:
+  - "Keep commands fast and lightweight (< 1 second execution)"
+  - "Always use error suppression (2>/dev/null) for missing files"
+  - "Limit output with head, tail, or grep to avoid overwhelming results"
+  - "Structure output with echo statements for readability"
+  - "Test commands in different project types before committing"
+  - "Use shell commands for quick context, task agents for comprehensive analysis"
+  - "Combine multiple commands for holistic project overview"
+  - "Document command purpose and expected output clearly"
+
+# Troubleshooting:
+
+troubleshooting:
+  command_returns_no_results:
+    problem: "Command runs but returns empty or 'None found'"
+    solution: "Normal behavior - means the project doesn't use that technology. Try other commands or check if you're in the correct directory."
+  
+  permission_denied_errors:
+    problem: "Getting permission errors despite 2>/dev/null"
+    solution: "Some systems show permission errors before redirection. Run from project root or use sudo if appropriate."
+  
+  slow_command_execution:
+    problem: "Command takes longer than expected"
+    solution: "Large projects may slow down recursive searches. Add depth limits with -maxdepth or use more specific paths."
+
+# References:
+
+references:
+  - name: "Technology Detection Task"
+    path: "task/technology-detection.md"
+    purpose: "Comprehensive technology stack analysis agent"
+  
+  - name: "Template Standard"
+    path: "docs/template-standard.md"
+    purpose: "Standard template structure guidelines"
+  
+  - name: "Shell Command Best Practices"
+    url: "https://google.github.io/styleguide/shellguide.html"
+    purpose: "Shell scripting style guide"
