@@ -1,0 +1,341 @@
+# Resource Loader Discovery Fields
+type: template
+description: Structured template for documenting comprehensive AI tool evaluation results
+category: Documentation
+tags: [template, ai-tool, assessment, approval, review]
+version: 1.0.0
+last_updated: 2025-11-19
+
+# Additional Metadata
+title: AI Tool Assessment Report Template
+reference: RFC 98 - AI Open Source Tools Approval Process
+
+content: |
+  # AI Tool Assessment Report: [Tool Name]
+
+  **Document Information**
+
+  - **Tool Name:** [Name]
+  - **Version:** [Version Number]
+  - **Vendor/Maintainer:** [Vendor Name]
+  - **Assessment Date:** [YYYY-MM-DD]
+  - **Reviewer:** [Name/Team]
+  - **Review ID:** [Unique Identifier]
+  - **Next Review Date:** [YYYY-MM-DD]
+
+  ---
+
+  ## Executive Summary
+
+  ### Tool Overview
+
+  [Brief description of the tool, its purpose, and primary functionality]
+
+  ### Recommendation
+
+  **Status:** ☐ Approve | ☐ Reject | ☐ Conditional Approval
+
+  **Summary:** [One paragraph summary of the recommendation and key rationale]
+
+  ### Key Findings
+
+  **Strengths:**
+  - [Strength 1]
+  - [Strength 2]
+  - [Strength 3]
+
+  **Risks:**
+  - [Risk 1 - Severity: High/Medium/Low]
+  - [Risk 2 - Severity: High/Medium/Low]
+  - [Risk 3 - Severity: High/Medium/Low]
+
+  **Overall Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ---
+
+  ## Business Context
+
+  ### Use Case
+
+  **Primary Purpose:** [Describe the main use case]
+  **Business Justification:** [Explain why this tool is needed]
+  **Target Users:** [Team/department/organization-wide]
+  **Estimated User Count:** [Number]
+
+  ### Current Status
+
+  - ☐ New Request (Not yet in use)
+  - ☐ Already in Use (Grace period disclosure)
+  - ☐ Pilot/Trial (Limited use)
+
+  **Current Usage Details:** [If already in use, describe scope and duration]
+
+  ### Alternatives Considered
+
+  | Alternative | Pros   | Cons   | Decision         |
+  |-------------|--------|--------|------------------|
+  | [Tool 1]    | [Pros] | [Cons] | [Why not chosen] |
+  | [Tool 2]    | [Pros] | [Cons] | [Why not chosen] |
+
+  ---
+
+  ## Data Privacy & Security Assessment
+
+  ### Training Data Usage
+  
+  **Uses input for training?** ☐ Yes | ☐ No | ☐ Unknown | **Tiers:** [Free/Paid/Enterprise/All]
+  **User Consent:** ☐ Yes | ☐ No | ☐ Automatic
+  **Details:** [Data usage policies and privacy policy references with date reviewed]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Opt-Out Mechanisms
+  
+  **Available?** ☐ Yes | ☐ No | ☐ N/A | **Process:** [How to opt out]
+  **Effectiveness:** [Retroactive/Future-only, Organization-wide/Per-user]
+  **Evidence:** [Documentation reference]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Data Storage & Sovereignty
+  
+  **Storage Locations:** [Regions] | **Backup Locations:** [Regions]
+  **Residency Compliance:** ☐ Compliant | ☐ Non-Compliant | ☐ Requires Config
+  **Multi-region:** ☐ Available | ☐ Not Available | **Evidence:** [Docs reference]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Data Retention & Deletion
+
+  **Retention Period:** [Duration: days/months/indefinite]
+
+  **Retention Policy:** [Summarize the retention policy]
+
+  **User-Initiated Deletion:** ☐ Supported | ☐ Not Supported
+
+  **Deletion Process:** [Describe process]
+
+  **Deletion Timeline:** [How long until data is fully removed]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Encryption
+
+  **In Transit:** ☐ Yes | ☐ No - **Protocol:** [TLS version]
+
+  **At Rest:** ☐ Yes | ☐ No - **Algorithm:** [AES-256, etc.]
+
+  **Key Management:** [Vendor-managed, customer-managed, etc.]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Third-Party Access
+
+  **Third-party data sharing?** ☐ Yes | ☐ No
+
+  **Subprocessors:**
+
+  | Name   | Purpose   | Location | DPA Available |
+  |--------|-----------|----------|---------------|
+  | [Name] | [Purpose] | [Country] | ☐ Yes ☐ No  |
+
+  **User Consent for Sharing:** ☐ Required | ☐ Not Required
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ---
+
+  ## Compliance & Legal Assessment
+
+  ### GDPR Compliance
+
+  **GDPR Statement Available:** ☐ Yes | ☐ No
+
+  **Data Processing Agreement (DPA):** ☐ Available | ☐ Not Available
+
+  **GDPR Rights Support:**
+  - ☐ Right to Access
+  - ☐ Right to Erasure
+  - ☐ Right to Data Portability
+  - ☐ Right to Rectification
+  - ☐ Right to Restrict Processing
+
+  **EU Representative:** [Name/Company if non-EU vendor]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Terms of Service & Privacy Policy
+
+  **Terms of Service URL:** [URL] - **Last Updated:** [Date]
+
+  **Privacy Policy URL:** [URL] - **Last Updated:** [Date]
+
+  **Clarity Assessment:** ☐ Clear | ☐ Acceptable | ☐ Vague/Concerning
+
+  **Key Concerns:** [List any concerning clauses]
+
+  **Change Notification:** ☐ Email notification | ☐ Website only | ☐ Not specified
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Intellectual Property
+
+  **Generated Content Ownership:** [User owns, shared ownership, vendor owns, unclear]
+
+  **Commercial Use Rights:** ☐ Granted | ☐ Restricted | ☐ Unclear
+
+  **Attribution Requirements:** [None, required, optional]
+
+  **Derivative Works:** ☐ Allowed | ☐ Restricted | ☐ Unclear
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Software Licensing
+
+  **License Type:** [MIT, Apache 2.0, GPL, Proprietary, etc.]
+
+  **Commercial Use:** ☐ Permitted | ☐ Restricted | ☐ Requires Separate License
+
+  **Copyleft Obligations:** ☐ Yes | ☐ No | ☐ N/A
+
+  **License Compatibility:** ☐ Compatible | ☐ Incompatible | ☐ Requires Review
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ---
+
+  ## Security Assessment
+
+  ### Dependency Management
+  
+  **Analysis:** ☐ Yes | ☐ No | **Known Vulnerabilities:** [List CVEs and severity if any]
+  **Update Frequency:** [Regularly/Occasionally/Rarely] | **SBOM:** ☐ Available | ☐ Not Available
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Maintenance & Community Health
+  
+  **Repository:** [URL] | **Last Commit:** [Date] | **Commit Frequency:** [Daily/Weekly/Monthly]
+  **Last Release:** [Version and Date] | **Release Frequency:** [Regular/Irregular]
+  **Issue Response:** [Avg time] | **Open Issues:** [Number] | **Community:** [Contributors/stars/forks]
+  **Governance:** [Governance model description]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Security Practices
+  
+  **Security Policy:** ☐ Available | ☐ Not Available - **URL:** [SECURITY.md URL]
+  **Vulnerability Disclosure:** ☐ Documented | ☐ Not Documented - **Contact:** [Email/form]
+  **Bug Bounty:** ☐ Yes | ☐ No | **Security Audits:** [Date and findings if performed]
+  **Certifications:** [SOC 2, ISO 27001, or other certifications]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Authentication & Authorization
+  
+  **Authentication Methods:** [SSO/SAML, OAuth 2.0, API Keys, MFA, etc.]
+  **Access Control:** ☐ RBAC | ☐ Basic | ☐ None
+  **Session Management:** [Describe session handling, timeout policies]
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+  
+  ### Audit & Logging
+  
+  **Audit Logging:** ☐ Available | ☐ Limited | ☐ Not Available
+  **Log Retention:** [Duration] | **Log Export:** ☐ Yes | ☐ No
+  **SIEM Integration:** ☐ Yes | ☐ No | **Compliance Reporting:** ☐ Yes | ☐ No
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ---
+
+  ## Operational Assessment
+
+  ### Deployment Model
+
+  **Available Models:**
+  - ☐ SaaS (Cloud-hosted)
+  - ☐ Self-hosted (On-premise)
+  - ☐ Hybrid
+  - ☐ Local (Desktop application)
+
+  **Preferred Model for Organization:** [Selection and reasoning]
+
+  **Cloud Provider:** [AWS, Azure, GCP, etc. if SaaS]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Resource Requirements
+
+  **CPU:** [Requirements] | **Memory:** [Requirements] | **Storage:** [Requirements]
+  **Network:** [Bandwidth requirements] | **GPU:** [Requirements if applicable]
+
+  **Scaling Characteristics:** [Horizontal/vertical scaling capabilities]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ### Production Stability
+
+  **Service Uptime:** [Advertised uptime percentage]
+  **Historical Uptime:** [Actual historical data if available]
+
+  **Known Issues:** [List current known issues]
+
+  **Incident History:** [Summary of major incidents in past 12 months]
+
+  **Disaster Recovery:** ☐ Documented | ☐ Not Documented
+  **RTO:** [Recovery Time Objective] | **RPO:** [Recovery Point Objective]
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  ---
+
+  ## Risk Analysis Summary
+
+  ### Risk Matrix
+
+  | Risk Category | Risk Description | Severity | Likelihood | Impact | Mitigation            |
+  |---------------|------------------|----------|------------|--------|-----------------------|
+  | [Category]    | [Description]    | H/M/L    | H/M/L      | H/M/L  | [Mitigation strategy] |
+
+  ### Overall Risk Assessment
+
+  **Total Risk Score:** [Calculation methodology and result]
+
+  **Risk Tolerance:** ☐ Within Tolerance | ☐ Exceeds Tolerance
+
+  **Residual Risk (After Mitigation):** ☐ Acceptable | ☐ Unacceptable
+
+  ---
+
+  ## Recommendation
+
+  ### Decision
+
+  **Recommendation:** ☐ Approve | ☐ Reject | ☐ Conditional Approval
+
+  ### Justification
+
+  [Detailed explanation of the recommendation based on the assessment findings]
+
+  ### Approved Use Cases (if Approved/Conditional)
+
+  1. [Specific approved use case]
+  2. [Specific approved use case]
+
+  ### Prohibited Use Cases
+
+  1. [Specific prohibited use case]
+  2. [Specific prohibited use case]
+
+  ### Usage Restrictions
+
+  - [Restriction 1]
+  - [Restriction 2]
+
+  ### Conditions for Approval (if Conditional)
+
+  1. [Condition 1] - **Due Date:** [Date]
+  2. [Condition 2] - **Due Date:** [Date]
+
+  **Fallback Plan:** [What happens if conditions are not met]
+
+  ---
+
+  ## References
+
+  - [RFC 98: AI Open Source Tools Approval Process](https://gitlab.com/plg-tech/plg/knowledge/rfcs)
+  - [Approved AI Tools Registry](https://novamedia.atlassian.net/wiki)
+  - [Vendor Vetting Process](https://novamedia.atlassian.net/wiki)

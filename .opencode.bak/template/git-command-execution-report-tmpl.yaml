@@ -1,0 +1,333 @@
+# Git Command Execution Report Template
+# Standardized format for reporting Git command execution with command, outcome, reasoning, and verification
+
+# Resource Loader Discovery Fields
+type: template
+description: 'Standardized template for reporting Git command execution outcomes with command, description, reasoning, and verification'
+category: Operations
+version: 1.0.0
+last_updated: 2025-12-03
+tags: [git, template, command-execution, operations, reporting]
+template_variables: [command, what_it_did, why, verification]
+output_format: markdown
+related_resources:
+  - knowledge-base/knowledge-base-git-operations-reference.md
+  - task/task-git-operations-execution.md
+  - checklist/checklist-git-operations-pre-commit.md
+
+# Template Metadata
+title: 'Git Command Execution Report Template'
+reference: 'knowledge-base/knowledge-base-git-operations-reference.md'
+
+# Overview:
+# This template standardizes the format for reporting Git command execution.
+# Every Git operation should use this four-section structure to ensure consistency,
+# clarity, and verifiability. Use this template for direct commands, diagnostic
+# operations with explanations, and recovery commands.
+
+# Structure Guidelines:
+# 1. Command Executed: Show the exact command as typed, including all flags and parameters
+# 2. What It Did: Describe the observable effect in plain language (1-3 sentences)
+# 3. Why: Explain the reasoning and operational goal
+# 4. Verification: Provide specific commands that confirm the operation succeeded
+
+structure:
+  section_1_command_executed:
+    description: 'State the exact command that was run. Include all flags and parameters.'
+    format: |
+      ```bash
+      git <subcommand> <options> <arguments>
+      ```
+    required: true
+    guidelines:
+      - 'Show the complete command as typed'
+      - 'Include all relevant flags (e.g., -u, --no-edit, --force-with-lease)'
+      - 'If the command involved variables, show the actual values used (or <variable> if sensitive)'
+      - 'Do not abbreviate or paraphrase'
+
+  section_2_what_it_did:
+    description: 'Describe the observable effect of the command in plain language. Focus on the outcome, not the mechanism.'
+    format: 'Prose description in past tense'
+    required: true
+    guidelines:
+      - 'Use past tense (e.g., Created, Rebased, Deleted)'
+      - 'Be specific about what changed (files, commits, branches)'
+      - 'State the end state clearly'
+      - 'Keep to 1-3 sentences'
+      - 'Avoid technical jargon unless necessary'
+
+  section_3_why:
+    description: 'Explain the reasoning for this operation. Why was this the right command to use? What problem does it solve?'
+    format: 'Prose explanation of operational goal'
+    required: true
+    guidelines:
+      - 'State the operational goal (e.g., integrate changes, clean history, recover work)'
+      - 'Mention constraints or trade-offs if relevant (e.g., chosen over rebase because branch is shared)'
+      - 'Keep brief; this is not a tutorial'
+      - 'Reference the knowledge base if deeper explanation is needed'
+
+  section_4_verification:
+    description: 'Provide a command that confirms the operation succeeded. Include expected output or behavior.'
+    format: 'Specific verification commands with expected results'
+    required: true
+    guidelines:
+      - 'Give a specific command (e.g., git log --oneline HEAD~3..HEAD)'
+      - 'Describe what success looks like (e.g., shows 3 commits, branch no longer exists locally)'
+      - 'If multiple verifications are needed, list them sequentially'
+
+# Usage Guidelines
+guidelines:
+  when_to_use:
+    - 'Direct commands: git rebase, git merge, git commit --amend, etc.'
+    - 'Diagnostic commands with explanation: git log, git status (when describing what was found)'
+    - 'Recovery commands: git reflog, git cherry-pick, git revert, etc.'
+    - 'Every simple Git command execution that produces a result'
+
+  when_not_to_use:
+    - 'Multi-step workflows (use task workflow instead)'
+    - 'Pure diagnostic commands without action (e.g., git log to list commits)'
+    - 'Commands that fail or are not executed (explain the failure and next steps instead)'
+    - 'Abbreviated explanations of standard operations (e.g., ran the build without Git context)'
+
+  consistency_expectations:
+    - 'Always include all four sections, in order. Omitting sections reduces clarity.'
+    - 'Keep language concise. Each section should be 1-3 sentences.'
+    - "Use actual command text. Don't paraphrase; show exactly what was typed."
+    - 'Verification must be concrete. Give a specific command, not vague reassurance.'
+
+# Template Examples
+examples:
+  example_1_rebasing_a_branch: |
+    ## Command Executed
+
+    git rebase origin/main
+
+    ## What It Did
+
+    Replayed your 5 local commits on top of the latest main branch, moving your branch HEAD forward to align with main's current state.
+
+    ## Why
+
+    Ensures your branch integrates cleanly without a merge commit, keeping history linear before pushing to the shared repository.
+
+    ## Verification
+
+    git log --oneline -6 # Confirms your 5 commits appear after main's latest commit (marked with origin/main)
+
+  example_2_squashing_commits: |
+    ## Command Executed
+
+    git rebase -i HEAD~3
+
+    (Interactive rebase editor: marked last 2 commits as 'squash', combined message into first commit)
+
+    ## What It Did
+
+    Consolidated your last 3 commits into 1 commit. The combined message documents all three changes (implementation, refinement, bugfix).
+
+    ## Why
+
+    Simplifies history before pushing a feature branch; reviewers see one logical change instead of three incremental steps.
+
+    ## Verification
+
+    git log --oneline HEAD~1..HEAD # Shows 1 new commit with your combined message (parent commit is now origin/main)
+
+  example_3_merging_a_feature_branch: |
+    ## Command Executed
+
+    git merge feature/user-authentication
+
+    ## What It Did
+
+    Integrated the feature/user-authentication branch into main, creating a merge commit that records both the feature changes and the integration point.
+
+    ## Why
+
+    Preserves full history of the feature development while marking when it was integrated into main. Essential for shared/protected branches.
+
+    ## Verification
+
+    git log --oneline -3 # Shows merge commit as HEAD, with the 2 parents representing main and feature branch tip
+    git branch -v # feature/user-authentication still exists locally; verify it's no longer needed with git branch -d
+
+  example_4_recovering_a_deleted_branch: |
+    ## Command Executed
+
+    git checkout -b feature/admin-panel d4e5f6g
+
+    ## What It Did
+
+    Created a new branch named `feature/admin-panel` pointing to commit `d4e5f6g`, recovering all commits that were on the deleted branch.
+
+    ## Why
+
+    The branch was deleted locally during cleanup, but the commits remained in reflog. Recovering allows inspection and re-integration if the deletion was accidental.
+
+    ## Verification
+
+    git log --oneline -10 # Confirms your recovered commits are present
+    git show d4e5f6g --stat # Confirms commit content matches expected work
+    git push -u origin feature/admin-panel # Republishes branch to remote
+
+  example_5_amending_a_commit: |
+    ## Command Executed
+
+    git commit --amend --no-edit
+
+    (After staging corrected files with git add)
+
+    ## What It Did
+
+    Updated the most recent commit to include the newly staged files, replacing the previous commit without creating a new one.
+
+    ## Why
+
+    Fixes unintended omissions in the last commit (e.g., forgot to include a related file). More efficient than creating a new "fix" commit.
+
+    ## Verification
+
+    git show HEAD --stat # Confirms the amended commit now includes all expected files
+    git log --oneline -3 # Verifies commit count hasn't changed (amendment replaced, not added)
+
+  example_6_stashing_work: |
+    ## Command Executed
+
+    git stash
+
+    ## What It Did
+
+    Saved all uncommitted changes (both staged and unstaged) to a temporary stash named `stash@{0}`, leaving your working directory clean.
+
+    ## Why
+
+    Switching branches or pulling changes requires a clean working directory. Stashing preserves your work without committing incomplete changes.
+
+    ## Verification
+
+    git status # Shows "working tree clean"
+    git stash list # Shows your stash: "stash@{0}: WIP on branch-name: ..."
+    git stash pop # Later: restore changes from stash
+
+  example_7_checking_out_a_specific_commit: |
+    ## Command Executed
+
+    git checkout a1b2c3d
+
+    ## What It Did
+
+    Detached HEAD from the current branch and moved it to commit `a1b2c3d`, allowing inspection of the repository state at that historical point.
+
+    ## Why
+
+    Investigate historical code, inspect a specific commit's changes, or temporarily test a known-good state without affecting the current branch.
+
+    ## Verification
+
+    git status # Shows "HEAD detached at a1b2c3d"
+    git log --oneline -3 # Confirms HEAD points to the historical commit
+    git checkout main # Return to branch when done
+
+  example_8_cherry_picking_a_commit: |
+    ## Command Executed
+
+    git cherry-pick h7i8j9k
+
+    ## What It Did
+
+    Applied the changes from commit `h7i8j9k` to the current branch, creating a new commit with the same changes but a new SHA.
+
+    ## Why
+
+    Selectively brings a specific bugfix from another branch (e.g., release hotfix) without merging the entire branch.
+
+    ## Verification
+
+    git log --oneline -3 # Shows new commit at HEAD with the cherry-picked changes
+    git diff HEAD~1 HEAD # Displays the applied changes
+    git log --all --grep="original message" # Confirms you can find the original commit on its branch
+
+  example_9_reverting_a_published_commit: |
+    ## Command Executed
+
+    git revert d4e5f6g
+
+    ## What It Did
+
+    Created a new commit that undoes all changes from commit `d4e5f6g`, effectively reverting the code changes while preserving commit history.
+
+    ## Why
+
+    The commit was already pushed and others may have pulled it. Reverting (new commit) is safer than resetting (history rewrite) for shared branches.
+
+    ## Verification
+
+    git log --oneline -3 # Shows new "Revert ..." commit at HEAD
+    git show HEAD # Displays the reverting changes (inverse of the original)
+    git diff d4e5f6g HEAD~1 # Shows no difference (commit effectively undone)
+
+  example_10_deleting_a_local_branch: |
+    ## Command Executed
+
+    git branch -d feature/completed-work
+
+    ## What It Did
+
+    Deleted the local branch `feature/completed-work`. The branch pointer is removed; commits remain intact (still reachable via remote or reflog if needed).
+
+    ## Why
+
+    Feature branch is merged and no longer needed locally. Deleting keeps local branch list clean and reduces confusion.
+
+    ## Verification
+
+    git branch -v # Confirms feature/completed-work no longer listed
+    git log --all | grep "completed-work" # Commits still exist in history (branch label removed, but SHAs intact)
+    git branch -a # If remote tracking exists, verify with -a (includes remote refs)
+
+  example_failure_mode: |
+    If a command fails, adapt the template:
+
+    ## Command Executed
+
+    git rebase origin/main
+
+    ## What It Did (FAILED)
+
+    Rebase started but encountered a conflict in `src/auth.ts` at line 42 and stopped, waiting for manual resolution.
+
+    ## Why
+
+    Branch diverged from main; both introduced changes to the same file in overlapping areas.
+
+    ## Next Steps
+
+    1. Resolve conflict in `src/auth.ts`
+    2. `git add src/auth.ts`
+    3. `git rebase --continue`
+
+# Best Practices
+best_practices:
+  - 'Always use the four-section structure to ensure comprehensive documentation'
+  - 'Keep each section concise; aim for 1-3 sentences per section'
+  - "Use actual command text from terminal; don't paraphrase or abbreviate"
+  - 'Provide verification commands that can be run to confirm success'
+  - 'Mention trade-offs and constraints when relevant to the operational decision'
+  - 'Reference the knowledge base for deeper explanations if needed'
+  - 'For failed operations, adapt the template to include next steps and resolution'
+  - 'Maintain consistency across all Git command documentation'
+
+# Integration
+integration:
+  with_tasks: 'Git command execution reports are components of Git workflow tasks (e.g., task-git-operations-execution.md)'
+  with_knowledge_base: 'Reference Git operations knowledge base for deeper explanations (knowledge-base-git-operations-reference.md)'
+  with_checklists: 'Use git operations checklist to verify all required elements are documented (checklist-git-operations-pre-commit.md)'
+  with_commits: 'Include these reports in git commit messages or related documentation to provide context'
+
+# References
+references:
+  - 'Git Commit Documentation: https://git-scm.com/docs/git-commit'
+  - 'Git Rebase Documentation: https://git-scm.com/docs/git-rebase'
+  - 'Git Merge Documentation: https://git-scm.com/docs/git-merge'
+  - 'Git Reflog Documentation: https://git-scm.com/docs/git-reflog'
+  - 'Git Cherry-Pick Documentation: https://git-scm.com/docs/git-cherry-pick'

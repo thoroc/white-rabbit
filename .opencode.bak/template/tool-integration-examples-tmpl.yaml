@@ -1,0 +1,534 @@
+# OpenCode Tool Integration Examples Template
+# Examples showing how commands, agents, and other resources use tools
+
+# Resource Loader Discovery Fields
+type: template
+description: "Template for integrating OpenCode tools with commands, agents, and workflows"
+category: Development
+tags: [template, integration, tool, command, agent, workflow]
+version: 1.0.0
+last_updated: 2025-11-21
+
+# Additional Metadata
+title: "Tool Integration Examples Template"
+reference: "https://opencode.ai/docs/custom-tools/"
+
+# Integration Overview:
+# Tools can be invoked by:
+# 1. LLM directly (when tool is available)
+# 2. Commands (via LLM prompt references)
+# 3. Agents (based on agent permissions)
+# 4. Other tools (composition)
+# 5. Tasks (workflow integration)
+
+integration_methods:
+  llm_direct: "LLM discovers and invokes tools based on context"
+  command_reference: "Commands guide LLM to use specific tools"
+  agent_toolset: "Agents have specific tools in their toolset"
+  tool_composition: "Tools call other tools for complex workflows"
+  task_workflow: "Tasks orchestrate multiple tool calls"
+
+# Pattern 1: Command Referencing Tools
+
+command_tool_integration:
+  description: "Commands can guide the LLM to use specific tools"
+  
+  example_basic:
+    command_file: "command/analyze-project.md"
+    content: |
+      ---
+      description: Analyze project structure and generate report
+      agent: general
+      ---
+      
+      Analyze this project using the following approach:
+      
+      1. Use the `project_stats` tool to get file counts and line statistics
+      2. Use the `git_status` tool to check for uncommitted changes
+      3. Use the `database_query` tool to check database schema
+      4. Generate a comprehensive project analysis report
+      
+      Project root: !`pwd`
+  
+  example_with_context:
+    command_file: "command/test-coverage.md"
+    content: |
+      ---
+      description: Run tests and analyze coverage
+      agent: general
+      ---
+      
+      Run the test suite and analyze coverage:
+      
+      Test results:
+      !`npm test`
+      
+      Use the `analyze_coverage` tool to process these results and:
+      - Identify files with low coverage
+      - Suggest test cases for uncovered code
+      - Generate coverage improvement recommendations
+  
+  best_practices:
+    - "Be explicit about which tool to use"
+    - "Provide context before tool invocation"
+    - "Guide LLM on how to interpret tool results"
+    - "Chain multiple tools for complex workflows"
+
+# Pattern 2: Agent Tool Configuration
+
+agent_tool_integration:
+  description: "Agents can have specific tools in their configuration"
+  
+  example_specialized_agent:
+    agent_file: "agent/database-admin.md"
+    content: |
+      ---
+      description: Database administration agent with query and management tools
+      mode: subagent
+      temperature: 0.3
+      tools:
+        - database_query
+        - database_backup
+        - database_optimize
+      ---
+      
+      You are a database administrator assistant with access to:
+      
+      - `database_query`: Execute SELECT queries
+      - `database_backup`: Create database backups
+      - `database_optimize`: Run optimization tasks
+      
+      Always validate queries before execution. Prevent destructive operations.
+  
+  example_development_agent:
+    agent_file: "agent/devops.md"
+    content: |
+      ---
+      description: DevOps agent for deployment and infrastructure tasks
+      mode: subagent
+      tools:
+        - git_status
+        - git_diff
+        - docker_status
+        - kubernetes_pods
+        - deployment_check
+      ---
+      
+      You are a DevOps specialist with tools for:
+      
+      - Version control (git_status, git_diff)
+      - Container management (docker_status)
+      - Kubernetes operations (kubernetes_pods)
+      - Deployment validation (deployment_check)
+      
+      Use these tools to assist with CI/CD and infrastructure management.
+  
+  best_practices:
+    - "List tools in agent frontmatter"
+    - "Document tool availability in system prompt"
+    - "Choose tools relevant to agent's domain"
+    - "Restrict tools for security (e.g., read-only for review agents)"
+
+# Pattern 3: Tool Composition
+
+tool_composition_pattern:
+  description: "Tools calling other tools (with caution)"
+  
+  example_workflow_tool:
+    tool_file: "tool/project-health-check.ts"
+    content: |
+      import { tool } from "@opencode-ai/plugin"
+      import gitStatus from './git-status'
+      import testRunner from './test-runner'
+      import lintChecker from './lint-checker'
+      
+      export default tool({
+        description: "Run complete project health check",
+        args: {},
+        async execute(args, context) {
+          const results = []
+          
+          // Check git status
+          const git = await gitStatus.execute({}, context)
+          results.push(`Git Status:\n${git}`)
+          
+          // Run tests
+          const tests = await testRunner.execute({ coverage: true }, context)
+          results.push(`Test Results:\n${tests}`)
+          
+          // Check linting
+          const lint = await lintChecker.execute({ fix: false }, context)
+          results.push(`Lint Results:\n${lint}`)
+          
+          return results.join('\n\n---\n\n')
+        },
+      })
+  
+  caution: "Tool composition increases coupling. Prefer LLM orchestration."
+  
+  when_to_use:
+    - "Workflow is deterministic and repeatable"
+    - "Tools are tightly related (same domain)"
+    - "Performance benefit from single invocation"
+  
+  when_not_to_use:
+    - "Workflow requires LLM decision-making"
+    - "Tools are from different domains"
+    - "Flexibility is more important than efficiency"
+
+# Pattern 4: Task-Tool Integration
+
+task_tool_integration:
+  description: "Tasks orchestrate tool calls through LLM"
+  
+  example_deployment_task:
+    task_file: "task/deploy-production.md"
+    content: |
+      ---
+      description: Deploy application to production with validation
+      mode: task
+      agent: devops
+      ---
+      
+      # Deploy to Production Task
+      
+      ## Step 1: Pre-deployment Validation
+      
+      Use these tools to validate readiness:
+      - `git_status`: Ensure clean working directory
+      - `test_runner`: Run full test suite
+      - `lint_checker`: Verify code quality
+      
+      All checks must pass before proceeding.
+      
+      ## Step 2: Build and Test
+      
+      Use `docker_build` tool to create production image.
+      Use `docker_test` tool to validate image.
+      
+      ## Step 3: Deploy
+      
+      Use `kubernetes_deploy` tool with production namespace.
+      Monitor deployment with `kubernetes_rollout_status` tool.
+      
+      ## Step 4: Validation
+      
+      Use `deployment_check` tool to verify:
+      - All pods are running
+      - Health checks pass
+      - Traffic routing correct
+      
+      ## Step 5: Notification
+      
+      Use `slack_notify` tool to announce successful deployment.
+  
+  best_practices:
+    - "Break deployment into clear steps"
+    - "Specify required tools for each step"
+    - "Include validation between steps"
+    - "Handle failures gracefully"
+
+# Pattern 5: Command Subtask Pattern
+
+command_subtask_pattern:
+  description: "Commands invoking other commands that use tools"
+  
+  example_main_command:
+    command_file: "command/full-analysis.md"
+    content: |
+      ---
+      description: Complete project analysis workflow
+      agent: general
+      ---
+      
+      Run a comprehensive project analysis:
+      
+      1. First, use `/analyze-code` command to check code quality
+      2. Then, use `/analyze-tests` command to check test coverage
+      3. Finally, use `/analyze-deps` command to check dependencies
+      
+      Compile results into a single report with recommendations.
+  
+  example_subcommand:
+    command_file: "command/analyze-code.md"
+    content: |
+      ---
+      description: Analyze code quality
+      agent: general
+      subtask: true
+      ---
+      
+      Use the following tools to analyze code:
+      
+      - `lint_checker`: Check code style issues
+      - `complexity_analyzer`: Check code complexity
+      - `duplicate_detector`: Find duplicate code
+      
+      Return a structured report with issues and scores.
+
+# Pattern 6: Tool Configuration in Commands
+
+tool_configuration_pattern:
+  description: "Passing configuration to tools via arguments"
+  
+  example_configurable_command:
+    command_file: "command/database-report.md"
+    content: |
+      ---
+      description: Generate database report with custom parameters
+      agent: general
+      ---
+      
+      Generate a database report using the `database_query` tool.
+      
+      Configuration:
+      - Use format: $1 (json or table)
+      - Include statistics: $2 (true or false)
+      - Max rows: $3 (default: 100)
+      
+      Example:
+      /database-report json true 50
+      
+      Use the parameters to customize the query and output format.
+
+# Pattern 7: Error Handling in Integration
+
+error_handling_pattern:
+  description: "Handling tool errors in workflows"
+  
+  example_resilient_command:
+    command_file: "command/deploy-with-retry.md"
+    content: |
+      ---
+      description: Deploy with automatic retry on failure
+      agent: devops
+      ---
+      
+      Deploy the application with retry logic:
+      
+      1. Use `deployment_check` tool to verify current state
+      2. Use `kubernetes_deploy` tool to deploy
+      3. If deployment fails:
+         - Use `kubernetes_logs` tool to get error details
+         - Use `kubernetes_rollback` tool to revert
+         - Try deployment again (max 3 attempts)
+      4. Use `deployment_validate` tool to confirm success
+      
+      If all retries fail, use `slack_notify` tool to alert team.
+  
+  best_practices:
+    - "Check tool results before proceeding"
+    - "Have fallback strategies"
+    - "Log errors for debugging"
+    - "Notify on critical failures"
+
+# Pattern 8: Tool Discovery in Workflows
+
+tool_discovery_pattern:
+  description: "Let LLM discover and use tools dynamically"
+  
+  example_flexible_command:
+    command_file: "command/fix-issues.md"
+    content: |
+      ---
+      description: Automatically fix project issues
+      agent: general
+      ---
+      
+      Analyze the project and fix issues using available tools:
+      
+      1. Identify issues (use any available analysis tools)
+      2. For each issue type:
+         - If linting issues: use `lint_checker` with fix mode
+         - If test failures: suggest fixes or run test tools
+         - If dependency issues: use `dependency_update` tool
+         - If formatting issues: use `code_formatter` tool
+      3. Verify fixes with appropriate tools
+      4. Report summary of fixed issues
+      
+      Prioritize automated fixes. For manual fixes, provide guidance.
+  
+  benefits:
+    - "Flexible to available tools"
+    - "Adapts to project needs"
+    - "Discovers new tools automatically"
+    - "Resilient to tool changes"
+
+# Pattern 9: Tool Result Processing
+
+result_processing_pattern:
+  description: "Processing tool results in commands"
+  
+  example_aggregation:
+    command_file: "command/multi-repo-status.md"
+    content: |
+      ---
+      description: Check status across multiple repositories
+      agent: general
+      ---
+      
+      Check git status for all repositories in the workspace:
+      
+      Repositories: !`find . -name .git -type d -exec dirname {} \;`
+      
+      For each repository:
+      1. Use `git_status` tool with repo path
+      2. Collect results
+      3. Aggregate into summary report
+      
+      Report format:
+      - Total repositories
+      - Repositories with changes
+      - Repositories needing attention
+      - Detailed status for each repo
+
+# Pattern 10: Conditional Tool Usage
+
+conditional_pattern:
+  description: "Using tools conditionally based on context"
+  
+  example_conditional_analysis:
+    command_file: "command/smart-analyze.md"
+    content: |
+      ---
+      description: Analyze project with context-aware tool selection
+      agent: general
+      ---
+      
+      Analyze the project intelligently:
+      
+      Project type: !`[ -f package.json ] && echo "Node.js" || [ -f requirements.txt ] && echo "Python" || echo "Other"`
+      
+      Based on project type:
+      
+      If Node.js:
+      - Use `npm_audit` tool for security
+      - Use `package_analyzer` tool for dependencies
+      - Use `jest_coverage` tool for tests
+      
+      If Python:
+      - Use `pip_check` tool for dependencies
+      - Use `pytest_coverage` tool for tests
+      - Use `bandit_security` tool for security
+      
+      If Other:
+      - Use generic `project_stats` tool
+      - Use `git_analysis` tool
+      
+      Generate type-appropriate report.
+
+# Integration Best Practices Summary:
+
+integration_best_practices:
+  command_integration:
+    - "Be explicit about tool usage"
+    - "Provide context before tool calls"
+    - "Chain tools logically"
+    - "Handle tool errors gracefully"
+  
+  agent_integration:
+    - "Configure tools in agent frontmatter"
+    - "Document available tools in prompt"
+    - "Restrict tools by security level"
+    - "Group related tools by domain"
+  
+  task_integration:
+    - "Break workflows into clear steps"
+    - "Specify tools for each step"
+    - "Validate between steps"
+    - "Provide rollback strategies"
+  
+  general:
+    - "Tools should be composable"
+    - "Prefer LLM orchestration over code"
+    - "Make errors visible and actionable"
+    - "Test integration workflows"
+
+# Testing Integration:
+
+testing_integration:
+  unit_testing: "Test individual tool behavior"
+  integration_testing: "Test tool + command workflows"
+  e2e_testing: "Test complete user workflows"
+  
+  example_test:
+    description: "Testing command that uses tools"
+    test_file: "test/command-integration.test.ts"
+    content: |
+      import { describe, it, expect, mock } from 'bun:test'
+      
+      describe('analyze-project command', () => {
+        it('should invoke expected tools', async () => {
+          const mockProjectStats = mock(() => '{"files": 100}')
+          const mockGitStatus = mock(() => 'clean')
+          
+          // Execute command
+          const result = await executeCommand('analyze-project')
+          
+          expect(mockProjectStats).toHaveBeenCalled()
+          expect(mockGitStatus).toHaveBeenCalled()
+          expect(result).toContain('100')
+        })
+      })
+
+# Real-World Integration Examples:
+
+real_world_examples:
+  example_1:
+    name: "CI/CD Pipeline Validation"
+    description: "Command that orchestrates multiple validation tools"
+    tools_used:
+      - "git_status"
+      - "test_runner"  
+      - "lint_checker"
+      - "security_scanner"
+      - "build_validator"
+    workflow: "Sequential validation with failure handling"
+  
+  example_2:
+    name: "Database Migration Agent"
+    description: "Specialized agent for database operations"
+    tools_used:
+      - "database_backup"
+      - "database_migrate"
+      - "database_validate"
+      - "database_rollback"
+    workflow: "Safe migration with backup and rollback"
+  
+  example_3:
+    name: "Documentation Generator"
+    description: "Task that generates docs using multiple tools"
+    tools_used:
+      - "code_analyzer"
+      - "api_extractor"
+      - "markdown_generator"
+      - "diagram_creator"
+    workflow: "Parallel analysis, sequential generation"
+
+# Anti-Patterns to Avoid:
+
+integration_anti_patterns:
+  tight_coupling:
+    problem: "Command hardcoded to specific tool names"
+    solution: "Use tool capabilities, not names"
+  
+  no_error_handling:
+    problem: "Assuming tools always succeed"
+    solution: "Check results, handle failures"
+  
+  sequential_when_parallel:
+    problem: "Running independent tools sequentially"
+    solution: "Let LLM parallelize when possible"
+  
+  over_orchestration:
+    problem: "Tool calling other tools calling tools"
+    solution: "Keep tool chains shallow (1-2 levels max)"
+
+# References:
+
+references:
+  tool_template: ".opencode/template/opencode-tool-tmpl.yaml"
+  command_template: ".opencode/template/opencode-command-tmpl.yaml"
+  agent_reference: ".opencode/knowledge-base/agent-configuration-reference.md"
+  tool_patterns: ".opencode/knowledge-base/tool-patterns-best-practices.md"
+  official_docs: "https://opencode.ai/docs/custom-tools/"

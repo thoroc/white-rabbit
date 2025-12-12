@@ -1,0 +1,207 @@
+# Playwright Page Object Model Template
+# Template for creating Page Object Model (POM) classes in Playwright tests
+
+type: template
+description: 'Template for creating Page Object Model classes with role-based locators and reusable methods'
+category: Development
+tags: [template, playwright, testing, page-object-model, typescript]
+version: 1.0.0
+last_updated: 2025-11-20
+
+title: 'Playwright Page Object Model Template'
+reference: 'https://playwright.dev/docs/pom'
+
+# Overview:
+# This template provides a standard structure for creating Page Object Model (POM) classes
+# in Playwright tests. POM encapsulates page interactions, improves maintainability,
+# and promotes code reuse across test suites.
+
+structure:
+  class_definition:
+    description: 'Main POM class structure'
+    pattern: |
+      // tests/pages/{{PageName}}.ts
+      import { Page, Locator } from "@playwright/test";
+
+      export class {{PageName}} {
+        readonly page: Page;
+        readonly {{element}}: Locator;
+        
+        constructor(page: Page) {
+          this.page = page;
+          this.{{element}} = page.getByRole("{{role}}", { name: "{{name}}" });
+        }
+        
+        async goto() {
+          await this.page.goto("{{pageUrl}}");
+        }
+        
+        async {{action}}({{param}}: string) {
+          // Action implementation
+        }
+      }
+    required: true
+
+  locators:
+    description: 'Element locators using role-based selectors'
+    preferred_strategies:
+      - "page.getByRole('button', { name: 'Submit' })"
+      - "page.getByLabel('Email')"
+      - "page.getByText('Welcome')"
+      - "page.getByTestId('user-profile') # For dynamic content"
+    avoid:
+      - 'CSS selectors (.class-name)'
+      - 'XPath selectors'
+      - 'Position-based selectors'
+
+  methods:
+    description: 'Action methods for page interactions'
+    naming_conventions:
+      navigation: 'goto(), navigateTo()'
+      actions: 'login(), search(), submit()'
+      getters: 'getText(), getValue(), getHeadingText()'
+      checks: 'isVisible(), isEnabled(), isChecked()'
+      waits: 'waitForLoad(), waitForSuccess()'
+
+examples:
+  homepage:
+    file: 'tests/pages/HomePage.ts'
+    code: |
+      import { Page, Locator } from "@playwright/test";
+
+      export class HomePage {
+        readonly page: Page;
+        readonly heading: Locator;
+        readonly searchInput: Locator;
+        readonly navLinks: Locator;
+        readonly themeToggle: Locator;
+
+        constructor(page: Page) {
+          this.page = page;
+          this.heading = page.getByRole("heading", { name: "Welcome" });
+          this.searchInput = page.getByRole("searchbox", { name: "Search" });
+          this.navLinks = page.getByRole("navigation").getByRole("link");
+          this.themeToggle = page.getByRole("button", { name: "Toggle theme" });
+        }
+
+        async goto() {
+          await this.page.goto("/");
+        }
+
+        async search(query: string) {
+          await this.searchInput.fill(query);
+          await this.searchInput.press("Enter");
+        }
+
+        async toggleTheme() {
+          await this.themeToggle.click();
+        }
+
+        async navigateTo(linkName: string) {
+          await this.page.getByRole("link", { name: linkName }).click();
+        }
+      }
+
+  loginpage:
+    file: 'tests/pages/LoginPage.ts'
+    code: |
+      import { Page, Locator } from "@playwright/test";
+
+      export class LoginPage {
+        readonly page: Page;
+        readonly emailInput: Locator;
+        readonly passwordInput: Locator;
+        readonly submitButton: Locator;
+        readonly errorMessage: Locator;
+
+        constructor(page: Page) {
+          this.page = page;
+          this.emailInput = page.getByLabel("Email");
+          this.passwordInput = page.getByLabel("Password");
+          this.submitButton = page.getByRole("button", { name: "Sign in" });
+          this.errorMessage = page.getByRole("alert");
+        }
+
+        async goto() {
+          await this.page.goto("/login");
+        }
+
+        async login(email: string, password: string) {
+          await this.emailInput.fill(email);
+          await this.passwordInput.fill(password);
+          await this.submitButton.click();
+        }
+
+        async getErrorMessage(): Promise<string | null> {
+          return await this.errorMessage.textContent();
+        }
+      }
+
+guidelines:
+  when_to_use:
+    - 'Every page or major component should have a POM class'
+    - 'When you need reusable page interactions across multiple tests'
+    - 'To improve test maintainability and reduce duplication'
+    - 'When locators need to be shared across test files'
+
+  when_not_to_use:
+    - 'For very simple one-off tests'
+    - 'When page structure changes frequently (early development)'
+
+  best_practices:
+    - 'Use role-based locators (preferred by Playwright)'
+    - 'Keep methods focused and atomic'
+    - 'Document complex methods with JSDoc comments'
+    - 'Return promises for async operations'
+    - 'Use TypeScript for type safety'
+    - 'One POM class per page/component'
+    - 'Store in tests/pages/ directory'
+    - 'Export classes with PascalCase names'
+
+usage:
+  in_tests:
+    description: 'How to use POM in test files'
+    example: |
+      import { test, expect } from "@playwright/test";
+      import { LoginPage } from "./pages/LoginPage";
+      import { HomePage } from "./pages/HomePage";
+
+      test.describe("Login", () => {
+        let loginPage: LoginPage;
+        let homePage: HomePage;
+
+        test.beforeEach(async ({ page }) => {
+          loginPage = new LoginPage(page);
+          homePage = new HomePage(page);
+          await loginPage.goto();
+        });
+
+        test("should login successfully", async () => {
+          await loginPage.login("user@example.com", "password");
+          await homePage.waitForLoad();
+          await expect(homePage.heading).toBeVisible();
+        });
+      });
+
+benefits:
+  - 'Maintainability: UI changes only require updates in one place'
+  - 'Reusability: POMs can be used across multiple test files'
+  - 'Readability: Tests read like business requirements'
+  - 'Type Safety: TypeScript provides autocomplete and type checking'
+  - 'Encapsulation: Implementation details hidden from tests'
+  - 'DRY Principle: Eliminates code duplication'
+
+related_resources:
+  - 'Playwright Testing Best Practices: .opencode/checklist/playwright-testing-best-practices.md'
+  - 'Playwright Test Suite Template: .opencode/template/playwright-test-suite-tmpl.yaml'
+  - 'Playwright MCP Tools: .opencode/knowledge-base/playwright-mcp-tools.md'
+  - 'Frontend Testing Scenarios: .opencode/knowledge-base/frontend-testing-scenarios.md'
+
+quick_start:
+  steps:
+    - 'Copy the class structure template'
+    - 'Replace {{PageName}} with your page name (e.g., HomePage, LoginPage)'
+    - 'Replace {{element}} placeholders with actual element names'
+    - 'Update locators using role-based selectors'
+    - 'Add page-specific methods'
+    - 'Import and use in test files'

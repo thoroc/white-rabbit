@@ -1,0 +1,295 @@
+# Playwright Test Suite Template
+# Template for creating comprehensive Playwright test suites
+
+type: template
+description: 'Template for creating Playwright test suites with proper structure, assertions, and best practices'
+category: Development
+tags: [template, playwright, testing, test-suite, typescript]
+version: 1.0.0
+last_updated: 2025-11-20
+
+title: 'Playwright Test Suite Template'
+reference: 'https://playwright.dev/docs/writing-tests'
+
+# Overview:
+# This template provides standard structure for Playwright test suites with
+# proper organization, setup/teardown hooks, and best testing practices.
+# Use this for creating comprehensive, maintainable test files.
+
+structure:
+  test_file:
+    description: 'Main test file structure'
+    pattern: |
+      // tests/{{feature}}.spec.ts
+      import { test, expect } from "@playwright/test";
+      import { {{PageObject}} } from "./pages/{{PageObject}}";
+
+      test.describe("{{Feature Name}}", () => {
+        let {{pageObject}}: {{PageObject}};
+
+        test.beforeEach(async ({ page }) => {
+          {{pageObject}} = new {{PageObject}}(page);
+          await {{pageObject}}.goto();
+        });
+
+        test("should {{description}}", async () => {
+          // Arrange, Act, Assert
+        });
+      });
+    required: true
+
+  test_hooks:
+    description: 'Setup and teardown hooks'
+    available_hooks:
+      beforeAll: 'Run once before all tests in file'
+      beforeEach: 'Run before each test'
+      afterEach: 'Run after each test'
+      afterAll: 'Run once after all tests in file'
+    example: |
+      test.beforeEach(async ({ page }) => {
+        // Setup for each test
+      });
+
+      test.afterEach(async () => {
+        // Cleanup after each test
+      });
+
+  test_structure:
+    description: 'Follow AAA pattern'
+    pattern: |
+      test("should do something", async () => {
+        // Arrange - set up test data and preconditions
+        const testData = "value";
+        
+        // Act - perform the action being tested
+        await pageObject.performAction(testData);
+        
+        // Assert - verify the outcome
+        await expect(pageObject.element).toHaveText("expected");
+      });
+
+examples:
+  homepage_suite:
+    file: 'tests/homepage.spec.ts'
+    code: |
+      import { test, expect } from "@playwright/test";
+      import { HomePage } from "./pages/HomePage";
+
+      test.describe("Homepage", () => {
+        let homePage: HomePage;
+
+        test.beforeEach(async ({ page }) => {
+          homePage = new HomePage(page);
+          await homePage.goto();
+        });
+
+        test("should display main heading", async () => {
+          await expect(homePage.heading).toBeVisible();
+          await expect(homePage.heading).toHaveText("Welcome");
+        });
+
+        test("should search documentation", async ({ page }) => {
+          await homePage.search("getting started");
+          await expect(page).toHaveURL(/search/);
+          await expect(page.getByText("Search Results")).toBeVisible();
+        });
+
+        test("should toggle dark mode", async ({ page }) => {
+          const html = page.locator("html");
+          const initialTheme = await html.getAttribute("data-theme");
+          
+          await homePage.toggleTheme();
+          
+          const newTheme = await html.getAttribute("data-theme");
+          expect(newTheme).not.toBe(initialTheme);
+        });
+      });
+
+  login_suite:
+    file: 'tests/login.spec.ts'
+    code: |
+      import { test, expect } from "@playwright/test";
+      import { LoginPage } from "./pages/LoginPage";
+      import { HomePage } from "./pages/HomePage";
+
+      test.describe("Login", () => {
+        let loginPage: LoginPage;
+        let homePage: HomePage;
+
+        test.beforeEach(async ({ page }) => {
+          loginPage = new LoginPage(page);
+          homePage = new HomePage(page);
+          await loginPage.goto();
+        });
+
+        test.describe("Successful Login", () => {
+          test("should login with valid credentials", async () => {
+            await loginPage.login("user@example.com", "password123");
+            await homePage.waitForLoad();
+            await expect(homePage.heading).toBeVisible();
+          });
+        });
+
+        test.describe("Failed Login", () => {
+          test("should show error for invalid credentials", async () => {
+            await loginPage.login("user@example.com", "wrongpassword");
+            await expect(loginPage.errorMessage).toBeVisible();
+          });
+        });
+      });
+
+test_naming:
+  conventions:
+    - "Use 'should' prefix: 'should display error message'"
+    - "Be specific: 'should show validation error for invalid email'"
+    - "Avoid technical jargon: 'should display user profile' not 'should render ProfileComponent'"
+    - 'Describe expected behavior, not implementation'
+
+  examples:
+    good:
+      - 'should display main heading'
+      - 'should navigate to documentation pages'
+      - 'should submit form successfully'
+      - 'should show error for empty email'
+    bad:
+      - 'test1'
+      - 'works correctly'
+      - 'renders component'
+      - 'calls API'
+
+assertions:
+  visibility:
+    - 'await expect(element).toBeVisible()'
+    - 'await expect(element).toBeHidden()'
+
+  text:
+    - "await expect(element).toHaveText('exact text')"
+    - "await expect(element).toContainText('partial text')"
+
+  attributes:
+    - "await expect(element).toHaveAttribute('disabled')"
+    - "await expect(element).toHaveClass('active')"
+
+  count:
+    - 'await expect(elements).toHaveCount(5)'
+
+  url:
+    - 'await expect(page).toHaveURL(/pattern/)'
+    - "await expect(page).toHaveURL('https://example.com/page')"
+
+  values:
+    - "await expect(input).toHaveValue('text')"
+    - 'await expect(checkbox).toBeChecked()'
+
+test_organization:
+  file_structure: |
+    tests/
+    ├── pages/              # Page Object Models
+    │   ├── HomePage.ts
+    │   ├── LoginPage.ts
+    │   └── DashboardPage.ts
+    ├── fixtures/           # Custom fixtures
+    │   └── custom-fixtures.ts
+    ├── helpers/            # Test utilities
+    │   └── test-helpers.ts
+    ├── e2e/               # End-to-end flows
+    │   └── user-flows.spec.ts
+    ├── homepage.spec.ts   # Feature tests
+    ├── login.spec.ts
+    └── contact-form.spec.ts
+
+  grouping:
+    - 'Group related tests with test.describe()'
+    - 'Use nested describes for sub-features'
+    - 'Keep test files focused on single features'
+    - 'Separate E2E flows from component tests'
+
+test_tags:
+  usage: |
+    // Run only this test
+    test.only("should focus on this", async () => {});
+
+    // Skip this test
+    test.skip("should skip this", async () => {});
+
+    // Skip conditionally
+    test.skip(process.env.CI === "true", "Skip in CI");
+
+    // Custom tags for filtering
+    test("@smoke should be critical", async () => {});
+    // Run with: npx playwright test --grep @smoke
+
+fixtures:
+  description: 'Reusable test setup with custom fixtures'
+  example: |
+    // tests/fixtures.ts
+    import { test as base } from "@playwright/test";
+    import { HomePage } from "./pages/HomePage";
+
+    type MyFixtures = {
+      homePage: HomePage;
+    };
+
+    export const test = base.extend<MyFixtures>({
+      homePage: async ({ page }, use) => {
+        const homePage = new HomePage(page);
+        await homePage.goto();
+        await use(homePage);
+      },
+    });
+
+    // Usage in tests
+    test("should use fixture", async ({ homePage }) => {
+      await expect(homePage.heading).toBeVisible();
+    });
+
+guidelines:
+  when_to_use:
+    - 'For all feature testing'
+    - 'When you need organized, maintainable tests'
+    - 'For regression testing'
+    - 'When testing user flows'
+
+  best_practices:
+    - 'Write descriptive test names'
+    - 'Follow AAA pattern (Arrange, Act, Assert)'
+    - 'Keep tests independent and isolated'
+    - 'Use Page Object Model pattern'
+    - 'One assertion per test when possible'
+    - 'Use proper waits (auto-waiting)'
+    - 'Document complex test logic'
+    - 'Test error states and edge cases'
+
+  avoid:
+    - 'Vague test names'
+    - 'Test dependencies (Test A before Test B)'
+    - 'Testing multiple features in one test'
+    - 'Hard-coded waits'
+    - 'Fragile selectors'
+
+running_tests:
+  commands:
+    all: 'npx playwright test'
+    specific_file: 'npx playwright test homepage.spec.ts'
+    grep_pattern: "npx playwright test --grep 'login'"
+    headed: 'npx playwright test --headed'
+    debug: 'npx playwright test --debug'
+    specific_browser: 'npx playwright test --project=chromium'
+    ui_mode: 'npx playwright test --ui'
+    report: 'npx playwright show-report'
+
+related_resources:
+  - 'Playwright Page Object Model: .opencode/template/playwright-page-object-model-tmpl.yaml'
+  - 'Playwright Testing Best Practices: .opencode/checklist/playwright-testing-best-practices.md'
+  - 'Playwright MCP Tools: .opencode/knowledge-base/playwright-mcp-tools.md'
+  - 'Frontend Testing Scenarios: .opencode/knowledge-base/frontend-testing-scenarios.md'
+  - 'Playwright Configuration: .opencode/template/playwright-config-tmpl.yaml'
+
+quick_start:
+  steps:
+    - 'Copy the test file template'
+    - 'Replace {{Feature Name}} with your feature'
+    - 'Replace {{PageObject}} with your POM class'
+    - 'Implement test cases following AAA pattern'
+    - 'Add proper assertions'
+    - 'Run tests: npx playwright test'

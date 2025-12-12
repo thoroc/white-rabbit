@@ -1,0 +1,412 @@
+# Playwright Configuration Template
+# Template for Playwright test configuration with cross-browser testing and CI/CD integration
+
+type: template
+description: 'Template for Playwright configuration file with cross-browser testing, CI/CD settings, and best practices'
+category: Development
+tags: [template, playwright, configuration, testing, ci-cd]
+version: 1.0.0
+last_updated: 2025-11-20
+
+title: 'Playwright Configuration Template'
+reference: 'https://playwright.dev/docs/test-configuration'
+
+# Overview:
+# This template provides standard Playwright configuration patterns for different
+# environments (local development, CI/CD, staging, production). Choose the
+# configuration that matches your needs and customize as required.
+
+structure:
+  basic_config:
+    description: 'Minimal working configuration'
+    pattern: |
+      import { defineConfig, devices } from "@playwright/test";
+
+      export default defineConfig({
+        testDir: "./tests",
+        fullyParallel: true,
+        forbidOnly: !!process.env.CI,
+        retries: process.env.CI ? 2 : 0,
+        workers: process.env.CI ? 1 : undefined,
+        
+        reporter: [["html"], ["json", { outputFile: "test-results.json" }]],
+        
+        use: {
+          baseURL: "{{baseURL}}",
+          trace: "on-first-retry",
+          screenshot: "only-on-failure",
+          video: "retain-on-failure",
+        },
+        
+        projects: [
+          { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+        ],
+        
+        webServer: {
+          command: "{{devServerCommand}}",
+          url: "{{devServerURL}}",
+          reuseExistingServer: !process.env.CI,
+        },
+      });
+    required: true
+
+configuration_options:
+  test_execution:
+    testDir:
+      description: 'Directory containing test files'
+      type: 'string'
+      default: './tests'
+      example: "testDir: './e2e'"
+
+    testMatch:
+      description: 'Pattern for test files'
+      type: 'string'
+      default: '**/*.spec.ts'
+      example: "testMatch: '**/*.test.ts'"
+
+    fullyParallel:
+      description: 'Run all tests in parallel'
+      type: 'boolean'
+      default: false
+      example: 'fullyParallel: true'
+
+    workers:
+      description: 'Number of parallel workers'
+      type: 'number'
+      default: '50% of CPU cores'
+      example: 'workers: 4'
+
+    retries:
+      description: 'Number of test retries'
+      type: 'number'
+      default: 0
+      example: 'retries: process.env.CI ? 2 : 0'
+
+    timeout:
+      description: 'Test timeout in milliseconds'
+      type: 'number'
+      default: 30000
+      example: 'timeout: 60000'
+
+    forbidOnly:
+      description: 'Fail build if test.only is present'
+      type: 'boolean'
+      default: false
+      example: 'forbidOnly: !!process.env.CI'
+
+  browser_context:
+    baseURL:
+      description: 'Base URL for navigation'
+      type: 'string'
+      example: "baseURL: 'http://localhost:3000'"
+
+    viewport:
+      description: 'Browser viewport size'
+      type: 'object'
+      default: '{ width: 1280, height: 720 }'
+      example: 'viewport: { width: 1920, height: 1080 }'
+
+    ignoreHTTPSErrors:
+      description: 'Ignore HTTPS certificate errors'
+      type: 'boolean'
+      default: false
+      example: 'ignoreHTTPSErrors: true'
+
+    trace:
+      description: 'Trace collection mode'
+      type: 'string'
+      values: ['on', 'off', 'on-first-retry', 'retain-on-failure']
+      default: 'off'
+      example: "trace: 'on-first-retry'"
+
+    screenshot:
+      description: 'Screenshot capture mode'
+      type: 'string'
+      values: ['on', 'off', 'only-on-failure']
+      default: 'off'
+      example: "screenshot: 'only-on-failure'"
+
+    video:
+      description: 'Video recording mode'
+      type: 'string'
+      values: ['on', 'off', 'retain-on-failure', 'on-first-retry']
+      default: 'off'
+      example: "video: 'retain-on-failure'"
+
+  reporters:
+    html:
+      description: 'HTML test report'
+      options:
+        outputFolder: 'playwright-report'
+        open: 'never | always | on-failure'
+
+    json:
+      description: 'JSON test results'
+      options:
+        outputFile: 'test-results.json'
+
+    junit:
+      description: 'JUnit XML report'
+      options:
+        outputFile: 'junit-results.xml'
+
+    list:
+      description: 'Console list output'
+
+    github:
+      description: 'GitHub Actions annotations'
+
+examples:
+  basic:
+    name: 'Basic Configuration'
+    use_case: 'Simple projects with standard requirements'
+    code: |
+      import { defineConfig, devices } from "@playwright/test";
+
+      export default defineConfig({
+        testDir: "./tests",
+        fullyParallel: true,
+        forbidOnly: !!process.env.CI,
+        retries: process.env.CI ? 2 : 0,
+        workers: process.env.CI ? 1 : undefined,
+        
+        reporter: [
+          ["html"],
+          ["json", { outputFile: "test-results.json" }],
+        ],
+        
+        use: {
+          baseURL: "http://localhost:4321",
+          trace: "on-first-retry",
+          screenshot: "only-on-failure",
+          video: "retain-on-failure",
+        },
+        
+        projects: [
+          { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+        ],
+        
+        webServer: {
+          command: "npm run dev",
+          url: "http://localhost:4321",
+          reuseExistingServer: !process.env.CI,
+        },
+      });
+
+  ci_optimized:
+    name: 'CI-Optimized Configuration'
+    use_case: 'Continuous integration with limited resources'
+    code: |
+      import { defineConfig, devices } from "@playwright/test";
+
+      export default defineConfig({
+        testDir: "./tests",
+        fullyParallel: true,
+        forbidOnly: true,
+        retries: 2,
+        workers: 2,
+        timeout: 30000,
+        
+        reporter: [
+          ["html", { open: "never" }],
+          ["json", { outputFile: "test-results.json" }],
+          ["junit", { outputFile: "junit-results.xml" }],
+          ["github"],
+        ],
+        
+        use: {
+          baseURL: process.env.BASE_URL || "http://localhost:3000",
+          trace: "on-first-retry",
+          screenshot: "only-on-failure",
+          video: "retain-on-failure",
+          actionTimeout: 15000,
+        },
+        
+        projects: [
+          { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+        ],
+        
+        webServer: {
+          command: "npm run build && npm run preview",
+          url: "http://localhost:3000",
+          reuseExistingServer: false,
+          timeout: 120000,
+        },
+      });
+
+  comprehensive:
+    name: 'Comprehensive Configuration'
+    use_case: 'Full browser coverage with mobile testing'
+    code: |
+      import { defineConfig, devices } from "@playwright/test";
+
+      export default defineConfig({
+        testDir: "./tests",
+        testMatch: "**/*.spec.ts",
+        fullyParallel: true,
+        forbidOnly: !!process.env.CI,
+        retries: process.env.CI ? 2 : 0,
+        workers: process.env.CI ? 1 : undefined,
+        timeout: 30000,
+        
+        expect: {
+          timeout: 5000,
+        },
+        
+        reporter: [
+          ["html", { outputFolder: "playwright-report" }],
+          ["json", { outputFile: "test-results/results.json" }],
+          ["junit", { outputFile: "test-results/junit.xml" }],
+          ["list"],
+        ],
+        
+        use: {
+          baseURL: process.env.BASE_URL || "http://localhost:3000",
+          viewport: { width: 1920, height: 1080 },
+          ignoreHTTPSErrors: true,
+          trace: "on-first-retry",
+          screenshot: "only-on-failure",
+          video: "retain-on-failure",
+          actionTimeout: 10000,
+          navigationTimeout: 30000,
+        },
+        
+        projects: [
+          // Desktop browsers
+          { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+          
+          // Mobile browsers
+          { name: "Mobile Chrome", use: { ...devices["Pixel 5"] } },
+          { name: "Mobile Safari", use: { ...devices["iPhone 12"] } },
+          
+          // Tablet
+          { name: "iPad Pro", use: { ...devices["iPad Pro"] } },
+        ],
+        
+        webServer: {
+          command: "npm run dev",
+          url: "http://localhost:3000",
+          reuseExistingServer: !process.env.CI,
+          timeout: 120000,
+        },
+      });
+
+  development:
+    name: 'Development Configuration'
+    use_case: 'Fast local testing with debugging'
+    code: |
+      import { defineConfig, devices } from "@playwright/test";
+
+      export default defineConfig({
+        testDir: "./tests",
+        fullyParallel: true,
+        forbidOnly: false,
+        retries: 0,
+        workers: undefined,
+        timeout: 10000,
+        
+        reporter: [
+          ["list"],
+          ["html", { open: "on-failure" }],
+        ],
+        
+        use: {
+          baseURL: "http://localhost:5173",
+          trace: "retain-on-failure",
+          screenshot: "on",
+          video: "on",
+          headless: false,
+        },
+        
+        projects: [
+          { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+        ],
+        
+        webServer: {
+          command: "npm run dev",
+          url: "http://localhost:5173",
+          reuseExistingServer: true,
+        },
+      });
+
+device_presets:
+  desktop:
+    - 'Desktop Chrome'
+    - 'Desktop Firefox'
+    - 'Desktop Safari'
+    - 'Desktop Edge'
+
+  mobile:
+    - 'Pixel 5'
+    - 'Pixel 7'
+    - 'iPhone 12'
+    - 'iPhone 13'
+    - 'Galaxy S9+'
+    - 'Galaxy S21'
+
+  tablet:
+    - 'iPad Pro'
+    - 'iPad (gen 7)'
+
+environment_variables:
+  usage: |
+    # Use environment variables for flexibility
+    baseURL: process.env.BASE_URL || "http://localhost:3000"
+    workers: process.env.CI ? 2 : undefined
+    retries: process.env.CI ? 2 : 0
+
+  common_vars:
+    BASE_URL: 'Application base URL'
+    CI: 'Running in CI environment'
+    HEADLESS: 'Run in headless mode'
+    BROWSER: 'Specific browser to test'
+
+guidelines:
+  when_to_use:
+    - 'Every Playwright project needs a configuration file'
+    - 'Use basic config for small projects'
+    - 'Use CI-optimized for continuous integration'
+    - 'Use comprehensive for full coverage'
+    - 'Use development config for local testing'
+
+  best_practices:
+    - 'Use environment variables for different environments'
+    - 'Enable fullyParallel for faster execution'
+    - 'Configure retries for CI (2-3 attempts)'
+    - 'Use forbidOnly in CI to prevent test.only commits'
+    - 'Set appropriate timeouts based on app performance'
+    - 'Configure multiple reporters for different outputs'
+    - 'Test on multiple browsers (at least Chromium + WebKit)'
+    - 'Use webServer for automated dev server startup'
+
+  avoid:
+    - 'Overly long timeouts (masks real issues)'
+    - 'Testing all browsers locally (too slow)'
+    - 'Same configuration for all environments'
+    - 'Too many artifacts in CI (fills disk)'
+    - 'Ignoring test failures in CI'
+
+related_resources:
+  - 'Playwright Testing Best Practices: .opencode/checklist/playwright-testing-best-practices.md'
+  - 'Playwright Page Object Model: .opencode/template/playwright-page-object-model-tmpl.yaml'
+  - 'Playwright Test Suite: .opencode/template/playwright-test-suite-tmpl.yaml'
+  - 'Playwright MCP Tools: .opencode/knowledge-base/playwright-mcp-tools.md'
+  - 'Official Docs: https://playwright.dev/docs/test-configuration'
+
+quick_start:
+  steps:
+    - 'Choose configuration template (basic, CI, comprehensive, or development)'
+    - 'Copy to playwright.config.ts in your project root'
+    - 'Update baseURL to match your application'
+    - 'Adjust browser projects based on your requirements'
+    - 'Configure webServer command for your dev server'
+    - 'Set up reporters for your workflow'
+    - 'Test configuration: npx playwright test'
+    - 'Adjust timeout values based on performance'

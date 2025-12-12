@@ -1,0 +1,276 @@
+# Resource Loader Discovery Fields
+type: template
+description: Template for submitting AI tool approval requests to RFC forum
+category: Documentation
+tags: [template, ai-tool, rfc, submission, approval]
+version: 1.0.0
+last_updated: 2025-11-19
+
+# Additional Metadata
+title: RFC Submission Template for AI Tool Approval
+reference: RFC 98 - AI Open Source Tools Approval Process
+
+content: |
+  # RFC: Request for Approval - [Tool Name]
+
+  **Submission Information**
+
+  - **Submission Date:** [YYYY-MM-DD]
+  - **Requester:** [Name]
+  - **Team/Department:** [Team Name]
+  - **Sponsor:** [Manager/Team Lead Name]
+  - **Priority:** ☐ Standard | ☐ Urgent (≤90 days temporary approval needed)
+
+  ---
+
+  ## 1. Tool Overview
+
+  ### Basic Information
+
+  - **Tool Name:** [Name]
+  - **Version:** [Version Number]
+  - **Vendor/Maintainer:** [Company/Organization/Individual]
+  - **Website:** [Official URL]
+  - **Repository:** [GitHub/GitLab URL if open source]
+  - **License:** [License Type]
+
+  ### Tool Category
+
+  ☐ AI Development Tool ☐ AI Assistant ☐ Open Source Library/Framework ☐ Browser Extension ☐ Developer Productivity Tool ☐ Other: [Specify]
+
+  ### Deployment Model
+
+  ☐ SaaS (Cloud-hosted) ☐ Self-hosted (On-premise) ☐ Local (Desktop application) ☐ Hybrid
+
+  ---
+
+  ## 2. Business Justification
+
+  ### Use Case
+
+  **Problem Statement:** [Describe the problem this tool will solve]
+
+  **Proposed Solution:** [Explain how this tool addresses the problem]
+
+  **Expected Benefits:**
+  - [Benefit 1]
+  - [Benefit 2]
+  - [Benefit 3]
+
+  ### Scope
+
+  - **Target Users:** [Team/Department/Organization]
+  - **Estimated User Count:** [Number]
+  - **Usage Frequency:** [Daily/Weekly/Occasional]
+
+  ### Current Status
+
+  ☐ New Request (Not yet in use) ☐ Already in Use (Disclosing during grace period) ☐ Pilot/Trial (Limited scope testing)
+
+  **If already in use:**
+  - **Start Date:** [Date]
+  - **Current Users:** [Number]
+  - **Data Shared:** [Summary of what data has been shared]
+
+  ### Alternatives Considered
+
+  | Alternative | Reason for Not Choosing |
+  |-------------|-------------------------|
+  | [Tool 1]    | [Reason]                |
+  | [Tool 2]    | [Reason]                |
+
+  ---
+
+  ## 3. Evaluation Criteria Assessment
+
+  ### 3.1 Data Privacy & Security
+
+  #### Training Data Usage
+  - **Uses input data for training?** ☐ Yes | ☐ No | ☐ Unknown
+  - **Details:** [Explanation]
+  - **Applies to:** ☐ Free tier | ☐ Paid tier | ☐ All tiers
+  - **Evidence:** [Privacy policy URL and excerpt]
+
+  #### Opt-Out Mechanisms
+  - **Opt-out available?** ☐ Yes | ☐ No | ☐ N/A
+  - **Process:** [Describe opt-out process if available]
+  - **Organization-wide opt-out?** ☐ Yes | ☐ No
+  - **Evidence:** [Documentation reference]
+
+  #### Data Storage
+  - **Storage locations:** [Geographic regions]
+  - **Data residency compliant?** ☐ Yes | ☐ No | ☐ Configurable
+  - **Meets sovereignty requirements?** ☐ Yes | ☐ No
+
+  #### Retention & Deletion
+  - **Retention period:** [Duration or "Indefinite"]
+  - **User-initiated deletion supported?** ☐ Yes | ☐ No
+  - **Deletion process:** [Describe]
+
+  #### Encryption
+  - **In transit:** ☐ Yes (TLS [Version]) | ☐ No
+  - **At rest:** ☐ Yes ([Algorithm]) | ☐ No
+
+  #### Third-Party Access
+  - **Third-party data sharing?** ☐ Yes | ☐ No
+  - **Subprocessors:** [List or "None"]
+
+  ### 3.2 Compliance & Legal
+
+  #### GDPR Compliance
+  - **GDPR compliant?** ☐ Yes | ☐ No | ☐ Unclear
+  - **DPA available?** ☐ Yes | ☐ No
+  - **Supports data subject rights?** ☐ Yes | ☐ No | ☐ Partial
+
+  #### Terms & Privacy
+  - **ToS URL:** [URL]
+  - **ToS last updated:** [Date]
+  - **Privacy Policy URL:** [URL]
+  - **Privacy Policy last updated:** [Date]
+  - **Clear and acceptable terms?** ☐ Yes | ☐ No | ☐ Concerns exist
+  - **Key concerns:** [List any problematic clauses]
+
+  #### Intellectual Property
+  - **Generated content ownership:** [User owns | Shared | Vendor owns | Unclear]
+  - **Commercial use allowed?** ☐ Yes | ☐ No | ☐ Restricted
+  - **Attribution required?** ☐ Yes | ☐ No
+
+  #### Licensing
+  - **License type:** [MIT, Apache, GPL, Proprietary, etc.]
+  - **Commercial use permitted?** ☐ Yes | ☐ No | ☐ Requires separate license
+  - **Compatible with organizational use?** ☐ Yes | ☐ No | ☐ Requires review
+  - **Copyleft obligations?** ☐ Yes | ☐ No | ☐ N/A
+
+  ### 3.3 Security Assessment
+
+  #### Dependencies (for open source tools)
+  - **Dependency analysis performed?** ☐ Yes | ☐ No | ☐ N/A
+  - **Known vulnerabilities:** [Count and severity]
+  - **Vulnerability details:** [Summary or "None identified"]
+
+  #### Maintenance Activity
+  - **Last commit:** [Date]
+  - **Commit frequency:** [Daily/Weekly/Monthly/Rarely]
+  - **Last release:** [Version and date]
+  - **Issue response time:** [Average]
+  - **Community health:** [Active/Moderate/Low/Abandoned]
+
+  #### Security Reporting
+  - **Security policy available?** ☐ Yes | ☐ No
+  - **Vulnerability disclosure process?** ☐ Documented | ☐ Not documented
+  - **Bug bounty program?** ☐ Yes | ☐ No
+
+  #### Authentication & Authorization
+  - **SSO/SAML supported?** ☐ Yes | ☐ No | ☐ N/A
+  - **MFA supported?** ☐ Yes | ☐ No | ☐ N/A
+  - **RBAC available?** ☐ Yes | ☐ No | ☐ N/A
+
+  #### Audit Logging
+  - **Audit logs available?** ☐ Yes | ☐ Limited | ☐ No
+  - **Log export supported?** ☐ Yes | ☐ No
+  - **SIEM integration?** ☐ Yes | ☐ No
+
+  ### 3.4 Operational Considerations
+
+  #### Deployment
+  - **Preferred deployment model:** [SaaS/Self-hosted/Local]
+  - **Self-hosting option?** ☐ Yes | ☐ No | ☐ N/A
+  - **Cloud provider (if SaaS):** [AWS/Azure/GCP/Other]
+
+  #### Resource Requirements
+  - **CPU:** [Requirements]
+  - **Memory:** [Requirements]
+  - **Storage:** [Requirements]
+  - **Network:** [Bandwidth needs]
+  - **Acceptable for organization?** ☐ Yes | ☐ No | ☐ Requires planning
+
+  #### Stability
+  - **Production-ready?** ☐ Yes | ☐ Beta | ☐ Alpha
+  - **Uptime guarantee:** [Percentage or "None"]
+  - **Known stability issues:** [List or "None identified"]
+
+  #### Integration
+  - **Integration complexity:** ☐ Simple | ☐ Moderate | ☐ Complex
+  - **API available?** ☐ Yes (Stable) | ☐ Yes (Beta) | ☐ No
+  - **Compatible with existing systems?** ☐ Yes | ☐ Requires changes | ☐ No
+
+  #### Support & Documentation
+  - **Documentation quality:** ☐ Excellent | ☐ Good | ☐ Adequate | ☐ Poor
+  - **Documentation URL:** [URL]
+  - **Support available?** ☐ Yes (Paid) | ☐ Yes (Community) | ☐ Limited | ☐ No
+  - **Support SLA:** [Response times or "None"]
+
+  ---
+
+  ## 4. Risk Analysis
+
+  ### Identified Risks
+
+  | Risk     | Severity    | Impact        | Mitigation Strategy |
+  |----------|-------------|---------------|---------------------|
+  | [Risk 1] | H / M / L   | [Description] | [Mitigation]        |
+  | [Risk 2] | H / M / L   | [Description] | [Mitigation]        |
+
+  ### Overall Risk Assessment
+
+  **Risk Rating:** ☐ High | ☐ Medium | ☐ Low
+
+  **Risk Justification:** [Explain overall risk assessment]
+
+  **Residual Risk (After Mitigation):** ☐ Acceptable | ☐ Unacceptable
+
+  ---
+
+  ## 5. Recommendation & Request
+
+  ### Requested Approval
+
+  **Request:** ☐ Full Approval | ☐ Conditional Approval | ☐ Temporary Approval (Emergency)
+
+  ### Proposed Usage Guidelines
+
+  **Approved Use Cases:**
+  1. [Use case 1]
+  2. [Use case 2]
+
+  **Prohibited Use Cases:**
+  1. [Prohibited use 1]
+  2. [Prohibited use 2]
+
+  **Data Restrictions:**
+  - ☐ No PII
+  - ☐ No source code
+  - ☐ No confidential business data
+  - ☐ No customer data
+  - ☐ Other restrictions: [Specify]
+
+  ### Conditions (if Conditional Approval)
+
+  1. [Condition 1] - **Due Date:** [Date]
+  2. [Condition 2] - **Due Date:** [Date]
+
+  ### Emergency Use Justification (if Temporary Approval)
+
+  **Urgent Business Need:** [Explain why temporary approval is necessary]
+
+  **Mitigation Plan:** [Describe how risks will be managed during temporary approval period]
+
+  **Temporary Approval Duration:** [Days, max 90]
+
+  **Full Review Timeline:** [When full review will be completed]
+
+  ---
+
+  ## 6. Supporting Documentation & References
+
+  ### Attachments
+  - [ ] Privacy Policy (PDF or URL)
+  - [ ] Terms of Service (PDF or URL)
+  - [ ] Security documentation (PDF or URL)
+  - [ ] Dependency scan results (if applicable)
+  - [ ] Detailed assessment report (link)
+
+  ### References
+  - [RFC 98: AI Open Source Tools Approval Process](https://gitlab.com/plg-tech/plg/knowledge/rfcs/-/blob/feat/IP-23-ai-tools-approval-process/rfc-0098-ai-opensource-tools-approval-process.md)
+  - [Approved AI Tools Registry](https://novamedia.atlassian.net/wiki/spaces/GP/pages/1725759523/Approved+AI+Tools+Registry)
+  - [Vendor Vetting Process](https://novamedia.atlassian.net/wiki/spaces/GP/pages/1366294529/Vendor+vetting+process)

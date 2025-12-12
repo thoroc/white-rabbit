@@ -1,0 +1,2228 @@
+{
+  "scanned": "/Users/thomas.roche/.config/opencode/node_modules/@opencode-ai",
+  "packages": [
+    {
+      "name": "plugin",
+      "displayName": "@opencode-ai/plugin",
+      "readme": false,
+      "packageSummary": true,
+      "exports": [
+        {
+          "name": "tool",
+          "anchor": "plugin-dist-tool-js-tool",
+          "module": "dist/tool.js"
+        },
+        {
+          "name": "ToolContext",
+          "anchor": "plugin-dist-index-js-toolcontext",
+          "module": "dist/index.js"
+        },
+        {
+          "name": "ToolDefinition",
+          "anchor": "plugin-dist-index-js-tooldefinition",
+          "module": "dist/index.js"
+        },
+        {
+          "name": "ShellFunction",
+          "anchor": "plugin-dist-shell-d-ts-shellfunction",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "ShellExpression",
+          "anchor": "plugin-dist-shell-d-ts-shellexpression",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "BunShell",
+          "anchor": "plugin-dist-shell-d-ts-bunshell",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "BunShellPromise",
+          "anchor": "plugin-dist-shell-d-ts-bunshellpromise",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "BunShellOutput",
+          "anchor": "plugin-dist-shell-d-ts-bunshelloutput",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "BunShellError",
+          "anchor": "plugin-dist-shell-d-ts-bunshellerror",
+          "module": "dist/shell.d.ts"
+        },
+        {
+          "name": "PluginInput",
+          "anchor": "plugin-dist-index-d-ts-plugininput",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Plugin",
+          "anchor": "plugin-dist-index-d-ts-plugin",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthHook",
+          "anchor": "plugin-dist-index-d-ts-authhook",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthOuathResult",
+          "anchor": "plugin-dist-index-d-ts-authouathresult",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Hooks",
+          "anchor": "plugin-dist-index-d-ts-hooks",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ExamplePlugin",
+          "anchor": "plugin-dist-example-js-exampleplugin",
+          "module": "dist/example.js"
+        }
+      ],
+      "docsWritten": 8
+    },
+    {
+      "name": "sdk",
+      "displayName": "@opencode-ai/sdk",
+      "readme": false,
+      "packageSummary": true,
+      "exports": [
+        {
+          "name": "EventInstallationUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventinstallationupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventInstallationUpdateAvailable",
+          "anchor": "sdk-dist-index-d-ts-eventinstallationupdateavailable",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventLspClientDiagnostics",
+          "anchor": "sdk-dist-index-d-ts-eventlspclientdiagnostics",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventLspUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventlspupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileDiff",
+          "anchor": "sdk-dist-index-d-ts-filediff",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "UserMessage",
+          "anchor": "sdk-dist-index-d-ts-usermessage",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthError",
+          "anchor": "sdk-dist-index-d-ts-providerautherror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "UnknownError",
+          "anchor": "sdk-dist-index-d-ts-unknownerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "MessageOutputLengthError",
+          "anchor": "sdk-dist-index-d-ts-messageoutputlengtherror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "MessageAbortedError",
+          "anchor": "sdk-dist-index-d-ts-messageabortederror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ApiError",
+          "anchor": "sdk-dist-index-d-ts-apierror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AssistantMessage",
+          "anchor": "sdk-dist-index-d-ts-assistantmessage",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Message",
+          "anchor": "sdk-dist-index-d-ts-message",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventMessageUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventmessageupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventMessageRemoved",
+          "anchor": "sdk-dist-index-d-ts-eventmessageremoved",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TextPart",
+          "anchor": "sdk-dist-index-d-ts-textpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ReasoningPart",
+          "anchor": "sdk-dist-index-d-ts-reasoningpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FilePartSourceText",
+          "anchor": "sdk-dist-index-d-ts-filepartsourcetext",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileSource",
+          "anchor": "sdk-dist-index-d-ts-filesource",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Range",
+          "anchor": "sdk-dist-index-d-ts-range",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SymbolSource",
+          "anchor": "sdk-dist-index-d-ts-symbolsource",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FilePartSource",
+          "anchor": "sdk-dist-index-d-ts-filepartsource",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FilePart",
+          "anchor": "sdk-dist-index-d-ts-filepart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolStatePending",
+          "anchor": "sdk-dist-index-d-ts-toolstatepending",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolStateRunning",
+          "anchor": "sdk-dist-index-d-ts-toolstaterunning",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolStateCompleted",
+          "anchor": "sdk-dist-index-d-ts-toolstatecompleted",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolStateError",
+          "anchor": "sdk-dist-index-d-ts-toolstateerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolState",
+          "anchor": "sdk-dist-index-d-ts-toolstate",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolPart",
+          "anchor": "sdk-dist-index-d-ts-toolpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "StepStartPart",
+          "anchor": "sdk-dist-index-d-ts-stepstartpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "StepFinishPart",
+          "anchor": "sdk-dist-index-d-ts-stepfinishpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SnapshotPart",
+          "anchor": "sdk-dist-index-d-ts-snapshotpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PatchPart",
+          "anchor": "sdk-dist-index-d-ts-patchpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AgentPart",
+          "anchor": "sdk-dist-index-d-ts-agentpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "RetryPart",
+          "anchor": "sdk-dist-index-d-ts-retrypart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "CompactionPart",
+          "anchor": "sdk-dist-index-d-ts-compactionpart",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Part",
+          "anchor": "sdk-dist-index-d-ts-part",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventMessagePartUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventmessagepartupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventMessagePartRemoved",
+          "anchor": "sdk-dist-index-d-ts-eventmessagepartremoved",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Permission",
+          "anchor": "sdk-dist-index-d-ts-permission",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventPermissionUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventpermissionupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventPermissionReplied",
+          "anchor": "sdk-dist-index-d-ts-eventpermissionreplied",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatus",
+          "anchor": "sdk-dist-index-d-ts-sessionstatus",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionStatus",
+          "anchor": "sdk-dist-index-d-ts-eventsessionstatus",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionIdle",
+          "anchor": "sdk-dist-index-d-ts-eventsessionidle",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionCompacted",
+          "anchor": "sdk-dist-index-d-ts-eventsessioncompacted",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventFileEdited",
+          "anchor": "sdk-dist-index-d-ts-eventfileedited",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Todo",
+          "anchor": "sdk-dist-index-d-ts-todo",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventTodoUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventtodoupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventCommandExecuted",
+          "anchor": "sdk-dist-index-d-ts-eventcommandexecuted",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Session",
+          "anchor": "sdk-dist-index-d-ts-session",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionCreated",
+          "anchor": "sdk-dist-index-d-ts-eventsessioncreated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventsessionupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionDeleted",
+          "anchor": "sdk-dist-index-d-ts-eventsessiondeleted",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionDiff",
+          "anchor": "sdk-dist-index-d-ts-eventsessiondiff",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSessionError",
+          "anchor": "sdk-dist-index-d-ts-eventsessionerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventFileWatcherUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventfilewatcherupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventVcsBranchUpdated",
+          "anchor": "sdk-dist-index-d-ts-eventvcsbranchupdated",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventTuiPromptAppend",
+          "anchor": "sdk-dist-index-d-ts-eventtuipromptappend",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventTuiCommandExecute",
+          "anchor": "sdk-dist-index-d-ts-eventtuicommandexecute",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventTuiToastShow",
+          "anchor": "sdk-dist-index-d-ts-eventtuitoastshow",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventServerConnected",
+          "anchor": "sdk-dist-index-d-ts-eventserverconnected",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Event",
+          "anchor": "sdk-dist-index-d-ts-event",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "GlobalEvent",
+          "anchor": "sdk-dist-index-d-ts-globalevent",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Project",
+          "anchor": "sdk-dist-index-d-ts-project",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "KeybindsConfig",
+          "anchor": "sdk-dist-index-d-ts-keybindsconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AgentConfig",
+          "anchor": "sdk-dist-index-d-ts-agentconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpLocalConfig",
+          "anchor": "sdk-dist-index-d-ts-mcplocalconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpRemoteConfig",
+          "anchor": "sdk-dist-index-d-ts-mcpremoteconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "LayoutConfig",
+          "anchor": "sdk-dist-index-d-ts-layoutconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Config",
+          "anchor": "sdk-dist-index-d-ts-config",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "BadRequestError",
+          "anchor": "sdk-dist-index-d-ts-badrequesterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIds",
+          "anchor": "sdk-dist-index-d-ts-toolids",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListItem",
+          "anchor": "sdk-dist-index-d-ts-toollistitem",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolList",
+          "anchor": "sdk-dist-index-d-ts-toollist",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Path",
+          "anchor": "sdk-dist-index-d-ts-path",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "VcsInfo",
+          "anchor": "sdk-dist-index-d-ts-vcsinfo",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "NotFoundError",
+          "anchor": "sdk-dist-index-d-ts-notfounderror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TextPartInput",
+          "anchor": "sdk-dist-index-d-ts-textpartinput",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FilePartInput",
+          "anchor": "sdk-dist-index-d-ts-filepartinput",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AgentPartInput",
+          "anchor": "sdk-dist-index-d-ts-agentpartinput",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SubtaskPartInput",
+          "anchor": "sdk-dist-index-d-ts-subtaskpartinput",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Command",
+          "anchor": "sdk-dist-index-d-ts-command",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Model",
+          "anchor": "sdk-dist-index-d-ts-model",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Provider",
+          "anchor": "sdk-dist-index-d-ts-provider",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthMethod",
+          "anchor": "sdk-dist-index-d-ts-providerauthmethod",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthAuthorization",
+          "anchor": "sdk-dist-index-d-ts-providerauthauthorization",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Symbol",
+          "anchor": "sdk-dist-index-d-ts-symbol",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileNode",
+          "anchor": "sdk-dist-index-d-ts-filenode",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileContent",
+          "anchor": "sdk-dist-index-d-ts-filecontent",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "File",
+          "anchor": "sdk-dist-index-d-ts-file",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Agent",
+          "anchor": "sdk-dist-index-d-ts-agent",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusConnected",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusconnected",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusDisabled",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusdisabled",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusFailed",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusfailed",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatus",
+          "anchor": "sdk-dist-index-d-ts-mcpstatus",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "LspStatus",
+          "anchor": "sdk-dist-index-d-ts-lspstatus",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FormatterStatus",
+          "anchor": "sdk-dist-index-d-ts-formatterstatus",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "OAuth",
+          "anchor": "sdk-dist-index-d-ts-oauth",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ApiAuth",
+          "anchor": "sdk-dist-index-d-ts-apiauth",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "WellKnownAuth",
+          "anchor": "sdk-dist-index-d-ts-wellknownauth",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "Auth",
+          "anchor": "sdk-dist-index-d-ts-auth",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "GlobalEventData",
+          "anchor": "sdk-dist-index-d-ts-globaleventdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "GlobalEventResponses",
+          "anchor": "sdk-dist-index-d-ts-globaleventresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "GlobalEventResponse",
+          "anchor": "sdk-dist-index-d-ts-globaleventresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectListData",
+          "anchor": "sdk-dist-index-d-ts-projectlistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectListResponses",
+          "anchor": "sdk-dist-index-d-ts-projectlistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectListResponse",
+          "anchor": "sdk-dist-index-d-ts-projectlistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectCurrentData",
+          "anchor": "sdk-dist-index-d-ts-projectcurrentdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectCurrentResponses",
+          "anchor": "sdk-dist-index-d-ts-projectcurrentresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProjectCurrentResponse",
+          "anchor": "sdk-dist-index-d-ts-projectcurrentresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigGetData",
+          "anchor": "sdk-dist-index-d-ts-configgetdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigGetResponses",
+          "anchor": "sdk-dist-index-d-ts-configgetresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigGetResponse",
+          "anchor": "sdk-dist-index-d-ts-configgetresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigUpdateData",
+          "anchor": "sdk-dist-index-d-ts-configupdatedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigUpdateErrors",
+          "anchor": "sdk-dist-index-d-ts-configupdateerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigUpdateError",
+          "anchor": "sdk-dist-index-d-ts-configupdateerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigUpdateResponses",
+          "anchor": "sdk-dist-index-d-ts-configupdateresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigUpdateResponse",
+          "anchor": "sdk-dist-index-d-ts-configupdateresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIdsData",
+          "anchor": "sdk-dist-index-d-ts-toolidsdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIdsErrors",
+          "anchor": "sdk-dist-index-d-ts-toolidserrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIdsError",
+          "anchor": "sdk-dist-index-d-ts-toolidserror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIdsResponses",
+          "anchor": "sdk-dist-index-d-ts-toolidsresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolIdsResponse",
+          "anchor": "sdk-dist-index-d-ts-toolidsresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListData",
+          "anchor": "sdk-dist-index-d-ts-toollistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListErrors",
+          "anchor": "sdk-dist-index-d-ts-toollisterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListError",
+          "anchor": "sdk-dist-index-d-ts-toollisterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListResponses",
+          "anchor": "sdk-dist-index-d-ts-toollistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ToolListResponse",
+          "anchor": "sdk-dist-index-d-ts-toollistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "InstanceDisposeData",
+          "anchor": "sdk-dist-index-d-ts-instancedisposedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "InstanceDisposeResponses",
+          "anchor": "sdk-dist-index-d-ts-instancedisposeresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "InstanceDisposeResponse",
+          "anchor": "sdk-dist-index-d-ts-instancedisposeresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PathGetData",
+          "anchor": "sdk-dist-index-d-ts-pathgetdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PathGetResponses",
+          "anchor": "sdk-dist-index-d-ts-pathgetresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PathGetResponse",
+          "anchor": "sdk-dist-index-d-ts-pathgetresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "VcsGetData",
+          "anchor": "sdk-dist-index-d-ts-vcsgetdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "VcsGetResponses",
+          "anchor": "sdk-dist-index-d-ts-vcsgetresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "VcsGetResponse",
+          "anchor": "sdk-dist-index-d-ts-vcsgetresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionListData",
+          "anchor": "sdk-dist-index-d-ts-sessionlistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionListResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionlistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionListResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionlistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCreateData",
+          "anchor": "sdk-dist-index-d-ts-sessioncreatedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCreateErrors",
+          "anchor": "sdk-dist-index-d-ts-sessioncreateerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCreateError",
+          "anchor": "sdk-dist-index-d-ts-sessioncreateerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCreateResponses",
+          "anchor": "sdk-dist-index-d-ts-sessioncreateresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCreateResponse",
+          "anchor": "sdk-dist-index-d-ts-sessioncreateresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatusData",
+          "anchor": "sdk-dist-index-d-ts-sessionstatusdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatusErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionstatuserrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatusError",
+          "anchor": "sdk-dist-index-d-ts-sessionstatuserror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatusResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionstatusresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionStatusResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionstatusresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDeleteData",
+          "anchor": "sdk-dist-index-d-ts-sessiondeletedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDeleteErrors",
+          "anchor": "sdk-dist-index-d-ts-sessiondeleteerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDeleteError",
+          "anchor": "sdk-dist-index-d-ts-sessiondeleteerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDeleteResponses",
+          "anchor": "sdk-dist-index-d-ts-sessiondeleteresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDeleteResponse",
+          "anchor": "sdk-dist-index-d-ts-sessiondeleteresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionGetData",
+          "anchor": "sdk-dist-index-d-ts-sessiongetdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionGetErrors",
+          "anchor": "sdk-dist-index-d-ts-sessiongeterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionGetError",
+          "anchor": "sdk-dist-index-d-ts-sessiongeterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionGetResponses",
+          "anchor": "sdk-dist-index-d-ts-sessiongetresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionGetResponse",
+          "anchor": "sdk-dist-index-d-ts-sessiongetresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUpdateData",
+          "anchor": "sdk-dist-index-d-ts-sessionupdatedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUpdateErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionupdateerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUpdateError",
+          "anchor": "sdk-dist-index-d-ts-sessionupdateerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUpdateResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionupdateresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUpdateResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionupdateresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionChildrenData",
+          "anchor": "sdk-dist-index-d-ts-sessionchildrendata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionChildrenErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionchildrenerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionChildrenError",
+          "anchor": "sdk-dist-index-d-ts-sessionchildrenerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionChildrenResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionchildrenresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionChildrenResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionchildrenresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionTodoData",
+          "anchor": "sdk-dist-index-d-ts-sessiontododata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionTodoErrors",
+          "anchor": "sdk-dist-index-d-ts-sessiontodoerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionTodoError",
+          "anchor": "sdk-dist-index-d-ts-sessiontodoerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionTodoResponses",
+          "anchor": "sdk-dist-index-d-ts-sessiontodoresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionTodoResponse",
+          "anchor": "sdk-dist-index-d-ts-sessiontodoresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionInitData",
+          "anchor": "sdk-dist-index-d-ts-sessioninitdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionInitErrors",
+          "anchor": "sdk-dist-index-d-ts-sessioniniterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionInitError",
+          "anchor": "sdk-dist-index-d-ts-sessioniniterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionInitResponses",
+          "anchor": "sdk-dist-index-d-ts-sessioninitresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionInitResponse",
+          "anchor": "sdk-dist-index-d-ts-sessioninitresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionForkData",
+          "anchor": "sdk-dist-index-d-ts-sessionforkdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionForkResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionforkresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionForkResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionforkresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionAbortData",
+          "anchor": "sdk-dist-index-d-ts-sessionabortdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionAbortErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionaborterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionAbortError",
+          "anchor": "sdk-dist-index-d-ts-sessionaborterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionAbortResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionabortresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionAbortResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionabortresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnshareData",
+          "anchor": "sdk-dist-index-d-ts-sessionunsharedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnshareErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionunshareerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnshareError",
+          "anchor": "sdk-dist-index-d-ts-sessionunshareerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnshareResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionunshareresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnshareResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionunshareresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShareData",
+          "anchor": "sdk-dist-index-d-ts-sessionsharedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShareErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionshareerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShareError",
+          "anchor": "sdk-dist-index-d-ts-sessionshareerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShareResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionshareresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShareResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionshareresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDiffData",
+          "anchor": "sdk-dist-index-d-ts-sessiondiffdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDiffErrors",
+          "anchor": "sdk-dist-index-d-ts-sessiondifferrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDiffError",
+          "anchor": "sdk-dist-index-d-ts-sessiondifferror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDiffResponses",
+          "anchor": "sdk-dist-index-d-ts-sessiondiffresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionDiffResponse",
+          "anchor": "sdk-dist-index-d-ts-sessiondiffresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionSummarizeData",
+          "anchor": "sdk-dist-index-d-ts-sessionsummarizedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionSummarizeErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionsummarizeerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionSummarizeError",
+          "anchor": "sdk-dist-index-d-ts-sessionsummarizeerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionSummarizeResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionsummarizeresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionSummarizeResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionsummarizeresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessagesData",
+          "anchor": "sdk-dist-index-d-ts-sessionmessagesdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessagesErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageserrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessagesError",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageserror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessagesResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionmessagesresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessagesResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionmessagesresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptData",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionprompterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptError",
+          "anchor": "sdk-dist-index-d-ts-sessionprompterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessageData",
+          "anchor": "sdk-dist-index-d-ts-sessionmessagedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessageErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessageError",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessageResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionMessageResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionmessageresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptAsyncData",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptasyncdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptAsyncErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptasyncerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptAsyncError",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptasyncerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptAsyncResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptasyncresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionPromptAsyncResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionpromptasyncresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCommandData",
+          "anchor": "sdk-dist-index-d-ts-sessioncommanddata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCommandErrors",
+          "anchor": "sdk-dist-index-d-ts-sessioncommanderrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCommandError",
+          "anchor": "sdk-dist-index-d-ts-sessioncommanderror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCommandResponses",
+          "anchor": "sdk-dist-index-d-ts-sessioncommandresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionCommandResponse",
+          "anchor": "sdk-dist-index-d-ts-sessioncommandresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShellData",
+          "anchor": "sdk-dist-index-d-ts-sessionshelldata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShellErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionshellerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShellError",
+          "anchor": "sdk-dist-index-d-ts-sessionshellerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShellResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionshellresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionShellResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionshellresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionRevertData",
+          "anchor": "sdk-dist-index-d-ts-sessionrevertdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionRevertErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionreverterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionRevertError",
+          "anchor": "sdk-dist-index-d-ts-sessionreverterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionRevertResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionrevertresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionRevertResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionrevertresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnrevertData",
+          "anchor": "sdk-dist-index-d-ts-sessionunrevertdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnrevertErrors",
+          "anchor": "sdk-dist-index-d-ts-sessionunreverterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnrevertError",
+          "anchor": "sdk-dist-index-d-ts-sessionunreverterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnrevertResponses",
+          "anchor": "sdk-dist-index-d-ts-sessionunrevertresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "SessionUnrevertResponse",
+          "anchor": "sdk-dist-index-d-ts-sessionunrevertresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PostSessionIdPermissionsPermissionIdData",
+          "anchor": "sdk-dist-index-d-ts-postsessionidpermissionspermissioniddata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PostSessionIdPermissionsPermissionIdErrors",
+          "anchor": "sdk-dist-index-d-ts-postsessionidpermissionspermissioniderrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PostSessionIdPermissionsPermissionIdError",
+          "anchor": "sdk-dist-index-d-ts-postsessionidpermissionspermissioniderror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PostSessionIdPermissionsPermissionIdResponses",
+          "anchor": "sdk-dist-index-d-ts-postsessionidpermissionspermissionidresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "PostSessionIdPermissionsPermissionIdResponse",
+          "anchor": "sdk-dist-index-d-ts-postsessionidpermissionspermissionidresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "CommandListData",
+          "anchor": "sdk-dist-index-d-ts-commandlistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "CommandListResponses",
+          "anchor": "sdk-dist-index-d-ts-commandlistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "CommandListResponse",
+          "anchor": "sdk-dist-index-d-ts-commandlistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigProvidersData",
+          "anchor": "sdk-dist-index-d-ts-configprovidersdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigProvidersResponses",
+          "anchor": "sdk-dist-index-d-ts-configprovidersresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ConfigProvidersResponse",
+          "anchor": "sdk-dist-index-d-ts-configprovidersresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderListData",
+          "anchor": "sdk-dist-index-d-ts-providerlistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderListResponses",
+          "anchor": "sdk-dist-index-d-ts-providerlistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderListResponse",
+          "anchor": "sdk-dist-index-d-ts-providerlistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthData",
+          "anchor": "sdk-dist-index-d-ts-providerauthdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthResponses",
+          "anchor": "sdk-dist-index-d-ts-providerauthresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderAuthResponse",
+          "anchor": "sdk-dist-index-d-ts-providerauthresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthAuthorizeData",
+          "anchor": "sdk-dist-index-d-ts-provideroauthauthorizedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthAuthorizeErrors",
+          "anchor": "sdk-dist-index-d-ts-provideroauthauthorizeerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthAuthorizeError",
+          "anchor": "sdk-dist-index-d-ts-provideroauthauthorizeerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthAuthorizeResponses",
+          "anchor": "sdk-dist-index-d-ts-provideroauthauthorizeresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthAuthorizeResponse",
+          "anchor": "sdk-dist-index-d-ts-provideroauthauthorizeresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthCallbackData",
+          "anchor": "sdk-dist-index-d-ts-provideroauthcallbackdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthCallbackErrors",
+          "anchor": "sdk-dist-index-d-ts-provideroauthcallbackerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthCallbackError",
+          "anchor": "sdk-dist-index-d-ts-provideroauthcallbackerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthCallbackResponses",
+          "anchor": "sdk-dist-index-d-ts-provideroauthcallbackresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ProviderOauthCallbackResponse",
+          "anchor": "sdk-dist-index-d-ts-provideroauthcallbackresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindTextData",
+          "anchor": "sdk-dist-index-d-ts-findtextdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindTextResponses",
+          "anchor": "sdk-dist-index-d-ts-findtextresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindTextResponse",
+          "anchor": "sdk-dist-index-d-ts-findtextresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindFilesData",
+          "anchor": "sdk-dist-index-d-ts-findfilesdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindFilesResponses",
+          "anchor": "sdk-dist-index-d-ts-findfilesresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindFilesResponse",
+          "anchor": "sdk-dist-index-d-ts-findfilesresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindSymbolsData",
+          "anchor": "sdk-dist-index-d-ts-findsymbolsdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindSymbolsResponses",
+          "anchor": "sdk-dist-index-d-ts-findsymbolsresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FindSymbolsResponse",
+          "anchor": "sdk-dist-index-d-ts-findsymbolsresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileListData",
+          "anchor": "sdk-dist-index-d-ts-filelistdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileListResponses",
+          "anchor": "sdk-dist-index-d-ts-filelistresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileListResponse",
+          "anchor": "sdk-dist-index-d-ts-filelistresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileReadData",
+          "anchor": "sdk-dist-index-d-ts-filereaddata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileReadResponses",
+          "anchor": "sdk-dist-index-d-ts-filereadresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileReadResponse",
+          "anchor": "sdk-dist-index-d-ts-filereadresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileStatusData",
+          "anchor": "sdk-dist-index-d-ts-filestatusdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileStatusResponses",
+          "anchor": "sdk-dist-index-d-ts-filestatusresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FileStatusResponse",
+          "anchor": "sdk-dist-index-d-ts-filestatusresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppLogData",
+          "anchor": "sdk-dist-index-d-ts-applogdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppLogErrors",
+          "anchor": "sdk-dist-index-d-ts-applogerrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppLogError",
+          "anchor": "sdk-dist-index-d-ts-applogerror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppLogResponses",
+          "anchor": "sdk-dist-index-d-ts-applogresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppLogResponse",
+          "anchor": "sdk-dist-index-d-ts-applogresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppAgentsData",
+          "anchor": "sdk-dist-index-d-ts-appagentsdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppAgentsResponses",
+          "anchor": "sdk-dist-index-d-ts-appagentsresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AppAgentsResponse",
+          "anchor": "sdk-dist-index-d-ts-appagentsresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusData",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusResponses",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpStatusResponse",
+          "anchor": "sdk-dist-index-d-ts-mcpstatusresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpAddData",
+          "anchor": "sdk-dist-index-d-ts-mcpadddata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpAddErrors",
+          "anchor": "sdk-dist-index-d-ts-mcpadderrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpAddError",
+          "anchor": "sdk-dist-index-d-ts-mcpadderror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpAddResponses",
+          "anchor": "sdk-dist-index-d-ts-mcpaddresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "McpAddResponse",
+          "anchor": "sdk-dist-index-d-ts-mcpaddresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "LspStatusData",
+          "anchor": "sdk-dist-index-d-ts-lspstatusdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "LspStatusResponses",
+          "anchor": "sdk-dist-index-d-ts-lspstatusresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "LspStatusResponse",
+          "anchor": "sdk-dist-index-d-ts-lspstatusresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FormatterStatusData",
+          "anchor": "sdk-dist-index-d-ts-formatterstatusdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FormatterStatusResponses",
+          "anchor": "sdk-dist-index-d-ts-formatterstatusresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "FormatterStatusResponse",
+          "anchor": "sdk-dist-index-d-ts-formatterstatusresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiAppendPromptData",
+          "anchor": "sdk-dist-index-d-ts-tuiappendpromptdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiAppendPromptErrors",
+          "anchor": "sdk-dist-index-d-ts-tuiappendprompterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiAppendPromptError",
+          "anchor": "sdk-dist-index-d-ts-tuiappendprompterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiAppendPromptResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiappendpromptresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiAppendPromptResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiappendpromptresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenHelpData",
+          "anchor": "sdk-dist-index-d-ts-tuiopenhelpdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenHelpResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiopenhelpresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenHelpResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiopenhelpresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenSessionsData",
+          "anchor": "sdk-dist-index-d-ts-tuiopensessionsdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenSessionsResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiopensessionsresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenSessionsResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiopensessionsresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenThemesData",
+          "anchor": "sdk-dist-index-d-ts-tuiopenthemesdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenThemesResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiopenthemesresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenThemesResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiopenthemesresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenModelsData",
+          "anchor": "sdk-dist-index-d-ts-tuiopenmodelsdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenModelsResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiopenmodelsresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOpenModelsResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiopenmodelsresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiSubmitPromptData",
+          "anchor": "sdk-dist-index-d-ts-tuisubmitpromptdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiSubmitPromptResponses",
+          "anchor": "sdk-dist-index-d-ts-tuisubmitpromptresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiSubmitPromptResponse",
+          "anchor": "sdk-dist-index-d-ts-tuisubmitpromptresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiClearPromptData",
+          "anchor": "sdk-dist-index-d-ts-tuiclearpromptdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiClearPromptResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiclearpromptresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiClearPromptResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiclearpromptresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiExecuteCommandData",
+          "anchor": "sdk-dist-index-d-ts-tuiexecutecommanddata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiExecuteCommandErrors",
+          "anchor": "sdk-dist-index-d-ts-tuiexecutecommanderrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiExecuteCommandError",
+          "anchor": "sdk-dist-index-d-ts-tuiexecutecommanderror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiExecuteCommandResponses",
+          "anchor": "sdk-dist-index-d-ts-tuiexecutecommandresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiExecuteCommandResponse",
+          "anchor": "sdk-dist-index-d-ts-tuiexecutecommandresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiShowToastData",
+          "anchor": "sdk-dist-index-d-ts-tuishowtoastdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiShowToastResponses",
+          "anchor": "sdk-dist-index-d-ts-tuishowtoastresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiShowToastResponse",
+          "anchor": "sdk-dist-index-d-ts-tuishowtoastresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiPublishData",
+          "anchor": "sdk-dist-index-d-ts-tuipublishdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiPublishErrors",
+          "anchor": "sdk-dist-index-d-ts-tuipublisherrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiPublishError",
+          "anchor": "sdk-dist-index-d-ts-tuipublisherror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiPublishResponses",
+          "anchor": "sdk-dist-index-d-ts-tuipublishresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiPublishResponse",
+          "anchor": "sdk-dist-index-d-ts-tuipublishresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlNextData",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolnextdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlNextResponses",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolnextresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlNextResponse",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolnextresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlResponseData",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolresponsedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlResponseResponses",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolresponseresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiControlResponseResponse",
+          "anchor": "sdk-dist-index-d-ts-tuicontrolresponseresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthSetData",
+          "anchor": "sdk-dist-index-d-ts-authsetdata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthSetErrors",
+          "anchor": "sdk-dist-index-d-ts-authseterrors",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthSetError",
+          "anchor": "sdk-dist-index-d-ts-authseterror",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthSetResponses",
+          "anchor": "sdk-dist-index-d-ts-authsetresponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthSetResponse",
+          "anchor": "sdk-dist-index-d-ts-authsetresponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSubscribeData",
+          "anchor": "sdk-dist-index-d-ts-eventsubscribedata",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSubscribeResponses",
+          "anchor": "sdk-dist-index-d-ts-eventsubscriberesponses",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "EventSubscribeResponse",
+          "anchor": "sdk-dist-index-d-ts-eventsubscriberesponse",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ClientOptions",
+          "anchor": "sdk-dist-index-d-ts-clientoptions",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "AuthToken",
+          "anchor": "sdk-dist-gen-core-auth-gen-d-ts-authtoken",
+          "module": "dist/gen/core/auth.gen.d.ts"
+        },
+        {
+          "name": "getAuthToken",
+          "anchor": "sdk-dist-gen-core-auth-gen-js-getauthtoken",
+          "module": "dist/gen/core/auth.gen.js"
+        },
+        {
+          "name": "SerializerOptions",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-d-ts-serializeroptions",
+          "module": "dist/gen/core/pathSerializer.gen.d.ts"
+        },
+        {
+          "name": "ArrayStyle",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-d-ts-arraystyle",
+          "module": "dist/gen/core/pathSerializer.gen.d.ts"
+        },
+        {
+          "name": "ArraySeparatorStyle",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-d-ts-arrayseparatorstyle",
+          "module": "dist/gen/core/pathSerializer.gen.d.ts"
+        },
+        {
+          "name": "ObjectStyle",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-d-ts-objectstyle",
+          "module": "dist/gen/core/pathSerializer.gen.d.ts"
+        },
+        {
+          "name": "separatorArrayExplode",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-separatorarrayexplode",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "separatorArrayNoExplode",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-separatorarraynoexplode",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "separatorObjectExplode",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-separatorobjectexplode",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "serializeArrayParam",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-serializearrayparam",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "serializePrimitiveParam",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-serializeprimitiveparam",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "serializeObjectParam",
+          "anchor": "sdk-dist-gen-core-pathserializer-gen-js-serializeobjectparam",
+          "module": "dist/gen/core/pathSerializer.gen.js"
+        },
+        {
+          "name": "QuerySerializer",
+          "anchor": "sdk-dist-gen-core-bodyserializer-gen-d-ts-queryserializer",
+          "module": "dist/gen/core/bodySerializer.gen.d.ts"
+        },
+        {
+          "name": "BodySerializer",
+          "anchor": "sdk-dist-gen-core-bodyserializer-gen-d-ts-bodyserializer",
+          "module": "dist/gen/core/bodySerializer.gen.d.ts"
+        },
+        {
+          "name": "QuerySerializerOptions",
+          "anchor": "sdk-dist-gen-client-index-d-ts-queryserializeroptions",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "formDataBodySerializer",
+          "anchor": "sdk-dist-gen-client-index-js-formdatabodyserializer",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "jsonBodySerializer",
+          "anchor": "sdk-dist-gen-client-index-js-jsonbodyserializer",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "urlSearchParamsBodySerializer",
+          "anchor": "sdk-dist-gen-client-index-js-urlsearchparamsbodyserializer",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "Client",
+          "anchor": "sdk-dist-gen-client-index-d-ts-client",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "OmitNever",
+          "anchor": "sdk-dist-gen-core-types-gen-d-ts-omitnever",
+          "module": "dist/gen/core/types.gen.d.ts"
+        },
+        {
+          "name": "ServerSentEventsOptions",
+          "anchor": "sdk-dist-gen-core-serversentevents-gen-d-ts-serversenteventsoptions",
+          "module": "dist/gen/core/serverSentEvents.gen.d.ts"
+        },
+        {
+          "name": "StreamEvent",
+          "anchor": "sdk-dist-gen-core-serversentevents-gen-d-ts-streamevent",
+          "module": "dist/gen/core/serverSentEvents.gen.d.ts"
+        },
+        {
+          "name": "ServerSentEventsResult",
+          "anchor": "sdk-dist-gen-core-serversentevents-gen-d-ts-serversenteventsresult",
+          "module": "dist/gen/core/serverSentEvents.gen.d.ts"
+        },
+        {
+          "name": "createSseClient",
+          "anchor": "sdk-dist-gen-core-serversentevents-gen-js-createsseclient",
+          "module": "dist/gen/core/serverSentEvents.gen.js"
+        },
+        {
+          "name": "createQuerySerializer",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-createqueryserializer",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "getParseAs",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-getparseas",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "setAuthParams",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-setauthparams",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "buildUrl",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-buildurl",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "mergeConfigs",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-mergeconfigs",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "mergeHeaders",
+          "anchor": "sdk-dist-gen-client-index-js-mergeheaders",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "Middleware",
+          "anchor": "sdk-dist-gen-client-utils-gen-d-ts-middleware",
+          "module": "dist/gen/client/utils.gen.d.ts"
+        },
+        {
+          "name": "createInterceptors",
+          "anchor": "sdk-dist-gen-client-utils-gen-js-createinterceptors",
+          "module": "dist/gen/client/utils.gen.js"
+        },
+        {
+          "name": "createConfig",
+          "anchor": "sdk-dist-gen-client-index-js-createconfig",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "ResponseStyle",
+          "anchor": "sdk-dist-gen-client-index-d-ts-responsestyle",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "RequestOptions",
+          "anchor": "sdk-dist-gen-client-index-d-ts-requestoptions",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "ResolvedRequestOptions",
+          "anchor": "sdk-dist-gen-client-index-d-ts-resolvedrequestoptions",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "RequestResult",
+          "anchor": "sdk-dist-gen-client-index-d-ts-requestresult",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "CreateClientConfig",
+          "anchor": "sdk-dist-gen-client-gen-d-ts-createclientconfig",
+          "module": "dist/gen/client.gen.d.ts"
+        },
+        {
+          "name": "TDataShape",
+          "anchor": "sdk-dist-gen-client-index-d-ts-tdatashape",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "Options",
+          "anchor": "sdk-dist-gen-sdk-gen-d-ts-options",
+          "module": "dist/gen/sdk.gen.d.ts"
+        },
+        {
+          "name": "OptionsLegacyParser",
+          "anchor": "sdk-dist-gen-client-index-d-ts-optionslegacyparser",
+          "module": "dist/gen/client/index.d.ts"
+        },
+        {
+          "name": "createClient",
+          "anchor": "sdk-dist-gen-client-client-gen-js-createclient",
+          "module": "dist/gen/client/client.gen.js"
+        },
+        {
+          "name": "Field",
+          "anchor": "sdk-dist-gen-core-params-gen-d-ts-field",
+          "module": "dist/gen/core/params.gen.d.ts"
+        },
+        {
+          "name": "Fields",
+          "anchor": "sdk-dist-gen-core-params-gen-d-ts-fields",
+          "module": "dist/gen/core/params.gen.d.ts"
+        },
+        {
+          "name": "FieldsConfig",
+          "anchor": "sdk-dist-gen-core-params-gen-d-ts-fieldsconfig",
+          "module": "dist/gen/core/params.gen.d.ts"
+        },
+        {
+          "name": "buildClientParams",
+          "anchor": "sdk-dist-gen-client-index-js-buildclientparams",
+          "module": "dist/gen/client/index.js"
+        },
+        {
+          "name": "OpencodeClient",
+          "anchor": "sdk-dist-index-d-ts-opencodeclient",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "createOpencodeClient",
+          "anchor": "sdk-dist-index-d-ts-createopencodeclient",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "createOpencodeServer",
+          "anchor": "sdk-dist-index-d-ts-createopencodeserver",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "createOpencodeTui",
+          "anchor": "sdk-dist-index-d-ts-createopencodetui",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "ServerOptions",
+          "anchor": "sdk-dist-index-d-ts-serveroptions",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "TuiOptions",
+          "anchor": "sdk-dist-index-d-ts-tuioptions",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "OpencodeClientConfig",
+          "anchor": "sdk-dist-index-d-ts-opencodeclientconfig",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "createOpencode",
+          "anchor": "sdk-dist-index-d-ts-createopencode",
+          "module": "dist/index.d.ts"
+        },
+        {
+          "name": "client",
+          "anchor": "sdk-dist-gen-client-gen-js-client",
+          "module": "dist/gen/client.gen.js"
+        },
+        {
+          "name": "PATH_PARAM_RE",
+          "anchor": "sdk-dist-gen-core-utils-gen-d-ts-path-param-re",
+          "module": "dist/gen/core/utils.gen.d.ts"
+        },
+        {
+          "name": "defaultPathSerializer",
+          "anchor": "sdk-dist-gen-core-utils-gen-d-ts-defaultpathserializer",
+          "module": "dist/gen/core/utils.gen.d.ts"
+        },
+        {
+          "name": "getUrl",
+          "anchor": "sdk-dist-gen-core-utils-gen-d-ts-geturl",
+          "module": "dist/gen/core/utils.gen.d.ts"
+        },
+        {
+          "name": "PathSerializer",
+          "anchor": "sdk-dist-gen-core-utils-gen-d-ts-pathserializer",
+          "module": "dist/gen/core/utils.gen.d.ts"
+        }
+      ],
+      "docsWritten": 34
+    }
+  ]
+}

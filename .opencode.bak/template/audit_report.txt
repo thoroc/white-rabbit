@@ -1,0 +1,166 @@
+# Template Audit Report
+
+## Summary
+### File Count
+- Total YAML templates: 25
+- Total MD templates: 0
+
+### Naming Convention Compliance (Pattern: *-tmpl.yaml)
+
+#### ✅ COMPLIANT (YAML with -tmpl suffix):
+ai-tool-assessment-report-tmpl.yaml
+ai-tool-rfc-submission-tmpl.yaml
+checklist-listing-format-tmpl.yaml
+command-listing-format-tmpl.yaml
+common-shell-commands-tmpl.yaml
+doc-command-common-sections-tmpl.yaml
+git-command-execution-report-tmpl.yaml
+jira-ticket-description-tmpl.yaml
+knowledge-base-listing-format-tmpl.yaml
+opencode-agent-tmpl.yaml
+opencode-checklist-tmpl.yaml
+opencode-command-tmpl.yaml
+opencode-knowledge-base-tmpl.yaml
+opencode-task-reference-template-tmpl.yaml
+opencode-task-tmpl.yaml
+opencode-template-tmpl.yaml
+opencode-tool-tmpl.yaml
+playwright-config-tmpl.yaml
+playwright-page-object-model-tmpl.yaml
+playwright-test-suite-tmpl.yaml
+standard-doc-structure-tmpl.yaml
+task-listing-format-tmpl.yaml
+template-listing-format-tmpl.yaml
+tool-integration-examples-tmpl.yaml
+tool-test-tmpl.yaml
+
+#### ⚠️ NON-COMPLIANT:
+
+## Detailed Analysis
+
+### Frontmatter Validation
+
+**File:** ai-tool-assessment-report-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** ai-tool-rfc-submission-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** checklist-listing-format-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** command-listing-format-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** common-shell-commands-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** doc-command-common-sections-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** git-command-execution-report-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** jira-ticket-description-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** knowledge-base-listing-format-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-agent-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-checklist-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-command-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-knowledge-base-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-task-reference-template-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-task-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-template-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** opencode-tool-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** playwright-config-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** playwright-page-object-model-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** playwright-test-suite-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** standard-doc-structure-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** task-listing-format-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** template-listing-format-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** tool-integration-examples-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅
+
+**File:** tool-test-tmpl.yaml
+- type field: ✅
+- description field: ✅
+- version field: ✅

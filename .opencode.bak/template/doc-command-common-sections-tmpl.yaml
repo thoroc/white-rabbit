@@ -1,0 +1,486 @@
+# Resource Loader Discovery Fields
+type: template
+description: "Reusable sections for documentation generation commands to reduce duplication and ensure consistency"
+category: Documentation
+tags: [template, documentation, sections, common, reusable]
+version: 1.0.0
+last_updated: 2025-11-19
+
+# Additional Metadata
+template_title: "Documentation Command Common Sections"
+reference: "../docs/template-standard.md"
+
+# Structure Definition
+structure:
+  metadata:
+    format: "YAML frontmatter with standard fields"
+    required: true
+    note: "Use for template identification and categorization"
+  
+  sections:
+    format: "8 numbered sections with specific purposes"
+    required: true
+    note: "Each section can be independently referenced by commands"
+  
+  usage_examples:
+    format: "Complete examples showing integration patterns"
+    required: true
+    note: "Demonstrate how commands reference sections"
+
+# Content Organization
+content_principles:
+  clarity:
+    - "Use clear, specific language"
+    - "Avoid ambiguous terminology"
+    - "Provide concrete examples"
+  
+  completeness:
+    - "Cover all common patterns"
+    - "Include edge cases"
+    - "Reference related resources"
+  
+  reusability:
+    - "Design for multiple use cases"
+    - "Make sections independently referenceable"
+    - "Avoid command-specific details"
+  
+  maintainability:
+    - "Single source of truth"
+    - "Update once, apply everywhere"
+    - "Track version changes"
+
+# Section Definitions
+sections:
+  section_1_project_analysis:
+    title: "Project Analysis Approach"
+    purpose: "Efficiency-first strategy for project analysis"
+    content: |
+      **EFFICIENCY FIRST**: Use lightweight shell commands for initial assessment. Load tasks only when needed for comprehensive analysis.
+      
+      **TASK REFERENCES**: See `.opencode/template/task-reference-template.md` for complete list. Relevant tasks:
+      
+      - **Project Context**: `.opencode/task/project-context.md` - Quick lightweight analysis (use first)
+      - **Technology Detection**: `.opencode/task/technology-detection.md` - Comprehensive programming languages, frameworks, project types
+      - **Infrastructure Analysis**: `.opencode/task/infrastructure-analysis.md` - Databases, messaging, architecture patterns
+      - **Deployment Strategy**: `.opencode/task/deployment-strategy.md` - CI/CD, containers, cloud platforms, IaC
+      
+      ### Lightweight Project Context
+      
+      **Use commands from**: `.opencode/task/project-context.md`
+      
+      Run specific analysis commands from the task as needed:
+      - Technology Stack Summary
+      - Package Managers and Build Tools Detection
+      - Testing Framework Detection
+      - Development Configuration Check
+      - Container and Orchestration Detection
+      - CI/CD Platform Detection
+      - Infrastructure as Code Detection
+      - Deployment Configuration
+      
+      For comprehensive analysis, load the appropriate task file based on your documentation needs.
+  
+  section_2_documentation_discovery:
+    title: "Existing Documentation Discovery"
+    purpose: "Critical discovery process to prevent duplication"
+    content: |
+      **CRITICAL**: Before creating new documentation, discover ALL existing documentation at ANY depth.
+      
+      **📋 Discovery Resources**:
+      - **Full Discovery Task**: `.opencode/task/documentation-discovery.md` - Comprehensive discovery at all depths
+      - **Analysis Checklist**: `.opencode/checklist/documentation-discovery.md` - 85+ verification points
+      
+      ### Discovery Process
+      
+      1. **Run comprehensive discovery command** from `.opencode/task/documentation-discovery.md`
+      2. **Review ALL discovered files** - Note locations, naming patterns, organization
+      3. **Read existing documentation** to understand structure, conventions, and content
+      4. **Identify gaps** - What's missing, incomplete, or outdated?
+      5. **Make location decisions** - Update existing or create new based on patterns
+      
+      ### Common Documentation Locations
+      
+      Documentation may exist at any depth in the project tree:
+      
+      **Root Level:**
+      - `./README.md` - Project overview (almost always present)
+      - `./CONTRIBUTING.md` - Contribution guidelines
+      - `./CHANGELOG.md` - Version history
+      - `./LICENSE` - License information
+      
+      **Documentation Directories:**
+      - `./docs/` - Most common centralized location
+      - `./documentation/` - Alternative centralized location
+      - `./wiki/` - Wiki-style documentation
+      - `./.github/` - GitHub-specific docs
+      - `./.gitlab/` - GitLab-specific docs
+      
+      **Monorepo Patterns:**
+      - `./packages/*/docs/` - Package-specific documentation
+      - `./services/*/docs/` - Service-specific documentation
+      - `./modules/*/README.md` - Module-level documentation
+      
+      ### Discovery Decision Tree
+      
+      **If existing documentation IS found:**
+      1. ✅ **READ the existing file(s)** to understand current structure and content
+      2. ✅ **UPDATE in place** - Modify at EXACT current location (don't move)
+      3. ✅ **Preserve valuable content** - Don't delete working examples or important details
+      4. ✅ **Enhance gaps** - Add missing sections, update outdated information
+      5. ✅ **Respect conventions** - Follow existing naming, location, and format patterns
+      6. ✅ **Note what was updated** in your response to the user
+      
+      **If NO existing documentation is found:**
+      1. ✅ Check for existing documentation directories (`./docs/`, `./documentation/`)
+      2. ✅ Follow project organization pattern (centralized vs monorepo)
+      3. ✅ Match existing naming conventions (lowercase vs uppercase, extensions)
+      4. ✅ Create in appropriate location based on project structure
+      5. ✅ Default to `./docs/` if no clear pattern exists (GitHub/GitLab standard)
+  
+  section_3_output_requirements:
+    title: "Output Requirements"
+    purpose: "File naming and location guidelines"
+    content: |
+      **IMPORTANT**: 
+      - **If existing documentation was found**: Update that file in its current location
+      - **If no existing documentation was found**: Create at appropriate location based on project structure
+      
+      **Standard Documentation Structure**: See `.opencode/template/standard-doc-structure.md` for complete structure guidelines.
+      
+      ### File Naming Conventions
+      
+      **Observe existing patterns:**
+      - Lowercase with hyphens: `api.md`, `architecture.md`, `development.md`
+      - Exceptions: `README.md`, `CONTRIBUTING.md` (uppercase by convention)
+      - Match case pattern used by existing documentation in the project
+      
+      ### Location Guidelines
+      
+      **Default locations** (if no existing docs found):
+      - Documentation directory: `./docs/` (create if needed)
+      - Root-level exceptions: `README.md`, `CONTRIBUTING.md`
+      - Monorepo pattern: Place near related code (e.g., `./packages/api/docs/`)
+      
+      **When updating existing documentation:**
+      - ✅ Preserve the existing file location and name
+      - ✅ Maintain any custom sections or project-specific content
+      - ✅ Enhance incomplete sections
+      - ✅ Add missing required sections from relevant checklists
+      - ✅ Update outdated information
+      - ❌ Don't move files unless explicitly requested by user
+      - ❌ Don't rename files unless following project-wide convention change
+  
+  section_4_checklist_integration:
+    title: "Checklist Integration"
+    purpose: "Comprehensive checklist usage guidance"
+    content: |
+      **IMPORTANT**: Use comprehensive documentation checklists to ensure complete coverage.
+      
+      ### Checklist Loading Strategy
+      
+      **Load checklists ONLY when beginning documentation work** to avoid unnecessary context usage.
+      
+      Each checklist contains 150-190+ detailed requirements:
+      - Quality standards
+      - Section requirements
+      - Content completeness checks
+      - Review criteria
+      
+      ### Available Checklists
+      
+      - **API Documentation**: `.opencode/checklist/api-documentation.md` (150+ requirements)
+      - **Architecture Documentation**: `.opencode/checklist/architecture-documentation.md` (161+ requirements)
+      - **Deployment Documentation**: `.opencode/checklist/deployment-documentation.md` (183+ requirements)
+      - **Development Documentation**: `.opencode/checklist/development-documentation.md` (181+ requirements)
+      - **Onboarding Documentation**: `.opencode/checklist/onboarding-documentation.md` (150+ requirements)
+      - **Pipeline Documentation**: `.opencode/checklist/pipeline-documentation.md` (190+ requirements)
+      
+      ### Checklist Usage
+      
+      1. **Load the appropriate checklist** for your documentation type
+      2. **Follow systematically** - Address every ✅ item
+      3. **Meet quality standards** - Completeness, accuracy, clarity
+      4. **Include specialized sections** - Platform-specific or domain-specific content
+      5. **Validate before completion** - Ensure all criteria are met
+  
+  section_5_knowledge_base_resources:
+    title: "Knowledge Base Resources"
+    purpose: "Platform-specific guides and references"
+    content: |
+      **KNOWLEDGE BASE REFERENCES** - Load when creating specific content:
+      
+      ### Visual Documentation
+      - **Mermaid Diagrams**: `.opencode/knowledge-base/mermaid-diagrams.md` - Load when creating visual documentation, architecture diagrams, or flowcharts
+      
+      ### Platform-Specific Guides
+      - **Jenkins Patterns**: `.opencode/knowledge-base/jenkins-patterns.md` - Scripted/declarative pipelines, best practices
+      - **GitLab CI Examples**: `.opencode/knowledge-base/gitlab-ci-examples.md` - GitLab CI/CD configuration patterns
+      - **GitHub Actions Templates**: `.opencode/knowledge-base/github-actions-templates.md` - GitHub Actions workflow examples
+      - **Pipeline Best Practices**: `.opencode/knowledge-base/pipeline-best-practices.md` - Cross-platform pipeline guidance
+      
+      ### Standards and Conventions
+      - **Acceptance Criteria**: `.opencode/knowledge-base/acceptance-criteria.md` - Writing clear acceptance criteria
+      - **MoSCoW Prioritization**: `.opencode/knowledge-base/moscow-prioritization.md` - Prioritization framework
+  
+  section_6_quality_standards:
+    title: "Documentation Quality Standards"
+    purpose: "Completeness, accuracy, and clarity requirements"
+    content: |
+      ### General Requirements
+      
+      **Completeness:**
+      - Every section from relevant checklist must be addressed
+      - No TODO, TBD, or placeholder text
+      - All examples should be working and tested
+      
+      **Accuracy:**
+      - All commands, paths, and code examples must be verified
+      - Version numbers and dependencies must be current
+      - Links must be valid and accessible
+      
+      **Clarity:**
+      - Use clear, concise language appropriate for the audience
+      - Provide context for technical decisions
+      - Include practical examples and use cases
+      
+      **Visual:**
+      - Include appropriate Mermaid diagrams for architecture and flows
+      - Use tables for structured data
+      - Apply consistent formatting throughout
+      
+      **Practical:**
+      - Provide working examples and troubleshooting guidance
+      - Include common pitfalls and solutions
+      - Reference related documentation appropriately
+      
+      **Professional:**
+      - Maintain consistent terminology across documents
+      - Follow project conventions and style
+      - Proper markdown formatting with headers and navigation
+      
+      ### Mermaid Diagram Requirements
+      
+      When including diagrams in documentation:
+      - **MUST** use Mermaid syntax for all diagrams
+      - Use proper Mermaid code blocks: ` ```mermaid `
+      - Include appropriate diagram types:
+        - Flowcharts for processes and workflows
+        - Sequence diagrams for API interactions
+        - Architecture diagrams for system design
+        - Entity relationship diagrams for data models
+      - Ensure diagrams render correctly
+      - See `.opencode/knowledge-base/mermaid-diagrams.md` for examples and templates
+      
+      ### Code Example Standards
+      
+      **All code examples must:**
+      - Include proper syntax highlighting with language identifiers
+      - Be complete and runnable (not fragments)
+      - Include necessary imports and setup
+      - Show expected output when relevant
+      - Include error handling where appropriate
+  
+  section_7_shell_commands:
+    title: "Common Shell Commands Reference"
+    purpose: "Quick analysis patterns"
+    content: |
+      **See**: `.opencode/template/common-shell-commands.md` for additional analysis patterns and commands.
+      
+      ### Quick Analysis Commands
+      
+      **Technology Stack:**
+      ```bash
+      # Detect package managers
+      find . -maxdepth 2 -name "package.json" -o -name "pom.xml" -o -name "requirements.txt"
+      
+      # Programming languages
+      find . -type f \( -name "*.ts" -o -name "*.py" -o -name "*.java" \) | head -5
+      ```
+      
+      **Infrastructure:**
+      ```bash
+      # Container detection
+      find . -name "Dockerfile" -o -name "docker-compose.yml"
+      
+      # CI/CD detection
+      find . -name ".gitlab-ci.yml" -o -name "Jenkinsfile" -o -path "*/.github/workflows/*.yml"
+      ```
+      
+      **Documentation:**
+      ```bash
+      # Find existing docs
+      find . -name "*.md" -o -name "*.rst" | grep -E "docs?/|README"
+      ```
+  
+  section_8_instructions_template:
+    title: "Instructions Template"
+    purpose: "Standard instruction patterns"
+    content: |
+      ### Standard Instruction Pattern
+      
+      **Load and use the checklist reference above as your primary guide**. Work through each section systematically to ensure complete coverage:
+      
+      1. **Follow the Checklist**: Address every ✅ item in the documentation checklist
+      2. **Quality Standards**: Meet all clarity, completeness, and accuracy requirements
+      3. **Practical Examples**: Include working code examples and commands
+      4. **Troubleshooting**: Document common issues and solutions
+      5. **Specialized Sections**: Include relevant platform-specific or domain-specific content
+      6. **Review Criteria**: Ensure final documentation passes all review checks
+      
+      ### Documentation Generation Order
+      
+      For comprehensive documentation suites:
+      
+      1. **Discovery First** - Always run comprehensive discovery before creating anything
+      2. **Architecture Documentation** - Provides context for other documents
+      3. **Development Documentation** - Setup and workflows
+      4. **API Documentation** - If applicable to the project
+      5. **Deployment Documentation** - Operations and deployment procedures
+      6. **Pipeline Documentation** - CI/CD workflows
+      7. **Onboarding Documentation** - Synthesizes the others for new team members
+
+# Reference Patterns
+reference_pattern: |
+  Commands reference sections using this pattern:
+  
+  ```markdown
+  ## Section Name
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_X_name for detailed guidance.
+  
+  [Command-specific customizations here]
+  ```
+
+# Usage Examples
+example_api_command: |
+  ---
+  description: Generate API documentation for the project
+  agent: general
+  subtask: true
+  ---
+  
+  # API Documentation Generation
+  
+  ## Project Analysis
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_1_project_analysis
+  
+  ### API-Specific Analysis
+  
+  Focus on identifying:
+  - REST API endpoints and HTTP methods
+  - GraphQL schemas and resolvers
+  - gRPC service definitions
+  - WebSocket connections
+  - API authentication mechanisms
+  
+  ## Documentation Requirements
+  
+  **CHECKLIST REFERENCE**: `.opencode/checklist/api-documentation.md`
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_4_checklist_integration
+  
+  ## Existing Documentation Discovery
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_2_documentation_discovery
+  
+  **Quick API Documentation Search**:
+  !`find . -type f \( -name "*api*.md" -o -name "openapi*.yml" \) ! -path "*/node_modules/*" 2>/dev/null`
+  
+  ## Output Requirements
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_3_output_requirements
+  
+  **Default output location**: `./docs/api.md`
+
+example_deployment_command: |
+  ---
+  description: Generate deployment documentation
+  agent: general
+  subtask: true
+  ---
+  
+  # Deployment Documentation Generation
+  
+  ## Deployment Analysis
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_1_project_analysis
+  
+  ### Deployment-Specific Analysis Focus
+  
+  Run these specific analysis commands:
+  - Container and Orchestration Detection
+  - CI/CD Platform Detection
+  - Infrastructure as Code Detection
+  
+  ## Documentation Requirements
+  
+  **CHECKLIST REFERENCE**: `.opencode/checklist/deployment-documentation.md`
+  
+  **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → section_4_checklist_integration
+
+# Best Practices
+best_practices:
+  template_usage:
+    - "Reference sections by key (e.g., section_1_project_analysis)"
+    - "Customize only when command has unique requirements"
+    - "Preserve template structure when referencing"
+    - "Update template version when making changes"
+  
+  command_integration:
+    - "Keep command files focused on domain-specific content"
+    - "Reference common sections to reduce duplication"
+    - "Add command-specific customizations after references"
+    - "Maintain consistent reference patterns"
+  
+  maintenance:
+    - "Update template once, applies to all commands"
+    - "Track version changes with semantic versioning"
+    - "Test changes with all dependent commands"
+    - "Document breaking changes clearly"
+
+# Integration Guidance
+integration:
+  with_commands:
+    description: "Commands reference template sections for shared guidance"
+    pattern: "Load template → Reference section → Add command-specific content"
+    examples:
+      - api-docs.md
+      - dev-docs.md
+      - deploy-docs.md
+      - onboard-docs.md
+      - pipeline-docs.md
+      - document.md
+      - generate-docs-strict.md
+  
+  with_tasks:
+    description: "Tasks may use template for documentation generation guidance"
+    pattern: "Task loads template → Applies structure → Generates documentation"
+  
+  with_checklists:
+    description: "Template references checklists for validation"
+    pattern: "Template section → References checklist → Validation criteria"
+
+# Maintenance
+maintenance:
+  versioning: "Use semantic versioning (MAJOR.MINOR.PATCH)"
+  update_frequency: "Review when documentation standards change or on user feedback"
+  breaking_changes: "Increment MAJOR version and update all dependent commands"
+  commands_using_template:
+    - command/api-docs.md
+    - command/dev-docs.md
+    - command/deploy-docs.md
+    - command/onboard-docs.md
+    - command/pipeline-docs.md
+    - command/document.md
+    - command/generate-docs-strict.md
+
+# Changelog
+changelog:
+  - version: "1.0.0"
+    date: "2025-11-19"
+    changes:
+      - "Initial YAML template creation from markdown"
+      - "Converted 8 sections to YAML structure"
+      - "Added section keys for easy referencing"
+      - "Included comprehensive examples and best practices"

@@ -1,0 +1,614 @@
+# OpenCode Tool Testing Template
+# Template for creating comprehensive unit tests for OpenCode tools
+
+# Resource Loader Discovery Fields
+type: template
+description: "Template for creating unit tests for OpenCode custom tools with Bun test framework"
+category: Development
+tags: [template, testing, tool, typescript, bun, unit-test]
+version: 1.0.0
+last_updated: 2025-11-21
+
+# Additional Metadata
+title: "OpenCode Tool Testing Template"
+reference: "https://bun.sh/docs/cli/test"
+
+# Testing Overview:
+# Tool tests verify functionality, argument validation, error handling, and abort signal behavior
+# Tests use Bun's built-in test framework with describe/it/expect API
+
+test_file_structure:
+  location: "Same directory as tool (tool/my-tool.test.ts)"
+  naming: "tool-name.test.ts (matches tool filename)"
+  framework: "Bun test framework"
+  imports: "import { describe, it, expect } from 'bun:test'"
+
+# Basic Test Template:
+
+basic_test_pattern: |
+  // tool/my-tool.test.ts
+  import { describe, it, expect } from 'bun:test'
+  import myTool from './my-tool'
+  
+  const mockContext = {
+    sessionID: 'test-session',
+    messageID: 'test-message',
+    agent: 'general',
+    abort: undefined,
+  }
+  
+  describe('my-tool', () => {
+    it('should execute successfully with valid input', async () => {
+      const result = await myTool.execute(
+        { param: 'test-value' },
+        mockContext
+      )
+      
+      expect(result).toBeDefined()
+      expect(typeof result).toBe('string')
+    })
+  })
+
+# Complete Test Template:
+
+comprehensive_test_pattern: |
+  import { describe, it, expect, beforeEach } from 'bun:test'
+  import myTool from './my-tool'
+  
+  // Mock context for all tests
+  const createMockContext = () => ({
+    sessionID: 'test-session',
+    messageID: 'test-message',
+    agent: 'general',
+    abort: undefined,
+  })
+  
+  describe('my-tool', () => {
+    let mockContext: ReturnType<typeof createMockContext>
+    
+    beforeEach(() => {
+      mockContext = createMockContext()
+    })
+    
+    describe('successful execution', () => {
+      it('should execute with valid input', async () => {
+        const result = await myTool.execute(
+          { param: 'valid-value' },
+          mockContext
+        )
+        
+        expect(result).toBeDefined()
+        expect(typeof result).toBe('string')
+      })
+      
+      it('should return expected format', async () => {
+        const result = await myTool.execute(
+          { param: 'test' },
+          mockContext
+        )
+        
+        expect(result).toContain('expected-pattern')
+      })
+    })
+    
+    describe('argument validation', () => {
+      it('should validate required arguments', async () => {
+        await expect(
+          myTool.execute({}, mockContext)
+        ).rejects.toThrow()
+      })
+      
+      it('should validate argument types', async () => {
+        await expect(
+          myTool.execute({ param: 123 }, mockContext)
+        ).rejects.toThrow()
+      })
+      
+      it('should accept optional arguments', async () => {
+        const result = await myTool.execute(
+          { param: 'test', optional: 'value' },
+          mockContext
+        )
+        
+        expect(result).toBeDefined()
+      })
+    })
+    
+    describe('error handling', () => {
+      it('should handle invalid input gracefully', async () => {
+        const result = await myTool.execute(
+          { param: 'invalid' },
+          mockContext
+        )
+        
+        expect(result).toContain('Error')
+      })
+      
+      it('should return meaningful error messages', async () => {
+        const result = await myTool.execute(
+          { param: 'bad-input' },
+          mockContext
+        )
+        
+        expect(result).toMatch(/Error|Failed|Invalid/)
+      })
+    })
+    
+    describe('abort signal handling', () => {
+      it('should respect abort signal', async () => {
+        const abortController = new AbortController()
+        const contextWithAbort = {
+          ...mockContext,
+          abort: abortController.signal,
+        }
+        
+        // Abort immediately
+        abortController.abort()
+        
+        const result = await myTool.execute(
+          { param: 'test' },
+          contextWithAbort
+        )
+        
+        expect(result).toMatch(/Cancel|Abort|Stop/)
+      })
+    })
+    
+    describe('context usage', () => {
+      it('should access context properties', async () => {
+        const result = await myTool.execute(
+          { param: 'test' },
+          mockContext
+        )
+        
+        // Verify context was used (check logs or return value)
+        expect(result).toBeDefined()
+      })
+    })
+  })
+
+# Test Patterns by Tool Type:
+
+test_patterns:
+  simple_tool:
+    description: "Tool with no arguments"
+    example: |
+      import { describe, it, expect } from 'bun:test'
+      import timestamp from './timestamp'
+      
+      describe('timestamp', () => {
+        it('should return ISO timestamp', async () => {
+          const result = await timestamp.execute({}, {
+            sessionID: 'test',
+            messageID: 'test',
+            agent: 'test',
+          })
+          
+          expect(result).toMatch(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/)
+        })
+      })
+  
+  parameterized_tool:
+    description: "Tool with validated arguments"
+    example: |
+      import { describe, it, expect } from 'bun:test'
+      import httpRequest from './http-request'
+      
+      describe('http-request', () => {
+        it('should validate URL format', async () => {
+          await expect(
+            httpRequest.execute({ url: 'not-a-url' }, mockContext)
+          ).rejects.toThrow()
+        })
+        
+        it('should accept valid URL', async () => {
+          const result = await httpRequest.execute(
+            { url: 'https://example.com', method: 'GET' },
+            mockContext
+          )
+          
+          expect(result).toBeDefined()
+        })
+      })
+  
+  shell_integration:
+    description: "Tool using Bun.$ for shell commands"
+    example: |
+      import { describe, it, expect } from 'bun:test'
+      import gitStatus from './git-status'
+      
+      describe('git-status', () => {
+        it('should execute git command', async () => {
+          const result = await gitStatus.execute({}, mockContext)
+          
+          expect(result).toBeDefined()
+          expect(typeof result).toBe('string')
+        })
+        
+        it('should handle git not available', async () => {
+          // Test error case if git not in PATH
+          // This would require mocking Bun.$ or testing in non-git directory
+        })
+      })
+  
+  database_tool:
+    description: "Tool with database integration"
+    example: |
+      import { describe, it, expect, beforeAll, afterAll } from 'bun:test'
+      import dbQuery from './database-query'
+      import { Database } from 'bun:sqlite'
+      
+      describe('database-query', () => {
+        let db: Database
+        
+        beforeAll(() => {
+          db = new Database(':memory:')
+          db.run('CREATE TABLE test (id INTEGER, name TEXT)')
+          db.run('INSERT INTO test VALUES (1, "Alice")')
+        })
+        
+        afterAll(() => {
+          db.close()
+        })
+        
+        it('should execute SELECT query', async () => {
+          const result = await dbQuery.execute(
+            { query: 'SELECT * FROM test' },
+            mockContext
+          )
+          
+          expect(result).toContain('Alice')
+        })
+        
+        it('should prevent SQL injection', async () => {
+          const result = await dbQuery.execute(
+            { query: "SELECT * FROM test WHERE name = '; DROP TABLE test; --'" },
+            mockContext
+          )
+          
+          // Should handle safely
+          expect(result).toBeDefined()
+        })
+      })
+  
+  api_tool:
+    description: "Tool with API integration"
+    example: |
+      import { describe, it, expect, mock } from 'bun:test'
+      import apiFetch from './api-fetch'
+      
+      describe('api-fetch', () => {
+        it('should fetch from API', async () => {
+          // Mock fetch
+          const mockFetch = mock(() => 
+            Promise.resolve({
+              ok: true,
+              text: () => Promise.resolve('{"status":"ok"}')
+            })
+          )
+          
+          globalThis.fetch = mockFetch
+          
+          const result = await apiFetch.execute(
+            { url: 'https://api.example.com/data' },
+            mockContext
+          )
+          
+          expect(result).toContain('ok')
+          expect(mockFetch).toHaveBeenCalled()
+        })
+        
+        it('should handle API errors', async () => {
+          globalThis.fetch = mock(() =>
+            Promise.resolve({ ok: false, status: 404 })
+          )
+          
+          const result = await apiFetch.execute(
+            { url: 'https://api.example.com/notfound' },
+            mockContext
+          )
+          
+          expect(result).toContain('Error')
+        })
+      })
+  
+  python_integration:
+    description: "Tool calling external Python script"
+    example: |
+      import { describe, it, expect } from 'bun:test'
+      import pythonAdd from './python-add'
+      
+      describe('python-add', () => {
+        it('should call Python script', async () => {
+          const result = await pythonAdd.execute(
+            { a: 2, b: 3 },
+            mockContext
+          )
+          
+          expect(result).toBe('5')
+        })
+        
+        it('should handle negative numbers', async () => {
+          const result = await pythonAdd.execute(
+            { a: -5, b: 3 },
+            mockContext
+          )
+          
+          expect(result).toBe('-2')
+        })
+        
+        it('should handle Python not available', async () => {
+          // Would need to test in environment without Python
+          // or mock Bun.$
+        })
+      })
+
+# Assertion Patterns:
+
+assertions:
+  basic_assertions:
+    - "expect(value).toBe(expected) - Strict equality"
+    - "expect(value).toEqual(expected) - Deep equality"
+    - "expect(value).toBeDefined() - Not undefined"
+    - "expect(value).toBeUndefined() - Is undefined"
+    - "expect(value).toBeNull() - Is null"
+    - "expect(value).toBeTruthy() - Truthy value"
+    - "expect(value).toBeFalsy() - Falsy value"
+  
+  string_assertions:
+    - "expect(string).toContain(substring) - Contains substring"
+    - "expect(string).toMatch(regex) - Matches pattern"
+    - "expect(string).toStartWith(prefix) - Starts with"
+    - "expect(string).toEndWith(suffix) - Ends with"
+  
+  number_assertions:
+    - "expect(number).toBeGreaterThan(value) - Greater than"
+    - "expect(number).toBeLessThan(value) - Less than"
+    - "expect(number).toBeCloseTo(value, precision) - Close to"
+  
+  array_assertions:
+    - "expect(array).toHaveLength(n) - Length check"
+    - "expect(array).toContain(item) - Contains item"
+    - "expect(array).toContainEqual(item) - Contains equal item"
+  
+  error_assertions:
+    - "expect(fn).toThrow() - Throws any error"
+    - "expect(fn).toThrow(Error) - Throws specific error"
+    - "expect(fn).toThrow('message') - Throws with message"
+    - "await expect(promise).rejects.toThrow() - Async throws"
+  
+  mock_assertions:
+    - "expect(mock).toHaveBeenCalled() - Was called"
+    - "expect(mock).toHaveBeenCalledWith(args) - Called with args"
+    - "expect(mock).toHaveBeenCalledTimes(n) - Called n times"
+
+# Running Tests:
+
+test_commands:
+  run_single_test: "bun test tool/my-tool.test.ts"
+  run_all_tests: "bun test tool/*.test.ts"
+  run_with_verbose: "bun test --verbose tool/my-tool.test.ts"
+  run_with_coverage: "bun test --coverage tool/my-tool.test.ts"
+  watch_mode: "bun test --watch tool/my-tool.test.ts"
+
+# Best Practices:
+
+best_practices:
+  test_organization:
+    - "Use describe blocks to group related tests"
+    - "Use nested describe for test categories"
+    - "One assertion per test (when possible)"
+    - "Test names describe expected behavior"
+    - "Arrange-Act-Assert pattern"
+  
+  test_data:
+    - "Use realistic test data"
+    - "Test edge cases (empty, null, max values)"
+    - "Test boundary conditions"
+    - "Use constants for magic values"
+    - "Share test fixtures with beforeEach"
+  
+  mocking:
+    - "Mock external dependencies"
+    - "Mock file system operations"
+    - "Mock network requests"
+    - "Reset mocks between tests"
+    - "Verify mock interactions"
+  
+  async_testing:
+    - "Always await async operations"
+    - "Test promise rejections"
+    - "Test timeout scenarios"
+    - "Test concurrent operations"
+    - "Test abort signal behavior"
+  
+  test_maintainability:
+    - "Keep tests independent"
+    - "No shared mutable state"
+    - "Tests should be deterministic"
+    - "Fast test execution (< 1s per test)"
+    - "Clear test failure messages"
+
+# Coverage Goals:
+
+coverage_targets:
+  minimum: "70% overall coverage"
+  good: "80% overall coverage"
+  excellent: "90%+ overall coverage"
+  critical_paths: "100% coverage for error handling and security"
+
+# Test Categories:
+
+test_categories:
+  unit_tests: "Test individual functions in isolation"
+  integration_tests: "Test tool with real dependencies"
+  e2e_tests: "Test tool in actual OpenCode session"
+  regression_tests: "Tests for previously found bugs"
+  performance_tests: "Tests for execution speed"
+
+# Example: Complete Test Suite
+
+complete_example:
+  filename: "database-query.test.ts"
+  content: |
+    import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'bun:test'
+    import databaseQuery from './database-query'
+    import { Database } from 'bun:sqlite'
+    
+    describe('database-query', () => {
+      let db: Database
+      let mockContext: any
+      
+      beforeAll(() => {
+        // Setup test database
+        db = new Database(':memory:')
+        db.run('CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, email TEXT)')
+        db.run('INSERT INTO users VALUES (1, "Alice", "alice@example.com")')
+        db.run('INSERT INTO users VALUES (2, "Bob", "bob@example.com")')
+      })
+      
+      afterAll(() => {
+        db.close()
+      })
+      
+      beforeEach(() => {
+        mockContext = {
+          sessionID: 'test-session',
+          messageID: 'test-message',
+          agent: 'general',
+          abort: undefined,
+        }
+      })
+      
+      describe('successful queries', () => {
+        it('should execute SELECT query', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT * FROM users' },
+            mockContext
+          )
+          
+          expect(result).toContain('Alice')
+          expect(result).toContain('Bob')
+        })
+        
+        it('should execute COUNT query', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT COUNT(*) as count FROM users' },
+            mockContext
+          )
+          
+          expect(result).toContain('2')
+        })
+        
+        it('should execute WHERE query', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT name FROM users WHERE id = 1' },
+            mockContext
+          )
+          
+          expect(result).toContain('Alice')
+          expect(result).not.toContain('Bob')
+        })
+      })
+      
+      describe('argument validation', () => {
+        it('should require query parameter', async () => {
+          await expect(
+            databaseQuery.execute({}, mockContext)
+          ).rejects.toThrow()
+        })
+        
+        it('should validate query is string', async () => {
+          await expect(
+            databaseQuery.execute({ query: 123 }, mockContext)
+          ).rejects.toThrow()
+        })
+        
+        it('should reject empty query', async () => {
+          await expect(
+            databaseQuery.execute({ query: '' }, mockContext)
+          ).rejects.toThrow()
+        })
+      })
+      
+      describe('error handling', () => {
+        it('should handle SQL syntax errors', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'INVALID SQL QUERY' },
+            mockContext
+          )
+          
+          expect(result).toMatch(/Error|Failed/)
+        })
+        
+        it('should handle table not found', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT * FROM nonexistent' },
+            mockContext
+          )
+          
+          expect(result).toContain('Error')
+        })
+        
+        it('should prevent SQL injection attempts', async () => {
+          const result = await databaseQuery.execute(
+            { query: "SELECT * FROM users WHERE name = ''; DROP TABLE users; --'" },
+            mockContext
+          )
+          
+          // Query should fail safely or be sanitized
+          expect(result).toBeDefined()
+          
+          // Verify table still exists
+          const check = await databaseQuery.execute(
+            { query: 'SELECT COUNT(*) FROM users' },
+            mockContext
+          )
+          expect(check).toContain('2')
+        })
+      })
+      
+      describe('result formatting', () => {
+        it('should return JSON formatted results', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT * FROM users LIMIT 1' },
+            mockContext
+          )
+          
+          expect(() => JSON.parse(result)).not.toThrow()
+        })
+        
+        it('should include column names', async () => {
+          const result = await databaseQuery.execute(
+            { query: 'SELECT name, email FROM users LIMIT 1' },
+            mockContext
+          )
+          
+          expect(result).toContain('name')
+          expect(result).toContain('email')
+        })
+      })
+      
+      describe('performance', () => {
+        it('should complete within reasonable time', async () => {
+          const start = Date.now()
+          
+          await databaseQuery.execute(
+            { query: 'SELECT * FROM users' },
+            mockContext
+          )
+          
+          const duration = Date.now() - start
+          expect(duration).toBeLessThan(1000) // < 1 second
+        })
+      })
+    })
+
+# References:
+
+references:
+  bun_test_docs: "https://bun.sh/docs/cli/test"
+  bun_test_matchers: "https://bun.sh/docs/cli/test#matchers"
+  bun_mocking: "https://bun.sh/docs/cli/test#mocks"
+  task_file: ".opencode/task/opencode-tool.md"
+  template_file: ".opencode/template/opencode-tool-tmpl.yaml"

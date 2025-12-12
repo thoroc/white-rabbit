@@ -1,0 +1,310 @@
+# Standard Documentation Structure Template
+# Defines the standard directory structure and conventions for all documentation in OpenCode projects
+
+# Resource Loader Discovery Fields
+type: template
+description: "Standard directory structure and conventions for all documentation commands and files"
+category: Documentation
+tags: [template, documentation, structure, standard, reference]
+version: 2.0.0
+last_updated: 2025-11-19
+
+# Additional Metadata
+title: "Standard Documentation Structure"
+reference: "docs/template-standard.md"
+
+# Overview:
+# This template defines the standard structure for organizing documentation across OpenCode projects.
+# It establishes consistent file naming, directory layout, and content organization patterns that
+# all documentation commands should follow when generating documentation files.
+
+# Structure Guidelines:
+# 1. Maintain clear separation between project README and detailed docs directory
+# 2. Use dedicated files for each documentation type (api, architecture, deployment, etc.)
+# 3. Follow consistent naming conventions (lowercase, kebab-case for multi-word)
+# 4. Place all detailed documentation in a central docs/ directory
+# 5. Keep README.md at project root as high-level entry point
+
+structure:
+  project_root:
+    description: "Root level of the project repository"
+    contents:
+      README.md:
+        description: "High-level project overview and entry point"
+        required: true
+        purpose: "Provides project overview, quick start, and links to detailed docs"
+        typical_sections: ["Project Title", "Overview", "Quick Start", "Documentation Links", "Contributing", "License"]
+      
+  docs_directory:
+    description: "Central directory for all detailed documentation"
+    path: "docs/"
+    required: true
+    contents:
+      api.md:
+        description: "API documentation and reference"
+        required: false
+        when_to_include: "Projects with APIs (REST, GraphQL, etc.)"
+        typical_sections: ["Authentication", "Endpoints", "Request/Response Formats", "Error Handling", "Rate Limiting"]
+      
+      architecture.md:
+        description: "System architecture and design documentation"
+        required: true
+        typical_sections: ["System Overview", "Components", "Data Flow", "Technology Stack", "Design Decisions", "Diagrams"]
+      
+      deployment.md:
+        description: "Deployment procedures and operations"
+        required: false
+        when_to_include: "Projects with deployment processes"
+        typical_sections: ["Infrastructure", "Deployment Procedures", "Configuration", "Operations", "Troubleshooting"]
+      
+      development.md:
+        description: "Development setup and workflows"
+        required: true
+        typical_sections: ["Prerequisites", "Setup", "Build Tools", "Testing", "Debugging", "Workflows", "Code Standards"]
+      
+      onboarding.md:
+        description: "New team member onboarding guide"
+        required: false
+        when_to_include: "Team-based projects"
+        typical_sections: ["Welcome", "Team Structure", "Getting Started", "First Tasks", "Resources", "Communication"]
+      
+      pipeline.md:
+        description: "CI/CD pipeline documentation"
+        required: false
+        when_to_include: "Projects with CI/CD pipelines"
+        typical_sections: ["Overview", "Pipeline Stages", "Configuration", "Automation", "Deployment Workflows", "Troubleshooting"]
+
+# Naming Conventions:
+
+naming_conventions:
+  general:
+    - "Use lowercase for all documentation files"
+    - "Use kebab-case for multi-word filenames (e.g., getting-started.md)"
+    - "Always use .md extension for markdown files"
+    - "Keep filenames descriptive but concise"
+  
+  special_files:
+    README.md: "Always uppercase, lives at project root"
+    CONTRIBUTING.md: "Optional, uppercase if included at root"
+    CHANGELOG.md: "Optional, uppercase if included at root"
+    LICENSE: "Optional, no extension, uppercase"
+
+# File Purposes:
+
+file_purposes:
+  README.md:
+    purpose: "Project entry point and high-level overview"
+    audience: "All users, contributors, and stakeholders"
+    content_focus: "What the project is, why it exists, how to get started"
+    length: "1-2 pages, concise and scannable"
+  
+  docs/api.md:
+    purpose: "Complete API reference and usage guide"
+    audience: "API consumers and integrators"
+    content_focus: "Endpoints, authentication, request/response formats, examples"
+    length: "Comprehensive, as long as needed for complete coverage"
+  
+  docs/architecture.md:
+    purpose: "System design and technical architecture"
+    audience: "Developers and technical stakeholders"
+    content_focus: "Components, data flow, design decisions, technology choices"
+    length: "3-10 pages depending on system complexity"
+  
+  docs/deployment.md:
+    purpose: "Deployment and operations procedures"
+    audience: "DevOps, SRE, and operations teams"
+    content_focus: "Infrastructure, deployment steps, configuration, troubleshooting"
+    length: "Comprehensive, includes runbooks and procedures"
+  
+  docs/development.md:
+    purpose: "Development environment and workflows"
+    audience: "Developers and contributors"
+    content_focus: "Setup, build tools, testing, debugging, development workflows"
+    length: "Comprehensive, covers full development lifecycle"
+  
+  docs/onboarding.md:
+    purpose: "New team member orientation"
+    audience: "New hires and contributors"
+    content_focus: "Team structure, first steps, resources, communication channels"
+    length: "2-5 pages, practical and actionable"
+  
+  docs/pipeline.md:
+    purpose: "CI/CD pipeline documentation"
+    audience: "Developers and DevOps teams"
+    content_focus: "Pipeline stages, automation, deployment workflows, configuration"
+    length: "3-8 pages depending on pipeline complexity"
+
+# Guidelines:
+
+guidelines:
+  when_to_use:
+    - "When generating documentation for any OpenCode project"
+    - "When organizing existing documentation into standard structure"
+    - "When creating documentation commands that generate multiple files"
+    - "When onboarding new projects to documentation standards"
+  
+  when_not_to_use:
+    - "For non-documentation files (source code, configs, etc.)"
+    - "For single-file documentation projects"
+    - "For external documentation sites with different structure requirements"
+  
+  best_practices:
+    - "Start with README.md and docs/development.md as minimum viable documentation"
+    - "Add specialized docs (api.md, deployment.md) as project needs grow"
+    - "Keep README.md focused and link to detailed docs for depth"
+    - "Update documentation in parallel with code changes"
+    - "Use consistent formatting and structure across all docs"
+    - "Include diagrams and examples where helpful"
+
+# Content Principles:
+
+content_principles:
+  clarity:
+    - "Use clear, concise language appropriate for the audience"
+    - "Define technical terms and acronyms on first use"
+    - "Structure content with clear headings and sections"
+    - "Use examples and diagrams to illustrate complex concepts"
+  
+  completeness:
+    - "Cover all necessary aspects for the documentation type"
+    - "Include practical examples and common use cases"
+    - "Document error conditions and troubleshooting steps"
+    - "Link to related documentation and external resources"
+  
+  maintainability:
+    - "Keep documentation close to the code it describes"
+    - "Use relative links for cross-references within docs"
+    - "Version documentation alongside code changes"
+    - "Review and update docs regularly"
+
+# Examples:
+
+example_minimal_structure: |
+  project-root/
+  ├── README.md              # High-level overview
+  └── docs/
+      ├── development.md     # Dev setup and workflows
+      └── architecture.md    # System design
+
+example_complete_structure: |
+  project-root/
+  ├── README.md              # High-level overview
+  ├── CONTRIBUTING.md        # How to contribute
+  ├── CHANGELOG.md           # Version history
+  └── docs/
+      ├── api.md             # API reference
+      ├── architecture.md    # System architecture
+      ├── deployment.md      # Deployment guide
+      ├── development.md     # Development guide
+      ├── onboarding.md      # Team onboarding
+      └── pipeline.md        # CI/CD documentation
+
+example_readme_structure: |
+  # Project Title
+  
+  Brief description of what the project does.
+  
+  ## Overview
+  
+  Expanded explanation of project purpose and key features.
+  
+  ## Quick Start
+  
+  ```bash
+  # Installation and basic usage
+  npm install project-name
+  npm start
+  ```
+  
+  ## Documentation
+  
+  - [Development Guide](docs/development.md)
+  - [Architecture](docs/architecture.md)
+  - [API Reference](docs/api.md)
+  - [Deployment](docs/deployment.md)
+  
+  ## Contributing
+  
+  See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+  
+  ## License
+  
+  MIT License - see [LICENSE](LICENSE) for details.
+
+# Common Patterns:
+
+common_patterns:
+  linking_between_docs:
+    description: "Pattern for cross-referencing documentation files"
+    example: |
+      # In README.md
+      See [Development Guide](docs/development.md) for setup instructions.
+      
+      # In docs/development.md
+      See [Architecture](architecture.md) for system design.
+      See [API Reference](api.md) for API details.
+  
+  progressive_disclosure:
+    description: "Start broad in README, link to specific details in docs/"
+    use_case: "Avoid overwhelming users with too much information up front"
+    example: |
+      # README.md: High-level overview with links
+      # docs/development.md: Detailed setup steps
+      # docs/architecture.md: Deep technical details
+
+# Integration:
+
+integration:
+  with_documentation_commands:
+    description: "All documentation generation commands should follow this structure"
+    commands: ["/api-docs", "/arch-docs", "/deploy-docs", "/dev-docs", "/onboard-docs", "/pipeline-docs"]
+    behavior: "Commands check for docs/ directory and create files in standard locations"
+  
+  with_project_structure:
+    description: "Documentation structure complements code organization"
+    note: "Keep docs/ at same level as src/, tests/, and other project directories"
+  
+  with_version_control:
+    description: "Documentation files are version controlled alongside code"
+    best_practice: "Include docs in same commits as related code changes"
+
+# Maintenance:
+
+maintenance:
+  review_frequency: "Review structure when adding new documentation types or major project changes"
+  update_triggers:
+    - "New documentation types needed (add to structure)"
+    - "Project grows and needs more specialized docs"
+    - "Team feedback on documentation organization"
+    - "Changes to OpenCode documentation standards"
+  version_control:
+    - "Version this template alongside OpenCode configuration"
+    - "Update all documentation commands when structure changes"
+    - "Communicate structure changes to all team members"
+
+# Best Practices Summary:
+
+best_practices:
+  - "Keep README.md at root as single entry point for all users"
+  - "Place all detailed documentation in docs/ directory"
+  - "Use consistent naming (lowercase, .md extension)"
+  - "Link from README to detailed docs, not the reverse"
+  - "Start minimal (README + development.md) and grow as needed"
+  - "Update documentation in parallel with code changes"
+  - "Use relative links for cross-references within documentation"
+  - "Include diagrams and examples where they add clarity"
+
+# References:
+
+references:
+  - name: "Template Standard Documentation"
+    path: "docs/template-standard.md"
+    purpose: "Complete template standardization guidelines"
+  
+  - name: "Documentation Commands"
+    path: "command/*-docs.md"
+    purpose: "Commands that generate documentation following this structure"
+  
+  - name: "Development Documentation Command"
+    path: "command/dev-docs.md"
+    purpose: "Example of command using standard structure"
