@@ -6,7 +6,7 @@
     "properties": {
         "name": {
             "type": "string",
-            "pattern": "^[a-z0-9\-]+$",
+            "pattern": "^[a-z0-9-]+$",
             "description": "Slugified agent name (lowercase, dash-separated)"
         },
         "description": { "type": "string", "minLength": 5 },

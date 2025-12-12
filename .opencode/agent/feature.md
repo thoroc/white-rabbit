@@ -51,7 +51,7 @@ When invoked, expect the primary input to be the raw prompt text injected by the
     - ` .opencode/knowledge-base/opencode-plugin.md`
     - ` .opencode/knowledge-base/knowledge-base-conventions.md`
 - Templates:
-    - `.opencode/template/feature-tmpl.yml`
-    - `.opencode/template/research-tmpl.yml`
+    - `.opencode/template/core/feature-tmpl.yml`
+    - `.opencode/template/core/research-tmpl.yml`
 - Agent operational guidance (concise): prefer low `temperature` for deterministic specs, write files under `.context/features/`, and follow filename conventions in `knowledge-base-conventions.md`.
 - Citation & provenance: when referencing external materials, include URLs and access dates; prefer primary and high-quality secondary sources.

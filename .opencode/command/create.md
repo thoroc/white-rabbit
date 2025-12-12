@@ -11,14 +11,14 @@ Usage
 
 This command will:
 
-1. Validate the provided instructions against the appropriate JSON Schema (`.opencode/schema/opencode-agent.schema.json` or `.opencode/schema/opencode-command.schema.json`).
+1. Validate the provided instructions against the appropriate JSON Schema (`.opencode/schema/opencode/agent.schema.json` or `.opencode/schema/opencode/command.schema.json`).
 2. Produce a ready-to-save document (agent markdown or command markdown) using the relevant template.
 3. Output a single JSON object with `path` and `content` so tooling can write the file.
 
 Schemas (injected):
 
-- Agent schema: `@.opencode/schema/opencode-agent.schema.json`
-- Command schema: `@.opencode/schema/opencode-command.schema.json`
+- Agent schema: `@.opencode/schema/opencode/agent.schema.json`
+- Command schema: `@.opencode/schema/opencode/command.schema.json`
 
 Template (how the command runner should behave)
 

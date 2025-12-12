@@ -2,7 +2,7 @@
 description: Invoke centralized feature template to generate a feature specification
 agent: feature
 subtask: true
-template_path: .opencode/template/feature-tmpl.yml
+template_path: .opencode/template/core/feature-tmpl.yml
 schema_path: .opencode/schema/feature.schema.json
 
 # Validation
@@ -10,7 +10,7 @@ schema_path: .opencode/schema/feature.schema.json
 # bun .opencode/tool/validate-doc.ts --schema .opencode/schema/feature.schema.json --file .context/features/<generated-file>.md
 ---
 
-This command delegates feature-spec generation to the centralized YAML template at `.opencode/template/feature-tmpl.yml`.
+This command delegates feature-spec generation to the centralized YAML template at `.opencode/template/core/feature-tmpl.yml`.
 
 Behavior:
 
@@ -27,7 +27,7 @@ User prompt: $ARGUMENTS
     - `.opencode/knowledge-base/opencode/template.md`
 
 - Templates:
-    - `.opencode/template/feature-tmpl.yml` — canonical feature output schema and filename rules
+    - `.opencode/template/core/feature-tmpl.yml` — canonical feature output schema and filename rules
     - `.opencode/template/research-tmpl.yml` — researcher output schema (for background research used in features)
 - Agent guidance:
     - `.opencode/agent/feature.md` — feature subagent behavior and filesystem rules

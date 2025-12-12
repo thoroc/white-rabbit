@@ -1,0 +1,35 @@
+template_version: 1
+description: 'Scaffold for an OpenCode command file'
+output_dir: '.opencode/command'
+filename_pattern: '{{slug}}.md'
+required_fields:
+    - description
+    - template
+
+frontmatter:
+    description: 'Short description shown in the TUI'
+    agent: 'build'
+    model: 'anthropic/claude-sonnet-4-20250514'
+    template: |
+        Purpose:
+        Describe the command's purpose and desired behavior.
+
+        Usage:
+        - All args: $ARGUMENTS
+        - First positional: $1
+
+        Prompt:
+        Use placeholders where needed. You can inject shell output with `!` (example: !`git rev-parse --abbrev-ref HEAD`) and inject file contents with `@` (example: @package.json).
+    subtask: false
+    tags: []
+
+body:
+    examples: |
+        - `/mycommand --fix`
+    notes: |
+        - `$ARGUMENTS` captures all arguments.
+        - Use `!`shell`` to include command output.
+        - Use `@path/to/file` to include file contents.
+
+rendering_notes: |
+    The `template` frontmatter will be used as the LLM prompt template. When rendering, write frontmatter between `---` markers and append the body text below.
