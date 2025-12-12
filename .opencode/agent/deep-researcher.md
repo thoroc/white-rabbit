@@ -48,19 +48,19 @@ This agent has access to comprehensive research and analysis resources:
 - `/research`: Comprehensive deep research workflow with exhaustive source gathering and verification
 
 ### Tasks
-- `.opencode/task/technology-detection.md`: Technology stack analysis with historical context
-- `.opencode/task/infrastructure-analysis.md`: Infrastructure and architecture pattern detection
-- `.opencode/task/deployment-strategy.md`: Deployment strategies and operational patterns
-- `.opencode/task/ai-tool-approval-research.md`: Automated research and evaluation workflows
+- `.opencode/task/core/technology-detection.md`: Technology stack analysis with historical context
+- `.opencode/task/core/infrastructure-analysis.md`: Infrastructure and architecture pattern detection
+- `.opencode/task/core/deployment-strategy.md`: Deployment strategies and operational patterns
+- `.opencode/task/core/ai-tool-approval-research.md`: Automated research and evaluation workflows
 
 ### Knowledge Base
-- `.opencode/knowledge-base/mermaid-diagrams.md`: Diagram templates for visualizing research findings
-- `.opencode/knowledge-base/loading-strategy.md`: Efficient resource loading for research workflows
-- `.opencode/knowledge-base/ai-tool-approval-patterns.md`: Research patterns and evaluation frameworks
+- `.opencode/knowledge-base/dev/mermaid-diagrams.md`: Diagram templates for visualizing research findings
+- `.opencode/knowledge-base/core/loading-strategy.md`: Efficient resource loading for research workflows
+- `.opencode/knowledge-base/dev/ai-tool-approval-patterns.md`: Research patterns and evaluation frameworks
 
 ### Templates
-- `.opencode/template/common-shell-commands-tmpl.yaml`: Analysis commands for research
-- `.opencode/template/standard-doc-structure-tmpl.yaml`: Documentation structure for reports
+- `.opencode/template/dev/common-shell-commands-tmpl.yaml`: Analysis commands for research
+- `.opencode/template/dev/standard-doc-structure-tmpl.yaml`: Documentation structure for reports
 
 ## Core Responsibilities
 

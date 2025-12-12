@@ -178,7 +178,7 @@ $ARGUMENTS
    - Links between related sections
 
 7. **Diagram Requirements**: When including diagrams in documentation:
-   - **MUST** use Mermaid syntax for all diagrams (see `.opencode/knowledge-base/mermaid-diagrams.md` for examples)
+   - **MUST** use Mermaid syntax for all diagrams (see `.opencode/knowledge-base/dev/mermaid-diagrams.md` for examples)
    - Use proper Mermaid code blocks: ```mermaid
    - Include appropriate diagram types: flowcharts, sequence diagrams, architecture diagrams
    - Ensure diagrams are properly formatted and render correctly

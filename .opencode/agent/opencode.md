@@ -818,7 +818,7 @@ When creating resources:
 **Approach**:
 
 1. Use `read` to read `.opencode/template/core/task-tmpl.yaml`
-2. Use `read` to review `.opencode/task/technology-detection.md` for structure
+2. Use `read` to review `.opencode/task/core/technology-detection.md` for structure
 3. Create task with:
    - Clear security audit objectives
    - 5-7 sequential steps (dependency scan, code review, config audit, etc.)

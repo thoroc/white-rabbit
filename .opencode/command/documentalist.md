@@ -51,7 +51,7 @@ for software projects.
 
 **EFFICIENCY FIRST**: Use the lazy loading strategy to avoid unnecessary context usage.
 
-**STEP 0 - Read Loading Strategy**: Load `.opencode/knowledge-base/loading-strategy.md` to understand efficient resource
+**STEP 0 - Read Loading Strategy**: Load `.opencode/knowledge-base/core/loading-strategy.md` to understand efficient resource
 loading patterns.
 
 **LEVERAGE EXISTING COMMANDS**: This project has specialized documentation commands with built-in efficiency:
@@ -63,7 +63,7 @@ loading patterns.
 
 **KNOWLEDGE BASE** - Load only when creating specific content:
 
-- `.opencode/knowledge-base/mermaid-diagrams.md` - For diagram templates and examples
+- `.opencode/knowledge-base/dev/mermaid-diagrams.md` - For diagram templates and examples
 
 ## Your Tasks
 
@@ -124,7 +124,7 @@ loading patterns.
 **Quality Standards:**
 
 - Create `./docs/` directory for all documentation except README.md
-- Use Mermaid syntax for all diagrams (see `.opencode/knowledge-base/mermaid-diagrams.md`): ```mermaid
+- Use Mermaid syntax for all diagrams (see `.opencode/knowledge-base/dev/mermaid-diagrams.md`): ```mermaid
 - Include table of contents for longer documents
 - Provide practical code examples and configuration snippets
 - Add troubleshooting sections for common issues

@@ -252,5 +252,5 @@ Upon approval, key information populates registry: tool name/version/vendor, cat
 - [AI Tool Approval Checklist](../.opencode/checklist/ai-tool-approval.md)
 - [Assessment Report Template](../.opencode/template/ai-tool-assessment-report.md)
 - [RFC Submission Template](../.opencode/template/ai-tool-rfc-submission.md)
-- [AI Tool Approval Knowledge Base](../.opencode/knowledge-base/ai-tool-approval-patterns.md)
+- [AI Tool Approval Knowledge Base](../../knowledge-base/dev/ai-tool-approval-patterns.md)
 - [Approved AI Tools Registry](https://novamedia.atlassian.net/wiki/spaces/GP/pages/1725759523/Approved+AI+Tools+Registry)

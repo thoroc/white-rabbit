@@ -35,7 +35,7 @@ Run these specific analysis commands from `.opencode/task/project-context.md`:
 - Infrastructure as Code Detection
 - Deployment Configuration
 
-For comprehensive deployment analysis, load `.opencode/task/deployment-strategy.md`.
+For comprehensive deployment analysis, load `.opencode/task/core/deployment-strategy.md`.
 
 ## Deployment Documentation Requirements
 
