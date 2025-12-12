@@ -236,7 +236,7 @@ Commands should reference this task for all technology-related detection:
 ```markdown
 ## Technology Analysis
 
-Uses `.opencode/task/core/technology-detection.md` for comprehensive technology stack analysis:
+Uses `.opencode/task/technology-detection.md` for comprehensive technology stack analysis:
 
 !`[appropriate detection command based on documentation needs]`
 ```

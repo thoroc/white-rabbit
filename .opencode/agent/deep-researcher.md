@@ -48,13 +48,13 @@ This agent has access to comprehensive research and analysis resources:
 - `/research`: Comprehensive deep research workflow with exhaustive source gathering and verification
 
 ### Tasks
-- `.opencode/task/core/technology-detection.md`: Technology stack analysis with historical context
+- `.opencode/task/dev/technology-detection.md`: Technology stack analysis with historical context
 - `.opencode/task/core/infrastructure-analysis.md`: Infrastructure and architecture pattern detection
-- `.opencode/task/core/deployment-strategy.md`: Deployment strategies and operational patterns
+- `.opencode/task/dev/deployment-strategy.md`: Deployment strategies and operational patterns
 - `.opencode/task/core/ai-tool-approval-research.md`: Automated research and evaluation workflows
 
 ### Knowledge Base
-- `.opencode/knowledge-base/dev/mermaid-diagrams.md`: Diagram templates for visualizing research findings
+- `.opencode/knowledge-base/docs/mermaid-diagrams.md`: Diagram templates for visualizing research findings
 - `.opencode/knowledge-base/core/loading-strategy.md`: Efficient resource loading for research workflows
 - `.opencode/knowledge-base/dev/ai-tool-approval-patterns.md`: Research patterns and evaluation frameworks
 

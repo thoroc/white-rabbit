@@ -138,7 +138,7 @@ project-root/
 
 ### Mermaid Diagram Reference
 
-- See `.opencode/knowledge-base/dev/mermaid-diagrams.md` for diagram examples and best practices
+- See `.opencode/knowledge-base/docs/mermaid-diagrams.md` for diagram examples and best practices
 - Includes templates for all common diagram types
 - Referenced automatically by all documentation commands
 
@@ -159,7 +159,7 @@ Commands use comprehensive checklists for quality assurance:
 3. README.md stays in project root, everything else goes to ./docs
 4. Commands use shell integration to analyze current project state
 5. Output includes proper markdown formatting and structure
-6. **All diagrams use Mermaid syntax** - see `.opencode/knowledge-base/dev/mermaid-diagrams.md` for examples
+6. **All diagrams use Mermaid syntax** - see `.opencode/knowledge-base/docs/mermaid-diagrams.md` for examples
 7. Use `/docs-help` anytime to see this overview
 
 Run any command with `/command-name` in the OpenCode TUI.

@@ -33,7 +33,7 @@ Run these specific analysis commands from `.opencode/task/project-context.md`:
 - Testing Framework Detection
 - Development Configuration Check
 
-For comprehensive development environment analysis, load `.opencode/task/core/technology-detection.md`.
+For comprehensive development environment analysis, load `.opencode/task/dev/technology-detection.md`.
 
 ## Development Documentation Requirements
 

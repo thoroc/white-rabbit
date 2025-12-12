@@ -59,19 +59,19 @@ structure:
 
 task_references:
   technology_detection:
-    path: ".opencode/task/dev/technology-detection.md"
+    path: ".opencode/task/technology-detection.md"
     lines: 226
     purpose: "Programming languages, frameworks, libraries, project type detection"
     when_to_load: "Need comprehensive technology stack analysis beyond quick shell commands"
   
   infrastructure_analysis:
-    path: ".opencode/task/core/infrastructure-analysis.md"
+    path: ".opencode/task/infrastructure-analysis.md"
     lines: 281
     purpose: "Databases, messaging systems, caching, API patterns, architecture"
     when_to_load: "Documenting infrastructure components and integration patterns"
   
   deployment_strategy:
-    path: ".opencode/task/dev/deployment-strategy.md"
+    path: ".opencode/task/deployment-strategy.md"
     lines: 398
     purpose: "CI/CD pipelines, containers, cloud platforms, IaC, deployment automation"
     when_to_load: "Comprehensive deployment and CI/CD pipeline documentation needed"
@@ -85,7 +85,7 @@ task_references:
 
 knowledge_base_references:
   mermaid_diagrams:
-    path: ".opencode/knowledge-base/docs/mermaid-diagrams.md"
+    path: ".opencode/knowledge-base/mermaid-diagrams.md"
     purpose: "Diagram templates and Mermaid syntax examples"
     when_to_load: "Creating architecture diagrams or need syntax reference"
   
@@ -227,7 +227,7 @@ example_minimal_reference: |
   ## Project Analysis
   
   **TASK REFERENCES**:
-  - Technology Detection (`.opencode/task/dev/technology-detection.md`) - Programming languages and frameworks
+  - Technology Detection (`.opencode/task/technology-detection.md`) - Programming languages and frameworks
   
   ### Quick Context
   
@@ -242,12 +242,12 @@ example_complete_reference: |
   **EFFICIENCY FIRST**: Use lightweight shell commands for initial assessment.
   
   **TASK REFERENCES** - Load as needed:
-  - Technology Detection (`.opencode/task/dev/technology-detection.md`) - Languages, frameworks, project type
-  - Infrastructure Analysis (`.opencode/task/core/infrastructure-analysis.md`) - Databases, APIs, messaging
-  - Deployment Strategy (`.opencode/task/dev/deployment-strategy.md`) - CI/CD, containers, cloud
+  - Technology Detection (`.opencode/task/technology-detection.md`) - Languages, frameworks, project type
+  - Infrastructure Analysis (`.opencode/task/infrastructure-analysis.md`) - Databases, APIs, messaging
+  - Deployment Strategy (`.opencode/task/deployment-strategy.md`) - CI/CD, containers, cloud
   
   **KNOWLEDGE BASES**:
-  - Mermaid Diagrams (`.opencode/knowledge-base/docs/mermaid-diagrams.md`) - Diagram templates
+  - Mermaid Diagrams (`.opencode/knowledge-base/mermaid-diagrams.md`) - Diagram templates
   - Pipeline Best Practices (`.opencode/knowledge-base/pipeline-best-practices.md`) - CI/CD guidance
   
   **CHECKLISTS**:

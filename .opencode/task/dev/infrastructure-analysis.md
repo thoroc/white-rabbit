@@ -291,7 +291,7 @@ Commands should reference this task for infrastructure-specific analysis:
 ```markdown
 ## Infrastructure Analysis
 
-Uses `.opencode/task/core/infrastructure-analysis.md` for comprehensive infrastructure detection:
+Uses `.opencode/task/infrastructure-analysis.md` for comprehensive infrastructure detection:
 
 !`[appropriate infrastructure analysis command based on documentation needs]`
 ```

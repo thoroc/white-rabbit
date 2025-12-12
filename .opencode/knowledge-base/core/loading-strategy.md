@@ -30,15 +30,15 @@ Instead of inline loading, we now use **references with conditional loading inst
 
 **When to Load**: Only when you need comprehensive detection/analysis capabilities beyond the lightweight project context provided.
 
-- **`.opencode/task/core/technology-detection.md`** (226 lines)
+- **`.opencode/task/technology-detection.md`** (226 lines)
   - Load when: Need to identify obscure frameworks, language-specific patterns, or complex project structures
   - Contains: 20+ programming languages, 50+ frameworks, project type detection patterns
 
-- **`.opencode/task/core/infrastructure-analysis.md`** (281 lines)
+- **`.opencode/task/infrastructure-analysis.md`** (281 lines)
   - Load when: Need to analyze complex data architectures, messaging patterns, or service integrations
   - Contains: Database patterns, API architectures, messaging systems, caching strategies
 
-- **`.opencode/task/core/deployment-strategy.md`** (398 lines)
+- **`.opencode/task/deployment-strategy.md`** (398 lines)
   - Load when: Need to analyze complex deployment configurations or CI/CD setups
   - Contains: Container orchestration, cloud platforms, IaC tools, CI/CD patterns
 
@@ -59,7 +59,7 @@ Instead of inline loading, we now use **references with conditional loading inst
 
 **When to Load**: Only when you need specific examples or templates.
 
-- **`.opencode/knowledge-base/dev/mermaid-diagrams.md`** (281 lines)
+- **`.opencode/knowledge-base/mermaid-diagrams.md`** (281 lines)
   - Load when: Creating visual documentation, need Mermaid diagram examples
   - Contains: 10+ diagram types, best practices, styling examples
 

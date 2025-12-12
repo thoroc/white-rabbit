@@ -1,0 +1,51 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugin": ["@tarquinen/opencode-smart-title", "@tarquinen/opencode-dcp"],
+    "experimental": {
+        "primary_tools": ["prune"]
+    },
+    "instructions": [
+        "The pure `opencode` related specs (domain=opencode) are to be under the path \"*/opencode/*\". This include agent, command, plugin and tool.",
+        "The `core` related specs (domain=core) are to be under the path \"*/core/*\". This includes checklist, knowledge-base, schema, template, task",
+        "The `docs` related specs (domain=docs) are to be under the path \"*/docs/*\". This includes tutorial, guide, faq, how-to and overview.",
+        "Any file that is under one of the path above should not duplicate the domain name in its filename."
+    ],
+    "tools": {
+        "commit": true
+    },
+    "enabled_providers": ["amazon-bedrock", "github-copilot"],
+    // "provider": {
+    //     "amazon-bedrock": {
+    //         "models": {
+    //             "eu.anthropic.claude-sonnet-4-5-20250929-v1:0": {
+    //                 "options": {
+    //                     "reasoningConfig": {
+    //                         "type": "enabled",
+    //                         "budgetTokens": 1024
+    //                     },
+    //                     "outputTokenLimit": 4096
+    //                 },
+    //             },
+    //             "eu.anthropic.claude-haiku-4-5-20251001-v1:0": {
+    //                 "options": {
+    //                     "reasoningConfig": {
+    //                         "type": "enabled",
+    //                         "budgetTokens": 1024
+    //                     },
+    //                     "outputTokenLimit": 4096
+    //                 }
+    //             }
+    //         }
+    //     }
+    // },
+    "lsp": {
+        "markdown-oxide": {
+            "command": ["markdown-oxide"],
+            "extensions": [".md", ".markdown"]
+        },
+        "yaml": {
+            "command": ["yaml-language-server"],
+            "extensions": [".yaml", ".yml"]
+        }
+    }
+}

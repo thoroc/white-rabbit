@@ -34,7 +34,7 @@ Run these specific analysis commands from `.opencode/task/project-context.md`:
 - Container and Orchestration Detection
 - Infrastructure as Code Detection
 
-For comprehensive pipeline analysis, load `.opencode/task/core/deployment-strategy.md`.
+For comprehensive pipeline analysis, load `.opencode/task/dev/deployment-strategy.md`.
 
 **Platform-Specific Knowledge Bases** (load when documenting specific platforms):
 
