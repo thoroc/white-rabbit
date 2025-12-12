@@ -1,0 +1,145 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/dev/common-shell-commands.schema.json",
+    "title": "Common Shell Commands Template Schema",
+    "description": "Validates the structure of common shell commands template YAML files for project analysis",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Reference, Development, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "title": {
+            "type": "string",
+            "description": "Human-readable template name"
+        },
+        "reference": {
+            "type": "string",
+            "description": "Reference to related documentation"
+        },
+        "structure": {
+            "type": "object",
+            "description": "Structure definition for command templates",
+            "additionalProperties": true
+        },
+        "commands": {
+            "type": "object",
+            "description": "Collection of shell commands",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "description": { "type": "string" },
+                    "purpose": { "type": "string" },
+                    "command": { "type": "string" },
+                    "output_format": { "type": "string" }
+                }
+            }
+        },
+        "guidelines": {
+            "type": "object",
+            "description": "Guidelines for using shell commands",
+            "properties": {
+                "when_to_use": { "type": "array", "items": { "type": "string" } },
+                "when_to_load_tasks": { "type": "array", "items": { "type": "string" } },
+                "best_practices": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+        },
+        "command_patterns": {
+            "type": "object",
+            "description": "Common command patterns",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "description": { "type": "string" },
+                    "template": { "type": "string" },
+                    "example": { "type": "string" }
+                }
+            }
+        },
+        "example_quick_stack_check": {
+            "type": "string",
+            "description": "Example for quick stack check"
+        },
+        "example_cicd_check": {
+            "type": "string",
+            "description": "Example for CI/CD check"
+        },
+        "example_combined_analysis": {
+            "type": "string",
+            "description": "Example for combined analysis"
+        },
+        "customization": {
+            "type": "object",
+            "description": "Customization guidelines",
+            "additionalProperties": true
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other components",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "array",
+            "description": "Best practices summary",
+            "items": { "type": "string" }
+        },
+        "troubleshooting": {
+            "type": "object",
+            "description": "Common issues and solutions",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "problem": { "type": "string" },
+                    "solution": { "type": "string" }
+                }
+            }
+        },
+        "references": {
+            "type": "array",
+            "description": "Related references",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "url": { "type": "string", "format": "uri" },
+                    "purpose": { "type": "string" }
+                }
+            }
+        }
+    },
+    "additionalProperties": true
+}

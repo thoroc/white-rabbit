@@ -1,0 +1,153 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/dev/standard-doc-structure.schema.json",
+    "title": "Standard Documentation Structure Template Schema",
+    "description": "Validates the structure of standard documentation structure template YAML files",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Documentation, Reference, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "title": {
+            "type": "string",
+            "description": "Human-readable template name"
+        },
+        "reference": {
+            "type": "string",
+            "description": "Reference to related documentation"
+        },
+        "structure": {
+            "type": "object",
+            "description": "Documentation structure definition",
+            "properties": {
+                "project_root": {
+                    "type": "object",
+                    "properties": {
+                        "description": { "type": "string" },
+                        "contents": { "type": "object" }
+                    }
+                },
+                "docs_directory": {
+                    "type": "object",
+                    "properties": {
+                        "description": { "type": "string" },
+                        "path": { "type": "string" },
+                        "required": { "type": "boolean" },
+                        "contents": { "type": "object" }
+                    }
+                }
+            },
+            "additionalProperties": true
+        },
+        "naming_conventions": {
+            "type": "object",
+            "description": "File naming conventions",
+            "properties": {
+                "general": { "type": "array", "items": { "type": "string" } },
+                "special_files": { "type": "object" }
+            },
+            "additionalProperties": true
+        },
+        "file_purposes": {
+            "type": "object",
+            "description": "Purpose of each file type",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "purpose": { "type": "string" },
+                    "audience": { "type": "string" },
+                    "content_focus": { "type": "string" },
+                    "length": { "type": "string" }
+                }
+            }
+        },
+        "guidelines": {
+            "type": "object",
+            "description": "Guidelines for documentation structure",
+            "properties": {
+                "when_to_use": { "type": "array", "items": { "type": "string" } },
+                "when_not_to_use": { "type": "array", "items": { "type": "string" } },
+                "best_practices": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+        },
+        "content_principles": {
+            "type": "object",
+            "description": "Principles for content creation",
+            "additionalProperties": true
+        },
+        "example_minimal_structure": {
+            "type": "string",
+            "description": "Example of minimal documentation structure"
+        },
+        "example_complete_structure": {
+            "type": "string",
+            "description": "Example of complete documentation structure"
+        },
+        "example_readme_structure": {
+            "type": "string",
+            "description": "Example README.md structure"
+        },
+        "common_patterns": {
+            "type": "object",
+            "description": "Common documentation patterns",
+            "additionalProperties": true
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other components",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "array",
+            "description": "Best practices summary",
+            "items": { "type": "string" }
+        },
+        "references": {
+            "type": "array",
+            "description": "Related references",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "purpose": { "type": "string" }
+                }
+            }
+        }
+    },
+    "additionalProperties": true
+}

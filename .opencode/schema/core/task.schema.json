@@ -1,0 +1,133 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/core/task.schema.json",
+    "title": "OpenCode Task Template Schema",
+    "description": "Validates the structure of OpenCode task template YAML files",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Development, Documentation, Operations, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Template metadata structure",
+            "additionalProperties": true
+        },
+        "frontmatter_structure": {
+            "type": "object",
+            "description": "Defines frontmatter structure for generated task markdown files",
+            "properties": {
+                "required_fields": { "type": "object" },
+                "optional_fields": { "type": "object" },
+                "example": { "type": "string" },
+                "field_descriptions": { "type": "object" }
+            },
+            "additionalProperties": true
+        },
+        "document_sections": {
+            "type": "array",
+            "description": "Main sections of task document",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "section": { "type": "string" },
+                    "format": { "type": "string" },
+                    "content": { "type": "string" },
+                    "pattern": { "type": "string" },
+                    "subsections": { "type": "array", "items": { "type": "string" } },
+                    "note": { "type": "string" },
+                    "required": { "type": "boolean" }
+                },
+                "additionalProperties": true
+            }
+        },
+        "task_type_patterns": {
+            "type": "object",
+            "description": "Different patterns for task types",
+            "additionalProperties": true
+        },
+        "formatting": {
+            "type": "object",
+            "description": "Formatting guidelines",
+            "additionalProperties": true
+        },
+        "content_principles": {
+            "type": "object",
+            "description": "Principles for content creation",
+            "additionalProperties": true
+        },
+        "example_skeleton": {
+            "type": "string",
+            "description": "Example task structure"
+        },
+        "temperature_values": {
+            "type": "object",
+            "description": "Temperature guidance for different task types",
+            "additionalProperties": true
+        },
+        "recommended_size": {
+            "type": "object",
+            "description": "Size guidelines for tasks",
+            "additionalProperties": true
+        },
+        "task_types": {
+            "type": "object",
+            "description": "Task types by complexity",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other resources",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "object",
+            "description": "Best practices for task creation",
+            "additionalProperties": true
+        },
+        "common_patterns": {
+            "type": "object",
+            "description": "Common patterns for tasks",
+            "additionalProperties": true
+        },
+        "author_notes": {
+            "type": "object",
+            "description": "Notes for template authors",
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

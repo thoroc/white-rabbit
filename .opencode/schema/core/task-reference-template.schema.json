@@ -1,0 +1,156 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/core/task-reference-template.schema.json",
+    "title": "OpenCode Task Reference Template Schema",
+    "description": "Validates the structure of task reference template YAML files used for referencing tasks in documentation commands",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Reference, Documentation, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "title": {
+            "type": "string",
+            "description": "Human-readable template name"
+        },
+        "reference": {
+            "type": "string",
+            "description": "Reference to related documentation"
+        },
+        "structure": {
+            "type": "object",
+            "description": "Structure definition for task references",
+            "properties": {
+                "task_references": { "type": "object" },
+                "knowledge_base_references": { "type": "object" },
+                "checklist_references": { "type": "object" },
+                "shell_command_references": { "type": "object" }
+            },
+            "additionalProperties": true
+        },
+        "task_references": {
+            "type": "object",
+            "description": "Available task references",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "path": { "type": "string" },
+                    "lines": { "type": "integer" },
+                    "purpose": { "type": "string" },
+                    "when_to_load": { "type": "string" }
+                }
+            }
+        },
+        "knowledge_base_references": {
+            "type": "object",
+            "description": "Knowledge base references",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "path": { "type": "string" },
+                    "purpose": { "type": "string" },
+                    "when_to_load": { "type": "string" }
+                }
+            }
+        },
+        "checklist_references": {
+            "type": "object",
+            "description": "Checklist references",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "path": { "type": "string" },
+                    "requirements": { "type": "string" },
+                    "when_to_use": { "type": "string" }
+                }
+            }
+        },
+        "guidelines": {
+            "type": "object",
+            "description": "Guidelines for loading resources",
+            "additionalProperties": true
+        },
+        "command_specific_customization": {
+            "type": "object",
+            "description": "Command-specific reference customization",
+            "additionalProperties": true
+        },
+        "lazy_loading_strategy": {
+            "type": "object",
+            "description": "Lazy loading strategy description",
+            "properties": {
+                "principle": { "type": "string" },
+                "pattern": { "type": "string" },
+                "benefits": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+        },
+        "standard_section_format": {
+            "type": "string",
+            "description": "Standard format for reference sections"
+        },
+        "example_minimal_reference": {
+            "type": "string",
+            "description": "Minimal reference example"
+        },
+        "example_complete_reference": {
+            "type": "string",
+            "description": "Complete reference example"
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other components",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "array",
+            "description": "Best practices for task references",
+            "items": { "type": "string" }
+        },
+        "references": {
+            "type": "array",
+            "description": "Related references",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "purpose": { "type": "string" }
+                }
+            }
+        }
+    },
+    "additionalProperties": true
+}

@@ -1,0 +1,161 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/core/template.schema.json",
+    "title": "OpenCode Template Template Schema",
+    "description": "Validates the structure of OpenCode meta-template YAML files (templates for creating templates)",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Development, Documentation, Operations, Configuration, Meta, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "title": {
+            "type": "string",
+            "description": "Human-readable template name"
+        },
+        "reference": {
+            "type": "string",
+            "description": "Optional URL or path to related documentation"
+        },
+        "structure": {
+            "type": "object",
+            "description": "Core structure definition",
+            "additionalProperties": true
+        },
+        "options": {
+            "type": "object",
+            "description": "Configuration options",
+            "additionalProperties": true
+        },
+        "guidelines": {
+            "type": "object",
+            "description": "Guidelines for using this template",
+            "properties": {
+                "when_to_use": { "type": "array", "items": { "type": "string" } },
+                "when_not_to_use": { "type": "array", "items": { "type": "string" } },
+                "best_practices": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+        },
+        "content_principles": {
+            "type": "object",
+            "description": "Principles for content creation",
+            "additionalProperties": true
+        },
+        "formatting": {
+            "type": "object",
+            "description": "Formatting standards",
+            "additionalProperties": true
+        },
+        "example_basic": {
+            "type": "string",
+            "description": "Simple example with minimal required fields"
+        },
+        "example_complete": {
+            "type": "string",
+            "description": "Comprehensive example with all fields"
+        },
+        "example_specific_use_case": {
+            "type": "string",
+            "description": "Example for a specific scenario"
+        },
+        "common_patterns": {
+            "type": "object",
+            "description": "Common patterns or approaches",
+            "additionalProperties": true
+        },
+        "types": {
+            "type": "object",
+            "description": "Different types or variants",
+            "additionalProperties": true
+        },
+        "recommended_size": {
+            "type": "object",
+            "description": "Size guidelines for templates (250-300 lines)",
+            "properties": {
+                "target": { "type": "string" },
+                "minimum": { "type": "string" },
+                "maximum": { "type": "string" },
+                "tolerance": { "type": "string" },
+                "note": { "type": "string" }
+            },
+            "additionalProperties": true
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other components",
+            "additionalProperties": true
+        },
+        "usage_notes": {
+            "type": "array",
+            "description": "Important notes about using this template",
+            "items": { "type": "string" }
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "array",
+            "description": "Best practices summary",
+            "items": { "type": "string" }
+        },
+        "troubleshooting": {
+            "type": "object",
+            "description": "Common issues and solutions",
+            "additionalProperties": true
+        },
+        "anti_patterns": {
+            "type": "object",
+            "description": "Common mistakes and how to avoid them",
+            "additionalProperties": true
+        },
+        "related_resources": {
+            "type": "object",
+            "description": "Links to related templates or resources",
+            "additionalProperties": true
+        },
+        "references": {
+            "type": "array",
+            "description": "Related references",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "url": { "type": "string", "format": "uri" },
+                    "purpose": { "type": "string" }
+                }
+            }
+        }
+    },
+    "additionalProperties": true
+}

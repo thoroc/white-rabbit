@@ -1,0 +1,145 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/core/checklist.schema.json",
+    "title": "OpenCode Checklist Template Schema",
+    "description": "Validates the structure of OpenCode checklist template YAML files",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Development, Documentation, Operations, Quality Assurance, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Template metadata structure",
+            "additionalProperties": true
+        },
+        "introduction": {
+            "type": "object",
+            "description": "Introduction section structure",
+            "properties": {
+                "purpose": { "type": "string" },
+                "when_to_use": { "type": "string" },
+                "how_to_use": { "type": "string" }
+            },
+            "additionalProperties": true
+        },
+        "section_template": {
+            "type": "object",
+            "description": "Template for checklist sections",
+            "additionalProperties": true
+        },
+        "common_section_types": {
+            "type": "array",
+            "description": "Standard section types for checklists",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "description": { "type": "string" },
+                    "typical_items": { "type": "array", "items": { "type": "string" } },
+                    "format": { "type": "string" }
+                },
+                "additionalProperties": true
+            }
+        },
+        "formatting": {
+            "type": "object",
+            "description": "Formatting guidelines",
+            "additionalProperties": true
+        },
+        "content_principles": {
+            "type": "object",
+            "description": "Principles for content creation",
+            "additionalProperties": true
+        },
+        "footer_template": {
+            "type": "string",
+            "description": "Template for checklist footer"
+        },
+        "recommended_size": {
+            "type": "object",
+            "description": "Size guidelines for checklists",
+            "properties": {
+                "minimum_items": { "type": "integer" },
+                "typical_range": { "type": "string" },
+                "maximum_items": { "type": "integer" },
+                "sections": { "type": "string" },
+                "subsections": { "type": "string" },
+                "note": { "type": "string" }
+            },
+            "additionalProperties": true
+        },
+        "checklist_types": {
+            "type": "object",
+            "description": "Checklist types by size and complexity",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "example_skeleton": {
+            "type": "string",
+            "description": "Example checklist structure"
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other resources",
+            "additionalProperties": true
+        },
+        "common_patterns": {
+            "type": "object",
+            "description": "Common patterns for checklists",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "oneOf": [
+                { "type": "array", "items": { "type": "string" } },
+                { "type": "object" }
+            ],
+            "description": "Best practices for checklist creation"
+        },
+        "references": {
+            "type": "array",
+            "description": "Related references",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "path": { "type": "string" },
+                    "purpose": { "type": "string" }
+                }
+            }
+        }
+    },
+    "additionalProperties": true
+}

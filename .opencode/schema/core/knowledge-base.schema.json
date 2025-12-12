@@ -1,0 +1,106 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://opencode.local/.opencode/schema/core/knowledge-base.schema.json",
+    "title": "OpenCode Knowledge Base Template Schema",
+    "description": "Validates the structure of OpenCode knowledge base template YAML files",
+    "type": "object",
+    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "template",
+            "description": "Resource type identifier, always 'template' for template files"
+        },
+        "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Brief description of what this template is for"
+        },
+        "category": {
+            "type": "string",
+            "description": "Primary category (Documentation, Development, Operations, etc.)"
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "description": "Searchable keywords"
+        },
+        "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version number"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when template was last updated (YYYY-MM-DD)"
+        },
+        "template_title": {
+            "type": "string",
+            "description": "Title of the template itself"
+        },
+        "template_description": {
+            "type": "string",
+            "description": "Description of the template structure"
+        },
+        "template_version": {
+            "type": "string",
+            "description": "Version of the template"
+        },
+        "template_category": {
+            "type": "string",
+            "description": "Category of the template"
+        },
+        "markdown_structure": {
+            "type": "object",
+            "description": "Structure for markdown knowledge base files",
+            "additionalProperties": true
+        },
+        "content_principles": {
+            "type": "object",
+            "description": "Principles for content creation",
+            "additionalProperties": true
+        },
+        "formatting": {
+            "type": "object",
+            "description": "Formatting standards",
+            "additionalProperties": true
+        },
+        "example_skeleton": {
+            "type": "string",
+            "description": "Example knowledge base structure"
+        },
+        "recommended_size": {
+            "type": "object",
+            "description": "Size guidelines for knowledge bases",
+            "additionalProperties": true
+        },
+        "knowledge_base_types": {
+            "type": "object",
+            "description": "Types of knowledge bases (reference, guide, concept)",
+            "additionalProperties": true
+        },
+        "maintenance": {
+            "type": "object",
+            "description": "Maintenance guidelines",
+            "additionalProperties": true
+        },
+        "integration": {
+            "type": "object",
+            "description": "Integration with other resources",
+            "additionalProperties": true
+        },
+        "best_practices": {
+            "type": "object",
+            "description": "Best practices for knowledge base creation",
+            "additionalProperties": true
+        },
+        "content_guidelines": {
+            "type": "object",
+            "description": "Guidelines for content creation",
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}
