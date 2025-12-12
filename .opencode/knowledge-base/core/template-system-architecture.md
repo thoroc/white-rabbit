@@ -211,7 +211,7 @@ Templates are organized into five primary categories:
 **Templates:**
 
 - `common-shell-commands-tmpl.yaml` - Shell command reference
-- `task-reference-template-tmpl.yaml` - Task pattern reference
+- `task-reference-tmpl.yaml` - Task pattern reference
 - `task-listing-format-tmpl.yaml` - Task listing format
 
 **When to use:** Need quick lookup or format guidance

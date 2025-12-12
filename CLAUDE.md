@@ -16,3 +16,8 @@ Keep any new specification files at 300 lines (+/-10%). This is not a hard limit
 - References are important
 - examples are NOT important
 - cross reference to other specification files are important
+
+## Git convention
+
+- use conventional commit
+- DO NOT ADD co-authoring with AI Assistant

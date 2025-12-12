@@ -63,7 +63,7 @@ This agent has access to comprehensive templates, documentation, and validation 
 - `.opencode/template/core/checklist-tmpl.yaml`: Checklist structure guide (279 lines)
 - `.opencode/template/core/knowledge-base-tmpl.yaml`: Knowledge base template (338 lines)
 - `.opencode/template/core/template-tmpl.yaml`: Meta-template for creating templates
-- `.opencode/template/core/task-reference-template-tmpl.yaml`: Task reference patterns
+- `.opencode/template/core/task-reference-tmpl.yaml`: Task reference patterns
 
 ### Knowledge Bases
 
