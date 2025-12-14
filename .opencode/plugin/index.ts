@@ -9,6 +9,7 @@ import type { Plugin, PluginInput, Hooks } from '@opencode-ai/plugin';
 import { readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createTUILogger, type TUILogger } from './lib/tui-logger.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,26 +37,27 @@ const discoverPluginDirectories = (pluginDir: string): string[] => {
 const loadPlugin = async (
     pluginDir: string,
     dirName: string,
-    input: PluginInput
+    input: PluginInput,
+    logger: TUILogger
 ): Promise<Awaited<ReturnType<Plugin>> | null> => {
     const pluginPath = join(pluginDir, dirName, 'index.ts');
 
     try {
         statSync(pluginPath);
-        console.log(`[PluginLoader] Loading plugin: ${dirName}`);
+        await logger.log(`Loading plugin: ${dirName}`);
 
         const pluginModule = await import(`./${dirName}/index.ts`);
         const pluginFactory: Plugin = pluginModule.default || pluginModule;
 
         if (typeof pluginFactory !== 'function') {
-            console.warn(
-                `[PluginLoader] Plugin '${dirName}' does not export a valid plugin factory`
+            await logger.warn(
+                `Plugin '${dirName}' does not export a valid plugin factory`
             );
             return null;
         }
 
         const pluginInstance = await pluginFactory(input);
-        console.log(`[PluginLoader] Successfully loaded: ${dirName}`);
+        await logger.log(`Successfully loaded: ${dirName}`);
         return pluginInstance;
     } catch (error) {
         if (
@@ -63,14 +65,9 @@ const loadPlugin = async (
             'code' in error &&
             error.code === 'ENOENT'
         ) {
-            console.warn(
-                `[PluginLoader] Skipping '${dirName}' - no index.ts found`
-            );
+            await logger.warn(`Skipping '${dirName}' - no index.ts found`);
         } else {
-            console.error(
-                `[PluginLoader] Error loading plugin '${dirName}':`,
-                error
-            );
+            await logger.error(`Error loading plugin '${dirName}'`, error);
         }
         return null;
     }
@@ -115,13 +112,14 @@ const collectHooks = <K extends keyof Hooks>(
 const executeHooks = async <T extends unknown[]>(
     hooks: Array<(...args: T) => Promise<void>>,
     hookName: string,
+    logger: TUILogger,
     ...args: T
 ): Promise<void> => {
     for (const hook of hooks) {
         try {
             await hook(...args);
         } catch (error) {
-            console.error(`[PluginLoader] Error in ${hookName} hook:`, error);
+            await logger.error(`Error in ${hookName} hook`, error);
         }
     }
 };
@@ -130,25 +128,23 @@ const executeHooks = async <T extends unknown[]>(
  * Dynamically discover and load all plugins from subdirectories
  */
 export default (async (input: PluginInput) => {
+    const logger = createTUILogger(input.client, { prefix: 'PluginLoader' });
     const pluginDir = __dirname;
-    console.log('[PluginLoader] Discovering plugins in:', pluginDir);
+
+    await logger.log(`Discovering plugins in: ${pluginDir}`);
 
     const pluginDirNames = discoverPluginDirectories(pluginDir);
-    console.log(
-        `[PluginLoader] Found ${pluginDirNames.length} potential plugin(s)`
-    );
+    await logger.log(`Found ${pluginDirNames.length} potential plugin(s)`);
 
     const loadPromises = pluginDirNames.map((dirName) =>
-        loadPlugin(pluginDir, dirName, input)
+        loadPlugin(pluginDir, dirName, input, logger)
     );
     const loadResults = await Promise.all(loadPromises);
     const loadedPlugins = loadResults.filter(
         (plugin): plugin is Awaited<ReturnType<Plugin>> => plugin !== null
     );
 
-    console.log(
-        `[PluginLoader] Successfully loaded ${loadedPlugins.length} plugin(s)`
-    );
+    await logger.log(`Successfully loaded ${loadedPlugins.length} plugin(s)`);
 
     const aggregatedTools = aggregateTools(loadedPlugins);
     const chatMessageHooks = collectHooks(loadedPlugins, 'chat.message');
@@ -166,13 +162,20 @@ export default (async (input: PluginInput) => {
         tool: aggregatedTools,
 
         'chat.message': async (input, output) => {
-            await executeHooks(chatMessageHooks, 'chat.message', input, output);
+            await executeHooks(
+                chatMessageHooks,
+                'chat.message',
+                logger,
+                input,
+                output
+            );
         },
 
         'tool.execute.before': async (input, output) => {
             await executeHooks(
                 toolExecuteBeforeHooks,
                 'tool.execute.before',
+                logger,
                 input,
                 output
             );
@@ -182,13 +185,14 @@ export default (async (input: PluginInput) => {
             await executeHooks(
                 toolExecuteAfterHooks,
                 'tool.execute.after',
+                logger,
                 input,
                 output
             );
         },
 
         event: async (input) => {
-            await executeHooks(eventHooks, 'event', input);
+            await executeHooks(eventHooks, 'event', logger, input);
         },
     };
 }) satisfies Plugin;
