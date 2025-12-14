@@ -5,10 +5,10 @@ type: knowledge-base
 category: documentation
 version: 1.0.0
 tags:
-  - knowledge
-  - documentation
-  - mermaid
-  - diagrams
+    - knowledge
+    - documentation
+    - mermaid
+    - diagrams
 last_updated: 2025-11-19
 ---
 
@@ -233,30 +233,30 @@ The **Architecture diagram** is the recommended diagram type for cloud and infra
 
 1. **Groups** - Container for organizing related services
 
-   ```
-   group {id}({icon})[{title}]
-   group {id}({icon})[{title}] in {parent_id}  // nested group
-   ```
+    ```
+    group {id}({icon})[{title}]
+    group {id}({icon})[{title}] in {parent_id}  // nested group
+    ```
 
 2. **Services** - Individual components/resources
 
-   ```
-   service {id}({icon})[{title}]
-   service {id}({icon})[{title}] in {group_id}  // service in group
-   ```
+    ```
+    service {id}({icon})[{title}]
+    service {id}({icon})[{title}] in {group_id}  // service in group
+    ```
 
 3. **Edges** - Connections between services with directional arrows
 
-   ```
-   service1:R --> L:service2  // right of service1 to left of service2
-   service1:T -- B:service2   // top to bottom
-   ```
+    ```
+    service1:R --> L:service2  // right of service1 to left of service2
+    service1:T -- B:service2   // top to bottom
+    ```
 
 4. **Junctions** - Special nodes for multi-directional connections
-   ```
-   junction j1
-   junction j2 in {group_id}
-   ```
+    ```
+    junction j1
+    junction j2 in {group_id}
+    ```
 
 ### Available Icons
 

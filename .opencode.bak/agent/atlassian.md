@@ -3,28 +3,28 @@ description: Retrieves data from Atlassian tools such as JIRA and Confluence, in
 mode: all
 temperature: 0.1
 tools:
-  write: true
-  edit: true
-  bash: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  webfetch: true
-  mcp-atlassian: true
-  mcp-gitlab: true
+    write: true
+    edit: true
+    bash: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    webfetch: true
+    mcp-atlassian: true
+    mcp-gitlab: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - atlassian
-  - retrieves
-  - tools
+    - agent
+    - atlassian
+    - retrieves
+    - tools
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -141,10 +141,10 @@ When retrieving a JIRA issue or Confluence page, always extract and present any 
 
 - Comments: List every comment with the following metadata when available: author, timestamp, and the comment text (or a short snippet plus a link to the full comment). If comments include attachments or inline URLs, list those items alongside the comment.
 - Linked Tickets/Pages/URLs: Identify and list every URL present on the ticket or page. For each URL provide:
-  - URL
-  - Type (JIRA issue, Confluence page, or external link)
-  - If resolvable, a short title/summary (e.g., JIRA issue summary or Confluence page title)
-  - Relationship/context when available (for example: "blocks", "relates to", "mentioned in")
+    - URL
+    - Type (JIRA issue, Confluence page, or external link)
+    - If resolvable, a short title/summary (e.g., JIRA issue summary or Confluence page title)
+    - Relationship/context when available (for example: "blocks", "relates to", "mentioned in")
 - Presentation: Include a dedicated "Links & Comments" section in your response (see Output Format). Provide the list as both a readable bullet list and as structured JSON for programmatic consumption. If the list is long, summarize the first items and provide the full list as downloadable JSON or a collapsed block.
 
 ### Verification
@@ -179,76 +179,76 @@ Before starting, familiarize yourself with:
 
 1. **Determine ticket type**: Story, Bug, Task, or Epic
 2. **Gather basic information**:
-   - What needs to be done?
-   - Who is it for (user role)?
-   - Why is it needed (business value)?
-   - What project does it belong to?
+    - What needs to be done?
+    - Who is it for (user role)?
+    - Why is it needed (business value)?
+    - What project does it belong to?
 
 3. **For User Stories**, collect:
-   - User role
-   - Desired action/feature
-   - Expected benefit
+    - User role
+    - Desired action/feature
+    - Expected benefit
 4. **For Bugs**, collect:
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Environment details
-   - Impact assessment
+    - Steps to reproduce
+    - Expected vs actual behavior
+    - Environment details
+    - Impact assessment
 
 5. **For Tasks**, collect:
-   - Clear task description
-   - Purpose and deliverables
-   - Technical requirements
+    - Clear task description
+    - Purpose and deliverables
+    - Technical requirements
 
 6. **For Epics**, collect:
-   - High-level goal
-   - Business value
-   - Key features
-   - Success metrics
+    - High-level goal
+    - Business value
+    - Key features
+    - Success metrics
 
 ### Apply MoSCoW Prioritization
 
 Work with the user to categorize requirements:
 
 1. **Must Have**: Critical, non-negotiable requirements
-   - Ask: "What must this do for it to be considered complete?"
-   - Ask: "What would make this useless if missing?"
+    - Ask: "What must this do for it to be considered complete?"
+    - Ask: "What would make this useless if missing?"
 
 2. **Should Have**: Important but not critical
-   - Ask: "What would significantly improve this but isn't absolutely necessary?"
-   - Ask: "What could be moved to a future iteration if needed?"
+    - Ask: "What would significantly improve this but isn't absolutely necessary?"
+    - Ask: "What could be moved to a future iteration if needed?"
 
 3. **Could Have**: Nice-to-have enhancements
-   - Ask: "What would be nice to include but isn't essential?"
-   - Ask: "What would improve the experience but isn't required?"
+    - Ask: "What would be nice to include but isn't essential?"
+    - Ask: "What would improve the experience but isn't required?"
 
 4. **Won't Have**: Explicitly out of scope
-   - Ask: "What should we explicitly exclude to prevent scope creep?"
-   - Ask: "What might people expect but isn't part of this work?"
+    - Ask: "What should we explicitly exclude to prevent scope creep?"
+    - Ask: "What might people expect but isn't part of this work?"
 
 ### Write Acceptance Criteria
 
 Based on the Must Have conditions, create acceptance criteria:
 
 1. **Choose format**:
-   - Scenario-oriented (Given/When/Then) for user interactions
-   - Rule-oriented (Checklist) for system behavior and validations
+    - Scenario-oriented (Given/When/Then) for user interactions
+    - Rule-oriented (Checklist) for system behavior and validations
 
 2. **For Given/When/Then format**:
-   - Write scenarios for happy path, error cases, and edge cases
-   - Ensure each scenario has clear Given, When, Then statements
-   - Use And statements for additional context or outcomes
+    - Write scenarios for happy path, error cases, and edge cases
+    - Ensure each scenario has clear Given, When, Then statements
+    - Use And statements for additional context or outcomes
 
 3. **For Rule-oriented format**:
-   - Create bullet list of specific, testable rules
-   - Include UI requirements, validation rules, error handling
-   - Ensure each rule is independent and atomic
+    - Create bullet list of specific, testable rules
+    - Include UI requirements, validation rules, error handling
+    - Ensure each rule is independent and atomic
 
 4. **Quality check acceptance criteria**:
-   - Are they testable?
-   - Are they measurable?
-   - Do they focus on outcomes, not implementation?
-   - Are they written in plain English?
-   - Do they avoid technical jargon?
+    - Are they testable?
+    - Are they measurable?
+    - Do they focus on outcomes, not implementation?
+    - Are they written in plain English?
+    - Do they avoid technical jargon?
 
 ### Complete Technical Details
 
@@ -367,12 +367,12 @@ The agent must keep track of which linked documents (JIRA issues, Confluence pag
 
 - Persist a simple markdown list of visited links and metadata in a local file alongside this agent configuration. Suggested path: `./visited_links.md` (relative to the agent config directory). Use a simple append-only format so the log can be reviewed manually.
 - For every visited link, append a markdown list item with the following fields (either as a single line or a short fenced YAML/JSON block):
-  - url: the absolute URL
-  - type: jira|confluence|external
-  - title: resolved title or summary when available
-  - visited_at: ISO-8601 timestamp
-  - source: the ticket/page that referenced this link (URL or id)
-  - note: short reason why it was visited (e.g., "user requested", "followed from comment")
+    - url: the absolute URL
+    - type: jira|confluence|external
+    - title: resolved title or summary when available
+    - visited_at: ISO-8601 timestamp
+    - source: the ticket/page that referenced this link (URL or id)
+    - note: short reason why it was visited (e.g., "user requested", "followed from comment")
 
 - Presentation: Include a "Visited Documents" subsection in your response when relevant, listing newly visited items and pointing to the full `visited_links.md` for history. Provide both a short bullet list and JSON snippet for programmatic users.
 

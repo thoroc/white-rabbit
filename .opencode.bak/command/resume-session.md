@@ -3,11 +3,11 @@ description: Resume an OpenCode session from a markdown summary file
 type: command
 category: Development
 tags:
-  - command
-  - resume
-  - session
-  - opencode
-  - markdown
+    - command
+    - resume
+    - session
+    - opencode
+    - markdown
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -29,23 +29,23 @@ Most recent summary file: !`ls -t .sessions/session-summary-*.md 2>/dev/null | h
 
 1. **Read the summary file**: Load the content of the selected session summary file
 2. **Parse the context**: Extract key information from the summary including:
-   - Previous working directory and git status
-   - Tasks that were completed
-   - Current state of files and changes
-   - Tools and technologies used
-   - Key decisions and context
-   - Next steps and TODOs
+    - Previous working directory and git status
+    - Tasks that were completed
+    - Current state of files and changes
+    - Tools and technologies used
+    - Key decisions and context
+    - Next steps and TODOs
 
 3. **Set up context**:
-   - Verify current directory matches the summary (or note differences)
-   - Check current git status: !`git status --porcelain 2>/dev/null || echo "Not a git repository"`
-   - Compare current state with the summary to identify what has changed
+    - Verify current directory matches the summary (or note differences)
+    - Check current git status: !`git status --porcelain 2>/dev/null || echo "Not a git repository"`
+    - Compare current state with the summary to identify what has changed
 
 4. **Present session context**: Provide a clear summary of:
-   - What was accomplished in the previous session
-   - Current state vs. previous state
-   - Recommended next actions from the summary
-   - Any discrepancies between expected and actual current state
+    - What was accomplished in the previous session
+    - Current state vs. previous state
+    - Recommended next actions from the summary
+    - Any discrepancies between expected and actual current state
 
 ## Instructions for Resume
 

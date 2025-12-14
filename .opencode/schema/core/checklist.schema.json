@@ -4,7 +4,14 @@
     "title": "OpenCode Checklist Template Schema",
     "description": "Validates the structure of OpenCode checklist template YAML files",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",
@@ -64,7 +71,10 @@
                 "properties": {
                     "name": { "type": "string" },
                     "description": { "type": "string" },
-                    "typical_items": { "type": "array", "items": { "type": "string" } },
+                    "typical_items": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                    },
                     "format": { "type": "string" }
                 },
                 "additionalProperties": true

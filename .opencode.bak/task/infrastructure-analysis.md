@@ -1,17 +1,17 @@
 ---
 title: Infrastructure Analysis Task
 description: Detect infrastructure patterns including databases, messaging
-  systems, and architecture
+    systems, and architecture
 type: task
 category: Development
 version: 1.0.0
 tags:
-  - analysis
-  - infrastructure
-  - database
-  - messaging
-  - monitoring
-  - architecture
+    - analysis
+    - infrastructure
+    - database
+    - messaging
+    - monitoring
+    - architecture
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19

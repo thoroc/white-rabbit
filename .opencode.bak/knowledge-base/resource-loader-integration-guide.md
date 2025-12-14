@@ -4,11 +4,11 @@ description: Complete guide to using the Resource Loader plugin for dynamic reso
 type: knowledge-base
 category: Development
 tags:
-  - plugin
-  - resource-loader
-  - integration
-  - agents
-  - commands
+    - plugin
+    - resource-loader
+    - integration
+    - agents
+    - commands
 ---
 
 # Resource Loader Plugin Integration Guide
@@ -29,7 +29,7 @@ To enable it, add to your `opencode.json`:
 
 ```json
 {
-  "plugin": ["file://~/.config/opencode/plugin/resource-loader"]
+    "plugin": ["file://~/.config/opencode/plugin/resource-loader"]
 }
 ```
 
@@ -131,11 +131,11 @@ Templates can specify required resources:
 ---
 title: API Development Template
 resources:
-  knowledge-base:
-    - api-design-patterns
-    - opencode-tools-reference
-  checklist:
-    - api-documentation
+    knowledge-base:
+        - api-design-patterns
+        - opencode-tools-reference
+    checklist:
+        - api-documentation
 ---
 
 # API Development
@@ -179,32 +179,32 @@ Refer to these resources:
 // Pseudo-code for a researcher agent
 
 async function researchTopic(topic: string) {
-  // Search for relevant resources
-  const results = await resource_search({
-    query: topic,
-    type: 'knowledge-base',
-    limit: 10,
-  });
-
-  // Load top 3 results
-  for (let i = 0; i < Math.min(3, results.resources.length); i++) {
-    const resource = results.resources[i];
-    await resource_load({
-      name: resource.name,
-      type: resource.type,
+    // Search for relevant resources
+    const results = await resource_search({
+        query: topic,
+        type: 'knowledge-base',
+        limit: 10,
     });
-  }
 
-  // Use loaded resources to create summary
-  const summary = await generateSummary(topic);
+    // Load top 3 results
+    for (let i = 0; i < Math.min(3, results.resources.length); i++) {
+        const resource = results.resources[i];
+        await resource_load({
+            name: resource.name,
+            type: resource.type,
+        });
+    }
 
-  // Clean up
-  const sessionInfo = await resource_session_info();
-  for (const r of sessionInfo.resources) {
-    await resource_unload({ name: r.name });
-  }
+    // Use loaded resources to create summary
+    const summary = await generateSummary(topic);
 
-  return summary;
+    // Clean up
+    const sessionInfo = await resource_session_info();
+    for (const r of sessionInfo.resources) {
+        await resource_unload({ name: r.name });
+    }
+
+    return summary;
 }
 ```
 
@@ -214,30 +214,30 @@ async function researchTopic(topic: string) {
 // Pseudo-code for generating documentation
 
 async function generateDocumentation(apiName: string) {
-  // Find api design patterns
-  const patterns = await resource_search({
-    query: 'api design patterns',
-    type: 'knowledge-base',
-  });
-
-  // Load pattern resource
-  if (patterns.resources.length > 0) {
-    await resource_load({
-      name: patterns.resources[0].name,
-      type: 'knowledge-base',
+    // Find api design patterns
+    const patterns = await resource_search({
+        query: 'api design patterns',
+        type: 'knowledge-base',
     });
-  }
 
-  // Find relevant template
-  const templates = await resource_search({
-    query: `${apiName} documentation`,
-    type: 'template',
-  });
+    // Load pattern resource
+    if (patterns.resources.length > 0) {
+        await resource_load({
+            name: patterns.resources[0].name,
+            type: 'knowledge-base',
+        });
+    }
 
-  // Generate docs using patterns and templates
-  const docs = await generateFromTemplates(apiName);
+    // Find relevant template
+    const templates = await resource_search({
+        query: `${apiName} documentation`,
+        type: 'template',
+    });
 
-  return docs;
+    // Generate docs using patterns and templates
+    const docs = await generateFromTemplates(apiName);
+
+    return docs;
 }
 ```
 
@@ -247,26 +247,26 @@ async function generateDocumentation(apiName: string) {
 // Pseudo-code for deployment verification
 
 async function runDeploymentChecklist(environment: string) {
-  // Load deployment checklist
-  await resource_load({
-    name: 'pre-deployment-checklist',
-    type: 'checklist',
-  });
+    // Load deployment checklist
+    await resource_load({
+        name: 'pre-deployment-checklist',
+        type: 'checklist',
+    });
 
-  // Load deployment strategy
-  await resource_load({
-    name: 'deployment-strategy',
-    type: 'knowledge-base',
-  });
+    // Load deployment strategy
+    await resource_load({
+        name: 'deployment-strategy',
+        type: 'knowledge-base',
+    });
 
-  // Run checklist
-  const results = await runChecklist(environment);
+    // Run checklist
+    const results = await runChecklist(environment);
 
-  // Report with references
-  return {
-    results,
-    references: await resource_session_info(),
-  };
+    // Report with references
+    return {
+        results,
+        references: await resource_session_info(),
+    };
 }
 ```
 
@@ -366,12 +366,12 @@ Always search first to verify resource exists:
 1. Verify file location: `~/.config/opencode/{type}/`
 2. Check filename: must be `.md`
 3. Verify frontmatter is valid YAML:
-   ```yaml
-   ---
-   title: Title
-   description: Description
-   ---
-   ```
+    ```yaml
+    ---
+    title: Title
+    description: Description
+    ---
+    ```
 
 ### Auto-Load Not Working
 

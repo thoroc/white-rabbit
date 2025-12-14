@@ -5,10 +5,10 @@ agent: plan
 type: command
 category: Development
 tags:
-  - command
-  - feature
-  - refine
-  - enhance
+    - command
+    - feature
+    - refine
+    - enhance
 version: 1.0.0
 last_updated: 2025-11-19
 ---

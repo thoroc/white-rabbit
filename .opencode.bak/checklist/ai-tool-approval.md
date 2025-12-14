@@ -7,11 +7,11 @@ reference: RFC 98 - AI Open Source Tools Approval Process
 type: checklist
 category: Quality
 tags:
-  - checklist
-  - tool
-  - approval
-  - comprehensive
-  - evaluation
+    - checklist
+    - tool
+    - approval
+    - comprehensive
+    - evaluation
 ---
 
 # AI Tool Approval Checklist

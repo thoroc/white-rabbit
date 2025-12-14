@@ -5,10 +5,10 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - knowledge
-  - meta
-  - plugin
-  - architecture
+    - knowledge
+    - meta
+    - plugin
+    - architecture
 last_updated: 2025-11-19
 ---
 
@@ -46,16 +46,16 @@ This document outlines how to replace our current command/shell-based documentat
 
 ```javascript
 analyze_project: tool({
-  description: 'Analyze project technology stack and architecture',
-  args: {
-    depth: tool.schema.enum(['basic', 'comprehensive']),
-    focus: tool.schema.string().optional(),
-  },
-  async execute(args, ctx) {
-    // Native JS analysis instead of shell commands
-    // Cached results for performance
-    // Return structured data instead of text
-  },
+    description: 'Analyze project technology stack and architecture',
+    args: {
+        depth: tool.schema.enum(['basic', 'comprehensive']),
+        focus: tool.schema.string().optional(),
+    },
+    async execute(args, ctx) {
+        // Native JS analysis instead of shell commands
+        // Cached results for performance
+        // Return structured data instead of text
+    },
 });
 ```
 
@@ -65,17 +65,23 @@ analyze_project: tool({
 
 ```javascript
 generate_docs: tool({
-  description: 'Generate comprehensive documentation',
-  args: {
-    type: tool.schema.enum(['api', 'architecture', 'deployment', 'development', 'comprehensive']),
-    focus: tool.schema.string().optional(),
-    include_diagrams: tool.schema.boolean().default(true),
-  },
-  async execute(args, ctx) {
-    // Load relevant checklists dynamically
-    // Generate documentation with proper structure
-    // Include Mermaid diagrams automatically
-  },
+    description: 'Generate comprehensive documentation',
+    args: {
+        type: tool.schema.enum([
+            'api',
+            'architecture',
+            'deployment',
+            'development',
+            'comprehensive',
+        ]),
+        focus: tool.schema.string().optional(),
+        include_diagrams: tool.schema.boolean().default(true),
+    },
+    async execute(args, ctx) {
+        // Load relevant checklists dynamically
+        // Generate documentation with proper structure
+        // Include Mermaid diagrams automatically
+    },
 });
 ```
 
@@ -85,16 +91,21 @@ generate_docs: tool({
 
 ```javascript
 validate_docs: tool({
-  description: 'Validate documentation against quality standards',
-  args: {
-    doc_type: tool.schema.enum(['api', 'architecture', 'deployment', 'development']),
-    file_path: tool.schema.string(),
-  },
-  async execute(args, ctx) {
-    // Load appropriate checklist
-    // Analyze documentation completeness
-    // Return validation report with missing items
-  },
+    description: 'Validate documentation against quality standards',
+    args: {
+        doc_type: tool.schema.enum([
+            'api',
+            'architecture',
+            'deployment',
+            'development',
+        ]),
+        file_path: tool.schema.string(),
+    },
+    async execute(args, ctx) {
+        // Load appropriate checklist
+        // Analyze documentation completeness
+        // Return validation report with missing items
+    },
 });
 ```
 
@@ -104,17 +115,26 @@ validate_docs: tool({
 
 ```javascript
 create_diagram: tool({
-  description: 'Create Mermaid diagrams for documentation',
-  args: {
-    type: tool.schema.enum(['flowchart', 'sequence', 'architecture', 'deployment', 'class', 'er']),
-    context: tool.schema.string(),
-    style: tool.schema.enum(['simple', 'detailed', 'professional']).default('professional'),
-  },
-  async execute(args, ctx) {
-    // Access Mermaid templates
-    // Generate context-appropriate diagrams
-    // Validate Mermaid syntax
-  },
+    description: 'Create Mermaid diagrams for documentation',
+    args: {
+        type: tool.schema.enum([
+            'flowchart',
+            'sequence',
+            'architecture',
+            'deployment',
+            'class',
+            'er',
+        ]),
+        context: tool.schema.string(),
+        style: tool.schema
+            .enum(['simple', 'detailed', 'professional'])
+            .default('professional'),
+    },
+    async execute(args, ctx) {
+        // Access Mermaid templates
+        // Generate context-appropriate diagrams
+        // Validate Mermaid syntax
+    },
 });
 ```
 
@@ -126,67 +146,81 @@ import { tool } from '@opencode-ai/plugin';
 import fs from 'fs/promises';
 import path from 'path';
 
-export const DocumentationPlugin = async ({ project, client, $, directory, worktree }) => {
-  // Cache for analysis results
-  const cache = new Map();
+export const DocumentationPlugin = async ({
+    project,
+    client,
+    $,
+    directory,
+    worktree,
+}) => {
+    // Cache for analysis results
+    const cache = new Map();
 
-  // Load configuration and templates
-  const loadTemplate = async (type) => {
-    const templatePath = path.join(directory, '.opencode', 'knowledge-base', `${type}.md`);
-    return await fs.readFile(templatePath, 'utf8');
-  };
+    // Load configuration and templates
+    const loadTemplate = async (type) => {
+        const templatePath = path.join(
+            directory,
+            '.opencode',
+            'knowledge-base',
+            `${type}.md`
+        );
+        return await fs.readFile(templatePath, 'utf8');
+    };
 
-  const loadChecklist = async (type) => {
-    if (cache.has(`checklist-${type}`)) {
-      return cache.get(`checklist-${type}`);
-    }
-    const checklistPath = path.join(
-      directory,
-      '.opencode',
-      'checklist',
-      `${type}-documentation.md`,
-    );
-    const content = await fs.readFile(checklistPath, 'utf8');
-    cache.set(`checklist-${type}`, content);
-    return content;
-  };
+    const loadChecklist = async (type) => {
+        if (cache.has(`checklist-${type}`)) {
+            return cache.get(`checklist-${type}`);
+        }
+        const checklistPath = path.join(
+            directory,
+            '.opencode',
+            'checklist',
+            `${type}-documentation.md`
+        );
+        const content = await fs.readFile(checklistPath, 'utf8');
+        cache.set(`checklist-${type}`, content);
+        return content;
+    };
 
-  return {
-    tool: {
-      // Implementation of custom tools
-      analyze_project: tool({
-        description: 'Analyze project technology stack and architecture',
-        args: {
-          depth: tool.schema.enum(['basic', 'comprehensive']).default('basic'),
-          focus: tool.schema.string().optional(),
+    return {
+        tool: {
+            // Implementation of custom tools
+            analyze_project: tool({
+                description:
+                    'Analyze project technology stack and architecture',
+                args: {
+                    depth: tool.schema
+                        .enum(['basic', 'comprehensive'])
+                        .default('basic'),
+                    focus: tool.schema.string().optional(),
+                },
+                async execute(args, ctx) {
+                    // Efficient project analysis
+                    // Return structured JSON instead of text
+                },
+            }),
+
+            generate_docs: tool({
+                description: 'Generate comprehensive documentation',
+                args: {
+                    type: tool.schema.enum([
+                        'api',
+                        'architecture',
+                        'deployment',
+                        'development',
+                        'comprehensive',
+                    ]),
+                    focus: tool.schema.string().optional(),
+                    include_diagrams: tool.schema.boolean().default(true),
+                },
+                async execute(args, ctx) {
+                    // Smart documentation generation
+                },
+            }),
+
+            // Additional tools...
         },
-        async execute(args, ctx) {
-          // Efficient project analysis
-          // Return structured JSON instead of text
-        },
-      }),
-
-      generate_docs: tool({
-        description: 'Generate comprehensive documentation',
-        args: {
-          type: tool.schema.enum([
-            'api',
-            'architecture',
-            'deployment',
-            'development',
-            'comprehensive',
-          ]),
-          focus: tool.schema.string().optional(),
-          include_diagrams: tool.schema.boolean().default(true),
-        },
-        async execute(args, ctx) {
-          // Smart documentation generation
-        },
-      }),
-
-      // Additional tools...
-    },
-  };
+    };
 };
 ```
 

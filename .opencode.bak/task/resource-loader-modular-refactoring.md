@@ -4,10 +4,10 @@ description: Complete modular refactoring of resource-loader plugin with colocat
 type: task
 category: Development
 tags:
-  - plugin
-  - refactoring
-  - modular
-  - unit-tests
+    - plugin
+    - refactoring
+    - modular
+    - unit-tests
 ---
 
 # Resource Loader Plugin - Modular Refactoring
@@ -180,12 +180,12 @@ Each module has a `.test.ts` file:
 ```typescript
 // modules/frontmatter.test.ts
 Deno.test('frontmatter extraction - valid frontmatter', () => {
-  const content = `---
+    const content = `---
 title: Test
 ---
 Content`;
-  const result = extractFrontmatter(content);
-  assertEquals(result.title, 'Test');
+    const result = extractFrontmatter(content);
+    assertEquals(result.title, 'Test');
 });
 ```
 
@@ -290,7 +290,7 @@ loadResourceInSession(sessionId, resource);
 
 // Check if loaded
 if (isResourceLoaded(sessionId, 'my-resource')) {
-  // Do something
+    // Do something
 }
 
 // Get all loaded
@@ -361,24 +361,24 @@ const text = extractMessageText(message);
 ## Next Steps
 
 1. **Fix Type Annotations**
-   - Review `index.ts` for implicit `any` types
-   - Add proper parameter types
-   - Use type guards where needed
+    - Review `index.ts` for implicit `any` types
+    - Add proper parameter types
+    - Use type guards where needed
 
 2. **Create Missing Tests**
-   - Create test file for each module
-   - Add comprehensive test cases
-   - Ensure >80% coverage
+    - Create test file for each module
+    - Add comprehensive test cases
+    - Ensure >80% coverage
 
 3. **Verify Compilation**
-   - Fix any remaining import issues
-   - Ensure all tests pass
-   - Check lint compliance
+    - Fix any remaining import issues
+    - Ensure all tests pass
+    - Check lint compliance
 
 4. **Update Documentation**
-   - Update README with new structure
-   - Add API documentation
-   - Update quick reference
+    - Update README with new structure
+    - Add API documentation
+    - Update quick reference
 
 ## Conclusion
 

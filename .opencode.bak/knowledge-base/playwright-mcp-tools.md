@@ -1,16 +1,16 @@
 ---
 title: Playwright MCP Tools Reference
 description:
-  Complete reference guide for Playwright and Chrome DevTools MCP tools available in OpenCode for browser automation and
-  testing
+    Complete reference guide for Playwright and Chrome DevTools MCP tools available in OpenCode for browser automation and
+    testing
 type: knowledge-base
 category: Development
 tags:
-  - playwright
-  - mcp
-  - testing
-  - browser-automation
-  - chrome-devtools
+    - playwright
+    - mcp
+    - testing
+    - browser-automation
+    - chrome-devtools
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -43,8 +43,8 @@ Navigate to URLs, go back/forward, or reload pages.
 ```typescript
 // Navigate to URL
 await playwright_browser_navigate({
-  type: 'url',
-  url: 'https://example.com',
+    type: 'url',
+    url: 'https://example.com',
 });
 
 // Go back
@@ -109,22 +109,22 @@ Perform click operations on page elements.
 
 ```typescript
 await playwright_browser_click({
-  element: 'Submit button',
-  ref: 'button-submit',
+    element: 'Submit button',
+    ref: 'button-submit',
 });
 
 // Double click
 await playwright_browser_click({
-  element: 'File item',
-  ref: 'file-item-1',
-  doubleClick: true,
+    element: 'File item',
+    ref: 'file-item-1',
+    doubleClick: true,
 });
 
 // Right click
 await playwright_browser_click({
-  element: 'Context menu trigger',
-  ref: 'menu-trigger',
-  button: 'right',
+    element: 'Context menu trigger',
+    ref: 'menu-trigger',
+    button: 'right',
 });
 ```
 
@@ -144,25 +144,25 @@ Type text into editable elements.
 
 ```typescript
 await playwright_browser_type({
-  element: 'Email input',
-  ref: 'input-email',
-  text: 'user@example.com',
+    element: 'Email input',
+    ref: 'input-email',
+    text: 'user@example.com',
 });
 
 // Type slowly (one character at a time)
 await playwright_browser_type({
-  element: 'Search box',
-  ref: 'input-search',
-  text: 'query',
-  slowly: true,
+    element: 'Search box',
+    ref: 'input-search',
+    text: 'query',
+    slowly: true,
 });
 
 // Type and submit
 await playwright_browser_type({
-  element: 'Search box',
-  ref: 'input-search',
-  text: 'query',
-  submit: true,
+    element: 'Search box',
+    ref: 'input-search',
+    text: 'query',
+    submit: true,
 });
 ```
 
@@ -182,8 +182,8 @@ Hover over elements on the page.
 
 ```typescript
 await playwright_browser_hover({
-  element: 'Dropdown menu',
-  ref: 'nav-dropdown',
+    element: 'Dropdown menu',
+    ref: 'nav-dropdown',
 });
 ```
 
@@ -200,10 +200,10 @@ Perform drag and drop between two elements.
 
 ```typescript
 await playwright_browser_drag({
-  startElement: 'Draggable item',
-  startRef: 'item-1',
-  endElement: 'Drop zone',
-  endRef: 'drop-zone',
+    startElement: 'Draggable item',
+    startRef: 'item-1',
+    endElement: 'Drop zone',
+    endRef: 'drop-zone',
 });
 ```
 
@@ -244,36 +244,36 @@ Fill multiple form fields at once.
 
 ```typescript
 await playwright_browser_fill_form({
-  fields: [
-    {
-      name: 'Email',
-      type: 'textbox',
-      ref: 'input-email',
-      value: 'user@example.com',
-    },
-    {
-      name: 'Subscribe',
-      type: 'checkbox',
-      ref: 'checkbox-subscribe',
-      value: 'true',
-    },
-    {
-      name: 'Country',
-      type: 'combobox',
-      ref: 'select-country',
-      value: 'United States',
-    },
-  ],
+    fields: [
+        {
+            name: 'Email',
+            type: 'textbox',
+            ref: 'input-email',
+            value: 'user@example.com',
+        },
+        {
+            name: 'Subscribe',
+            type: 'checkbox',
+            ref: 'checkbox-subscribe',
+            value: 'true',
+        },
+        {
+            name: 'Country',
+            type: 'combobox',
+            ref: 'select-country',
+            value: 'United States',
+        },
+    ],
 });
 ```
 
 **Parameters:**
 
 - `fields`: Array of field objects
-  - `name`: Human-readable field name
-  - `type`: "textbox" | "checkbox" | "radio" | "combobox" | "slider"
-  - `ref`: Exact field reference
-  - `value`: Value to fill (string, "true"/"false" for checkboxes)
+    - `name`: Human-readable field name
+    - `type`: "textbox" | "checkbox" | "radio" | "combobox" | "slider"
+    - `ref`: Exact field reference
+    - `value`: Value to fill (string, "true"/"false" for checkboxes)
 
 #### `playwright_browser_select_option`
 
@@ -283,16 +283,16 @@ Select options in dropdown menus.
 
 ```typescript
 await playwright_browser_select_option({
-  element: 'Country selector',
-  ref: 'select-country',
-  values: ['United States'],
+    element: 'Country selector',
+    ref: 'select-country',
+    values: ['United States'],
 });
 
 // Multiple selection
 await playwright_browser_select_option({
-  element: 'Tags selector',
-  ref: 'select-tags',
-  values: ['tag1', 'tag2', 'tag3'],
+    element: 'Tags selector',
+    ref: 'select-tags',
+    values: ['tag1', 'tag2', 'tag3'],
 });
 ```
 
@@ -310,14 +310,14 @@ Upload files through file input elements.
 
 ```typescript
 await playwright_browser_file_upload({
-  element: 'File input',
-  ref: 'input-file',
-  paths: ['/path/to/file.pdf'],
+    element: 'File input',
+    ref: 'input-file',
+    paths: ['/path/to/file.pdf'],
 });
 
 // Cancel file chooser
 await playwright_browser_file_upload({
-  paths: [],
+    paths: [],
 });
 ```
 
@@ -342,7 +342,7 @@ await playwright_browser_snapshot({ verbose: true });
 
 // Save to file
 await playwright_browser_snapshot({
-  filePath: './snapshots/homepage.txt',
+    filePath: './snapshots/homepage.txt',
 });
 ```
 
@@ -362,27 +362,27 @@ Take visual screenshots of the page or elements.
 ```typescript
 // Full page screenshot
 await playwright_browser_take_screenshot({
-  fullPage: true,
-  filename: 'homepage.png',
+    fullPage: true,
+    filename: 'homepage.png',
 });
 
 // Viewport screenshot
 await playwright_browser_take_screenshot({
-  filename: 'viewport.png',
+    filename: 'viewport.png',
 });
 
 // Element screenshot
 await playwright_browser_take_screenshot({
-  element: 'Product card',
-  ref: 'product-123',
-  filename: 'product.png',
+    element: 'Product card',
+    ref: 'product-123',
+    filename: 'product.png',
 });
 
 // JPEG with quality
 await playwright_browser_take_screenshot({
-  filename: 'compressed.jpg',
-  type: 'jpeg',
-  quality: 80,
+    filename: 'compressed.jpg',
+    type: 'jpeg',
+    quality: 80,
 });
 ```
 
@@ -408,23 +408,23 @@ Execute JavaScript in page context.
 ```typescript
 // Simple evaluation
 await playwright_browser_evaluate({
-  function: `() => {
+    function: `() => {
     return document.title;
   }`,
 });
 
 // With element parameter
 await playwright_browser_evaluate({
-  element: 'Product title',
-  ref: 'product-title',
-  function: `(element) => {
+    element: 'Product title',
+    ref: 'product-title',
+    function: `(element) => {
     return element.innerText;
   }`,
 });
 
 // Complex operations
 await playwright_browser_evaluate({
-  function: `() => {
+    function: `() => {
     const images = document.querySelectorAll('img');
     return Array.from(images).map(img => ({
       src: img.src,
@@ -449,7 +449,7 @@ Execute Playwright code snippets directly.
 
 ```typescript
 await playwright_browser_run_code({
-  code: `
+    code: `
     await page.getByRole('button', { name: 'Submit' }).click();
     await page.waitForURL(/success/);
   `,
@@ -471,17 +471,17 @@ Wait for text to appear/disappear or time to pass.
 ```typescript
 // Wait for text to appear
 await playwright_browser_wait_for({
-  text: 'Loading complete',
+    text: 'Loading complete',
 });
 
 // Wait for text to disappear
 await playwright_browser_wait_for({
-  textGone: 'Loading...',
+    textGone: 'Loading...',
 });
 
 // Wait for specific time (seconds)
 await playwright_browser_wait_for({
-  time: 2,
+    time: 2,
 });
 ```
 
@@ -505,7 +505,7 @@ await playwright_browser_console_messages();
 
 // Only errors
 await playwright_browser_console_messages({
-  onlyErrors: true,
+    onlyErrors: true,
 });
 ```
 
@@ -536,18 +536,18 @@ Handle browser dialogs (alert, confirm, prompt).
 ```typescript
 // Accept dialog
 await playwright_browser_handle_dialog({
-  accept: true,
+    accept: true,
 });
 
 // Dismiss dialog
 await playwright_browser_handle_dialog({
-  accept: false,
+    accept: false,
 });
 
 // Accept prompt with text
 await playwright_browser_handle_dialog({
-  accept: true,
-  promptText: 'User input',
+    accept: true,
+    promptText: 'User input',
 });
 ```
 
@@ -567,14 +567,14 @@ Resize browser window.
 ```typescript
 // Desktop viewport
 await playwright_browser_resize({
-  width: 1920,
-  height: 1080,
+    width: 1920,
+    height: 1080,
 });
 
 // Mobile viewport
 await playwright_browser_resize({
-  width: 375,
-  height: 667,
+    width: 375,
+    height: 667,
 });
 ```
 
@@ -606,14 +606,14 @@ Start performance trace recording.
 ```typescript
 // Start trace with reload
 await chrome_devtools_performance_start_trace({
-  reload: true,
-  autoStop: false,
+    reload: true,
+    autoStop: false,
 });
 
 // Start trace without reload (for interactions)
 await chrome_devtools_performance_start_trace({
-  reload: false,
-  autoStop: true,
+    reload: false,
+    autoStop: true,
 });
 ```
 
@@ -642,8 +642,8 @@ Get detailed performance insights.
 
 ```typescript
 await chrome_devtools_performance_analyze_insight({
-  insightSetId: 'trace-123',
-  insightName: 'LCPBreakdown',
+    insightSetId: 'trace-123',
+    insightName: 'LCPBreakdown',
 });
 ```
 
@@ -666,18 +666,18 @@ await chrome_devtools_list_network_requests();
 
 // Filter by resource type
 await chrome_devtools_list_network_requests({
-  resourceTypes: ['xhr', 'fetch', 'script'],
+    resourceTypes: ['xhr', 'fetch', 'script'],
 });
 
 // Pagination
 await chrome_devtools_list_network_requests({
-  pageSize: 50,
-  pageIdx: 0,
+    pageSize: 50,
+    pageIdx: 0,
 });
 
 // Include preserved requests across navigations
 await chrome_devtools_list_network_requests({
-  includePreservedRequests: true,
+    includePreservedRequests: true,
 });
 ```
 
@@ -700,7 +700,7 @@ await chrome_devtools_get_network_request();
 
 // Get specific request by ID
 await chrome_devtools_get_network_request({
-  reqid: 123,
+    reqid: 123,
 });
 ```
 
@@ -722,18 +722,18 @@ await chrome_devtools_list_console_messages();
 
 // Filter by type
 await chrome_devtools_list_console_messages({
-  types: ['error', 'warn'],
+    types: ['error', 'warn'],
 });
 
 // Pagination
 await chrome_devtools_list_console_messages({
-  pageSize: 100,
-  pageIdx: 0,
+    pageSize: 100,
+    pageIdx: 0,
 });
 
 // Include preserved messages
 await chrome_devtools_list_console_messages({
-  includePreservedMessages: true,
+    includePreservedMessages: true,
 });
 ```
 
@@ -754,7 +754,7 @@ Get specific console message details.
 
 ```typescript
 await chrome_devtools_get_console_message({
-  msgid: 456,
+    msgid: 456,
 });
 ```
 
@@ -782,7 +782,7 @@ Select a page as context for future operations.
 
 ```typescript
 await chrome_devtools_select_page({
-  pageIdx: 1,
+    pageIdx: 1,
 });
 ```
 
@@ -798,8 +798,8 @@ Create new browser page.
 
 ```typescript
 await chrome_devtools_new_page({
-  url: 'https://example.com',
-  timeout: 30000,
+    url: 'https://example.com',
+    timeout: 30000,
 });
 ```
 
@@ -816,7 +816,7 @@ Close a page by index.
 
 ```typescript
 await chrome_devtools_close_page({
-  pageIdx: 1,
+    pageIdx: 1,
 });
 ```
 
@@ -833,8 +833,8 @@ Navigate current page.
 ```typescript
 // Navigate to URL
 await chrome_devtools_navigate_page({
-  type: 'url',
-  url: 'https://example.com',
+    type: 'url',
+    url: 'https://example.com',
 });
 
 // Go back
@@ -842,8 +842,8 @@ await chrome_devtools_navigate_page({ type: 'back' });
 
 // Reload with cache clear
 await chrome_devtools_navigate_page({
-  type: 'reload',
-  ignoreCache: true,
+    type: 'reload',
+    ignoreCache: true,
 });
 ```
 
@@ -868,12 +868,12 @@ await chrome_devtools_take_snapshot();
 
 // Verbose snapshot
 await chrome_devtools_take_snapshot({
-  verbose: true,
+    verbose: true,
 });
 
 // Save to file
 await chrome_devtools_take_snapshot({
-  filePath: './snapshot.txt',
+    filePath: './snapshot.txt',
 });
 ```
 
@@ -891,20 +891,20 @@ Take page or element screenshot.
 ```typescript
 // Full page
 await chrome_devtools_take_screenshot({
-  fullPage: true,
-  filePath: './screenshot.png',
+    fullPage: true,
+    filePath: './screenshot.png',
 });
 
 // Element screenshot
 await chrome_devtools_take_screenshot({
-  uid: 'element-123',
-  element: 'Product card',
+    uid: 'element-123',
+    element: 'Product card',
 });
 
 // JPEG with quality
 await chrome_devtools_take_screenshot({
-  format: 'jpeg',
-  quality: 85,
+    format: 'jpeg',
+    quality: 85,
 });
 ```
 
@@ -927,13 +927,13 @@ Click on element.
 
 ```typescript
 await chrome_devtools_click({
-  uid: 'button-123',
+    uid: 'button-123',
 });
 
 // Double click
 await chrome_devtools_click({
-  uid: 'file-item',
-  dblClick: true,
+    uid: 'file-item',
+    dblClick: true,
 });
 ```
 
@@ -950,8 +950,8 @@ Fill input or select option.
 
 ```typescript
 await chrome_devtools_fill({
-  uid: 'input-email',
-  value: 'user@example.com',
+    uid: 'input-email',
+    value: 'user@example.com',
 });
 ```
 
@@ -968,10 +968,10 @@ Fill multiple form elements.
 
 ```typescript
 await chrome_devtools_fill_form({
-  elements: [
-    { uid: 'input-name', value: 'John Doe' },
-    { uid: 'input-email', value: 'john@example.com' },
-  ],
+    elements: [
+        { uid: 'input-name', value: 'John Doe' },
+        { uid: 'input-email', value: 'john@example.com' },
+    ],
 });
 ```
 
@@ -989,14 +989,14 @@ Emulate network and CPU conditions.
 
 ```typescript
 await chrome_devtools_emulate({
-  networkConditions: 'Slow 3G',
-  cpuThrottlingRate: 4,
+    networkConditions: 'Slow 3G',
+    cpuThrottlingRate: 4,
 });
 
 // Disable emulation
 await chrome_devtools_emulate({
-  networkConditions: 'No emulation',
-  cpuThrottlingRate: 1,
+    networkConditions: 'No emulation',
+    cpuThrottlingRate: 1,
 });
 ```
 
@@ -1070,7 +1070,7 @@ npx playwright test
 
 ```typescript
 await playwright_browser_run_code({
-  code: `await page.goto('https://example.com')`,
+    code: `await page.goto('https://example.com')`,
 });
 ```
 
@@ -1096,7 +1096,9 @@ Use console and network tools to understand issues:
 await chrome_devtools_list_console_messages({ types: ['error'] });
 
 // Analyze failed requests
-await chrome_devtools_list_network_requests({ resourceTypes: ['xhr', 'fetch'] });
+await chrome_devtools_list_network_requests({
+    resourceTypes: ['xhr', 'fetch'],
+});
 ```
 
 ### 5. Combine Tools Effectively
@@ -1124,17 +1126,30 @@ await playwright_browser_take_screenshot({ filename: 'logged-in.png' });
 
 ```typescript
 // Navigate to page
-await playwright_browser_navigate({ type: 'url', url: 'https://app.example.com' });
+await playwright_browser_navigate({
+    type: 'url',
+    url: 'https://app.example.com',
+});
 
 // Take initial snapshot
 await playwright_browser_snapshot();
 
 // Fill login form
 await playwright_browser_fill_form({
-  fields: [
-    { name: 'Email', type: 'textbox', ref: 'input-email', value: 'user@example.com' },
-    { name: 'Password', type: 'textbox', ref: 'input-password', value: 'password123' },
-  ],
+    fields: [
+        {
+            name: 'Email',
+            type: 'textbox',
+            ref: 'input-email',
+            value: 'user@example.com',
+        },
+        {
+            name: 'Password',
+            type: 'textbox',
+            ref: 'input-password',
+            value: 'password123',
+        },
+    ],
 });
 
 // Submit
@@ -1151,10 +1166,16 @@ await playwright_browser_take_screenshot({ filename: 'dashboard.png' });
 
 ```typescript
 // Start performance trace
-await chrome_devtools_performance_start_trace({ reload: true, autoStop: false });
+await chrome_devtools_performance_start_trace({
+    reload: true,
+    autoStop: false,
+});
 
 // Perform user actions
-await playwright_browser_click({ element: 'Heavy operation', ref: 'btn-process' });
+await playwright_browser_click({
+    element: 'Heavy operation',
+    ref: 'btn-process',
+});
 await playwright_browser_wait_for({ text: 'Complete' });
 
 // Stop trace
@@ -1164,7 +1185,9 @@ await chrome_devtools_performance_stop_trace();
 await chrome_devtools_list_console_messages({ types: ['error', 'warn'] });
 
 // Analyze network
-await chrome_devtools_list_network_requests({ resourceTypes: ['xhr', 'fetch'] });
+await chrome_devtools_list_network_requests({
+    resourceTypes: ['xhr', 'fetch'],
+});
 ```
 
 ### Pattern 3: Accessibility Audit
@@ -1183,7 +1206,7 @@ await playwright_browser_press_key({ key: 'Enter' });
 
 // Verify ARIA attributes via evaluation
 await playwright_browser_evaluate({
-  function: `() => {
+    function: `() => {
     const buttons = document.querySelectorAll('button');
     return Array.from(buttons).map(btn => ({
       text: btn.textContent,

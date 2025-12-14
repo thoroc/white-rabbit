@@ -5,12 +5,12 @@ type: knowledge-base
 category: Development
 version: 1.0.0
 tags:
-  - tool
-  - performance
-  - async
-  - optimization
-  - timeout
-  - best-practices
+    - tool
+    - performance
+    - async
+    - optimization
+    - timeout
+    - best-practices
 last_updated: 2025-11-21
 ---
 
@@ -53,23 +53,23 @@ Performance matters in custom tools because:
 
 ```typescript
 export default tool({
-  description: 'Process data with timing',
-  args: {
-    data: tool.schema.string().describe('Data to process'),
-  },
-  async execute(args) {
-    const startTime = Date.now();
+    description: 'Process data with timing',
+    args: {
+        data: tool.schema.string().describe('Data to process'),
+    },
+    async execute(args) {
+        const startTime = Date.now();
 
-    try {
-      const result = await processData(args.data);
-      const duration = Date.now() - startTime;
+        try {
+            const result = await processData(args.data);
+            const duration = Date.now() - startTime;
 
-      return `${result}\n\n(Completed in ${duration}ms)`;
-    } catch (error) {
-      const duration = Date.now() - startTime;
-      return `Error after ${duration}ms: ${error.message}`;
-    }
-  },
+            return `${result}\n\n(Completed in ${duration}ms)`;
+        } catch (error) {
+            const duration = Date.now() - startTime;
+            return `Error after ${duration}ms: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -85,31 +85,31 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Fetch API with timeout',
-  args: {
-    url: tool.schema.string().url().describe('API endpoint'),
-    timeout: tool.schema.number().min(100).max(30000).default(10000),
-  },
-  async execute(args) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), args.timeout);
+    description: 'Fetch API with timeout',
+    args: {
+        url: tool.schema.string().url().describe('API endpoint'),
+        timeout: tool.schema.number().min(100).max(30000).default(10000),
+    },
+    async execute(args) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), args.timeout);
 
-    try {
-      const response = await fetch(args.url, {
-        signal: controller.signal,
-      });
+        try {
+            const response = await fetch(args.url, {
+                signal: controller.signal,
+            });
 
-      clearTimeout(timeoutId);
-      return await response.text();
-    } catch (error) {
-      clearTimeout(timeoutId);
+            clearTimeout(timeoutId);
+            return await response.text();
+        } catch (error) {
+            clearTimeout(timeoutId);
 
-      if (error.name === 'AbortError') {
-        return `Request timed out after ${args.timeout}ms`;
-      }
-      return `Error: ${error.message}`;
-    }
-  },
+            if (error.name === 'AbortError') {
+                return `Request timed out after ${args.timeout}ms`;
+            }
+            return `Error: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -128,28 +128,31 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Process with adaptive timeout',
-  args: {
-    items: tool.schema.array(tool.schema.string()),
-  },
-  async execute(args) {
-    // Base timeout: 1s per item, minimum 5s, maximum 60s
-    const timeout = Math.min(Math.max(args.items.length * 1000, 5000), 60000);
+    description: 'Process with adaptive timeout',
+    args: {
+        items: tool.schema.array(tool.schema.string()),
+    },
+    async execute(args) {
+        // Base timeout: 1s per item, minimum 5s, maximum 60s
+        const timeout = Math.min(
+            Math.max(args.items.length * 1000, 5000),
+            60000
+        );
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    try {
-      const results = await processItems(args.items, controller.signal);
-      clearTimeout(timeoutId);
-      return JSON.stringify(results);
-    } catch (error) {
-      clearTimeout(timeoutId);
-      return error.name === 'AbortError'
-        ? `Processing timed out after ${timeout}ms`
-        : `Error: ${error.message}`;
-    }
-  },
+        try {
+            const results = await processItems(args.items, controller.signal);
+            clearTimeout(timeoutId);
+            return JSON.stringify(results);
+        } catch (error) {
+            clearTimeout(timeoutId);
+            return error.name === 'AbortError'
+                ? `Processing timed out after ${timeout}ms`
+                : `Error: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -161,31 +164,31 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Process with partial results',
-  args: {
-    items: tool.schema.array(tool.schema.string()),
-  },
-  async execute(args, context) {
-    const results = [];
-    const startTime = Date.now();
-    const timeout = 30000; // 30 seconds
+    description: 'Process with partial results',
+    args: {
+        items: tool.schema.array(tool.schema.string()),
+    },
+    async execute(args, context) {
+        const results = [];
+        const startTime = Date.now();
+        const timeout = 30000; // 30 seconds
 
-    for (const item of args.items) {
-      // Check timeout
-      if (Date.now() - startTime > timeout) {
-        return `Timeout: Processed ${results.length}/${args.items.length} items\n${JSON.stringify(results)}`;
-      }
+        for (const item of args.items) {
+            // Check timeout
+            if (Date.now() - startTime > timeout) {
+                return `Timeout: Processed ${results.length}/${args.items.length} items\n${JSON.stringify(results)}`;
+            }
 
-      // Check abort signal
-      if (context.abort?.aborted) {
-        return `Cancelled: Processed ${results.length}/${args.items.length} items\n${JSON.stringify(results)}`;
-      }
+            // Check abort signal
+            if (context.abort?.aborted) {
+                return `Cancelled: Processed ${results.length}/${args.items.length} items\n${JSON.stringify(results)}`;
+            }
 
-      results.push(await processItem(item));
-    }
+            results.push(await processItem(item));
+        }
 
-    return JSON.stringify(results);
-  },
+        return JSON.stringify(results);
+    },
 });
 ```
 
@@ -241,23 +244,26 @@ async execute(args) {
 
 ```typescript
 export default tool({
-  description: 'Check multiple services',
-  args: {
-    services: tool.schema.array(tool.schema.string()),
-  },
-  async execute(args) {
-    const checks = args.services.map(async (service) => {
-      try {
-        const response = await fetch(`http://${service}/health`);
-        return { service, status: response.ok ? 'healthy' : 'unhealthy' };
-      } catch (error) {
-        return { service, status: 'unreachable', error: error.message };
-      }
-    });
+    description: 'Check multiple services',
+    args: {
+        services: tool.schema.array(tool.schema.string()),
+    },
+    async execute(args) {
+        const checks = args.services.map(async (service) => {
+            try {
+                const response = await fetch(`http://${service}/health`);
+                return {
+                    service,
+                    status: response.ok ? 'healthy' : 'unhealthy',
+                };
+            } catch (error) {
+                return { service, status: 'unreachable', error: error.message };
+            }
+        });
 
-    const results = await Promise.all(checks);
-    return JSON.stringify(results, null, 2);
-  },
+        const results = await Promise.all(checks);
+        return JSON.stringify(results, null, 2);
+    },
 });
 ```
 
@@ -271,35 +277,37 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Fetch from multiple sources',
-  args: {
-    urls: tool.schema.array(tool.schema.string().url()),
-  },
-  async execute(args) {
-    const fetches = args.urls.map(async (url) => {
-      const response = await fetch(url, { timeout: 5000 });
-      return { url, data: await response.json() };
-    });
+    description: 'Fetch from multiple sources',
+    args: {
+        urls: tool.schema.array(tool.schema.string().url()),
+    },
+    async execute(args) {
+        const fetches = args.urls.map(async (url) => {
+            const response = await fetch(url, { timeout: 5000 });
+            return { url, data: await response.json() };
+        });
 
-    const results = await Promise.allSettled(fetches);
+        const results = await Promise.allSettled(fetches);
 
-    const successful = results.filter((r) => r.status === 'fulfilled').map((r) => r.value);
+        const successful = results
+            .filter((r) => r.status === 'fulfilled')
+            .map((r) => r.value);
 
-    const failed = results
-      .filter((r) => r.status === 'rejected')
-      .map((r, i) => ({ url: args.urls[i], error: r.reason.message }));
+        const failed = results
+            .filter((r) => r.status === 'rejected')
+            .map((r, i) => ({ url: args.urls[i], error: r.reason.message }));
 
-    return JSON.stringify(
-      {
-        successful: successful.length,
-        failed: failed.length,
-        data: successful,
-        errors: failed,
-      },
-      null,
-      2,
-    );
-  },
+        return JSON.stringify(
+            {
+                successful: successful.length,
+                failed: failed.length,
+                data: successful,
+                errors: failed,
+            },
+            null,
+            2
+        );
+    },
 });
 ```
 
@@ -313,26 +321,26 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Process large dataset',
-  args: {
-    batchSize: tool.schema.number().min(1).max(1000).default(100),
-  },
-  async execute(args, context) {
-    const results = [];
-    let processed = 0;
+    description: 'Process large dataset',
+    args: {
+        batchSize: tool.schema.number().min(1).max(1000).default(100),
+    },
+    async execute(args, context) {
+        const results = [];
+        let processed = 0;
 
-    for await (const batch of fetchDataInBatches(args.batchSize)) {
-      if (context.abort?.aborted) {
-        return `Cancelled after processing ${processed} items`;
-      }
+        for await (const batch of fetchDataInBatches(args.batchSize)) {
+            if (context.abort?.aborted) {
+                return `Cancelled after processing ${processed} items`;
+            }
 
-      const batchResults = await processBatch(batch);
-      results.push(...batchResults);
-      processed += batch.length;
-    }
+            const batchResults = await processBatch(batch);
+            results.push(...batchResults);
+            processed += batch.length;
+        }
 
-    return JSON.stringify({ processed, results });
-  },
+        return JSON.stringify({ processed, results });
+    },
 });
 ```
 
@@ -349,26 +357,26 @@ export default tool({
 ```typescript
 // Shared connection pool
 const dbPool = new ConnectionPool({
-  max: 10,
-  min: 2,
-  idleTimeoutMillis: 30000,
+    max: 10,
+    min: 2,
+    idleTimeoutMillis: 30000,
 });
 
 export default tool({
-  description: 'Query with connection pooling',
-  args: {
-    query: tool.schema.string().describe('SQL query'),
-  },
-  async execute(args) {
-    const connection = await dbPool.acquire();
+    description: 'Query with connection pooling',
+    args: {
+        query: tool.schema.string().describe('SQL query'),
+    },
+    async execute(args) {
+        const connection = await dbPool.acquire();
 
-    try {
-      const results = await connection.query(args.query);
-      return JSON.stringify(results);
-    } finally {
-      await dbPool.release(connection);
-    }
-  },
+        try {
+            const results = await connection.query(args.query);
+            return JSON.stringify(results);
+        } finally {
+            await dbPool.release(connection);
+        }
+    },
 });
 ```
 
@@ -382,34 +390,34 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Process file with cleanup',
-  args: {
-    path: tool.schema.string().describe('File path'),
-  },
-  async execute(args) {
-    const file = Bun.file(args.path);
-    let tempFile: string | null = null;
+    description: 'Process file with cleanup',
+    args: {
+        path: tool.schema.string().describe('File path'),
+    },
+    async execute(args) {
+        const file = Bun.file(args.path);
+        let tempFile: string | null = null;
 
-    try {
-      // Create temporary file
-      tempFile = `/tmp/processing-${Date.now()}.tmp`;
-      await Bun.write(tempFile, await file.text());
-
-      // Process
-      const result = await processFile(tempFile);
-
-      return result;
-    } finally {
-      // Always cleanup
-      if (tempFile) {
         try {
-          await Bun.$`rm ${tempFile}`.quiet();
-        } catch {
-          // Ignore cleanup errors
+            // Create temporary file
+            tempFile = `/tmp/processing-${Date.now()}.tmp`;
+            await Bun.write(tempFile, await file.text());
+
+            // Process
+            const result = await processFile(tempFile);
+
+            return result;
+        } finally {
+            // Always cleanup
+            if (tempFile) {
+                try {
+                    await Bun.$`rm ${tempFile}`.quiet();
+                } catch {
+                    // Ignore cleanup errors
+                }
+            }
         }
-      }
-    }
-  },
+    },
 });
 ```
 
@@ -423,52 +431,52 @@ export default tool({
 
 ```typescript
 interface CacheEntry<T> {
-  data: T;
-  timestamp: number;
+    data: T;
+    timestamp: number;
 }
 
 const cache = new Map<string, CacheEntry<any>>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 function getCached<T>(key: string, ttl = CACHE_TTL): T | null {
-  const entry = cache.get(key);
-  if (!entry) return null;
+    const entry = cache.get(key);
+    if (!entry) return null;
 
-  if (Date.now() - entry.timestamp > ttl) {
-    cache.delete(key);
-    return null;
-  }
+    if (Date.now() - entry.timestamp > ttl) {
+        cache.delete(key);
+        return null;
+    }
 
-  return entry.data;
+    return entry.data;
 }
 
 function setCache<T>(key: string, data: T): void {
-  cache.set(key, { data, timestamp: Date.now() });
+    cache.set(key, { data, timestamp: Date.now() });
 }
 
 export default tool({
-  description: 'Fetch with caching',
-  args: {
-    url: tool.schema.string().url(),
-  },
-  async execute(args) {
-    const cacheKey = `fetch:${args.url}`;
+    description: 'Fetch with caching',
+    args: {
+        url: tool.schema.string().url(),
+    },
+    async execute(args) {
+        const cacheKey = `fetch:${args.url}`;
 
-    // Check cache
-    const cached = getCached<string>(cacheKey);
-    if (cached) {
-      return `${cached}\n\n(cached)`;
-    }
+        // Check cache
+        const cached = getCached<string>(cacheKey);
+        if (cached) {
+            return `${cached}\n\n(cached)`;
+        }
 
-    // Fetch
-    const response = await fetch(args.url);
-    const data = await response.text();
+        // Fetch
+        const response = await fetch(args.url);
+        const data = await response.text();
 
-    // Cache
-    setCache(cacheKey, data);
+        // Cache
+        setCache(cacheKey, data);
 
-    return data;
-  },
+        return data;
+    },
 });
 ```
 
@@ -480,57 +488,57 @@ export default tool({
 
 ```typescript
 class LRUCache<K, V> {
-  private cache: Map<K, V>;
-  private maxSize: number;
+    private cache: Map<K, V>;
+    private maxSize: number;
 
-  constructor(maxSize: number) {
-    this.cache = new Map();
-    this.maxSize = maxSize;
-  }
-
-  get(key: K): V | undefined {
-    const value = this.cache.get(key);
-    if (value !== undefined) {
-      // Move to end (most recently used)
-      this.cache.delete(key);
-      this.cache.set(key, value);
+    constructor(maxSize: number) {
+        this.cache = new Map();
+        this.maxSize = maxSize;
     }
-    return value;
-  }
 
-  set(key: K, value: V): void {
-    // Remove if exists
-    this.cache.delete(key);
-
-    // Add to end
-    this.cache.set(key, value);
-
-    // Evict oldest if over limit
-    if (this.cache.size > this.maxSize) {
-      const firstKey = this.cache.keys().next().value;
-      this.cache.delete(firstKey);
+    get(key: K): V | undefined {
+        const value = this.cache.get(key);
+        if (value !== undefined) {
+            // Move to end (most recently used)
+            this.cache.delete(key);
+            this.cache.set(key, value);
+        }
+        return value;
     }
-  }
+
+    set(key: K, value: V): void {
+        // Remove if exists
+        this.cache.delete(key);
+
+        // Add to end
+        this.cache.set(key, value);
+
+        // Evict oldest if over limit
+        if (this.cache.size > this.maxSize) {
+            const firstKey = this.cache.keys().next().value;
+            this.cache.delete(firstKey);
+        }
+    }
 }
 
 const queryCache = new LRUCache<string, any>(100);
 
 export default tool({
-  description: 'Database query with LRU cache',
-  args: {
-    query: tool.schema.string(),
-  },
-  async execute(args) {
-    const cached = queryCache.get(args.query);
-    if (cached) {
-      return `${JSON.stringify(cached)}\n(cached)`;
-    }
+    description: 'Database query with LRU cache',
+    args: {
+        query: tool.schema.string(),
+    },
+    async execute(args) {
+        const cached = queryCache.get(args.query);
+        if (cached) {
+            return `${JSON.stringify(cached)}\n(cached)`;
+        }
 
-    const results = await db.query(args.query);
-    queryCache.set(args.query, results);
+        const results = await db.query(args.query);
+        queryCache.set(args.query, results);
 
-    return JSON.stringify(results);
-  },
+        return JSON.stringify(results);
+    },
 });
 ```
 
@@ -544,29 +552,29 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Get user with optional details',
-  args: {
-    userId: tool.schema.number(),
-    includeOrders: tool.schema.boolean().default(false),
-    includeActivity: tool.schema.boolean().default(false),
-  },
-  async execute(args) {
-    // Always load user
-    const user = await fetchUser(args.userId);
+    description: 'Get user with optional details',
+    args: {
+        userId: tool.schema.number(),
+        includeOrders: tool.schema.boolean().default(false),
+        includeActivity: tool.schema.boolean().default(false),
+    },
+    async execute(args) {
+        // Always load user
+        const user = await fetchUser(args.userId);
 
-    const result: any = { user };
+        const result: any = { user };
 
-    // Conditionally load expensive data
-    if (args.includeOrders) {
-      result.orders = await fetchOrders(args.userId);
-    }
+        // Conditionally load expensive data
+        if (args.includeOrders) {
+            result.orders = await fetchOrders(args.userId);
+        }
 
-    if (args.includeActivity) {
-      result.activity = await fetchActivity(args.userId);
-    }
+        if (args.includeActivity) {
+            result.activity = await fetchActivity(args.userId);
+        }
 
-    return JSON.stringify(result, null, 2);
-  },
+        return JSON.stringify(result, null, 2);
+    },
 });
 ```
 
@@ -580,33 +588,36 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'List items with pagination',
-  args: {
-    page: tool.schema.number().min(1).default(1),
-    pageSize: tool.schema.number().min(1).max(100).default(20),
-  },
-  async execute(args) {
-    const offset = (args.page - 1) * args.pageSize;
+    description: 'List items with pagination',
+    args: {
+        page: tool.schema.number().min(1).default(1),
+        pageSize: tool.schema.number().min(1).max(100).default(20),
+    },
+    async execute(args) {
+        const offset = (args.page - 1) * args.pageSize;
 
-    const [items, total] = await Promise.all([
-      db.query('SELECT * FROM items LIMIT ? OFFSET ?', [args.pageSize, offset]),
-      db.query('SELECT COUNT(*) as count FROM items'),
-    ]);
+        const [items, total] = await Promise.all([
+            db.query('SELECT * FROM items LIMIT ? OFFSET ?', [
+                args.pageSize,
+                offset,
+            ]),
+            db.query('SELECT COUNT(*) as count FROM items'),
+        ]);
 
-    return JSON.stringify(
-      {
-        items,
-        pagination: {
-          page: args.page,
-          pageSize: args.pageSize,
-          total: total[0].count,
-          pages: Math.ceil(total[0].count / args.pageSize),
-        },
-      },
-      null,
-      2,
-    );
-  },
+        return JSON.stringify(
+            {
+                items,
+                pagination: {
+                    page: args.page,
+                    pageSize: args.pageSize,
+                    total: total[0].count,
+                    pages: Math.ceil(total[0].count / args.pageSize),
+                },
+            },
+            null,
+            2
+        );
+    },
 });
 ```
 
@@ -619,37 +630,41 @@ export default tool({
 ```typescript
 const debounceTimers = new Map<string, NodeJS.Timeout>();
 
-function debounce(key: string, fn: () => Promise<any>, delay: number): Promise<any> {
-  return new Promise((resolve) => {
-    const existing = debounceTimers.get(key);
-    if (existing) {
-      clearTimeout(existing);
-    }
+function debounce(
+    key: string,
+    fn: () => Promise<any>,
+    delay: number
+): Promise<any> {
+    return new Promise((resolve) => {
+        const existing = debounceTimers.get(key);
+        if (existing) {
+            clearTimeout(existing);
+        }
 
-    const timer = setTimeout(async () => {
-      debounceTimers.delete(key);
-      resolve(await fn());
-    }, delay);
+        const timer = setTimeout(async () => {
+            debounceTimers.delete(key);
+            resolve(await fn());
+        }, delay);
 
-    debounceTimers.set(key, timer);
-  });
+        debounceTimers.set(key, timer);
+    });
 }
 
 export default tool({
-  description: 'Save with debounce',
-  args: {
-    data: tool.schema.string(),
-  },
-  async execute(args) {
-    return await debounce(
-      'save',
-      async () => {
-        await writeFile('data.json', args.data);
-        return 'Saved successfully';
-      },
-      1000,
-    );
-  },
+    description: 'Save with debounce',
+    args: {
+        data: tool.schema.string(),
+    },
+    async execute(args) {
+        return await debounce(
+            'save',
+            async () => {
+                await writeFile('data.json', args.data);
+                return 'Saved successfully';
+            },
+            1000
+        );
+    },
 });
 ```
 
@@ -663,31 +678,31 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Long operation with cancellation',
-  args: {
-    items: tool.schema.array(tool.schema.string()),
-  },
-  async execute(args, context) {
-    const results = [];
+    description: 'Long operation with cancellation',
+    args: {
+        items: tool.schema.array(tool.schema.string()),
+    },
+    async execute(args, context) {
+        const results = [];
 
-    for (const item of args.items) {
-      // Check for cancellation
-      if (context.abort?.aborted) {
-        return `Cancelled: Processed ${results.length}/${args.items.length} items`;
-      }
+        for (const item of args.items) {
+            // Check for cancellation
+            if (context.abort?.aborted) {
+                return `Cancelled: Processed ${results.length}/${args.items.length} items`;
+            }
 
-      // Process item
-      const result = await processItem(item);
-      results.push(result);
+            // Process item
+            const result = await processItem(item);
+            results.push(result);
 
-      // Optional: Progress reporting
-      if (results.length % 10 === 0) {
-        console.log(`Progress: ${results.length}/${args.items.length}`);
-      }
-    }
+            // Optional: Progress reporting
+            if (results.length % 10 === 0) {
+                console.log(`Progress: ${results.length}/${args.items.length}`);
+            }
+        }
 
-    return JSON.stringify(results);
-  },
+        return JSON.stringify(results);
+    },
 });
 ```
 
@@ -698,33 +713,36 @@ export default tool({
 **Pattern**: Pass abort signal to nested operations.
 
 ```typescript
-async function fetchWithAbort(url: string, signal?: AbortSignal): Promise<string> {
-  const response = await fetch(url, { signal });
-  return await response.text();
+async function fetchWithAbort(
+    url: string,
+    signal?: AbortSignal
+): Promise<string> {
+    const response = await fetch(url, { signal });
+    return await response.text();
 }
 
 export default tool({
-  description: 'Fetch multiple with abort',
-  args: {
-    urls: tool.schema.array(tool.schema.string().url()),
-  },
-  async execute(args, context) {
-    const results = [];
+    description: 'Fetch multiple with abort',
+    args: {
+        urls: tool.schema.array(tool.schema.string().url()),
+    },
+    async execute(args, context) {
+        const results = [];
 
-    for (const url of args.urls) {
-      try {
-        const data = await fetchWithAbort(url, context.abort);
-        results.push({ url, data });
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          return `Cancelled after ${results.length} fetches`;
+        for (const url of args.urls) {
+            try {
+                const data = await fetchWithAbort(url, context.abort);
+                results.push({ url, data });
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    return `Cancelled after ${results.length} fetches`;
+                }
+                results.push({ url, error: error.message });
+            }
         }
-        results.push({ url, error: error.message });
-      }
-    }
 
-    return JSON.stringify(results);
-  },
+        return JSON.stringify(results);
+    },
 });
 ```
 
@@ -811,29 +829,29 @@ async execute(args) {
 
 ```typescript
 export default tool({
-  description: 'Tool with performance metrics',
-  args: {
-    data: tool.schema.string(),
-  },
-  async execute(args) {
-    const metrics = {
-      startTime: Date.now(),
-      memoryStart: process.memoryUsage().heapUsed,
-    };
+    description: 'Tool with performance metrics',
+    args: {
+        data: tool.schema.string(),
+    },
+    async execute(args) {
+        const metrics = {
+            startTime: Date.now(),
+            memoryStart: process.memoryUsage().heapUsed,
+        };
 
-    try {
-      const result = await processData(args.data);
+        try {
+            const result = await processData(args.data);
 
-      metrics.duration = Date.now() - metrics.startTime;
-      metrics.memoryEnd = process.memoryUsage().heapUsed;
-      metrics.memoryDelta = metrics.memoryEnd - metrics.memoryStart;
+            metrics.duration = Date.now() - metrics.startTime;
+            metrics.memoryEnd = process.memoryUsage().heapUsed;
+            metrics.memoryDelta = metrics.memoryEnd - metrics.memoryStart;
 
-      return `${result}\n\nMetrics:\n${JSON.stringify(metrics, null, 2)}`;
-    } catch (error) {
-      metrics.duration = Date.now() - metrics.startTime;
-      return `Error after ${metrics.duration}ms: ${error.message}`;
-    }
-  },
+            return `${result}\n\nMetrics:\n${JSON.stringify(metrics, null, 2)}`;
+        } catch (error) {
+            metrics.duration = Date.now() - metrics.startTime;
+            return `Error after ${metrics.duration}ms: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -849,28 +867,28 @@ import { tool } from '@opencode-ai/plugin';
 import myTool from './my-tool';
 
 export default tool({
-  description: 'Performance test for my-tool',
-  args: {
-    iterations: tool.schema.number().min(1).max(1000).default(100),
-  },
-  async execute(args) {
-    const times: number[] = [];
+    description: 'Performance test for my-tool',
+    args: {
+        iterations: tool.schema.number().min(1).max(1000).default(100),
+    },
+    async execute(args) {
+        const times: number[] = [];
 
-    for (let i = 0; i < args.iterations; i++) {
-      const start = Date.now();
-      await myTool.execute({ test: 'data' }, mockContext);
-      times.push(Date.now() - start);
-    }
+        for (let i = 0; i < args.iterations; i++) {
+            const start = Date.now();
+            await myTool.execute({ test: 'data' }, mockContext);
+            times.push(Date.now() - start);
+        }
 
-    const avg = times.reduce((a, b) => a + b) / times.length;
-    const min = Math.min(...times);
-    const max = Math.max(...times);
+        const avg = times.reduce((a, b) => a + b) / times.length;
+        const min = Math.min(...times);
+        const max = Math.max(...times);
 
-    return `Performance Test (${args.iterations} iterations):
+        return `Performance Test (${args.iterations} iterations):
 Average: ${avg.toFixed(2)}ms
 Min: ${min}ms
 Max: ${max}ms`;
-  },
+    },
 });
 ```
 

@@ -34,11 +34,13 @@ This knowledge-base provides proven patterns, methodologies, and best practices 
 **Description**: Assign a specific role or persona to the model to leverage domain expertise.
 
 **Structure**:
+
 ```
 You are a [role with expertise]. [Task description with context].
 ```
 
 **Example**:
+
 ```
 You are a senior software architect with expertise in microservices.
 Design a scalable API gateway for a distributed system handling 10M requests/day.
@@ -51,6 +53,7 @@ Design a scalable API gateway for a distributed system handling 10M requests/day
 **Description**: Request step-by-step reasoning to improve accuracy on complex problems.
 
 **Structure**:
+
 ```
 [Problem statement]. Let's think through this step by step:
 1. [First step to consider]
@@ -59,6 +62,7 @@ Design a scalable API gateway for a distributed system handling 10M requests/day
 ```
 
 **Example**:
+
 ```
 Calculate the project timeline considering dependencies. Let's think through this step by step:
 1. Identify all tasks and their durations
@@ -74,6 +78,7 @@ Calculate the project timeline considering dependencies. Let's think through thi
 **Description**: Provide examples of desired input-output pairs before the actual task.
 
 **Structure**:
+
 ```
 [Example 1 input] → [Example 1 output]
 [Example 2 input] → [Example 2 output]
@@ -89,6 +94,7 @@ Now apply the same pattern:
 **Description**: Explicitly state what the model should NOT do or include.
 
 **Structure**:
+
 ```
 [Task description]
 
@@ -109,7 +115,8 @@ Constraints:
 **Description**: Provide an exact template or schema for the output format.
 
 **Structure**:
-```
+
+````
 [Task description]
 
 Output format (fill in the template):
@@ -118,7 +125,8 @@ Output format (fill in the template):
 ## [Section]
 - [Item 1]
 - [Item 2]
-```
+````
+
 ```
 
 **When to Use**: Structured data generation, consistent formatting, schema compliance
@@ -129,13 +137,16 @@ Output format (fill in the template):
 
 **Structure**:
 ```
+
 [Task description]
 
 Steps:
+
 1. Produce an initial [output]
 2. Evaluate it against [criteria]
 3. Identify weaknesses or gaps
 4. Produce an improved version
+
 ```
 
 **When to Use**: High-quality requirements, creative tasks, optimization problems
@@ -148,11 +159,14 @@ Steps:
 
 **Application in Prompts**:
 ```
+
 Create a mind map for [topic]:
+
 1. Central concept: [main idea]
 2. Primary branches: [main categories]
 3. Secondary branches: [sub-concepts]
 4. Connections: [relationships between concepts]
+
 ```
 
 **Best For**: Exploring topics, identifying connections, organizing knowledge
@@ -171,13 +185,16 @@ Create a mind map for [topic]:
 
 **Application in Prompts**:
 ```
+
 Analyze [topic] using the Six Thinking Hats method:
+
 - White Hat: What facts do we know?
 - Red Hat: What are the emotional reactions?
 - Black Hat: What are the risks and downsides?
 - Yellow Hat: What are the benefits and opportunities?
 - Green Hat: What creative alternatives exist?
 - Blue Hat: What's the overall assessment and next steps?
+
 ```
 
 **Best For**: Decision-making, balanced analysis, avoiding groupthink
@@ -197,7 +214,9 @@ Analyze [topic] using the Six Thinking Hats method:
 
 **Application in Prompts**:
 ```
+
 Apply SCAMPER to improve [concept]:
+
 - Substitute: What components could be replaced?
 - Combine: What features could be merged?
 - Adapt: How could this work in a different context?
@@ -205,6 +224,7 @@ Apply SCAMPER to improve [concept]:
 - Put to another use: What alternative applications exist?
 - Eliminate: What complexity could be removed?
 - Reverse: What if we inverted the approach?
+
 ```
 
 **Best For**: Innovation, product development, process improvement
@@ -298,3 +318,4 @@ Apply SCAMPER to improve [concept]:
 - Six Thinking Hats: de Bono, E. (1985)
 - SCAMPER Method: Eberle, B. (1971)
 - Mind Mapping: Buzan, T. (1974)
+```

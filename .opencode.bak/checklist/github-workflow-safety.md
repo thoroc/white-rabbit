@@ -5,11 +5,11 @@ type: checklist
 category: development
 version: 1.0.0
 tags:
-  - checklist
-  - development
-  - github
-  - workflow
-  - safety
+    - checklist
+    - development
+    - github
+    - workflow
+    - safety
 last_updated: 2025-11-19
 ---
 
@@ -88,9 +88,9 @@ and ensuring all prerequisites are met before performing git operations, creatin
 
 - [ ] **GitHub CLI is authenticated** (run `gh auth status`)
 - [ ] Authentication token has required scopes:
-  - [ ] `repo` scope (for private repos)
-  - [ ] `workflow` scope (if triggering workflows)
-  - [ ] `write:org` scope (if org-level operations)
+    - [ ] `repo` scope (for private repos)
+    - [ ] `workflow` scope (if triggering workflows)
+    - [ ] `write:org` scope (if org-level operations)
 - [ ] Authentication hasn't expired
 - [ ] Correct GitHub account authenticated (personal vs org)
 
@@ -140,10 +140,10 @@ and ensuring all prerequisites are met before performing git operations, creatin
 
 - [ ] **PR title is descriptive** and follows conventions
 - [ ] PR body includes:
-  - [ ] Summary of changes
-  - [ ] Related issues (if any)
-  - [ ] Testing notes
-  - [ ] Breaking changes (if any)
+    - [ ] Summary of changes
+    - [ ] Related issues (if any)
+    - [ ] Testing notes
+    - [ ] Breaking changes (if any)
 - [ ] Target branch is correct (usually `main`)
 - [ ] PR type is appropriate (feature, fix, docs, etc.)
 
@@ -170,18 +170,18 @@ and ensuring all prerequisites are met before performing git operations, creatin
 ### Merge Strategy
 
 - [ ] **Merge strategy is appropriate**:
-  - [ ] `--merge` for merge commit (preserves history)
-  - [ ] `--squash` for single commit (cleaner history)
-  - [ ] `--rebase` for linear history
+    - [ ] `--merge` for merge commit (preserves history)
+    - [ ] `--squash` for single commit (cleaner history)
+    - [ ] `--rebase` for linear history
 - [ ] Merge strategy matches team conventions
 - [ ] Understanding of what will happen after merge
 
 ### Post-Merge Actions
 
 - [ ] **Branch cleanup planned**:
-  - [ ] `--delete-branch` flag used (or manual deletion planned)
-  - [ ] Local branch will be cleaned up
-  - [ ] Remote branch will be cleaned up
+    - [ ] `--delete-branch` flag used (or manual deletion planned)
+    - [ ] Local branch will be cleaned up
+    - [ ] Remote branch will be cleaned up
 - [ ] Team notified (if required)
 
 ---

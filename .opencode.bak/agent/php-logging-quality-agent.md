@@ -4,25 +4,25 @@ mode: subagent
 model: anthropic/claude-sonnet-4
 temperature: 0.1
 tools:
-  write: true
-  edit: true
-  bash: false
-  read: true
-  grep: true
-  glob: true
-  list: true
-  patch: true
+    write: true
+    edit: true
+    bash: false
+    read: true
+    grep: true
+    glob: true
+    list: true
+    patch: true
 permission:
-  bash:
-    '*': deny
+    bash:
+        '*': deny
 type: agent
 category: Development
 tags:
-  - agent
-  - logging
-  - quality
-  - analyzes
-  - improves
+    - agent
+    - logging
+    - quality
+    - analyzes
+    - improves
 version: 1.0.0
 last_updated: 2025-11-19
 ---

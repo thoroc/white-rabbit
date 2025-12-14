@@ -5,9 +5,9 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - checklist
-  - documentation
-  - deployment
+    - checklist
+    - documentation
+    - deployment
 last_updated: 2025-11-19
 ---
 

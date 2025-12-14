@@ -14,10 +14,10 @@ MoSCoW prioritization, and acceptance criteria best practices.
 Comprehensive guide covering:
 
 - **MoSCoW Prioritization Model**
-  - Must Have: Non-negotiable requirements
-  - Should Have: Important but not critical features
-  - Could Have: Nice-to-have enhancements
-  - Won't Have: Explicitly out of scope items
+    - Must Have: Non-negotiable requirements
+    - Should Have: Important but not critical features
+    - Could Have: Nice-to-have enhancements
+    - Won't Have: Explicitly out of scope items
 - **Decision Framework**: Clear questions and decision trees
 - **Prioritization Process**: Step-by-step guide
 - **Common Patterns**: By project type (MVP, feature enhancement, bug fixes, compliance)
@@ -31,10 +31,10 @@ Comprehensive guide covering:
 Comprehensive guide covering:
 
 - **Acceptance Criteria Best Practices**
-  - Two formats: Scenario-oriented (Given/When/Then) and Rule-oriented (Checklist)
-  - Quality guidelines: Clarity, conciseness, testability, result-orientation
-  - User story vs. acceptance criteria distinction
-  - Definition of Done vs. acceptance criteria
+    - Two formats: Scenario-oriented (Given/When/Then) and Rule-oriented (Checklist)
+    - Quality guidelines: Clarity, conciseness, testability, result-orientation
+    - User story vs. acceptance criteria distinction
+    - Definition of Done vs. acceptance criteria
 - **Purpose and Benefits**: Five key purposes clearly explained
 - **When to Write**: Timing guidance for maximum effectiveness
 - **Writing Tips**: Active voice, simple language, measurable outcomes
@@ -130,18 +130,18 @@ Enhanced with:
 - Ticket creation usage example
 - Expanded operation workflow to include ticket creation
 - Complete ticket creation workflow section:
-  - Knowledge base references
-  - Information gathering process
-  - MoSCoW prioritization guidance
-  - Acceptance criteria writing process
-  - Technical details documentation
-  - Dependency identification
-  - Supporting materials preparation
-  - Checklist review process
-  - Ticket description generation
-  - Validation steps
-  - Delivery format
-  - Post-creation guidance
+    - Knowledge base references
+    - Information gathering process
+    - MoSCoW prioritization guidance
+    - Acceptance criteria writing process
+    - Technical details documentation
+    - Dependency identification
+    - Supporting materials preparation
+    - Checklist review process
+    - Ticket description generation
+    - Validation steps
+    - Delivery format
+    - Post-creation guidance
 
 ### 6. New Command: Create Ticket
 

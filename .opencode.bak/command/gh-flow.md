@@ -4,10 +4,10 @@ agent: general
 type: command
 category: Development
 tags:
-  - command
-  - flow
-  - create
-  - branch,
+    - command
+    - flow
+    - create
+    - branch,
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -64,9 +64,9 @@ Create a pull request using GitHub CLI:
 - If available, create PR: `gh pr create --title "<title>" --body "<description>" --base main`
 - Title should be the commit message
 - Body should include:
-  - Summary of changes
-  - Related issues (if any)
-  - Testing notes
+    - Summary of changes
+    - Related issues (if any)
+    - Testing notes
 - If `gh` CLI is not available, provide instructions for creating PR manually via GitHub web interface
 
 ### Step 5: Merge Pull Request
@@ -75,11 +75,11 @@ Merge the pull request:
 
 - If using `gh` CLI: `gh pr merge --merge --delete-branch`
 - If manual, provide instructions:
-  1. Navigate to the PR URL
-  2. Review the changes
-  3. Click "Merge pull request"
-  4. Confirm merge
-  5. Delete the branch
+    1. Navigate to the PR URL
+    2. Review the changes
+    3. Click "Merge pull request"
+    4. Confirm merge
+    5. Delete the branch
 
 ## Safety Checks
 

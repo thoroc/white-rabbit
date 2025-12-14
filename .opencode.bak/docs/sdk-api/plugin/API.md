@@ -5,23 +5,31 @@
 ### functions
 
 <a id="plugin-dist-tool-d-ts-tool"></a>
+
 #### tool
 
 ```ts
 export declare function tool<Args extends z.ZodRawShape>(input: {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 }): {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 };
 ```
 
 ### types
 
 <a id="plugin-dist-tool-d-ts-toolcontext"></a>
+
 #### ToolContext
 
 ```ts
@@ -34,6 +42,7 @@ export type ToolContext = {
 ```
 
 <a id="plugin-dist-tool-d-ts-tooldefinition"></a>
+
 #### ToolDefinition
 
 ```ts
@@ -45,11 +54,15 @@ export type ToolDefinition = ReturnType<typeof tool>;
 ### interfaces
 
 <a id="plugin-dist-shell-d-ts-bunshell"></a>
+
 #### BunShell
 
 ```ts
 export interface BunShell {
-    (strings: TemplateStringsArray, ...expressions: ShellExpression[]): BunShellPromise;
+    (
+        strings: TemplateStringsArray,
+        ...expressions: ShellExpression[]
+    ): BunShellPromise;
     /**
      * Perform bash-like brace expansion on the given pattern.
      * @param pattern - Brace pattern to expand
@@ -79,6 +92,7 @@ export interface BunShell {
 ```
 
 <a id="plugin-dist-shell-d-ts-bunshellpromise"></a>
+
 #### BunShellPromise
 
 ```ts
@@ -134,6 +148,7 @@ export interface BunShellPromise extends Promise<BunShellOutput> {
 ```
 
 <a id="plugin-dist-shell-d-ts-bunshelloutput"></a>
+
 #### BunShellOutput
 
 ```ts
@@ -167,6 +182,7 @@ export interface BunShellOutput {
 ### types
 
 <a id="plugin-dist-shell-d-ts-shellfunction"></a>
+
 #### ShellFunction
 
 ```ts
@@ -174,17 +190,24 @@ export type ShellFunction = (input: Uint8Array) => Uint8Array;
 ```
 
 <a id="plugin-dist-shell-d-ts-shellexpression"></a>
+
 #### ShellExpression
 
 ```ts
-export type ShellExpression = {
-    toString(): string;
-} | Array<ShellExpression> | string | {
-    raw: string;
-} | ReadableStream;
+export type ShellExpression =
+    | {
+          toString(): string;
+      }
+    | Array<ShellExpression>
+    | string
+    | {
+          raw: string;
+      }
+    | ReadableStream;
 ```
 
 <a id="plugin-dist-shell-d-ts-bunshellerror"></a>
+
 #### BunShellError
 
 ```ts
@@ -196,30 +219,36 @@ export type BunShellError = Error & BunShellOutput;
 ### functions
 
 <a id="plugin-dist-index-d-ts-tool"></a>
+
 #### tool
 
 ```ts
 export declare function tool<Args extends z.ZodRawShape>(input: {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 }): {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 };
 ```
 
 ### interfaces
 
 <a id="plugin-dist-index-d-ts-hooks"></a>
+
 #### Hooks
 
 ```ts
 export interface Hooks {
-    event?: (input: {
-        event: Event;
-    }) => Promise<void>;
+    event?: (input: { event: Event }) => Promise<void>;
     config?: (input: Config) => Promise<void>;
     tool?: {
         [key: string]: ToolDefinition;
@@ -228,57 +257,73 @@ export interface Hooks {
     /**
      * Called when a new message is received
      */
-    "chat.message"?: (input: {
-        sessionID: string;
-        agent?: string;
-        model?: {
-            providerID: string;
-            modelID: string;
-        };
-        messageID?: string;
-    }, output: {
-        message: UserMessage;
-        parts: Part[];
-    }) => Promise<void>;
+    'chat.message'?: (
+        input: {
+            sessionID: string;
+            agent?: string;
+            model?: {
+                providerID: string;
+                modelID: string;
+            };
+            messageID?: string;
+        },
+        output: {
+            message: UserMessage;
+            parts: Part[];
+        }
+    ) => Promise<void>;
     /**
      * Modify parameters sent to LLM
      */
-    "chat.params"?: (input: {
-        sessionID: string;
-        agent: string;
-        model: Model;
-        provider: Provider;
-        message: UserMessage;
-    }, output: {
-        temperature: number;
-        topP: number;
-        options: Record<string, any>;
-    }) => Promise<void>;
-    "permission.ask"?: (input: Permission, output: {
-        status: "ask" | "deny" | "allow";
-    }) => Promise<void>;
-    "tool.execute.before"?: (input: {
-        tool: string;
-        sessionID: string;
-        callID: string;
-    }, output: {
-        args: any;
-    }) => Promise<void>;
-    "tool.execute.after"?: (input: {
-        tool: string;
-        sessionID: string;
-        callID: string;
-    }, output: {
-        title: string;
-        output: string;
-        metadata: any;
-    }) => Promise<void>;
+    'chat.params'?: (
+        input: {
+            sessionID: string;
+            agent: string;
+            model: Model;
+            provider: Provider;
+            message: UserMessage;
+        },
+        output: {
+            temperature: number;
+            topP: number;
+            options: Record<string, any>;
+        }
+    ) => Promise<void>;
+    'permission.ask'?: (
+        input: Permission,
+        output: {
+            status: 'ask' | 'deny' | 'allow';
+        }
+    ) => Promise<void>;
+    'tool.execute.before'?: (
+        input: {
+            tool: string;
+            sessionID: string;
+            callID: string;
+        },
+        output: {
+            args: any;
+        }
+    ) => Promise<void>;
+    'tool.execute.after'?: (
+        input: {
+            tool: string;
+            sessionID: string;
+            callID: string;
+        },
+        output: {
+            title: string;
+            output: string;
+            metadata: any;
+        }
+    ) => Promise<void>;
 }
 ```
 
 ### types
 
 <a id="plugin-dist-index-d-ts-plugininput"></a>
+
 #### PluginInput
 
 ```ts
@@ -292,6 +337,7 @@ export type PluginInput = {
 ```
 
 <a id="plugin-dist-index-d-ts-plugin"></a>
+
 #### Plugin
 
 ```ts
@@ -299,105 +345,140 @@ export type Plugin = (input: PluginInput) => Promise<Hooks>;
 ```
 
 <a id="plugin-dist-index-d-ts-authhook"></a>
+
 #### AuthHook
 
 ```ts
 export type AuthHook = {
     provider: string;
-    loader?: (auth: () => Promise<Auth>, provider: Provider) => Promise<Record<string, any>>;
-    methods: ({
-        type: "oauth";
-        label: string;
-        prompts?: Array<{
-            type: "text";
-            key: string;
-            message: string;
-            placeholder?: string;
-            validate?: (value: string) => string | undefined;
-            condition?: (inputs: Record<string, string>) => boolean;
-        } | {
-            type: "select";
-            key: string;
-            message: string;
-            options: Array<{
-                label: string;
-                value: string;
-                hint?: string;
-            }>;
-            condition?: (inputs: Record<string, string>) => boolean;
-        }>;
-        authorize(inputs?: Record<string, string>): Promise<AuthOuathResult>;
-    } | {
-        type: "api";
-        label: string;
-        prompts?: Array<{
-            type: "text";
-            key: string;
-            message: string;
-            placeholder?: string;
-            validate?: (value: string) => string | undefined;
-            condition?: (inputs: Record<string, string>) => boolean;
-        } | {
-            type: "select";
-            key: string;
-            message: string;
-            options: Array<{
-                label: string;
-                value: string;
-                hint?: string;
-            }>;
-            condition?: (inputs: Record<string, string>) => boolean;
-        }>;
-        authorize?(inputs?: Record<string, string>): Promise<{
-            type: "success";
-            key: string;
-            provider?: string;
-        } | {
-            type: "failed";
-        }>;
-    })[];
+    loader?: (
+        auth: () => Promise<Auth>,
+        provider: Provider
+    ) => Promise<Record<string, any>>;
+    methods: (
+        | {
+              type: 'oauth';
+              label: string;
+              prompts?: Array<
+                  | {
+                        type: 'text';
+                        key: string;
+                        message: string;
+                        placeholder?: string;
+                        validate?: (value: string) => string | undefined;
+                        condition?: (inputs: Record<string, string>) => boolean;
+                    }
+                  | {
+                        type: 'select';
+                        key: string;
+                        message: string;
+                        options: Array<{
+                            label: string;
+                            value: string;
+                            hint?: string;
+                        }>;
+                        condition?: (inputs: Record<string, string>) => boolean;
+                    }
+              >;
+              authorize(
+                  inputs?: Record<string, string>
+              ): Promise<AuthOuathResult>;
+          }
+        | {
+              type: 'api';
+              label: string;
+              prompts?: Array<
+                  | {
+                        type: 'text';
+                        key: string;
+                        message: string;
+                        placeholder?: string;
+                        validate?: (value: string) => string | undefined;
+                        condition?: (inputs: Record<string, string>) => boolean;
+                    }
+                  | {
+                        type: 'select';
+                        key: string;
+                        message: string;
+                        options: Array<{
+                            label: string;
+                            value: string;
+                            hint?: string;
+                        }>;
+                        condition?: (inputs: Record<string, string>) => boolean;
+                    }
+              >;
+              authorize?(inputs?: Record<string, string>): Promise<
+                  | {
+                        type: 'success';
+                        key: string;
+                        provider?: string;
+                    }
+                  | {
+                        type: 'failed';
+                    }
+              >;
+          }
+    )[];
 };
 ```
 
 <a id="plugin-dist-index-d-ts-authouathresult"></a>
+
 #### AuthOuathResult
 
 ```ts
 export type AuthOuathResult = {
     url: string;
     instructions: string;
-} & ({
-    method: "auto";
-    callback(): Promise<({
-        type: "success";
-        provider?: string;
-    } & ({
-        refresh: string;
-        access: string;
-        expires: number;
-    } | {
-        key: string;
-    })) | {
-        type: "failed";
-    }>;
-} | {
-    method: "code";
-    callback(code: string): Promise<({
-        type: "success";
-        provider?: string;
-    } & ({
-        refresh: string;
-        access: string;
-        expires: number;
-    } | {
-        key: string;
-    })) | {
-        type: "failed";
-    }>;
-});
+} & (
+    | {
+          method: 'auto';
+          callback(): Promise<
+              | ({
+                    type: 'success';
+                    provider?: string;
+                } & (
+                    | {
+                          refresh: string;
+                          access: string;
+                          expires: number;
+                      }
+                    | {
+                          key: string;
+                      }
+                ))
+              | {
+                    type: 'failed';
+                }
+          >;
+      }
+    | {
+          method: 'code';
+          callback(code: string): Promise<
+              | ({
+                    type: 'success';
+                    provider?: string;
+                } & (
+                    | {
+                          refresh: string;
+                          access: string;
+                          expires: number;
+                      }
+                    | {
+                          key: string;
+                      }
+                ))
+              | {
+                    type: 'failed';
+                }
+          >;
+      }
+);
 ```
 
 <a id="plugin-dist-index-d-ts-toolcontext"></a>
+
 #### ToolContext
 
 ```ts
@@ -410,6 +491,7 @@ export type ToolContext = {
 ```
 
 <a id="plugin-dist-index-d-ts-tooldefinition"></a>
+
 #### ToolDefinition
 
 ```ts
@@ -421,10 +503,11 @@ export type ToolDefinition = ReturnType<typeof tool>;
 ### variables
 
 <a id="plugin-dist-example-d-ts-exampleplugin"></a>
+
 #### ExamplePlugin
 
 ```ts
-ExamplePlugin: Plugin
+ExamplePlugin: Plugin;
 ```
 
 ## dist/index.js
@@ -432,23 +515,31 @@ ExamplePlugin: Plugin
 ### functions
 
 <a id="plugin-dist-index-js-tool"></a>
+
 #### tool
 
 ```ts
 export declare function tool<Args extends z.ZodRawShape>(input: {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 }): {
     description: string;
     args: Args;
-    execute(args: z.infer<z.ZodObject<Args>>, context: ToolContext): Promise<string>;
+    execute(
+        args: z.infer<z.ZodObject<Args>>,
+        context: ToolContext
+    ): Promise<string>;
 };
 ```
 
 ### types
 
 <a id="plugin-dist-index-js-toolcontext"></a>
+
 #### ToolContext
 
 ```ts
@@ -461,6 +552,7 @@ export type ToolContext = {
 ```
 
 <a id="plugin-dist-index-js-tooldefinition"></a>
+
 #### ToolDefinition
 
 ```ts
@@ -472,6 +564,7 @@ export type ToolDefinition = ReturnType<typeof tool>;
 ### functions
 
 <a id="plugin-dist-tool-js-tool"></a>
+
 #### tool
 
 ```ts
@@ -485,6 +578,7 @@ export function tool(input) {
 ### variables
 
 <a id="plugin-dist-example-js-exampleplugin"></a>
+
 #### ExamplePlugin
 
 ```ts
@@ -492,9 +586,9 @@ ExamplePlugin = async (ctx) => {
     return {
         tool: {
             mytool: tool({
-                description: "This is a custom tool",
+                description: 'This is a custom tool',
                 args: {
-                    foo: tool.schema.string().describe("foo"),
+                    foo: tool.schema.string().describe('foo'),
                 },
                 async execute(args) {
                     return `Hello ${args.foo}!`;
@@ -502,6 +596,5 @@ ExamplePlugin = async (ctx) => {
             }),
         },
     };
-}
+};
 ```
-

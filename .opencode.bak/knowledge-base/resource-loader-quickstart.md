@@ -5,12 +5,12 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - knowledge
-  - meta
-  - plugin
-  - resource-loader
-  - discovery
-  - tools
+    - knowledge
+    - meta
+    - plugin
+    - resource-loader
+    - discovery
+    - tools
 last_updated: 2025-11-19
 ---
 
@@ -125,22 +125,22 @@ Content here...
 ```
 
 1. Place in appropriate directory:
-   - `.opencode/agent/my-agent.md`
-   - `.opencode/checklist/my-checklist.md`
-   - `.opencode/command/my-command.md`
-   - `.opencode/knowledge-base/my-pattern.md`
-   - `.opencode/task/my-workflow.md`
-   - `.opencode/template/my-template.md`
+    - `.opencode/agent/my-agent.md`
+    - `.opencode/checklist/my-checklist.md`
+    - `.opencode/command/my-command.md`
+    - `.opencode/knowledge-base/my-pattern.md`
+    - `.opencode/task/my-workflow.md`
+    - `.opencode/template/my-template.md`
 
 2. Restart OpenCode
 
 3. Your new tool will be available as:
-   - `agent_my_agent`
-   - `checklist_my_checklist`
-   - `command_my_command`
-   - `knowledge_base_my_pattern`
-   - `task_my_workflow`
-   - `template_my_template`
+    - `agent_my_agent`
+    - `checklist_my_checklist`
+    - `command_my_command`
+    - `knowledge_base_my_pattern`
+    - `task_my_workflow`
+    - `template_my_template`
 
 4. Discover it with: `resource_search({ query: "my" })`
 

@@ -5,10 +5,10 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - checklist
-  - documentation
-  - strict
-  - validation
+    - checklist
+    - documentation
+    - strict
+    - validation
 last_updated: 2025-11-19
 ---
 
@@ -75,9 +75,9 @@ generated documentation.
 
 - [ ] **System Overview section**: High-level system description present
 - [ ] **Architecture diagrams**: Minimum 3 Mermaid diagrams included:
-  - [ ] System architecture diagram
-  - [ ] Data flow diagram
-  - [ ] Deployment diagram
+    - [ ] System architecture diagram
+    - [ ] Data flow diagram
+    - [ ] Deployment diagram
 - [ ] **Component Architecture section**: Components documented
 - [ ] **Technology Stack table**: Technologies listed in table format
 - [ ] **Design Patterns section**: Patterns documented

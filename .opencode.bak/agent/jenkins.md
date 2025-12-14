@@ -3,26 +3,26 @@ description: Designs, audits, and maintains Jenkins scripted pipelines for this 
 mode: all
 model: openai/gpt-5-mini
 tools:
-  write: true
-  edit: true
-  bash: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  webfetch: true
+    write: true
+    edit: true
+    bash: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    webfetch: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - jenkins
-  - designs,
-  - audits,
+    - agent
+    - jenkins
+    - designs,
+    - audits,
 version: 1.0.0
 last_updated: 2025-11-19
 ---

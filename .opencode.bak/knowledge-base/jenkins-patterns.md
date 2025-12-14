@@ -5,10 +5,10 @@ type: knowledge-base
 category: cicd
 version: 1.0.0
 tags:
-  - knowledge
-  - cicd
-  - jenkins
-  - patterns
+    - knowledge
+    - cicd
+    - jenkins
+    - patterns
 last_updated: 2025-11-19
 ---
 
@@ -19,24 +19,24 @@ Comprehensive Jenkins pipeline patterns and best practices for modern CI/CD impl
 ## Table of Contents
 
 - [Jenkins Patterns Knowledge Base](#jenkins-patterns-knowledge-base)
-  - [Table of Contents](#table-of-contents)
-  - [Declarative Pipeline Patterns](#declarative-pipeline-patterns)
-    - [Basic Production Pipeline](#basic-production-pipeline)
-    - [Matrix Build Pattern](#matrix-build-pattern)
-    - [Dynamic Pipeline Generation](#dynamic-pipeline-generation)
-  - [Scripted Pipeline Patterns](#scripted-pipeline-patterns)
-    - [Advanced Scripted Pipeline](#advanced-scripted-pipeline)
-  - [Shared Libraries](#shared-libraries)
-    - [Library Structure](#library-structure)
-    - [Global Variable Example](#global-variable-example)
-    - [Docker Build Library](#docker-build-library)
-    - [Testing Library](#testing-library)
-    - [Usage in Pipeline](#usage-in-pipeline)
-  - [Multi-Branch Pipelines](#multi-branch-pipelines)
-    - [Jenkinsfile for Multi-Branch](#jenkinsfile-for-multi-branch)
-  - [Performance Optimization](#performance-optimization)
-    - [Parallel Execution Patterns](#parallel-execution-patterns)
-    - [Caching Strategies](#caching-strategies)
+    - [Table of Contents](#table-of-contents)
+    - [Declarative Pipeline Patterns](#declarative-pipeline-patterns)
+        - [Basic Production Pipeline](#basic-production-pipeline)
+        - [Matrix Build Pattern](#matrix-build-pattern)
+        - [Dynamic Pipeline Generation](#dynamic-pipeline-generation)
+    - [Scripted Pipeline Patterns](#scripted-pipeline-patterns)
+        - [Advanced Scripted Pipeline](#advanced-scripted-pipeline)
+    - [Shared Libraries](#shared-libraries)
+        - [Library Structure](#library-structure)
+        - [Global Variable Example](#global-variable-example)
+        - [Docker Build Library](#docker-build-library)
+        - [Testing Library](#testing-library)
+        - [Usage in Pipeline](#usage-in-pipeline)
+    - [Multi-Branch Pipelines](#multi-branch-pipelines)
+        - [Jenkinsfile for Multi-Branch](#jenkinsfile-for-multi-branch)
+    - [Performance Optimization](#performance-optimization)
+        - [Parallel Execution Patterns](#parallel-execution-patterns)
+        - [Caching Strategies](#caching-strategies)
 
 ## Declarative Pipeline Patterns
 

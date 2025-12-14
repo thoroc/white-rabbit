@@ -3,26 +3,26 @@ description: Deep research specialist conducting exhaustive multi-source analysi
 mode: subagent
 temperature: 0.3
 tools:
-  write: false
-  edit: false
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  webfetch: true
+    write: false
+    edit: false
+    read: true
+    grep: true
+    glob: true
+    list: true
+    bash: true
+    webfetch: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - researcher
-  - research
-  - specialist
+    - agent
+    - researcher
+    - research
+    - specialist
 version: 1.0.0
 last_updated: 2025-11-19
 ---

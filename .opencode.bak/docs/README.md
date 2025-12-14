@@ -8,10 +8,10 @@ Welcome to the OpenCode configuration documentation. This repository contains ag
 - **[Commands Reference](commands.md)** - All available slash commands
 - **[Builder Quick Reference](builder-quick-reference.md)** - Create new agents, commands, tasks, checklists, and knowledge bases
 - **Existing Guides**:
-  - [AI Tool Approval System](ai-tool-approval-system-summary.md)
-  - [AI Tool Review Guide](ai-tool-review-guide.md)
-  - [JIRA Ticket Creation System](jira-ticket-creation-system.md)
-  - [JIRA Quick Reference](jira-ticket-quick-reference.md)
+    - [AI Tool Approval System](ai-tool-approval-system-summary.md)
+    - [AI Tool Review Guide](ai-tool-review-guide.md)
+    - [JIRA Ticket Creation System](jira-ticket-creation-system.md)
+    - [JIRA Quick Reference](jira-ticket-quick-reference.md)
 
 ## What's in This Repository
 
@@ -34,18 +34,18 @@ This OpenCode configuration directory contains:
 **IMPORTANT**: There is a critical distinction between documentation types:
 
 - **`docs/`** - System documentation (how OpenCode works)
-  - ❌ NEVER referenced by runtime resources (agents, tasks, commands)
-  - ✅ Documentation FOR humans ABOUT the OpenCode system
-  - Examples: `docs/README.md`, `docs/agents.md`, `docs/commands.md`
+    - ❌ NEVER referenced by runtime resources (agents, tasks, commands)
+    - ✅ Documentation FOR humans ABOUT the OpenCode system
+    - Examples: `docs/README.md`, `docs/agents.md`, `docs/commands.md`
 
 - **`knowledge-base/`** - Domain knowledge (patterns, best practices)
-  - ✅ Referenced by runtime resources as `@knowledge-base/*.md`
-  - ✅ Knowledge FOR AI agents to reference when working
-  - Examples: `pipeline-best-practices.md`, `mermaid-diagrams.md`
+    - ✅ Referenced by runtime resources as `@knowledge-base/*.md`
+    - ✅ Knowledge FOR AI agents to reference when working
+    - Examples: `pipeline-best-practices.md`, `mermaid-diagrams.md`
 
 - **External docs** - Official OpenCode documentation
-  - ✅ Referenced via URLs: `https://opencode.ai/docs/agents/`
-  - ✅ Always use external URLs, never local `docs/` paths
+    - ✅ Referenced via URLs: `https://opencode.ai/docs/agents/`
+    - ✅ Always use external URLs, never local `docs/` paths
 
 **Valid references in runtime resources:**
 
@@ -143,66 +143,66 @@ Automated analysis for efficient codebase understanding:
 
 1. **Quick single document**:
 
-   ```bash
-   /document
-   ```
+    ```bash
+    /document
+    ```
 
 2. **Comprehensive suite**:
 
-   ```bash
-   /documentalist
-   ```
+    ```bash
+    /documentalist
+    ```
 
 3. **Specific documentation type**:
 
-   ```bash
-   /api-docs
-   /arch-docs
-   /deploy-docs
-   ```
+    ```bash
+    /api-docs
+    /arch-docs
+    /deploy-docs
+    ```
 
 4. **With strict standards**:
 
-   ```bash
-   /generate-docs-strict
-   ```
+    ```bash
+    /generate-docs-strict
+    ```
 
 ### JIRA Ticket Creation
 
 1. **Create new ticket**:
 
-   ```bash
-   /create-ticket
-   ```
+    ```bash
+    /create-ticket
+    ```
 
 2. **Follows process**:
-   - Information gathering
-   - MoSCoW prioritization
-   - Acceptance criteria
-   - Quality validation
+    - Information gathering
+    - MoSCoW prioritization
+    - Acceptance criteria
+    - Quality validation
 
 ### Development Workflows
 
 1. **Commit changes**:
 
-   ```bash
-   /commit
-   ```
+    ```bash
+    /commit
+    ```
 
 2. **Enhance prompts**:
 
-   ```bash
-   /feature [basic prompt]
-   /refine-prompt [prompt to improve]
-   ```
+    ```bash
+    /feature [basic prompt]
+    /refine-prompt [prompt to improve]
+    ```
 
 ### Tool Evaluation
 
 1. **Review AI tools**:
 
-   ```bash
-   /review-tool [tool-name]
-   ```
+    ```bash
+    /review-tool [tool-name]
+    ```
 
 2. **Comprehensive assessment** per RFC 98
 
@@ -219,9 +219,9 @@ Automated analysis for efficient codebase understanding:
 
 1. **Check existing docs**: `/docs-help`
 2. **Choose approach**:
-   - Quick: `/document`
-   - Comprehensive: `/documentalist`
-   - Specific type: `/api-docs`, `/arch-docs`, etc.
+    - Quick: `/document`
+    - Comprehensive: `/documentalist`
+    - Specific type: `/api-docs`, `/arch-docs`, etc.
 3. **Review output**: Commands update existing docs when found
 4. **Enhance as needed**: Refine generated documentation
 
@@ -404,9 +404,9 @@ For tasks, checklists, or knowledge bases, invoke the opencode builder agent dir
 
 - Check agent requirements
 - Set required variables:
-  - JIRA: `JIRA_API_TOKEN`, `JIRA_URL`, `JIRA_USERNAME`
-  - Confluence: `CONFLUENCE_API_TOKEN`, `CONFLUENCE_URL`, `CONFLUENCE_USERNAME`
-  - GitLab: `GITLAB_API_URL`, `GITLAB_PERSONAL_ACCESS_TOKEN`
+    - JIRA: `JIRA_API_TOKEN`, `JIRA_URL`, `JIRA_USERNAME`
+    - Confluence: `CONFLUENCE_API_TOKEN`, `CONFLUENCE_URL`, `CONFLUENCE_USERNAME`
+    - GitLab: `GITLAB_API_URL`, `GITLAB_PERSONAL_ACCESS_TOKEN`
 
 ### Documentation Not Generated
 

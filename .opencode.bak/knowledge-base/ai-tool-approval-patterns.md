@@ -7,11 +7,11 @@ reference: RFC 98 - AI Open Source Tools Approval Process
 type: knowledge-base
 category: Documentation
 tags:
-  - knowledge-base
-  - tool
-  - approval
-  - comprehensive
-  - reference
+    - knowledge-base
+    - tool
+    - approval
+    - comprehensive
+    - reference
 ---
 
 # AI Tool Approval Knowledge Base
@@ -630,14 +630,14 @@ Thank you,
 
 - **2021:** GitHub Copilot released (Individual plan)
 - **Initial Assessment:** Rejected for organizational use
-  - Trains on public code (licensing concerns)
-  - Individual plan trains on user code
-  - No enterprise offering
+    - Trains on public code (licensing concerns)
+    - Individual plan trains on user code
+    - No enterprise offering
 
 - **2023:** GitHub Copilot for Business released
-  - Enterprise features: no training on customer code
-  - **Re-assessment:** Conditionally approved
-  - Restrictions: Business/Enterprise tier only, no Individual plan
+    - Enterprise features: no training on customer code
+    - **Re-assessment:** Conditionally approved
+    - Restrictions: Business/Enterprise tier only, no Individual plan
 
 - **Outcome:** Widely adopted with clear tier requirements
 
@@ -655,16 +655,16 @@ Thank you,
 
 - **2022:** ChatGPT released (Free tier)
 - **Initial Assessment:** Rejected for work use
-  - Trains on conversations
-  - No DPA
-  - No data residency options
+    - Trains on conversations
+    - No DPA
+    - No data residency options
 
 - **2023:** ChatGPT Enterprise launched
-  - No training on business data
-  - DPA available
-  - SOC 2 compliant
-  - **Assessment:** Approved with restrictions
-  - Restrictions: No PII, no customer data, internal use only
+    - No training on business data
+    - DPA available
+    - SOC 2 compliant
+    - **Assessment:** Approved with restrictions
+    - Restrictions: No PII, no customer data, internal use only
 
 - **Outcome:** Approved for documentation, brainstorming, non-sensitive use cases
 
@@ -681,17 +681,17 @@ Thank you,
 **Timeline:**
 
 - **Pre-2021:** Elasticsearch (Apache 2.0 license)
-  - **Status:** Approved, widely used
+    - **Status:** Approved, widely used
 
 - **2021:** License changed to SSPL (Server Side Public License)
-  - SSPL has restrictive terms for cloud services
-  - **Re-assessment Required**
-  - Concerns: Commercial use restrictions, source code disclosure requirements
+    - SSPL has restrictive terms for cloud services
+    - **Re-assessment Required**
+    - Concerns: Commercial use restrictions, source code disclosure requirements
 
 - **Decision:** Conditional approval
-  - Self-hosted use approved
-  - Must not offer as a service
-  - Evaluated OpenSearch (Apache 2.0 fork) as alternative
+    - Self-hosted use approved
+    - Must not offer as a service
+    - Evaluated OpenSearch (Apache 2.0 fork) as alternative
 
 - **Outcome:** Some teams migrated to OpenSearch, others stayed on pre-SSPL version
 
@@ -709,16 +709,16 @@ Thank you,
 
 - **2023:** Ollama released for local LLM hosting
 - **Assessment:**
-  - MIT license (permissive)
-  - Fully local, no external data transmission
-  - Requires GPU for practical use
-  - Models have separate licenses
+    - MIT license (permissive)
+    - Fully local, no external data transmission
+    - Requires GPU for practical use
+    - Models have separate licenses
 
 - **Decision:** Approved with operational guidance
-  - Approved for development use
-  - IT support for GPU resource allocation
-  - Must use commercially-licensed models (e.g., Llama 2, Mistral)
-  - Not for research-only models
+    - Approved for development use
+    - IT support for GPU resource allocation
+    - Must use commercially-licensed models (e.g., Llama 2, Mistral)
+    - Not for research-only models
 
 - **Outcome:** Adopted by development teams for local AI experimentation
 
@@ -735,68 +735,68 @@ Thank you,
 ### For Reviewers
 
 1. **Start with Documentation**
-   - Always read privacy policy and ToS completely
-   - Check for last update dates
-   - Look for enterprise-specific terms
+    - Always read privacy policy and ToS completely
+    - Check for last update dates
+    - Look for enterprise-specific terms
 
 2. **Verify, Don't Assume**
-   - Test opt-out processes
-   - Confirm claimed certifications
-   - Review actual code for open source projects
+    - Test opt-out processes
+    - Confirm claimed certifications
+    - Review actual code for open source projects
 
 3. **Think Long-Term**
-   - Consider vendor lock-in
-   - Plan for tool deprecation/changes
-   - Document decision rationale for future reviews
+    - Consider vendor lock-in
+    - Plan for tool deprecation/changes
+    - Document decision rationale for future reviews
 
 4. **Communicate Clearly**
-   - Use specific, actionable language
-   - Provide alternatives when rejecting
-   - Create user-friendly usage guidelines
+    - Use specific, actionable language
+    - Provide alternatives when rejecting
+    - Create user-friendly usage guidelines
 
 ### For Requesters
 
 1. **Do Initial Research**
-   - Check if tool already in registry
-   - Review similar tool decisions
-   - Understand tool's business model
+    - Check if tool already in registry
+    - Review similar tool decisions
+    - Understand tool's business model
 
 2. **Provide Complete Information**
-   - Include all evaluation criteria answers
-   - Cite sources
-   - Be honest about current usage
+    - Include all evaluation criteria answers
+    - Cite sources
+    - Be honest about current usage
 
 3. **Consider Alternatives**
-   - Research similar approved tools
-   - Evaluate self-hosted options
-   - Assess true necessity
+    - Research similar approved tools
+    - Evaluate self-hosted options
+    - Assess true necessity
 
 4. **Plan for Compliance**
-   - Identify sponsor early
-   - Budget for enterprise tier if needed
-   - Plan user training
+    - Identify sponsor early
+    - Budget for enterprise tier if needed
+    - Plan user training
 
 ### For Organizations
 
 1. **Maintain Living Registry**
-   - Update regularly
-   - Include version numbers
-   - Document restriction rationale
+    - Update regularly
+    - Include version numbers
+    - Document restriction rationale
 
 2. **Regular Re-evaluation**
-   - Quarterly for high-risk tools
-   - Annually for low-risk tools
-   - Triggered by incidents or changes
+    - Quarterly for high-risk tools
+    - Annually for low-risk tools
+    - Triggered by incidents or changes
 
 3. **User Education**
-   - Regular training on approved tools
-   - Clear consequences for violations
-   - Easy-to-find approval status
+    - Regular training on approved tools
+    - Clear consequences for violations
+    - Easy-to-find approval status
 
 4. **Continuous Improvement**
-   - Learn from incidents
-   - Update criteria based on experience
-   - Gather user feedback
+    - Learn from incidents
+    - Update criteria based on experience
+    - Gather user feedback
 
 ---
 

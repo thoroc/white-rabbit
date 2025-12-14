@@ -8,10 +8,10 @@ difficulty: intermediate
 audience: [developers, devops, ci-cd-engineers]
 tags: [git, commits, conventional-commits, version-control, versioning]
 related_resources:
-  - task/task-git-operations-execution.md
-  - checklist/checklist-git-operations-pre-commit.md
-  - knowledge-base/knowledge-base-git-operations-reference.md
-  - command/command-commit.md
+    - task/task-git-operations-execution.md
+    - checklist/checklist-git-operations-pre-commit.md
+    - knowledge-base/knowledge-base-git-operations-reference.md
+    - command/command-commit.md
 estimated_duration: 15-20 minutes
 ---
 
@@ -277,10 +277,10 @@ refactor: Code cleanup and stuff       (← vague; trailing period)
 - **Format:** Separate from description by one blank line
 - **Length:** Wrap at 72 characters
 - **Content:**
-  - Problem being solved
-  - Design decisions
-  - Alternatives considered and rejected
-  - Impact on users or systems
+    - Problem being solved
+    - Design decisions
+    - Alternatives considered and rejected
+    - Impact on users or systems
 
 ### Body Example
 
@@ -303,11 +303,11 @@ security vulnerability eliminated.
 - **Use when:** Linking to issues, noting co-authors, indicating impact
 - **Format:** `Token: value` (one per line, after body)
 - **Common footers:**
-  - `Closes: #123` or `Fixes: #456`
-  - `Related-To: #789`
-  - `Co-Authored-By: Name <email>`
-  - `Reviewed-By: Name`
-  - `BREAKING CHANGE: description`
+    - `Closes: #123` or `Fixes: #456`
+    - `Related-To: #789`
+    - `Co-Authored-By: Name <email>`
+    - `Reviewed-By: Name`
+    - `BREAKING CHANGE: description`
 
 ### Footer Example
 
@@ -533,15 +533,15 @@ name: Validate Commit Messages
 on: [pull_request]
 
 jobs:
-  commit-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: commitlint-bot/commitlint-action@v2.0.0
-        with:
-          configFile: commitlint.config.js
+    commit-lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - uses: commitlint-bot/commitlint-action@v2.0.0
+              with:
+                  configFile: commitlint.config.js
 ```
 
 ---

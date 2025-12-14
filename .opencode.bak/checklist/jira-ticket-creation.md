@@ -5,11 +5,11 @@ type: checklist
 category: operations
 version: 1.0.0
 tags:
-  - checklist
-  - operations
-  - jira
-  - ticket
-  - creation
+    - checklist
+    - operations
+    - jira
+    - ticket
+    - creation
 last_updated: 2025-11-19
 ---
 
@@ -31,8 +31,8 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 ### Basic Information
 
 - [ ] **Ticket title is clear and concise**: Summarizes the work in 8-12 words maximum
-  - Format: `[Component/Area] Action to be taken`
-  - Example: `[Search] Add filtering by date, price, and location`
+    - Format: `[Component/Area] Action to be taken`
+    - Example: `[Search] Add filtering by date, price, and location`
 - [ ] **Project and issue type selected**: Correctly categorized (Story, Bug, Task, Epic, etc.)
 
 - [ ] **Priority set appropriately**: Using team's priority system (Critical, High, Medium, Low)
@@ -45,11 +45,11 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 
 - [ ] **User story follows standard format**:
 
-  ```
-  As a [user role]
-  I want to [action/feature]
-  So that [business value/benefit]
-  ```
+    ```
+    As a [user role]
+    I want to [action/feature]
+    So that [business value/benefit]
+    ```
 
 - [ ] **User role is specific**: Identifies the actual user persona or system
 
@@ -62,34 +62,34 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 ### Conditions of Satisfaction (MoSCoW Prioritization)
 
 - [ ] **Must Have conditions identified**:
-  - Non-negotiable requirements for the ticket to be complete
-  - Core functionality that defines the work
-  - Legal or compliance requirements
-  - Minimum 3, maximum 8 conditions
+    - Non-negotiable requirements for the ticket to be complete
+    - Core functionality that defines the work
+    - Legal or compliance requirements
+    - Minimum 3, maximum 8 conditions
 
 - [ ] **Should Have conditions listed**:
-  - Important features that add significant value
-  - Can be moved to future iterations if needed
-  - Clearly marked as "Should Have"
+    - Important features that add significant value
+    - Can be moved to future iterations if needed
+    - Clearly marked as "Should Have"
 
 - [ ] **Could Have conditions documented**:
-  - Nice-to-have enhancements
-  - Clearly marked as optional
-  - Will be deprioritized if time/resources constrained
+    - Nice-to-have enhancements
+    - Clearly marked as optional
+    - Will be deprioritized if time/resources constrained
 
 - [ ] **Won't Have conditions explicitly stated**:
-  - Items explicitly out of scope
-  - Prevents scope creep
-  - Documents why they're excluded
+    - Items explicitly out of scope
+    - Prevents scope creep
+    - Documents why they're excluded
 
 - [ ] **MoSCoW table included** (if complex ticket):
 
-  ```
-  | Must Have | Should Have | Could Have | Won't Have |
-  |-----------|-------------|------------|------------|
-  | Item 1    | Item 1      | Item 1     | Item 1     |
-  | Item 2    | Item 2      | Item 2     | Item 2     |
-  ```
+    ```
+    | Must Have | Should Have | Could Have | Won't Have |
+    |-----------|-------------|------------|------------|
+    | Item 1    | Item 1      | Item 1     | Item 1     |
+    | Item 2    | Item 2      | Item 2     | Item 2     |
+    ```
 
 ### Acceptance Criteria
 
@@ -108,9 +108,9 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 - [ ] **Negative scenarios included**: Cover error cases and edge cases
 
 - [ ] **Criteria are measurable**: Include specific metrics where relevant
-  - Performance metrics (e.g., "< 2 seconds")
-  - Quantity metrics (e.g., "displays 10 results per page")
-  - Quality metrics (e.g., "95% success rate")
+    - Performance metrics (e.g., "< 2 seconds")
+    - Quantity metrics (e.g., "displays 10 results per page")
+    - Quality metrics (e.g., "95% success rate")
 
 #### For Scenario-Oriented AC (Given/When/Then)
 
@@ -139,10 +139,10 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 ### Technical Details (When Necessary)
 
 - [ ] **Technical constraints documented**: Only if they affect the solution
-  - Performance requirements
-  - Browser/platform compatibility
-  - Security requirements
-  - Accessibility requirements (WCAG level)
+    - Performance requirements
+    - Browser/platform compatibility
+    - Security requirements
+    - Accessibility requirements (WCAG level)
 
 - [ ] **API endpoints specified**: If integrating with APIs
 
@@ -157,17 +157,17 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 - [ ] **Business value explained**: How this benefits users or the business
 
 - [ ] **Related tickets linked**:
-  - Blocks/Is blocked by
-  - Relates to
-  - Duplicates
-  - Parent/Child relationships
+    - Blocks/Is blocked by
+    - Relates to
+    - Duplicates
+    - Parent/Child relationships
 
 - [ ] **Attachments included** (if applicable):
-  - Mockups or wireframes
-  - User research findings
-  - Technical diagrams
-  - Example data or files
-  - Screenshots of bugs
+    - Mockups or wireframes
+    - User research findings
+    - Technical diagrams
+    - Example data or files
+    - Screenshots of bugs
 
 - [ ] **Labels/Tags applied**: For categorization and filtering
 
@@ -176,15 +176,15 @@ This checklist ensures that every JIRA ticket created follows consistent standar
 ### Definition of Done
 
 - [ ] **Team's Definition of Done referenced or included**:
-  - Code written and committed
-  - Code reviewed
-  - Unit tests written and passing
-  - Integration tests passing
-  - Documentation updated
-  - No unresolved bugs
-  - Acceptance criteria met
-  - Deployed to test environment
-  - Stakeholder approval received
+    - Code written and committed
+    - Code reviewed
+    - Unit tests written and passing
+    - Integration tests passing
+    - Documentation updated
+    - No unresolved bugs
+    - Acceptance criteria met
+    - Deployed to test environment
+    - Stakeholder approval received
 
 ### Estimation
 

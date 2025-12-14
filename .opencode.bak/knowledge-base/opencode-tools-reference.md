@@ -6,21 +6,21 @@ category: Development
 version: 1.0.0
 last_updated: 2025-11-19
 tags:
-  - opencode
-  - tools
-  - configuration
-  - reference
-  - built-in
-  - custom-tools
+    - opencode
+    - tools
+    - configuration
+    - reference
+    - built-in
+    - custom-tools
 difficulty: intermediate
 audience:
-  - developers
-  - agents
-  - configuration-managers
+    - developers
+    - agents
+    - configuration-managers
 related_resources:
-  - knowledge-base/plugin-architecture.md
-  - knowledge-base/agent-configuration-reference.md
-  - knowledge-base/loading-strategy.md
+    - knowledge-base/plugin-architecture.md
+    - knowledge-base/agent-configuration-reference.md
+    - knowledge-base/loading-strategy.md
 ---
 
 # OpenCode Tools Reference Guide
@@ -50,12 +50,12 @@ Configure tools globally using the `tools` option in `opencode.json`:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "tools": {
-    "write": false,
-    "bash": false,
-    "webfetch": true
-  }
+    "$schema": "https://opencode.ai/config.json",
+    "tools": {
+        "write": false,
+        "bash": false,
+        "webfetch": true
+    }
 }
 ```
 
@@ -65,10 +65,10 @@ Control multiple tools at once using wildcards:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "tools": {
-    "mymcp_*": false // Disable all tools from 'mymcp' MCP server
-  }
+    "$schema": "https://opencode.ai/config.json",
+    "tools": {
+        "mymcp_*": false // Disable all tools from 'mymcp' MCP server
+    }
 }
 ```
 
@@ -80,19 +80,19 @@ Override global settings for specific agents:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "tools": {
-    "write": true,
-    "bash": true
-  },
-  "agent": {
-    "plan": {
-      "tools": {
-        "write": false,
-        "bash": false
-      }
+    "$schema": "https://opencode.ai/config.json",
+    "tools": {
+        "write": true,
+        "bash": true
+    },
+    "agent": {
+        "plan": {
+            "tools": {
+                "write": false,
+                "bash": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -105,9 +105,9 @@ Configure tools directly in agent definition files:
 description: Read-only analysis agent
 mode: subagent
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 
 Analyze code without making any modifications.
@@ -129,9 +129,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "read": true
-  }
+    "tools": {
+        "read": true
+    }
 }
 ```
 
@@ -158,9 +158,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "write": true
-  }
+    "tools": {
+        "write": true
+    }
 }
 ```
 
@@ -189,9 +189,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "edit": true
-  }
+    "tools": {
+        "edit": true
+    }
 }
 ```
 
@@ -221,9 +221,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "patch": true
-  }
+    "tools": {
+        "patch": true
+    }
 }
 ```
 
@@ -250,9 +250,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "list": true
-  }
+    "tools": {
+        "list": true
+    }
 }
 ```
 
@@ -281,9 +281,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "grep": true
-  }
+    "tools": {
+        "grep": true
+    }
 }
 ```
 
@@ -313,9 +313,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "glob": true
-  }
+    "tools": {
+        "glob": true
+    }
 }
 ```
 
@@ -350,9 +350,9 @@ Analyze code without making any modifications.
 
 ```json
 {
-  "tools": {
-    "bash": true
-  }
+    "tools": {
+        "bash": true
+    }
 }
 ```
 
@@ -394,9 +394,9 @@ npm run build       # Build project
 
 ```json
 {
-  "tools": {
-    "todowrite": true
-  }
+    "tools": {
+        "todowrite": true
+    }
 }
 ```
 
@@ -426,9 +426,9 @@ npm run build       # Build project
 
 ```json
 {
-  "tools": {
-    "todoread": true
-  }
+    "tools": {
+        "todoread": true
+    }
 }
 ```
 
@@ -456,9 +456,9 @@ npm run build       # Build project
 
 ```json
 {
-  "tools": {
-    "webfetch": true
-  }
+    "tools": {
+        "webfetch": true
+    }
 }
 ```
 
@@ -492,20 +492,20 @@ npm run build       # Build project
 
 ```json
 {
-  "agent": {
-    "analyzer": {
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": false,
-        "patch": false,
-        "read": true,
-        "grep": true,
-        "glob": true,
-        "list": true
-      }
+    "agent": {
+        "analyzer": {
+            "tools": {
+                "write": false,
+                "edit": false,
+                "bash": false,
+                "patch": false,
+                "read": true,
+                "grep": true,
+                "glob": true,
+                "list": true
+            }
+        }
     }
-  }
 }
 ```
 
@@ -520,18 +520,18 @@ npm run build       # Build project
 
 ```json
 {
-  "agent": {
-    "documentalist": {
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": false,
-        "read": true,
-        "grep": true,
-        "webfetch": true
-      }
+    "agent": {
+        "documentalist": {
+            "tools": {
+                "write": true,
+                "edit": true,
+                "bash": false,
+                "read": true,
+                "grep": true,
+                "webfetch": true
+            }
+        }
     }
-  }
 }
 ```
 
@@ -546,16 +546,16 @@ npm run build       # Build project
 
 ```json
 {
-  "agent": {
-    "builder": {
-      "tools": {
-        "bash": true,
-        "read": true,
-        "write": false,
-        "edit": false
-      }
+    "agent": {
+        "builder": {
+            "tools": {
+                "bash": true,
+                "read": true,
+                "write": false,
+                "edit": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -570,23 +570,23 @@ npm run build       # Build project
 
 ```json
 {
-  "agent": {
-    "general": {
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true,
-        "list": true,
-        "patch": true,
-        "webfetch": true,
-        "todowrite": true,
-        "todoread": true
-      }
+    "agent": {
+        "general": {
+            "tools": {
+                "write": true,
+                "edit": true,
+                "bash": true,
+                "read": true,
+                "grep": true,
+                "glob": true,
+                "list": true,
+                "patch": true,
+                "webfetch": true,
+                "todowrite": true,
+                "todoread": true
+            }
+        }
     }
-  }
 }
 ```
 
@@ -600,16 +600,16 @@ npm run build       # Build project
 
 ```json
 {
-  "agent": {
-    "secure": {
-      "tools": {
-        "write": false,
-        "edit": true,
-        "bash": false,
-        "patch": false
-      }
+    "agent": {
+        "secure": {
+            "tools": {
+                "write": false,
+                "edit": true,
+                "bash": false,
+                "patch": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -626,16 +626,16 @@ Define custom functions that the LLM can call:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "customTools": {
-    "myTool": {
-      "description": "My custom tool",
-      "args": {
-        "input": { "type": "string" }
-      },
-      "execute": "path/to/script.js"
+    "$schema": "https://opencode.ai/config.json",
+    "customTools": {
+        "myTool": {
+            "description": "My custom tool",
+            "args": {
+                "input": { "type": "string" }
+            },
+            "execute": "path/to/script.js"
+        }
     }
-  }
 }
 ```
 
@@ -647,13 +647,13 @@ Integrate external tools and services via Model Context Protocol:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "mcpServers": {
-    "database": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres"]
+    "$schema": "https://opencode.ai/config.json",
+    "mcpServers": {
+        "database": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-postgres"]
+        }
     }
-  }
 }
 ```
 
@@ -706,16 +706,16 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "linter": {
-      "tools": {
-        "read": true,
-        "grep": true,
-        "bash": false, // Not needed for linting
-        "write": false // Not needed for linting
-      }
+    "agent": {
+        "linter": {
+            "tools": {
+                "read": true,
+                "grep": true,
+                "bash": false, // Not needed for linting
+                "write": false // Not needed for linting
+            }
+        }
     }
-  }
 }
 ```
 
@@ -755,9 +755,9 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "tools": {
-    "database_*": false // Disable all database MCP tools
-  }
+    "tools": {
+        "database_*": false // Disable all database MCP tools
+    }
 }
 ```
 
@@ -790,19 +790,19 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "reviewer": {
-      "tools": {
-        "read": true,
-        "grep": true,
-        "glob": true,
-        "list": true,
-        "write": false,
-        "edit": false,
-        "bash": false
-      }
+    "agent": {
+        "reviewer": {
+            "tools": {
+                "read": true,
+                "grep": true,
+                "glob": true,
+                "list": true,
+                "write": false,
+                "edit": false,
+                "bash": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -810,19 +810,19 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "docs": {
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "grep": true,
-        "glob": true,
-        "webfetch": true,
-        "bash": false
-      }
+    "agent": {
+        "docs": {
+            "tools": {
+                "read": true,
+                "write": true,
+                "edit": true,
+                "grep": true,
+                "glob": true,
+                "webfetch": true,
+                "bash": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -830,17 +830,17 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "tester": {
-      "tools": {
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "write": false,
-        "edit": false
-      }
+    "agent": {
+        "tester": {
+            "tools": {
+                "bash": true,
+                "read": true,
+                "grep": true,
+                "write": false,
+                "edit": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -848,18 +848,18 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "refactor": {
-      "tools": {
-        "read": true,
-        "edit": true,
-        "grep": true,
-        "glob": true,
-        "bash": false,
-        "write": false
-      }
+    "agent": {
+        "refactor": {
+            "tools": {
+                "read": true,
+                "edit": true,
+                "grep": true,
+                "glob": true,
+                "bash": false,
+                "write": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -882,9 +882,9 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "tools": {
-    "mytool": true // Explicitly enable
-  }
+    "tools": {
+        "mytool": true // Explicitly enable
+    }
 }
 ```
 
@@ -918,13 +918,13 @@ Create `.ignore` in project root to include normally-ignored paths:
 
 ```json
 {
-  "agent": {
-    "myagent": {
-      "tools": {
-        "write": true
-      }
+    "agent": {
+        "myagent": {
+            "tools": {
+                "write": true
+            }
+        }
     }
-  }
 }
 ```
 
@@ -1037,14 +1037,14 @@ analyze_project() {
 
 ```json
 {
-  "agent": {
-    "analyzer": {
-      "tools": {
-        "grep": true,
-        "list": true
-      }
+    "agent": {
+        "analyzer": {
+            "tools": {
+                "grep": true,
+                "list": true
+            }
+        }
     }
-  }
 }
 ```
 

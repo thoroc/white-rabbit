@@ -86,10 +86,10 @@ reference: '[Optional: URL or documentation reference]'
 
 ```yaml
 structure:
-  component_name:
-    description: 'What this component is for'
-    format: '[Format or pattern]'
-    required: true # or false
+    component_name:
+        description: 'What this component is for'
+        format: '[Format or pattern]'
+        required: true # or false
 ```
 
 **Purpose:** Define the core structure of what the template describes
@@ -99,12 +99,12 @@ structure:
 
 ```yaml
 options:
-  option_name:
-    description: 'What this option controls'
-    type: 'string'
-    required: false
-    default: 'default value'
-    example: 'option_name: example'
+    option_name:
+        description: 'What this option controls'
+        type: 'string'
+        required: false
+        default: 'default value'
+        example: 'option_name: example'
 ```
 
 **Purpose:** Document configuration parameters
@@ -114,15 +114,15 @@ options:
 
 ```yaml
 guidelines:
-  when_to_use:
-    - 'Use case 1'
-    - 'Use case 2'
+    when_to_use:
+        - 'Use case 1'
+        - 'Use case 2'
 
-  when_not_to_use:
-    - 'Anti-pattern 1'
+    when_not_to_use:
+        - 'Anti-pattern 1'
 
-  best_practices:
-    - 'Best practice 1'
+    best_practices:
+        - 'Best practice 1'
 ```
 
 **Purpose:** Provide domain-specific guidance
@@ -132,10 +132,10 @@ guidelines:
 
 ```yaml
 content_principles:
-  clarity: ['Principle 1', 'Principle 2']
-  completeness: ['Principle 1', 'Principle 2']
-  actionability: ['Principle 1', 'Principle 2']
-  organization: ['Principle 1', 'Principle 2']
+    clarity: ['Principle 1', 'Principle 2']
+    completeness: ['Principle 1', 'Principle 2']
+    actionability: ['Principle 1', 'Principle 2']
+    organization: ['Principle 1', 'Principle 2']
 ```
 
 **Purpose:** Define principles for content quality
@@ -145,10 +145,10 @@ content_principles:
 
 ```yaml
 formatting:
-  markdown_elements:
-    headings: ['# [Title]', '## [Section]', '### [Subsection]']
-    emphasis: ['**[Bold]**', '_[Italic]_', '`[Code]`']
-    lists: ['- Unordered', '1. Ordered', '  - Nested']
+    markdown_elements:
+        headings: ['# [Title]', '## [Section]', '### [Subsection]']
+        emphasis: ['**[Bold]**', '_[Italic]_', '`[Code]`']
+        lists: ['- Unordered', '1. Ordered', '  - Nested']
 ```
 
 **Purpose:** Define formatting standards
@@ -158,10 +158,10 @@ formatting:
 
 ```yaml
 example_basic: |
-  [Simple example with minimal required fields]
+    [Simple example with minimal required fields]
 
 example_complete: |
-  [Comprehensive example with all fields]
+    [Comprehensive example with all fields]
 ```
 
 **Purpose:** Show concrete usage
@@ -174,10 +174,10 @@ example_complete: |
 
 ```yaml
 common_patterns:
-  pattern_name:
-    description: 'What this pattern is for'
-    use_case: 'When to use'
-    example: '[Example code]'
+    pattern_name:
+        description: 'What this pattern is for'
+        use_case: 'When to use'
+        example: '[Example code]'
 ```
 
 **When to include:** For templates with recurring patterns
@@ -186,10 +186,10 @@ common_patterns:
 
 ```yaml
 types:
-  type_name:
-    description: 'What distinguishes this type'
-    use_case: 'When to use'
-    characteristics: ['Char 1', 'Char 2']
+    type_name:
+        description: 'What distinguishes this type'
+        use_case: 'When to use'
+        characteristics: ['Char 1', 'Char 2']
 ```
 
 **When to include:** For templates with variants
@@ -198,10 +198,10 @@ types:
 
 ```yaml
 recommended_size:
-  minimum: '[Minimum]'
-  typical: '[Standard]'
-  maximum: '[Maximum]'
-  note: 'Sizing guidance'
+    minimum: '[Minimum]'
+    typical: '[Standard]'
+    maximum: '[Maximum]'
+    note: 'Sizing guidance'
 ```
 
 **When to include:** For templates with size considerations
@@ -212,8 +212,8 @@ recommended_size:
 
 ```yaml
 integration:
-  with_component_a: 'How this integrates'
-  with_component_b: 'How this integrates'
+    with_component_a: 'How this integrates'
+    with_component_b: 'How this integrates'
 ```
 
 **Purpose:** Explain how content integrates with other parts
@@ -223,9 +223,9 @@ integration:
 
 ```yaml
 maintenance:
-  review_frequency: 'When to review'
-  update_triggers: ['Trigger 1', 'Trigger 2']
-  version_control: ['Guideline 1', 'Guideline 2']
+    review_frequency: 'When to review'
+    update_triggers: ['Trigger 1', 'Trigger 2']
+    version_control: ['Guideline 1', 'Guideline 2']
 ```
 
 **Purpose:** Define maintenance requirements
@@ -235,9 +235,9 @@ maintenance:
 
 ```yaml
 best_practices:
-  - 'Key practice 1'
-  - 'Key practice 2'
-  - 'Key practice 3'
+    - 'Key practice 1'
+    - 'Key practice 2'
+    - 'Key practice 3'
 ```
 
 **Purpose:** Condensed list of key practices
@@ -248,9 +248,9 @@ best_practices:
 
 ```yaml
 references:
-  - name: 'Reference Name'
-    path: 'path/to/doc.md'
-    purpose: 'What this provides'
+    - name: 'Reference Name'
+      path: 'path/to/doc.md'
+      purpose: 'What this provides'
 ```
 
 **Purpose:** Link to related resources
@@ -274,8 +274,8 @@ references:
 # Can span multiple lines
 
 section_key:
-  # Inline comments for specific items
-  item: 'value'
+    # Inline comments for specific items
+    item: 'value'
 ```
 
 ### String Values
@@ -293,9 +293,9 @@ simple_list: ['item1', 'item2', 'item3']
 
 # Block list (preferred for readability)
 detailed_list:
-  - 'Item 1 with description'
-  - 'Item 2 with description'
-  - 'Item 3 with description'
+    - 'Item 1 with description'
+    - 'Item 2 with description'
+    - 'Item 3 with description'
 ```
 
 ## Size Guidelines
@@ -399,7 +399,7 @@ category: 'Category'
 # Explanation of template purpose
 
 structure:
-  # Core structure
+    # Core structure
 ```
 
 ## Template Categories

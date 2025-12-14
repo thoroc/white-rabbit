@@ -5,10 +5,10 @@ agent: opencode
 type: command
 category: Development
 tags:
-  - builder
-  - create
-  - opencode
-  - resource
+    - builder
+    - create
+    - opencode
+    - resource
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -159,25 +159,25 @@ Create a custom tool that LLM can invoke with:
 The command will:
 
 1. **Parse Arguments**
-   - Extract type from $1
-   - Combine remaining arguments ($2, $3, ...) as description
+    - Extract type from $1
+    - Combine remaining arguments ($2, $3, ...) as description
 2. **Validate Type**
-   - Check if type is valid
-   - If invalid, list valid types and prompt for correct type
+    - Check if type is valid
+    - If invalid, list valid types and prompt for correct type
 3. **Check Description**
-   - If missing, prompt: "Please describe the [type] you want to create:"
+    - If missing, prompt: "Please describe the [type] you want to create:"
 4. **Execute Creation Task**
-   - Load `.opencode/task/opencode-{type}.md`
-   - Pass description to the task
-   - Follow the 7-step workflow
+    - Load `.opencode/task/opencode-{type}.md`
+    - Pass description to the task
+    - Follow the 7-step workflow
 5. **Validate Quality**
-   - Run `validate_frontmatter` to check metadata compliance
-   - Run `validate_resource_content` to check structure and quality
-   - Address any errors or warnings
+    - Run `validate_frontmatter` to check metadata compliance
+    - Run `validate_resource_content` to check structure and quality
+    - Address any errors or warnings
 6. **Deliver**
-   - Create file in appropriate directory
-   - Report success with file location and validation scores
-   - Provide recommendations if quality is below 70/100
+    - Create file in appropriate directory
+    - Report success with file location and validation scores
+    - Provide recommendations if quality is below 70/100
 
 ## Instructions
 

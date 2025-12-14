@@ -8,9 +8,9 @@ estimated_duration: 20-40 minutes
 prerequisites: [git-fundamentals, published-branch-experience]
 tags: [git, rebase, merge, recovery, operations]
 related_resources:
-  - knowledge-base/knowledge-base-git-operations-reference.md
-  - checklist/checklist-git-operations-pre-commit.md
-  - template/template-git-command-execution-report.md
+    - knowledge-base/knowledge-base-git-operations-reference.md
+    - checklist/checklist-git-operations-pre-commit.md
+    - template/template-git-command-execution-report.md
 ---
 
 # Git Operations Execution Workflows

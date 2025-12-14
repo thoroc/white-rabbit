@@ -5,16 +5,16 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - checklists
-  - architecture
-  - meta
-  - validation
-  - quality
-  - system
+    - checklists
+    - architecture
+    - meta
+    - validation
+    - quality
+    - system
 related_resources:
-  - ../command/list-checklists.md
-  - ../template/opencode-checklist-tmpl.yaml
-  - ../task/opencode-checklist.md
+    - ../command/list-checklists.md
+    - ../template/opencode-checklist-tmpl.yaml
+    - ../task/opencode-checklist.md
 last_updated: 2025-11-19
 ---
 
@@ -103,17 +103,17 @@ applies_to: [project-type1, project-type2]
 
 ```markdown
 - [ ] **Parent item**: Main requirement
-  - [ ] Sub-requirement 1
-  - [ ] Sub-requirement 2
+    - [ ] Sub-requirement 1
+    - [ ] Sub-requirement 2
 ```
 
 **Item with Details:**
 
 ```markdown
 - [ ] **Requirement with context**:
-  - [ ] Specific detail 1
-  - [ ] Specific detail 2
-  - [ ] Specific detail 3
+    - [ ] Specific detail 1
+    - [ ] Specific detail 2
+    - [ ] Specific detail 3
 ```
 
 ## Checklist Categories

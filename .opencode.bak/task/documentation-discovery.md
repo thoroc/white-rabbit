@@ -1,16 +1,16 @@
 ---
 title: Documentation Discovery Task
 description: Comprehensive discovery of existing documentation at any depth in
-  the project tree
+    the project tree
 type: task
 category: Documentation
 version: 1.0.0
 tags:
-  - documentation
-  - discovery
-  - readme
-  - docs
-  - conventions
+    - documentation
+    - discovery
+    - readme
+    - docs
+    - conventions
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19
@@ -277,23 +277,23 @@ After running the discovery command, you MUST:
 2. **Note the SUMMARY count** - Tells you how much documentation exists
 3. **Read existing documentation** - Use Read tool to examine each file
 4. **Identify patterns**:
-   - Monorepo pattern: `./packages/*/docs/`, `./services/*/docs/`
-   - Centralized pattern: All docs in `./docs/` or `./documentation/`
-   - Root pattern: Docs in project root (small projects)
-   - Mixed pattern: Some docs in root, some in subdirectories
-   - Platform-specific: `./.github/`, `./.gitlab/`
+    - Monorepo pattern: `./packages/*/docs/`, `./services/*/docs/`
+    - Centralized pattern: All docs in `./docs/` or `./documentation/`
+    - Root pattern: Docs in project root (small projects)
+    - Mixed pattern: Some docs in root, some in subdirectories
+    - Platform-specific: `./.github/`, `./.gitlab/`
 
 5. **Analyze conventions**:
-   - File naming: README vs readme, UPPERCASE vs lowercase
-   - File extensions: .md, .rst, .adoc preferences
-   - Directory names: docs vs doc vs documentation
-   - Section structure: How existing docs are organized
+    - File naming: README vs readme, UPPERCASE vs lowercase
+    - File extensions: .md, .rst, .adoc preferences
+    - Directory names: docs vs doc vs documentation
+    - Section structure: How existing docs are organized
 
 6. **Determine action**:
-   - **If docs exist**: UPDATE them in place (don't create duplicates)
-   - **If docs missing**: CREATE following existing patterns
-   - **If docs outdated**: ENHANCE with new information
-   - **If docs scattered**: Consider if consolidation adds value
+    - **If docs exist**: UPDATE them in place (don't create duplicates)
+    - **If docs missing**: CREATE following existing patterns
+    - **If docs outdated**: ENHANCE with new information
+    - **If docs scattered**: Consider if consolidation adds value
 
 ## Integration with Commands
 
@@ -337,14 +337,14 @@ This task is used by:
 ```markdown
 2. **Discover Existing Documentation**:
 
-   **📋 Discovery Task**: See `.opencode/task/documentation-discovery.md`
+    **📋 Discovery Task**: See `.opencode/task/documentation-discovery.md`
 
-   !`[paste discovery command from task]`
+    !`[paste discovery command from task]`
 
-   **After discovery, you MUST:**
-   - Review the COMPLETE list of discovered files
-   - Note the SUMMARY count
-   - Read all discovered files before proceeding
+    **After discovery, you MUST:**
+    - Review the COMPLETE list of discovered files
+    - Note the SUMMARY count
+    - Read all discovered files before proceeding
 ```
 
 ### In `/documentalist` command
@@ -352,16 +352,16 @@ This task is used by:
 ```markdown
 1. **Discover Existing Documentation**:
 
-   **📋 Complete Discovery Process**:
-   - Discovery Command: `.opencode/task/documentation-discovery.md`
-   - Analysis Checklist: `.opencode/checklist/documentation-discovery.md`
+    **📋 Complete Discovery Process**:
+    - Discovery Command: `.opencode/task/documentation-discovery.md`
+    - Analysis Checklist: `.opencode/checklist/documentation-discovery.md`
 
-   Run discovery task to find ALL documentation at ANY DEPTH.
+    Run discovery task to find ALL documentation at ANY DEPTH.
 
-   **After discovery, you MUST:**
-   - Review ALL discovered files
-   - Identify documentation organization pattern
-   - Note exact file paths for updates
+    **After discovery, you MUST:**
+    - Review ALL discovered files
+    - Identify documentation organization pattern
+    - Note exact file paths for updates
 ```
 
 ## Troubleshooting

@@ -5,15 +5,15 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - tasks
-  - discovery
-  - validation
-  - documentation
+    - tasks
+    - discovery
+    - validation
+    - documentation
 reference: ../knowledge-base/task-system-architecture.md
 applies_to:
-  - task-documentation
-  - task-discovery
-  - command-development
+    - task-documentation
+    - task-discovery
+    - command-development
 last_updated: 2025-11-19
 ---
 
@@ -91,27 +91,27 @@ This checklist ensures:
 ### Category Assignment
 
 - [ ] **Analysis category**: Identify tasks analyzing codebases, infrastructure
-  - [ ] technology-detection
-  - [ ] infrastructure-analysis
-  - [ ] deployment-strategy
-  - [ ] project-context
+    - [ ] technology-detection
+    - [ ] infrastructure-analysis
+    - [ ] deployment-strategy
+    - [ ] project-context
 
 - [ ] **Documentation category**: Identify documentation-related tasks
-  - [ ] documentation-discovery
+    - [ ] documentation-discovery
 
 - [ ] **Development category**: Identify meta tasks creating resources
-  - [ ] opencode-agent
-  - [ ] opencode-command
-  - [ ] opencode-task
-  - [ ] opencode-checklist
-  - [ ] opencode-knowledge-base
-  - [ ] opencode-template
+    - [ ] opencode-agent
+    - [ ] opencode-command
+    - [ ] opencode-task
+    - [ ] opencode-checklist
+    - [ ] opencode-knowledge-base
+    - [ ] opencode-template
 
 - [ ] **Operations category**: Identify CI/CD and deployment tasks
-  - [ ] pipeline-architect
+    - [ ] pipeline-architect
 
 - [ ] **Research category**: Identify research and evaluation tasks
-  - [ ] ai-tool-approval-research
+    - [ ] ai-tool-approval-research
 
 ### Category Organization
 

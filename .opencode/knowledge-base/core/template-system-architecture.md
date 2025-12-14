@@ -5,15 +5,15 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - templates
-  - architecture
-  - meta
-  - patterns
-  - system
+    - templates
+    - architecture
+    - meta
+    - patterns
+    - system
 related_resources:
-  - ../command/list-templates.md
-  - ../template/opencode-template-tmpl.yaml
-  - ../task/opencode-template.md
+    - ../command/list-templates.md
+    - ../template/opencode-template-tmpl.yaml
+    - ../task/opencode-template.md
 last_updated: 2025-11-19
 ---
 
@@ -78,10 +78,10 @@ Defines the high-level organization and requirements:
 
 ```yaml
 structure:
-  component_name:
-    format: 'How this component should be formatted'
-    required: true
-    note: 'Additional guidance'
+    component_name:
+        format: 'How this component should be formatted'
+        required: true
+        note: 'Additional guidance'
 ```
 
 ### Content Principles Section
@@ -90,10 +90,10 @@ Core principles for content creation:
 
 ```yaml
 content_principles:
-  clarity: ['Clear language', 'Specific details']
-  completeness: ['Cover all aspects', 'Include examples']
-  actionability: ['Make it executable', 'Provide verification']
-  organization: ['Logical order', 'Consistent formatting']
+    clarity: ['Clear language', 'Specific details']
+    completeness: ['Cover all aspects', 'Include examples']
+    actionability: ['Make it executable', 'Provide verification']
+    organization: ['Logical order', 'Consistent formatting']
 ```
 
 ### Formatting Standards Section
@@ -102,9 +102,9 @@ Markdown and other formatting conventions:
 
 ```yaml
 formatting:
-  markdown_elements:
-    headings: ['# Title', '## Section', '### Subsection']
-    emphasis: ['**Bold**', '_Italic_', '`Code`']
+    markdown_elements:
+        headings: ['# Title', '## Section', '### Subsection']
+        emphasis: ['**Bold**', '_Italic_', '`Code`']
 ```
 
 ### Examples Section
@@ -113,10 +113,10 @@ Complete working examples:
 
 ```yaml
 example_basic: |
-  Simple example with minimal fields
+    Simple example with minimal fields
 
 example_complete: |
-  Comprehensive example with all fields
+    Comprehensive example with all fields
 ```
 
 ### Best Practices Section
@@ -125,9 +125,9 @@ Key recommendations:
 
 ```yaml
 best_practices:
-  - 'Practice 1'
-  - 'Practice 2'
-  - 'Practice 3'
+    - 'Practice 1'
+    - 'Practice 2'
+    - 'Practice 3'
 ```
 
 ### Integration Section
@@ -136,8 +136,8 @@ How template integrates with other resources:
 
 ```yaml
 integration:
-  with_commands: 'How commands use this template'
-  with_tasks: 'How tasks use this template'
+    with_commands: 'How commands use this template'
+    with_tasks: 'How tasks use this template'
 ```
 
 ## Template Categories

@@ -1,6 +1,6 @@
 ---
 description: Comprehensive listing of all MCP servers, custom tools, and
-  built-in tools available in the current OpenCode environment
+    built-in tools available in the current OpenCode environment
 type: task
 category: Development
 mode: task
@@ -9,12 +9,12 @@ version: 1.0.0
 last_updated: 2025-11-19
 estimated_duration: 2-5 minutes
 tags:
-  - mcp
-  - tools
-  - listing
-  - discovery
-  - configuration
-  - inventory
+    - mcp
+    - tools
+    - listing
+    - discovery
+    - configuration
+    - inventory
 title: List Mcp Tools Task
 ---
 
@@ -151,10 +151,10 @@ Network:
 **Actions:**
 
 1. For each discovered MCP server:
-   - Document server name
-   - List all tools provided by that server
-   - Note tool naming pattern (prefix_toolname)
-   - Extract tool descriptions if available
+    - Document server name
+    - List all tools provided by that server
+    - Note tool naming pattern (prefix_toolname)
+    - Extract tool descriptions if available
 
 **Tools Used:**
 
@@ -200,13 +200,13 @@ Examples:
 
 ```json
 {
-  "customTools": {
-    "myTool": {
-      "description": "My custom tool",
-      "args": { "input": { "type": "string" } },
-      "execute": "path/to/script.js"
+    "customTools": {
+        "myTool": {
+            "description": "My custom tool",
+            "args": { "input": { "type": "string" } },
+            "execute": "path/to/script.js"
+        }
     }
-  }
 }
 ```
 
@@ -235,7 +235,7 @@ Examples:
 
 ```json
 {
-  "plugin": ["file:///path/to/plugin", "opencode-plugin-name@1.0.0"]
+    "plugin": ["file:///path/to/plugin", "opencode-plugin-name@1.0.0"]
 }
 ```
 
@@ -265,19 +265,19 @@ Examples:
 
 ```json
 {
-  "tools": {
-    // Built-in tools
-    "write": false,
-    "edit": true,
-    "bash": false,
+    "tools": {
+        // Built-in tools
+        "write": false,
+        "edit": true,
+        "bash": false,
 
-    // MCP server tools (wildcard)
-    "aws-cdk_*": false,
-    "playwright_*": true,
+        // MCP server tools (wildcard)
+        "aws-cdk_*": false,
+        "playwright_*": true,
 
-    // Custom tools
-    "myCustomTool": true
-  }
+        // Custom tools
+        "myCustomTool": true
+    }
 }
 ```
 
@@ -394,17 +394,17 @@ Wildcard pattern: `playwright_*`
 
 ```json
 {
-  "agent": {
-    "analyzer": {
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": false,
-        "aws-cdk_*": false,
-        "playwright_*": false
-      }
+    "agent": {
+        "analyzer": {
+            "tools": {
+                "write": false,
+                "edit": false,
+                "bash": false,
+                "aws-cdk_*": false,
+                "playwright_*": false
+            }
+        }
     }
-  }
 }
 ```
 ````
@@ -413,16 +413,16 @@ Wildcard pattern: `playwright_*`
 
 ```json
 {
-  "agent": {
-    "docs": {
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": false,
-        "webfetch": true
-      }
+    "agent": {
+        "docs": {
+            "tools": {
+                "write": true,
+                "edit": true,
+                "bash": false,
+                "webfetch": true
+            }
+        }
     }
-  }
 }
 ```
 
@@ -430,13 +430,13 @@ Wildcard pattern: `playwright_*`
 
 ```json
 {
-  "agent": {
-    "build": {
-      "tools": {
-        "*": true // Enable all tools
-      }
+    "agent": {
+        "build": {
+            "tools": {
+                "*": true // Enable all tools
+            }
+        }
     }
-  }
 }
 ```
 

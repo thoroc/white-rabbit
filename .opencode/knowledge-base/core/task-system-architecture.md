@@ -5,15 +5,15 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - tasks
-  - architecture
-  - meta
-  - workflow
-  - system
+    - tasks
+    - architecture
+    - meta
+    - workflow
+    - system
 related_resources:
-  - ../command/list-tasks.md
-  - ../template/opencode-task-tmpl.yaml
-  - ../task/opencode-task.md
+    - ../command/list-tasks.md
+    - ../template/opencode-task-tmpl.yaml
+    - ../task/opencode-task.md
 last_updated: 2025-11-19
 ---
 

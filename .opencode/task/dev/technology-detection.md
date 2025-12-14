@@ -1,17 +1,17 @@
 ---
 title: Technology Detection Task
 description: Comprehensive technology stack detection for programming languages,
-  frameworks, and tools
+    frameworks, and tools
 type: task
 category: Development
 version: 1.0.0
 tags:
-  - analysis
-  - technology
-  - detection
-  - stack
-  - framework
-  - language
+    - analysis
+    - technology
+    - detection
+    - stack
+    - framework
+    - language
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19

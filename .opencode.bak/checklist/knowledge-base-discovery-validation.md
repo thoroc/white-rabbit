@@ -5,15 +5,15 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - knowledge-base
-  - discovery
-  - validation
-  - documentation
+    - knowledge-base
+    - discovery
+    - validation
+    - documentation
 reference: ../knowledge-base/knowledge-base-system-architecture.md
 applies_to:
-  - knowledge-base-documentation
-  - kb-discovery
-  - command-development
+    - knowledge-base-documentation
+    - kb-discovery
+    - command-development
 last_updated: 2025-11-19
 ---
 
@@ -101,32 +101,32 @@ This checklist ensures:
 ### Category Assignment
 
 - [ ] **Documentation category**: Identify documentation-related KBs
-  - [ ] mermaid-diagrams
-  - [ ] acceptance-criteria
-  - [ ] template-standard
+    - [ ] mermaid-diagrams
+    - [ ] acceptance-criteria
+    - [ ] template-standard
 
 - [ ] **CI/CD category**: Identify CI/CD and pipeline KBs
-  - [ ] pipeline-best-practices
-  - [ ] jenkins-patterns
-  - [ ] gitlab-ci-examples
-  - [ ] github-actions-templates
+    - [ ] pipeline-best-practices
+    - [ ] jenkins-patterns
+    - [ ] gitlab-ci-examples
+    - [ ] github-actions-templates
 
 - [ ] **Development category**: Identify development practice KBs
-  - [ ] loading-strategy
-  - [ ] plugin-architecture
-  - [ ] plugin-migration
+    - [ ] loading-strategy
+    - [ ] plugin-architecture
+    - [ ] plugin-migration
 
 - [ ] **Patterns category**: Identify framework and methodology KBs
-  - [ ] moscow-prioritization
-  - [ ] acceptance-criteria
+    - [ ] moscow-prioritization
+    - [ ] acceptance-criteria
 
 - [ ] **Domain-Specific category**: Identify specialized domain KBs
-  - [ ] ai-tool-approval-patterns
+    - [ ] ai-tool-approval-patterns
 
 - [ ] **Meta category**: Identify system architecture KBs
-  - [ ] task-system-architecture
-  - [ ] template-system-architecture
-  - [ ] knowledge-base-system-architecture
+    - [ ] task-system-architecture
+    - [ ] template-system-architecture
+    - [ ] knowledge-base-system-architecture
 
 ### Category Organization
 

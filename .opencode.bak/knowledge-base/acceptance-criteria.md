@@ -5,10 +5,10 @@ type: knowledge-base
 category: development
 version: 1.0.0
 tags:
-  - knowledge
-  - development
-  - acceptance
-  - criteria
+    - knowledge
+    - development
+    - acceptance
+    - criteria
 last_updated: 2025-11-19
 ---
 
@@ -133,11 +133,11 @@ While some may use these interchangeably, they serve different purposes:
 - **Scope**: Universal checklist for every user story
 - **Purpose**: Ensures consistent quality across the project
 - **Examples**:
-  - Fully integrated and peer-reviewed code
-  - All unit tests passed
-  - Complete documentation
-  - No unresolved bugs
-  - Final approval from product owner
+    - Fully integrated and peer-reviewed code
+    - All unit tests passed
+    - Complete documentation
+    - No unresolved bugs
+    - Final approval from product owner
 
 ### Acceptance Criteria
 

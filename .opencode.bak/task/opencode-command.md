@@ -7,12 +7,12 @@ last_updated: 2025-11-11
 category: Development
 type: task
 tags:
-  - opencode
-  - command
-  - creating
-  - slash
-  - workflow
-  - automation
+    - opencode
+    - command
+    - creating
+    - slash
+    - workflow
+    - automation
 title: Opencode Command Task
 estimated_duration: 5-10 minutes
 ---
@@ -146,20 +146,20 @@ Use this task when you need to:
 **Actions:**
 
 1. Design frontmatter configuration
-   - Set description (shown in TUI)
-   - Choose agent (general or specialized)
-   - Mark as subtask if applicable
-   - Add model override if needed
+    - Set description (shown in TUI)
+    - Choose agent (general or specialized)
+    - Mark as subtask if applicable
+    - Add model override if needed
 
 2. Design context gathering
-   - Identify shell commands needed
-   - Plan file references
-   - Determine argument usage
+    - Identify shell commands needed
+    - Plan file references
+    - Determine argument usage
 
 3. Write command instructions
-   - Clear, specific prompt
-   - Reference appropriate resources
-   - Define expected outputs
+    - Clear, specific prompt
+    - Reference appropriate resources
+    - Define expected outputs
 
 4. Add usage examples and documentation
 
@@ -184,9 +184,9 @@ Use this task when you need to:
 1. Create command file in `command/[kebab-case-name].md`
 2. Write frontmatter with all required fields
 3. Add context gathering using template syntax:
-   - `$ARGUMENTS` or `$1, $2, $3` for parameters
-   - `!`command`` for shell command injection
-   - `@filename` for file content inclusion
+    - `$ARGUMENTS` or `$1, $2, $3` for parameters
+    - `!`command`` for shell command injection
+    - `@filename` for file content inclusion
 4. Write clear instructions
 5. Reference related resources (checklists, tasks, knowledge bases)
 6. Add examples if helpful
@@ -207,14 +207,14 @@ Use this task when you need to:
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "command", file: "command-filename" })
-   validate_resource_content({ type: "command", file: "command-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "command", file: "command-filename" })
+    validate_resource_content({ type: "command", file: "command-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Apply the OpenCode Command Checklist (`.opencode/checklist/opencode-command.md`)
 3. Verify all required configuration fields present and compliant
@@ -282,12 +282,12 @@ Use this task when you need to:
 The task generates one primary file:
 
 1. **Command File** (`command/[name].md`)
-   - Valid YAML frontmatter with description, agent, subtask flag
-   - Well-structured command content with template syntax
-   - Context gathering using shell commands and file references
-   - Clear instructions for the agent
-   - Resource references (checklists, tasks, knowledge bases)
-   - Examples and documentation (if applicable)
+    - Valid YAML frontmatter with description, agent, subtask flag
+    - Well-structured command content with template syntax
+    - Context gathering using shell commands and file references
+    - Clear instructions for the agent
+    - Resource references (checklists, tasks, knowledge bases)
+    - Examples and documentation (if applicable)
 
 ## Success Criteria
 

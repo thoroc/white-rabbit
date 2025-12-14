@@ -7,10 +7,10 @@ reference: RFC 98 - AI Open Source Tools Approval Process
 type: knowledge-base
 category: Documentation
 tags:
-  - knowledge-base
-  - tool
-  - approval
-  - reference
+    - knowledge-base
+    - tool
+    - approval
+    - reference
 ---
 
 # AI Tool Approval Knowledge Base
@@ -76,28 +76,33 @@ This knowledge base provides practical patterns, common findings, and guidance f
 ### Critical Red Flags (Usually Rejection)
 
 **1. Unclear Data Usage**
+
 - Vague terms like "to improve our services"
 - No explicit training data usage statement
 - Policy not updated despite active development
 
 **2. Abandoned or Poorly Maintained**
+
 - Last commit >12 months ago
 - Critical security issues with no response
 - Dependencies with known CVEs
 - No active maintainers
 
 **3. Problematic Licensing**
+
 - AGPL for commercial use
 - Custom restrictive licenses
 - Recent license changes to more restrictive terms
 - Example: ElasticSearch (SSPL) requires careful review
 
 **4. No Security Disclosure Process**
+
 - No SECURITY.md or security contact
 - History of unpatched vulnerabilities
 - Security issues handled publicly without embargo
 
 **5. Data Storage in Problematic Jurisdictions**
+
 - Countries without adequate privacy laws
 - No data residency options
 - Vendor unwilling to specify storage locations
@@ -113,31 +118,35 @@ This knowledge base provides practical patterns, common findings, and guidance f
 
 ### Decision Matrix
 
-| Risk Level | Data Sensitivity | Decision Pattern                          |
-| ---------- | ---------------- | ----------------------------------------- |
-| Low        | Non-sensitive    | **Approve** - Standard monitoring         |
-| Low        | Sensitive        | **Conditional** - Data type restrictions  |
-| Medium     | Non-sensitive    | **Conditional** - Additional controls     |
-| Medium     | Sensitive        | **Conditional** - Strong controls         |
-| High       | Non-sensitive    | **Conditional** - Significant mitigation  |
-| High       | Sensitive        | **Reject** or **Heavy restrictions**      |
+| Risk Level | Data Sensitivity | Decision Pattern                         |
+| ---------- | ---------------- | ---------------------------------------- |
+| Low        | Non-sensitive    | **Approve** - Standard monitoring        |
+| Low        | Sensitive        | **Conditional** - Data type restrictions |
+| Medium     | Non-sensitive    | **Conditional** - Additional controls    |
+| Medium     | Sensitive        | **Conditional** - Strong controls        |
+| High       | Non-sensitive    | **Conditional** - Significant mitigation |
+| High       | Sensitive        | **Reject** or **Heavy restrictions**     |
 
 ### Conditional Approval Patterns
 
 **A. Data Type Restrictions**
+
 - ✅ Approved for: Public information, documentation, generic code
 - ❌ Prohibited for: PII, proprietary code, customer data, credentials
 
 **B. Enterprise Tier Required**
+
 - Must use enterprise/paid tier only
 - DPA signed, SSO required where available
 
 **C. Self-Hosted Only**
+
 - Must be self-hosted on approved infrastructure
 - No external API calls without approval
 - Network egress monitoring
 
 **D. Pilot Program**
+
 - Limited to specific team(s), fixed duration (3-6 months)
 - Non-production use, full review after pilot
 
@@ -168,6 +177,7 @@ This knowledge base provides practical patterns, common findings, and guidance f
 **Formula**: Risk Score = (Data Sensitivity × Likelihood) + Data Usage + Security Posture - Mitigation
 
 **Scoring**:
+
 - 0-10: Low Risk → **Approve**
 - 11-20: Medium Risk → **Conditional Approval**
 - 21-30: High Risk → **Reject or Heavy Restrictions**
@@ -190,17 +200,20 @@ Ask about: Installation docs, system requirements (CPU/memory/GPU), supported pl
 ## Integration Strategies
 
 ### Phased Rollout
+
 - **Phase 1 (Weeks 1-4)**: 5-10 users, non-production, gather feedback
 - **Phase 2 (Weeks 5-8)**: 20-30 users, production with restrictions, monitor issues
 - **Phase 3 (Week 9+)**: General availability, full guidelines enforced
 
 ### Usage Tier System
+
 - **Tier 1**: Public data (self-service access)
 - **Tier 2**: Internal data (manager approval, training required)
 - **Tier 3**: Confidential data (security approval, enhanced monitoring)
 - **Restricted**: No PII/credentials (explicit prohibition, technical controls)
 
 ### Defense in Depth
+
 - **Policy**: Clear guidelines, training, consequences
 - **Technical**: Network filtering, DLP, SSO/RBAC, API monitoring
 - **Monitoring**: Audit logs, anomaly detection, behavior analytics
@@ -209,21 +222,25 @@ Ask about: Installation docs, system requirements (CPU/memory/GPU), supported pl
 ## Historical Precedents
 
 ### GitHub Copilot (2021-2023)
+
 **Issue**: Individual plan trains on user code
 **Resolution**: Enterprise offering added with no-training guarantee
 **Lesson**: Monitor tool evolution; re-evaluate as enterprise features emerge
 
 ### ChatGPT (2022-2023)
+
 **Issue**: Free tier trains on conversations, no DPA
 **Resolution**: Enterprise tier with DPA, SOC 2 compliance
 **Lesson**: Consumer tools often get enterprise offerings; clear restrictions prevent misuse
 
 ### Elasticsearch (2021)
+
 **Issue**: License changed from Apache 2.0 to SSPL
 **Resolution**: Conditional approval for self-hosted; OpenSearch evaluated as alternative
 **Lesson**: Monitor license changes; have migration plans for critical dependencies
 
 ### Ollama (2023)
+
 **Issue**: Local LLM tool requires GPU resources; model licenses vary
 **Resolution**: Approved with operational guidance for commercially-licensed models only
 **Lesson**: Self-hosted tools have lower data risk but higher operational complexity
@@ -231,18 +248,21 @@ Ask about: Installation docs, system requirements (CPU/memory/GPU), supported pl
 ## Best Practices
 
 ### For Reviewers
+
 - Read privacy policy and ToS completely; check update dates
 - Verify claims (test opt-outs, confirm certifications)
 - Consider vendor lock-in and long-term viability
 - Communicate clearly with specific, actionable language
 
 ### For Requesters
+
 - Check if tool already in registry
 - Provide complete evaluation criteria answers with sources
 - Research alternatives (similar approved tools, self-hosted options)
 - Plan for compliance (budget enterprise tier, plan training)
 
 ### For Organizations
+
 - Maintain living registry with version numbers and rationale
 - Regular re-evaluation (quarterly for high-risk, annually for low-risk)
 - User education with clear consequences
@@ -250,18 +270,18 @@ Ask about: Installation docs, system requirements (CPU/memory/GPU), supported pl
 
 ## Quick Reference: Common Tools
 
-| Tool                      | Status          | Key Requirement              |
-| ------------------------- | --------------- | ---------------------------- |
-| ChatGPT Free              | ❌ Rejected     | Use Enterprise tier          |
-| ChatGPT Enterprise        | ✅ Approved     | DPA, restrictions apply      |
-| GitHub Copilot Individual | ❌ Rejected     | Use Business/Enterprise      |
-| GitHub Copilot Enterprise | ✅ Approved     | Enterprise tier only         |
-| Claude Free               | ❌ Rejected     | Use Claude for Work          |
-| Claude for Work           | ✅ Approved     | DPA, restrictions apply      |
-| Ollama                    | ✅ Approved     | Self-hosted, approved models |
-| Cursor (with own API)     | ⚠️ Conditional  | Use approved LLM APIs        |
-| Grammarly                 | ⚠️ Conditional  | No code context access       |
-| ElasticSearch (SSPL)      | ⚠️ Conditional  | Self-hosted, license review  |
+| Tool                      | Status         | Key Requirement              |
+| ------------------------- | -------------- | ---------------------------- |
+| ChatGPT Free              | ❌ Rejected    | Use Enterprise tier          |
+| ChatGPT Enterprise        | ✅ Approved    | DPA, restrictions apply      |
+| GitHub Copilot Individual | ❌ Rejected    | Use Business/Enterprise      |
+| GitHub Copilot Enterprise | ✅ Approved    | Enterprise tier only         |
+| Claude Free               | ❌ Rejected    | Use Claude for Work          |
+| Claude for Work           | ✅ Approved    | DPA, restrictions apply      |
+| Ollama                    | ✅ Approved    | Self-hosted, approved models |
+| Cursor (with own API)     | ⚠️ Conditional | Use approved LLM APIs        |
+| Grammarly                 | ⚠️ Conditional | No code context access       |
+| ElasticSearch (SSPL)      | ⚠️ Conditional | Self-hosted, license review  |
 
 **Legend**: ✅ Approved | ⚠️ Conditional | ❌ Rejected
 

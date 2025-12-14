@@ -4,10 +4,10 @@ agent: general
 type: command
 category: Development
 tags:
-  - command
-  - list
-  - resources
-  - opencode
+    - command
+    - list
+    - resources
+    - opencode
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -71,26 +71,26 @@ Please specify the type:
 ## Processing Logic
 
 1. **Check for $1 argument**
-   - If missing, show interactive prompt above
-   - Wait for user to specify resource type
+    - If missing, show interactive prompt above
+    - Wait for user to specify resource type
 
 2. **Normalize resource type**
-   - Accept both singular and plural forms
-   - Convert to canonical form for routing
+    - Accept both singular and plural forms
+    - Convert to canonical form for routing
 
 3. **Validate resource type**
-   - Check if $1 matches valid types
-   - If invalid, show error and list valid types
-   - Suggest closest match if typo detected
+    - Check if $1 matches valid types
+    - If invalid, show error and list valid types
+    - Suggest closest match if typo detected
 
 4. **Load ONLY relevant resources**
-   - Load specific listing template for the resource type
-   - Load relevant knowledge base if needed
-   - Do NOT load all resources upfront (see loading-strategy.md)
+    - Load specific listing template for the resource type
+    - Load relevant knowledge base if needed
+    - Do NOT load all resources upfront (see loading-strategy.md)
 
 5. **Execute appropriate listing**
-   - Route to the correct resource listing logic based on $1
-   - Follow the specific listing format for that resource type
+    - Route to the correct resource listing logic based on $1
+    - Follow the specific listing format for that resource type
 
 ## Resource Type: agents
 
@@ -107,25 +107,25 @@ When $1 matches "agent" or "agents":
 
 1. **Discover agent files:**
 
-   ```bash
-   # Global agents
-   ls -1 ~/.config/opencode/agent/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```bash
+    # Global agents
+    ls -1 ~/.config/opencode/agent/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
 
-   # Project agents
-   ls -1 .opencode/agent/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
-   ```
+    # Project agents
+    ls -1 .opencode/agent/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```
 
 2. **Extract metadata from each agent:**
-   - Read frontmatter: `description`, `mode`, `temperature`, `tools`, `permissions`
-   - Identify agent type: primary (mode: primary/all) or subagent (mode: subagent/all)
-   - Note any special configuration
+    - Read frontmatter: `description`, `mode`, `temperature`, `tools`, `permissions`
+    - Identify agent type: primary (mode: primary/all) or subagent (mode: subagent/all)
+    - Note any special configuration
 
 3. **Categorize agents** by purpose:
-   - Documentation agents
-   - Analysis agents
-   - Development agents
-   - Operations agents
-   - Specialized agents
+    - Documentation agents
+    - Analysis agents
+    - Development agents
+    - Operations agents
+    - Specialized agents
 
 4. **Format output** according to agent listing template
 
@@ -139,14 +139,14 @@ When $1 matches "agent" or "agents":
 (Invoked by Tab selection)
 
 - **agent-name** - Description
-  - Configuration: [key details]
+    - Configuration: [key details]
 
 ## Subagents
 
 (Invoked with @agent-name)
 
 - **@agent-name** - Description
-  - Configuration: [key details]
+    - Configuration: [key details]
 
 ## Summary
 
@@ -172,18 +172,18 @@ When $1 matches "command" or "commands":
 
 1. **Discover command files:**
 
-   ```bash
-   # Global commands
-   ls -1 ~/.config/opencode/command/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```bash
+    # Global commands
+    ls -1 ~/.config/opencode/command/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
 
-   # Project commands
-   ls -1 .opencode/command/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
-   ```
+    # Project commands
+    ls -1 .opencode/command/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```
 
 2. **Extract metadata from each command:**
-   - Read frontmatter: `description`, `agent`, `subtask`, `model`, `temperature`
-   - Determine category (Documentation, Development, Git, Analysis, Workflow, Utility, Session)
-   - Note special attributes (subtask, custom model)
+    - Read frontmatter: `description`, `agent`, `subtask`, `model`, `temperature`
+    - Determine category (Documentation, Development, Git, Analysis, Workflow, Utility, Session)
+    - Note special attributes (subtask, custom model)
 
 3. **Format output** according to `command-listing-format-tmpl.yaml`
 
@@ -226,18 +226,18 @@ When $1 matches "checklist" or "checklists":
 
 1. **Discover checklist files:**
 
-   ```bash
-   # Global checklists
-   ls -1 ~/.config/opencode/checklist/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```bash
+    # Global checklists
+    ls -1 ~/.config/opencode/checklist/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
 
-   # Project checklists
-   ls -1 .opencode/checklist/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
-   ```
+    # Project checklists
+    ls -1 .opencode/checklist/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```
 
 2. **Extract metadata from each checklist:**
-   - Read frontmatter: `title`, `description`, `category`, `version`, `tags`
-   - Determine category (Documentation, Quality, Development, Operations, Process)
-   - Note checklist size and scope
+    - Read frontmatter: `title`, `description`, `category`, `version`, `tags`
+    - Determine category (Documentation, Quality, Development, Operations, Process)
+    - Note checklist size and scope
 
 3. **Format output** according to `checklist-listing-format-tmpl.yaml`
 
@@ -268,18 +268,18 @@ When $1 matches "task" or "tasks":
 
 1. **Discover task files:**
 
-   ```bash
-   # Global tasks
-   ls -1 ~/.config/opencode/task/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```bash
+    # Global tasks
+    ls -1 ~/.config/opencode/task/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
 
-   # Project tasks
-   ls -1 .opencode/task/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
-   ```
+    # Project tasks
+    ls -1 .opencode/task/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```
 
 2. **Extract metadata from each task:**
-   - Read frontmatter: `description`, `category`, `version`, `mode`
-   - Determine category (Analysis, Documentation, Development, Operations, Research)
-   - Note task type (meta-tasks that create resources vs. operational tasks)
+    - Read frontmatter: `description`, `category`, `version`, `mode`
+    - Determine category (Analysis, Documentation, Development, Operations, Research)
+    - Note task type (meta-tasks that create resources vs. operational tasks)
 
 3. **Format output** according to `task-listing-format-tmpl.yaml`
 
@@ -310,18 +310,18 @@ When $1 matches "template" or "templates":
 
 1. **Discover template files:**
 
-   ```bash
-   # Global templates
-   ls -1 ~/.config/opencode/template/*.yaml 2>/dev/null | xargs -I {} basename {} | sort
+    ```bash
+    # Global templates
+    ls -1 ~/.config/opencode/template/*.yaml 2>/dev/null | xargs -I {} basename {} | sort
 
-   # Project templates
-   ls -1 .opencode/template/*.yaml 2>/dev/null | xargs -I {} basename {} | sort
-   ```
+    # Project templates
+    ls -1 .opencode/template/*.yaml 2>/dev/null | xargs -I {} basename {} | sort
+    ```
 
 2. **Extract metadata from each template:**
-   - Read YAML: `template_title`, `template_description`, `template_category`, `template_version`
-   - Determine category (OpenCode Resources, Documentation, Workflow, Reference, Domain-Specific)
-   - Note template type (meta-templates vs. content templates)
+    - Read YAML: `template_title`, `template_description`, `template_category`, `template_version`
+    - Determine category (OpenCode Resources, Documentation, Workflow, Reference, Domain-Specific)
+    - Note template type (meta-templates vs. content templates)
 
 3. **Format output** according to `template-listing-format-tmpl.yaml`
 
@@ -352,19 +352,19 @@ When $1 matches "knowledge-base" or "knowledge-bases":
 
 1. **Discover knowledge base files:**
 
-   ```bash
-   # Global knowledge bases
-   ls -1 ~/.config/opencode/knowledge-base/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```bash
+    # Global knowledge bases
+    ls -1 ~/.config/opencode/knowledge-base/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
 
-   # Project knowledge bases
-   ls -1 .opencode/knowledge-base/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
-   ```
+    # Project knowledge bases
+    ls -1 .opencode/knowledge-base/*.md 2>/dev/null | xargs -I {} basename {} .md | sort
+    ```
 
 2. **Extract metadata from each knowledge base:**
-   - Read frontmatter: `title`, `description`, `category`, `version`, `tags`
-   - Use fallback: H1 heading or first paragraph if frontmatter missing
-   - Determine category (Documentation, CI/CD, Development, Patterns, Domain-Specific, Meta)
-   - Extract key topics from content
+    - Read frontmatter: `title`, `description`, `category`, `version`, `tags`
+    - Use fallback: H1 heading or first paragraph if frontmatter missing
+    - Determine category (Documentation, CI/CD, Development, Patterns, Domain-Specific, Meta)
+    - Extract key topics from content
 
 3. **Format output** according to `knowledge-base-listing-format-tmpl.yaml`
 
@@ -391,21 +391,21 @@ When $1 matches "session" or "sessions":
 
 1. **Check for .sessions directory:**
 
-   ```bash
-   pwd  # Show current working directory
-   ls -la .sessions 2>/dev/null
-   ```
+    ```bash
+    pwd  # Show current working directory
+    ls -la .sessions 2>/dev/null
+    ```
 
 2. **Find session summary files:**
 
-   ```bash
-   find .sessions -maxdepth 1 -name "session-summary-*.md" -type f 2>/dev/null | sort -r
-   ```
+    ```bash
+    find .sessions -maxdepth 1 -name "session-summary-*.md" -type f 2>/dev/null | sort -r
+    ```
 
 3. **For each session file, extract:**
-   - Filename and timestamp (from filename pattern)
-   - File size and last modified date (via ls -la)
-   - Brief preview (first few lines of content)
+    - Filename and timestamp (from filename pattern)
+    - File size and last modified date (via ls -la)
+    - Brief preview (first few lines of content)
 
 ### Output Format
 
@@ -417,10 +417,10 @@ When $1 matches "session" or "sessions":
 For each session file:
 
 - **session-summary-YYYY-MM-DD-HHMMSS.md**
-  - Created: [timestamp from filename]
-  - Size: [file size]
-  - Last modified: [date]
-  - Preview: [first few lines]
+    - Created: [timestamp from filename]
+    - Size: [file size]
+    - Last modified: [date]
+    - Preview: [first few lines]
 
 ## Summary
 
@@ -449,33 +449,33 @@ When $1 matches "all":
 ### Process
 
 1. **Execute listing for each resource type** in order:
-   - agents
-   - commands
-   - checklists
-   - tasks
-   - templates
-   - knowledge-bases
-   - sessions
+    - agents
+    - commands
+    - checklists
+    - tasks
+    - templates
+    - knowledge-bases
+    - sessions
 
 2. **For each type:**
-   - Load only its specific listing template
-   - Execute discovery process
-   - Format output according to template
-   - Include section separator
+    - Load only its specific listing template
+    - Execute discovery process
+    - Format output according to template
+    - Include section separator
 
 3. **Provide comprehensive summary:**
 
-   ```markdown
-   ## Overall Summary
+    ```markdown
+    ## Overall Summary
 
-   - Total agents: X
-   - Total commands: Y
-   - Total checklists: Z
-   - Total tasks: A
-   - Total templates: B
-   - Total knowledge bases: C
-   - Total sessions: D
-   ```
+    - Total agents: X
+    - Total commands: Y
+    - Total checklists: Z
+    - Total tasks: A
+    - Total templates: B
+    - Total knowledge bases: C
+    - Total sessions: D
+    ```
 
 ---
 

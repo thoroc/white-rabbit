@@ -5,11 +5,11 @@ subtask: true
 type: command
 category: Development
 tags:
-  - command
-  - pipeline
-  - docs
-  - generate
-  - ci/cd
+    - command
+    - pipeline
+    - docs
+    - generate
+    - ci/cd
 version: 1.0.0
 last_updated: 2025-11-19
 ---

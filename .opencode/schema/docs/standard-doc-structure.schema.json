@@ -4,7 +4,14 @@
     "title": "Standard Documentation Structure Template Schema",
     "description": "Validates the structure of standard documentation structure template YAML files",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",
@@ -93,9 +100,18 @@
             "type": "object",
             "description": "Guidelines for documentation structure",
             "properties": {
-                "when_to_use": { "type": "array", "items": { "type": "string" } },
-                "when_not_to_use": { "type": "array", "items": { "type": "string" } },
-                "best_practices": { "type": "array", "items": { "type": "string" } }
+                "when_to_use": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "when_not_to_use": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "best_practices": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
             },
             "additionalProperties": true
         },

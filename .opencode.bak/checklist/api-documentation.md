@@ -5,8 +5,8 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - checklist
-  - documentation
+    - checklist
+    - documentation
 last_updated: 2025-11-19
 ---
 
@@ -48,17 +48,17 @@ For each endpoint, document:
 - [ ] **Endpoint URL**: Full URL path with parameters
 - [ ] **Description**: What the endpoint does
 - [ ] **Request Parameters**:
-  - [ ] Path parameters
-  - [ ] Query parameters
-  - [ ] Request headers
-  - [ ] Request body schema
+    - [ ] Path parameters
+    - [ ] Query parameters
+    - [ ] Request headers
+    - [ ] Request body schema
 - [ ] **Response Format**:
-  - [ ] Success response schema
-  - [ ] Response headers
-  - [ ] Status codes
+    - [ ] Success response schema
+    - [ ] Response headers
+    - [ ] Status codes
 - [ ] **Examples**:
-  - [ ] Sample request (cURL and/or code)
-  - [ ] Sample response
+    - [ ] Sample request (cURL and/or code)
+    - [ ] Sample response
 - [ ] **Validation Rules**: Input validation requirements
 
 ### ✅ 5. Data Models & Schemas

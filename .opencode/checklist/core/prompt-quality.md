@@ -5,11 +5,11 @@ type: checklist
 category: prompt-engineering
 version: 1.0.0
 tags:
-  - checklist
-  - prompt
-  - quality
-  - evaluation
-  - enhancement
+    - checklist
+    - prompt
+    - quality
+    - evaluation
+    - enhancement
 last_updated: 2025-12-12
 ---
 

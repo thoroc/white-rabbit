@@ -4,11 +4,11 @@ agent: ai-tool-reviewer
 type: command
 category: Development
 tags:
-  - command
-  - review
-  - tool
-  - source
-  - tools
+    - command
+    - review
+    - tool
+    - source
+    - tools
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -79,24 +79,24 @@ The review will systematically assess:
 The review generates:
 
 1. **Executive Summary**
-   - Tool overview and recommendation
-   - Key findings and risk rating
-   - Decision justification
+    - Tool overview and recommendation
+    - Key findings and risk rating
+    - Decision justification
 
 2. **Detailed Assessment Report**
-   - All evaluation criteria with evidence
-   - Risk analysis and mitigation strategies
-   - Usage restrictions and limitations
+    - All evaluation criteria with evidence
+    - Risk analysis and mitigation strategies
+    - Usage restrictions and limitations
 
 3. **RFC Submission Document**
-   - Structured format ready for RFC forum
-   - Complete criteria checklist
-   - Supporting documentation references
+    - Structured format ready for RFC forum
+    - Complete criteria checklist
+    - Supporting documentation references
 
 4. **Monitoring Plan**
-   - Recommended review frequency
-   - Key metrics and trigger conditions
-   - Registry update requirements
+    - Recommended review frequency
+    - Key metrics and trigger conditions
+    - Registry update requirements
 
 ## Instructions for Agent
 
@@ -114,15 +114,15 @@ the specified tool.
 **STEP 2 - Research and Documentation Review**
 
 - Use WebFetch to access official documentation:
-  - Privacy policy and data handling practices
-  - Terms of Service and licensing agreements
-  - Security documentation and certifications
-  - Compliance statements (GDPR, SOC2, etc.)
+    - Privacy policy and data handling practices
+    - Terms of Service and licensing agreements
+    - Security documentation and certifications
+    - Compliance statements (GDPR, SOC2, etc.)
 - For open source tools, examine:
-  - GitHub/GitLab repository health and activity
-  - Dependency tree and known vulnerabilities
-  - Security advisory history
-  - Community engagement and maintenance status
+    - GitHub/GitLab repository health and activity
+    - Dependency tree and known vulnerabilities
+    - Security advisory history
+    - Community engagement and maintenance status
 
 **STEP 3 - Systematic Evaluation**
 

@@ -3,30 +3,30 @@ description: Frontend development specialist with comprehensive Playwright UX/UI
 mode: subagent
 temperature: 0.3
 tools:
-  write: true
-  edit: true
-  read: true
-  list: true
-  glob: true
-  grep: true
-  bash: true
-  webfetch: true
-  playwright: true
-  chrome-devtools: true
+    write: true
+    edit: true
+    read: true
+    list: true
+    glob: true
+    grep: true
+    bash: true
+    webfetch: true
+    playwright: true
+    chrome-devtools: true
 permission:
-  bash:
-    rm -rf *: deny
-    npm install *: ask
-    bun install *: ask
-    '*': allow
+    bash:
+        rm -rf *: deny
+        npm install *: ask
+        bun install *: ask
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - frontend
-  - testing
-  - development
-  - specialist
+    - agent
+    - frontend
+    - testing
+    - development
+    - specialist
 version: 2.0.0
 last_updated: 2025-11-19
 ---
@@ -337,10 +337,10 @@ Key principles:
 2. Create test structure and organization
 3. Implement Page Object Models
 4. Write comprehensive test suites using MCP tools:
-   - Use `playwright_browser_navigate` for page navigation
-   - Use `playwright_browser_snapshot` for accessibility validation
-   - Use `playwright_browser_click` and `playwright_browser_type` for interactions
-   - Use `chrome-devtools_*` for debugging and performance tests
+    - Use `playwright_browser_navigate` for page navigation
+    - Use `playwright_browser_snapshot` for accessibility validation
+    - Use `playwright_browser_click` and `playwright_browser_type` for interactions
+    - Use `chrome-devtools_*` for debugging and performance tests
 5. Configure CI/CD integration
 6. Set up test reporting
 
@@ -393,8 +393,8 @@ await playwright_browser_snapshot();
 
 // Or take visual screenshot
 await playwright_browser_take_screenshot({
-  filename: 'homepage.png',
-  fullPage: true,
+    filename: 'homepage.png',
+    fullPage: true,
 });
 ```
 
@@ -403,21 +403,31 @@ await playwright_browser_take_screenshot({
 ```typescript
 // Fill a form using MCP
 await playwright_browser_fill_form({
-  fields: [
-    { name: 'Email', type: 'textbox', ref: 'input-email', value: 'user@example.com' },
-    { name: 'Accept Terms', type: 'checkbox', ref: 'checkbox-terms', value: 'true' },
-  ],
+    fields: [
+        {
+            name: 'Email',
+            type: 'textbox',
+            ref: 'input-email',
+            value: 'user@example.com',
+        },
+        {
+            name: 'Accept Terms',
+            type: 'checkbox',
+            ref: 'checkbox-terms',
+            value: 'true',
+        },
+    ],
 });
 
 // Click submit button
 await playwright_browser_click({
-  element: 'Submit button',
-  ref: 'button-submit',
+    element: 'Submit button',
+    ref: 'button-submit',
 });
 
 // Wait for success message
 await playwright_browser_wait_for({
-  text: 'Form submitted successfully',
+    text: 'Form submitted successfully',
 });
 ```
 
@@ -426,8 +436,8 @@ await playwright_browser_wait_for({
 ```typescript
 // Start performance trace
 await chrome_devtools_performance_start_trace({
-  reload: true,
-  autoStop: false,
+    reload: true,
+    autoStop: false,
 });
 
 // ... user interactions ...
@@ -437,7 +447,7 @@ await chrome_devtools_performance_stop_trace();
 
 // Get network requests for analysis
 await chrome_devtools_list_network_requests({
-  resourceTypes: ['xhr', 'fetch'],
+    resourceTypes: ['xhr', 'fetch'],
 });
 ```
 
@@ -448,36 +458,36 @@ await chrome_devtools_list_network_requests({
 import { Page, Locator } from '@playwright/test';
 
 export class HomePage {
-  readonly page: Page;
-  readonly heading: Locator;
-  readonly searchInput: Locator;
-  readonly navLinks: Locator;
-  readonly themeToggle: Locator;
+    readonly page: Page;
+    readonly heading: Locator;
+    readonly searchInput: Locator;
+    readonly navLinks: Locator;
+    readonly themeToggle: Locator;
 
-  constructor(page: Page) {
-    this.page = page;
-    this.heading = page.getByRole('heading', { name: 'Welcome' });
-    this.searchInput = page.getByRole('searchbox', { name: 'Search' });
-    this.navLinks = page.getByRole('navigation').getByRole('link');
-    this.themeToggle = page.getByRole('button', { name: 'Toggle theme' });
-  }
+    constructor(page: Page) {
+        this.page = page;
+        this.heading = page.getByRole('heading', { name: 'Welcome' });
+        this.searchInput = page.getByRole('searchbox', { name: 'Search' });
+        this.navLinks = page.getByRole('navigation').getByRole('link');
+        this.themeToggle = page.getByRole('button', { name: 'Toggle theme' });
+    }
 
-  async goto() {
-    await this.page.goto('/');
-  }
+    async goto() {
+        await this.page.goto('/');
+    }
 
-  async search(query: string) {
-    await this.searchInput.fill(query);
-    await this.searchInput.press('Enter');
-  }
+    async search(query: string) {
+        await this.searchInput.fill(query);
+        await this.searchInput.press('Enter');
+    }
 
-  async toggleTheme() {
-    await this.themeToggle.click();
-  }
+    async toggleTheme() {
+        await this.themeToggle.click();
+    }
 
-  async navigateTo(linkName: string) {
-    await this.page.getByRole('link', { name: linkName }).click();
-  }
+    async navigateTo(linkName: string) {
+        await this.page.getByRole('link', { name: linkName }).click();
+    }
 }
 ```
 
@@ -489,70 +499,72 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
 
 test.describe('Homepage', () => {
-  let homePage: HomePage;
+    let homePage: HomePage;
 
-  test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    await homePage.goto();
-  });
+    test.beforeEach(async ({ page }) => {
+        homePage = new HomePage(page);
+        await homePage.goto();
+    });
 
-  test('should display main heading', async () => {
-    await expect(homePage.heading).toBeVisible();
-    await expect(homePage.heading).toHaveText('Welcome');
-  });
+    test('should display main heading', async () => {
+        await expect(homePage.heading).toBeVisible();
+        await expect(homePage.heading).toHaveText('Welcome');
+    });
 
-  test('should search documentation', async ({ page }) => {
-    await homePage.search('getting started');
-    await expect(page).toHaveURL(/search/);
-    await expect(page.getByText('Search Results')).toBeVisible();
-  });
+    test('should search documentation', async ({ page }) => {
+        await homePage.search('getting started');
+        await expect(page).toHaveURL(/search/);
+        await expect(page.getByText('Search Results')).toBeVisible();
+    });
 
-  test('should toggle dark mode', async ({ page }) => {
-    // Check initial theme
-    const html = page.locator('html');
-    const initialTheme = await html.getAttribute('data-theme');
+    test('should toggle dark mode', async ({ page }) => {
+        // Check initial theme
+        const html = page.locator('html');
+        const initialTheme = await html.getAttribute('data-theme');
 
-    // Toggle theme
-    await homePage.toggleTheme();
+        // Toggle theme
+        await homePage.toggleTheme();
 
-    // Verify theme changed
-    const newTheme = await html.getAttribute('data-theme');
-    expect(newTheme).not.toBe(initialTheme);
-  });
+        // Verify theme changed
+        const newTheme = await html.getAttribute('data-theme');
+        expect(newTheme).not.toBe(initialTheme);
+    });
 
-  test('should navigate to documentation pages', async ({ page }) => {
-    await homePage.navigateTo('Getting Started');
-    await expect(page).toHaveURL(/getting-started/);
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  });
+    test('should navigate to documentation pages', async ({ page }) => {
+        await homePage.navigateTo('Getting Started');
+        await expect(page).toHaveURL(/getting-started/);
+        await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    });
 
-  test('should be accessible', async ({ page }) => {
-    // Check for proper heading hierarchy
-    const h1Count = await page.getByRole('heading', { level: 1 }).count();
-    expect(h1Count).toBe(1);
+    test('should be accessible', async ({ page }) => {
+        // Check for proper heading hierarchy
+        const h1Count = await page.getByRole('heading', { level: 1 }).count();
+        expect(h1Count).toBe(1);
 
-    // Check for alt text on images
-    const images = page.locator('img');
-    const imageCount = await images.count();
-    for (let i = 0; i < imageCount; i++) {
-      const alt = await images.nth(i).getAttribute('alt');
-      expect(alt).toBeTruthy();
-    }
+        // Check for alt text on images
+        const images = page.locator('img');
+        const imageCount = await images.count();
+        for (let i = 0; i < imageCount; i++) {
+            const alt = await images.nth(i).getAttribute('alt');
+            expect(alt).toBeTruthy();
+        }
 
-    // Check keyboard navigation
-    await page.keyboard.press('Tab');
-    const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-    expect(focusedElement).toBeTruthy();
-  });
+        // Check keyboard navigation
+        await page.keyboard.press('Tab');
+        const focusedElement = await page.evaluate(
+            () => document.activeElement?.tagName
+        );
+        expect(focusedElement).toBeTruthy();
+    });
 
-  test('should load quickly', async ({ page }) => {
-    const startTime = Date.now();
-    await homePage.goto();
-    const loadTime = Date.now() - startTime;
+    test('should load quickly', async ({ page }) => {
+        const startTime = Date.now();
+        await homePage.goto();
+        const loadTime = Date.now() - startTime;
 
-    // Page should load in under 3 seconds
-    expect(loadTime).toBeLessThan(3000);
-  });
+        // Page should load in under 3 seconds
+        expect(loadTime).toBeLessThan(3000);
+    });
 });
 ```
 
@@ -563,49 +575,49 @@ test.describe('Homepage', () => {
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: [
-    ['html'],
-    ['json', { outputFile: 'test-results.json' }],
-    ['junit', { outputFile: 'test-results.xml' }],
-  ],
-  use: {
-    baseURL: 'http://localhost:4321',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+    testDir: './tests',
+    fullyParallel: true,
+    forbidOnly: !!process.env.CI,
+    retries: process.env.CI ? 2 : 0,
+    workers: process.env.CI ? 1 : undefined,
+    reporter: [
+        ['html'],
+        ['json', { outputFile: 'test-results.json' }],
+        ['junit', { outputFile: 'test-results.xml' }],
+    ],
+    use: {
+        baseURL: 'http://localhost:4321',
+        trace: 'on-first-retry',
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+    projects: [
+        {
+            name: 'chromium',
+            use: { ...devices['Desktop Chrome'] },
+        },
+        {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'] },
+        },
+        {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'] },
+        },
+        {
+            name: 'Mobile Chrome',
+            use: { ...devices['Pixel 5'] },
+        },
+        {
+            name: 'Mobile Safari',
+            use: { ...devices['iPhone 12'] },
+        },
+    ],
+    webServer: {
+        command: 'npm run dev',
+        url: 'http://localhost:4321',
+        reuseExistingServer: !process.env.CI,
     },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
-  ],
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:4321',
-    reuseExistingServer: !process.env.CI,
-  },
 });
 ```
 

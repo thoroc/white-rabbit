@@ -3,11 +3,11 @@ description: General frontend development best practices covering TypeScript, fr
 type: checklist
 category: Development
 tags:
-  - frontend
-  - development
-  - best-practices
-  - typescript
-  - quality-assurance
+    - frontend
+    - development
+    - best-practices
+    - typescript
+    - quality-assurance
 version: 1.0.0
 last_updated: 2025-11-20
 ---

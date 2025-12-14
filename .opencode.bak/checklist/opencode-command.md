@@ -5,10 +5,10 @@ type: checklist
 category: meta
 version: 1.0.0
 tags:
-  - checklist
-  - meta
-  - opencode
-  - command
+    - checklist
+    - meta
+    - opencode
+    - command
 last_updated: 2025-11-19
 ---
 
@@ -750,13 +750,13 @@ Generate documentation with:
 
 ```json
 {
-  "command": {
-    "test": {
-      "template": "Run tests\n!`npm test`",
-      "description": "Run test suite",
-      "agent": "build"
+    "command": {
+        "test": {
+            "template": "Run tests\n!`npm test`",
+            "description": "Run test suite",
+            "agent": "build"
+        }
     }
-  }
 }
 ```
 

@@ -3,11 +3,11 @@ description: Save a markdown summary of the current OpenCode session
 type: command
 category: Development
 tags:
-  - command
-  - save
-  - session
-  - markdown
-  - summary
+    - command
+    - save
+    - session
+    - markdown
+    - summary
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -19,34 +19,34 @@ The summary should include:
 ## Session Summary Structure
 
 1. **Session Overview**
-   - Date and time of session
-   - Working directory: !`pwd`
-   - Git repository status (if applicable): !`git status --porcelain 2>/dev/null || echo "Not a git repository"`
+    - Date and time of session
+    - Working directory: !`pwd`
+    - Git repository status (if applicable): !`git status --porcelain 2>/dev/null || echo "Not a git repository"`
 
 2. **Tasks Completed**
-   - List all major tasks and actions performed
-   - Include any code changes, file modifications, or configurations updated
-   - Note any commands executed and their outcomes
+    - List all major tasks and actions performed
+    - Include any code changes, file modifications, or configurations updated
+    - Note any commands executed and their outcomes
 
 3. **Current State**
-   - Files that were created, modified, or deleted
-   - Current git status and any uncommitted changes
-   - Any ongoing work or incomplete tasks
+    - Files that were created, modified, or deleted
+    - Current git status and any uncommitted changes
+    - Any ongoing work or incomplete tasks
 
 4. **Tools and Technologies Used**
-   - Programming languages, frameworks, or tools involved
-   - Dependencies added or removed
-   - Configuration files modified
+    - Programming languages, frameworks, or tools involved
+    - Dependencies added or removed
+    - Configuration files modified
 
 5. **Key Decisions and Context**
-   - Important architectural or design decisions made
-   - Rationale behind specific implementation choices
-   - Any challenges encountered and how they were resolved
+    - Important architectural or design decisions made
+    - Rationale behind specific implementation choices
+    - Any challenges encountered and how they were resolved
 
 6. **Next Steps**
-   - Recommended follow-up actions
-   - Areas that may need attention in future sessions
-   - Any TODOs or pending items
+    - Recommended follow-up actions
+    - Areas that may need attention in future sessions
+    - Any TODOs or pending items
 
 ## Save Location
 

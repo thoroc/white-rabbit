@@ -1,17 +1,17 @@
 ---
 title: Project Context Task
 description: This task provides lightweight, quick project context analysis
-  using shell commands. Use this for rapid project
+    using shell commands. Use this for rapid project
 type: task
 category: Development
 version: 1.0.0
 tags:
-  - analysis
-  - project
-  - context
-  - orientation
-  - overview
-  - shell
+    - analysis
+    - project
+    - context
+    - orientation
+    - overview
+    - shell
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19

@@ -4,11 +4,11 @@ description: Quick reference for all Resource Loader tools and usage patterns
 type: template
 category: Reference
 tags:
-  - plugin
-  - resource-loader
-  - quick-reference
-  - tools
-  - cheat-sheet
+    - plugin
+    - resource-loader
+    - quick-reference
+    - tools
+    - cheat-sheet
 ---
 
 # Resource Loader Plugin Quick Reference
@@ -180,9 +180,9 @@ description: One-line description
 type: knowledge-base # or task, template, checklist
 category: Development # or Documentation, Operations, Quality, Security
 tags:
-  - tag1
-  - tag2
-  - tag3
+    - tag1
+    - tag2
+    - tag3
 ---
 # Your Content Here
 ```

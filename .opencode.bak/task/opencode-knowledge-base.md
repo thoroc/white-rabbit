@@ -7,13 +7,13 @@ last_updated: 2025-11-11
 category: Documentation
 type: task
 tags:
-  - opencode
-  - knowledge
-  - creating
-  - bases
-  - documentation
-  - reference
-  - patterns
+    - opencode
+    - knowledge
+    - creating
+    - bases
+    - documentation
+    - reference
+    - patterns
 title: Opencode Knowledge Base Task
 estimated_duration: 5-10 minutes
 ---
@@ -160,58 +160,58 @@ Use this task when you need to:
 **Actions:**
 
 1. Design overview section
-   - One-line summary
-   - 2-3 paragraph explanation
-   - Who should use it, when to reference it
+    - One-line summary
+    - 2-3 paragraph explanation
+    - Who should use it, when to reference it
 
 2. Plan Core Concepts section (2-4 concepts)
-   - Concept name
-   - Definition
-   - Purpose (why it exists, problems it solves)
-   - Example with code
+    - Concept name
+    - Definition
+    - Purpose (why it exists, problems it solves)
+    - Example with code
 
 3. Design Common Patterns section (3-5 patterns)
-   - Pattern name
-   - Problem it solves
-   - Solution explanation
-   - Implementation with code
-   - Benefits list
-   - When to use scenarios
+    - Pattern name
+    - Problem it solves
+    - Solution explanation
+    - Implementation with code
+    - Benefits list
+    - When to use scenarios
 
 4. Create Best Practices section
-   - DO subsection (recommended practices)
-   - DON'T subsection (anti-patterns)
-   - Use ✅ for good practices, ❌ for anti-patterns
+    - DO subsection (recommended practices)
+    - DON'T subsection (anti-patterns)
+    - Use ✅ for good practices, ❌ for anti-patterns
 
 5. Plan Examples section (2-3 complete examples)
-   - Scenario description
-   - Requirements
-   - Solution with code and explanation
-   - Key takeaways
+    - Scenario description
+    - Requirements
+    - Solution with code and explanation
+    - Key takeaways
 
 6. Design Troubleshooting section
-   - Common issues
-   - Symptoms
-   - Causes
-   - Solutions with steps
-   - Prevention tips
+    - Common issues
+    - Symptoms
+    - Causes
+    - Solutions with steps
+    - Prevention tips
 
 7. Create Quick Reference section
-   - Command reference tables
-   - Configuration reference
-   - Pattern quick list
+    - Command reference tables
+    - Configuration reference
+    - Pattern quick list
 
 8. Plan Related Resources section
-   - Internal links (checklists, tasks, templates)
-   - External documentation
+    - Internal links (checklists, tasks, templates)
+    - External documentation
 
 9. Define Metadata section
-   - Category
-   - Tags
-   - Difficulty level
-   - Reading time estimate
-   - Prerequisites
-   - Target audience
+    - Category
+    - Tags
+    - Difficulty level
+    - Reading time estimate
+    - Prerequisites
+    - Target audience
 
 **Tools Used:**
 
@@ -236,149 +236,149 @@ Use this task when you need to:
 
 2. Write overview section:
 
-   ```markdown
-   # [Topic Name] Knowledge Base
+    ```markdown
+    # [Topic Name] Knowledge Base
 
-   > One-line summary
+    > One-line summary
 
-   ## Overview
+    ## Overview
 
-   [2-3 paragraphs about coverage, audience, when to reference]
-   ```
+    [2-3 paragraphs about coverage, audience, when to reference]
+    ```
 
 3. Create Core Concepts section (2-4 concepts):
 
-   ````markdown
-   ## Core Concepts
+    ````markdown
+    ## Core Concepts
 
-   ### Concept 1: [Name]
+    ### Concept 1: [Name]
 
-   **Definition**: Clear definition
+    **Definition**: Clear definition
 
-   **Purpose**:
+    **Purpose**:
 
-   - Why it exists
-   - Problems it solves
+    - Why it exists
+    - Problems it solves
 
-   **Example**:
+    **Example**:
 
-   ```yaml
-   example:
-     property: value
-   ```
-   ````
+    ```yaml
+    example:
+        property: value
+    ```
+    ````
 
-   ***
+    ***
 
-   ```
+    ```
 
-   ```
+    ```
 
 4. Write Common Patterns section (3-5 patterns):
 
-   ````markdown
-   ## Common Patterns
+    ````markdown
+    ## Common Patterns
 
-   ### Pattern 1: [Pattern Name]
+    ### Pattern 1: [Pattern Name]
 
-   **Problem**: What problem it solves
+    **Problem**: What problem it solves
 
-   **Solution**: How it works
+    **Solution**: How it works
 
-   **Implementation**:
+    **Implementation**:
 
-   ```yaml
-   pattern:
-     implementation: value
-   ```
-   ````
+    ```yaml
+    pattern:
+        implementation: value
+    ```
+    ````
 
-   **Benefits**:
-   - ✅ Benefit 1
+    **Benefits**:
+    - ✅ Benefit 1
 
-   **When to Use**: Scenarios
+    **When to Use**: Scenarios
 
-   ***
+    ***
 
-   ```
+    ```
 
-   ```
+    ```
 
 5. Create Best Practices section:
 
-   ````markdown
-   ## Best Practices
+    ````markdown
+    ## Best Practices
 
-   ### DO: Recommended Practices
+    ### DO: Recommended Practices
 
-   #### 1. Practice Name
+    #### 1. Practice Name
 
-   **Description**: What
+    **Description**: What
 
-   **Why**: Why important
+    **Why**: Why important
 
-   **Example**:
+    **Example**:
 
-   ```yaml
-   good_practice:
-     property: value
-   ```
-   ````
+    ```yaml
+    good_practice:
+        property: value
+    ```
+    ````
 
-   ***
+    ***
 
-   ### DON'T: Anti-Patterns to Avoid
+    ### DON'T: Anti-Patterns to Avoid
 
-   #### 1. Anti-Pattern Name
+    #### 1. Anti-Pattern Name
 
-   **Problem**: What's wrong
+    **Problem**: What's wrong
 
-   **Bad Example**:
+    **Bad Example**:
 
-   ```yaml
-   bad_example:
-     anti_pattern: value
-   ```
+    ```yaml
+    bad_example:
+        anti_pattern: value
+    ```
 
-   **Good Alternative**:
+    **Good Alternative**:
 
-   ```yaml
-   good_example:
-     proper_approach: value
-   ```
+    ```yaml
+    good_example:
+        proper_approach: value
+    ```
 
-   ***
+    ***
 
-   ```
+    ```
 
-   ```
+    ```
 
 6. Add Examples section (2-3 examples):
 
-   ````markdown
-   ## Examples
+    ````markdown
+    ## Examples
 
-   ### Example 1: [Use Case Name]
+    ### Example 1: [Use Case Name]
 
-   **Scenario**: Description
+    **Scenario**: Description
 
-   **Requirements**: List
+    **Requirements**: List
 
-   **Solution**:
+    **Solution**:
 
-   ```yaml
-   solution:
-     implementation: value
-   ```
-   ````
+    ```yaml
+    solution:
+        implementation: value
+    ```
+    ````
 
-   **Key Takeaways**: List
+    **Key Takeaways**: List
 
-   ***
+    ***
 
-   ```
+    ```
 
-   ```
+    ```
 
 7. Create optional Advanced Topics section if applicable
 
@@ -386,30 +386,30 @@ Use this task when you need to:
 
 9. Write Troubleshooting section:
 
-   ````markdown
-   ## Troubleshooting
+    ````markdown
+    ## Troubleshooting
 
-   ### Issue 1: [Problem Name]
+    ### Issue 1: [Problem Name]
 
-   **Symptoms**: List
+    **Symptoms**: List
 
-   **Causes**: List
+    **Causes**: List
 
-   **Solution**:
+    **Solution**:
 
-   ```yaml
-   fix:
-     step1: value
-   ```
-   ````
+    ```yaml
+    fix:
+        step1: value
+    ```
+    ````
 
-   **Prevention**: How to avoid
+    **Prevention**: How to avoid
 
-   ***
+    ***
 
-   ```
+    ```
 
-   ```
+    ```
 
 10. Create Quick Reference section:
 
@@ -464,14 +464,14 @@ Use this task when you need to:
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "knowledge-base", file: "kb-filename" })
-   validate_resource_content({ type: "knowledge-base", file: "kb-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "knowledge-base", file: "kb-filename" })
+    validate_resource_content({ type: "knowledge-base", file: "kb-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Check overview is clear and concise (2-3 paragraphs)
 3. Verify 2-4 core concepts exist with definitions, purpose, examples
@@ -533,19 +533,19 @@ Use this task when you need to:
 The task generates one primary file:
 
 1. **Knowledge Base File** (`knowledge-base/[name].md`)
-   - Title and one-line summary
-   - Overview (2-3 paragraphs)
-   - Core Concepts (2-4 concepts with definitions, purpose, examples)
-   - Common Patterns (3-5 patterns with implementations)
-   - Best Practices (DO and DON'T sections)
-   - Examples (2-3 complete working examples)
-   - Advanced Topics (optional)
-   - Decision Framework (optional)
-   - Troubleshooting (symptoms/causes/solutions)
-   - Quick Reference (tables and quick lookup)
-   - Integration Guidelines (optional)
-   - Related Resources (internal and external links)
-   - Metadata (category, tags, difficulty, audience)
+    - Title and one-line summary
+    - Overview (2-3 paragraphs)
+    - Core Concepts (2-4 concepts with definitions, purpose, examples)
+    - Common Patterns (3-5 patterns with implementations)
+    - Best Practices (DO and DON'T sections)
+    - Examples (2-3 complete working examples)
+    - Advanced Topics (optional)
+    - Decision Framework (optional)
+    - Troubleshooting (symptoms/causes/solutions)
+    - Quick Reference (tables and quick lookup)
+    - Integration Guidelines (optional)
+    - Related Resources (internal and external links)
+    - Metadata (category, tags, difficulty, audience)
 
 ## Success Criteria
 
@@ -683,10 +683,10 @@ The task generates one primary file:
 2. Review template: Study reference knowledge base patterns
 3. Study examples: Review `gitlab-ci-examples.md` for reference structure
 4. Design:
-   - Type: Reference guide
-   - 3 concepts: Resources, Modules, State management
-   - 4 patterns: Remote state, Module composition, Workspace usage, Dynamic blocks
-   - 3 examples: Basic infrastructure, Multi-environment setup, Module library
+    - Type: Reference guide
+    - 3 concepts: Resources, Modules, State management
+    - 4 patterns: Remote state, Module composition, Workspace usage, Dynamic blocks
+    - 3 examples: Basic infrastructure, Multi-environment setup, Module library
 5. Create: Knowledge base with comprehensive Terraform documentation
 6. Validate: Check all sections, code examples, patterns
 7. Document: Note infrastructure task integration
@@ -716,10 +716,10 @@ The task generates one primary file:
 2. Review template: Study guide knowledge base patterns
 3. Study examples: Review `pipeline-best-practices.md` for guide structure
 4. Design:
-   - Type: How-to guide
-   - 4 concepts: Test structure, Mocking, Assertions, Coverage
-   - 5 patterns: AAA pattern, Test fixtures, Parameterized tests, Integration points, Continuous testing
-   - 3 examples: Testing REST API, Testing business logic, Testing edge cases
+    - Type: How-to guide
+    - 4 concepts: Test structure, Mocking, Assertions, Coverage
+    - 5 patterns: AAA pattern, Test fixtures, Parameterized tests, Integration points, Continuous testing
+    - 3 examples: Testing REST API, Testing business logic, Testing edge cases
 5. Create: Knowledge base with testing guidance
 6. Validate: Check completeness, best practices, examples
 7. Document: Note testing command integration
@@ -749,11 +749,11 @@ The task generates one primary file:
 2. Review template: Study concept knowledge base patterns
 3. Study examples: Review `acceptance-criteria.md` for concept structure
 4. Design:
-   - Type: Concept explanation
-   - 4 concepts: Service decomposition, Communication patterns, Data management, Deployment
-   - 5 patterns: API Gateway, Service Mesh, Event-driven, CQRS, Saga
-   - 2 examples: E-commerce platform, Media streaming service
-   - Decision framework: When to use microservices vs monolith
+    - Type: Concept explanation
+    - 4 concepts: Service decomposition, Communication patterns, Data management, Deployment
+    - 5 patterns: API Gateway, Service Mesh, Event-driven, CQRS, Saga
+    - 2 examples: E-commerce platform, Media streaming service
+    - Decision framework: When to use microservices vs monolith
 5. Create: Knowledge base with architectural concepts
 6. Validate: Check concepts, decision framework, advanced topics
 7. Document: Note architecture documentation integration

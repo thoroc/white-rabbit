@@ -5,15 +5,15 @@ type: checklist
 category: quality
 version: 1.0.0
 tags:
-  - checklists
-  - discovery
-  - validation
-  - documentation
+    - checklists
+    - discovery
+    - validation
+    - documentation
 reference: ../knowledge-base/checklist-system-architecture.md
 applies_to:
-  - checklist-documentation
-  - checklist-discovery
-  - command-development
+    - checklist-documentation
+    - checklist-discovery
+    - command-development
 last_updated: 2025-11-19
 ---
 
@@ -96,31 +96,31 @@ This checklist ensures:
 ### Category Assignment
 
 - [ ] **Documentation category**: Identify documentation validation checklists
-  - [ ] api-documentation
-  - [ ] architecture-documentation
-  - [ ] development-documentation
-  - [ ] deployment-documentation
-  - [ ] onboarding-documentation
-  - [ ] pipeline-documentation
+    - [ ] api-documentation
+    - [ ] architecture-documentation
+    - [ ] development-documentation
+    - [ ] deployment-documentation
+    - [ ] onboarding-documentation
+    - [ ] pipeline-documentation
 
 - [ ] **Quality category**: Identify quality and discovery checklists
-  - [ ] documentation-discovery
-  - [ ] strict-documentation-validation
-  - [ ] task-discovery-validation
-  - [ ] template-discovery-validation
-  - [ ] knowledge-base-discovery-validation
-  - [ ] command-discovery-validation
+    - [ ] documentation-discovery
+    - [ ] strict-documentation-validation
+    - [ ] task-discovery-validation
+    - [ ] template-discovery-validation
+    - [ ] knowledge-base-discovery-validation
+    - [ ] command-discovery-validation
 
 - [ ] **Development category**: Identify resource creation checklists
-  - [ ] opencode-agent
-  - [ ] opencode-command
+    - [ ] opencode-agent
+    - [ ] opencode-command
 
 - [ ] **Operations category**: Identify operational workflow checklists
-  - [ ] github-workflow-safety
+    - [ ] github-workflow-safety
 
 - [ ] **Process category**: Identify process and workflow checklists
-  - [ ] ai-tool-approval
-  - [ ] jira-ticket-creation
+    - [ ] ai-tool-approval
+    - [ ] jira-ticket-creation
 
 ### Category Organization
 

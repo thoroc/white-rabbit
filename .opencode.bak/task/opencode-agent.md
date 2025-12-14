@@ -7,13 +7,13 @@ last_updated: 2025-11-11
 category: Development
 type: task
 tags:
-  - opencode
-  - agent
-  - creating
-  - agents
-  - creation
-  - template
-  - configuration
+    - opencode
+    - agent
+    - creating
+    - agents
+    - creation
+    - template
+    - configuration
 title: Opencode Agent Task
 estimated_duration: 5-10 minutes
 ---
@@ -154,29 +154,29 @@ Use this task when you need to:
 **Actions:**
 
 1. Design frontmatter configuration
-   - Set description (clear, one-line purpose)
-   - Choose mode (subagent for specialized, all for versatile, primary for main)
-   - Select temperature (0.1-0.3 analytical, 0.4-0.6 balanced, 0.7+ creative)
-   - Configure tools (enable only what's needed)
-   - Set permissions (fine-grained control if needed)
-   - Add model override if specific model required
+    - Set description (clear, one-line purpose)
+    - Choose mode (subagent for specialized, all for versatile, primary for main)
+    - Select temperature (0.1-0.3 analytical, 0.4-0.6 balanced, 0.7+ creative)
+    - Configure tools (enable only what's needed)
+    - Set permissions (fine-grained control if needed)
+    - Add model override if specific model required
 
 2. Design system prompt
-   - Define clear role and purpose
-   - Specify core responsibilities
-   - List resource references (commands, checklists, tasks, knowledge bases)
-   - Define capabilities and key use cases
-   - Describe workflow or approach
-   - Add integration points
-   - Include best practices and guidelines
-   - Add examples if applicable
+    - Define clear role and purpose
+    - Specify core responsibilities
+    - List resource references (commands, checklists, tasks, knowledge bases)
+    - Define capabilities and key use cases
+    - Describe workflow or approach
+    - Add integration points
+    - Include best practices and guidelines
+    - Add examples if applicable
 
 3. Identify resource references
-   - Related commands the agent uses
-   - Checklists for validation
-   - Tasks for analysis or generation
-   - Knowledge bases for patterns
-   - Templates for structure
+    - Related commands the agent uses
+    - Checklists for validation
+    - Tasks for analysis or generation
+    - Knowledge bases for patterns
+    - Templates for structure
 
 **Tools Used:**
 
@@ -198,151 +198,151 @@ Use this task when you need to:
 1. Enumerate all available tools using the `/list-mcp` command or `.opencode/task/list-mcp-tools.md` task
 
 2. Present tool inventory to user:
-   - Built-in tools (11 tools)
-   - MCP server tools (grouped by server)
-   - Custom tools (if configured)
-   - Plugin tools (if loaded)
+    - Built-in tools (11 tools)
+    - MCP server tools (grouped by server)
+    - Custom tools (if configured)
+    - Plugin tools (if loaded)
 
 3. Analyze agent requirements to recommend tool configuration:
-   - **Read-only agents**: Only read, grep, glob, list
-   - **Documentation agents**: read, write, edit, grep, webfetch (no bash)
-   - **Analysis agents**: read, grep, glob, bash (no write/edit)
-   - **Development agents**: read, write, edit, bash, grep, glob
-   - **Security agents**: read, grep, bash (limited permissions), no write/edit
+    - **Read-only agents**: Only read, grep, glob, list
+    - **Documentation agents**: read, write, edit, grep, webfetch (no bash)
+    - **Analysis agents**: read, grep, glob, bash (no write/edit)
+    - **Development agents**: read, write, edit, bash, grep, glob
+    - **Security agents**: read, grep, bash (limited permissions), no write/edit
 
 4. Interactive tool selection workflow:
 
-   **Option A: Use Preset Pattern** (Recommended for common agent types)
+    **Option A: Use Preset Pattern** (Recommended for common agent types)
 
-   ```
-   Based on your agent purpose, I recommend one of these preset patterns:
+    ```
+    Based on your agent purpose, I recommend one of these preset patterns:
 
-   1. Read-Only Analyst
-      - Tools: read, grep, glob, list, todoread
-      - MCP: All disabled
-      - Use for: Planning, review, analysis agents
+    1. Read-Only Analyst
+       - Tools: read, grep, glob, list, todoread
+       - MCP: All disabled
+       - Use for: Planning, review, analysis agents
 
-   2. Documentation Writer
-      - Tools: read, write, edit, grep, glob, webfetch
-      - MCP: Selectively enabled (e.g., aws-documentation_*)
-      - Use for: Documentation generation agents
+    2. Documentation Writer
+       - Tools: read, write, edit, grep, glob, webfetch
+       - MCP: Selectively enabled (e.g., aws-documentation_*)
+       - Use for: Documentation generation agents
 
-   3. Development Agent
-      - Tools: read, write, edit, bash, grep, glob
-      - MCP: Selectively enabled based on domain
-      - Use for: Code generation, refactoring agents
+    3. Development Agent
+       - Tools: read, write, edit, bash, grep, glob
+       - MCP: Selectively enabled based on domain
+       - Use for: Code generation, refactoring agents
 
-   4. Security Auditor
-      - Tools: read, grep, glob, bash (limited)
-      - MCP: Security-related only
-      - Use for: Security analysis agents
+    4. Security Auditor
+       - Tools: read, grep, glob, bash (limited)
+       - MCP: Security-related only
+       - Use for: Security analysis agents
 
-   5. Full Access Agent
-      - Tools: All enabled
-      - MCP: All enabled
-      - Use for: General-purpose primary agents
+    5. Full Access Agent
+       - Tools: All enabled
+       - MCP: All enabled
+       - Use for: General-purpose primary agents
 
-   Which preset would you like to use? (or choose "Custom" for granular selection)
-   ```
+    Which preset would you like to use? (or choose "Custom" for granular selection)
+    ```
 
-   **Option B: Granular Selection** (For specialized agents)
+    **Option B: Granular Selection** (For specialized agents)
 
-   ```
-   Let's configure tools for your agent:
+    ```
+    Let's configure tools for your agent:
 
-   Built-in Tools:
-   ☑ read - Read file contents [RECOMMENDED]
-   ☑ grep - Search file contents [RECOMMENDED]
-   ☑ glob - Find files by pattern [RECOMMENDED]
-   ☑ list - List directory contents [RECOMMENDED]
-   ☐ write - Create/overwrite files
-   ☐ edit - Modify existing files
-   ☐ bash - Execute shell commands
-   ☐ patch - Apply patches
-   ☐ webfetch - Fetch web content
-   ☑ todoread - Read todo lists [RECOMMENDED]
-   ☐ todowrite - Manage todo lists
+    Built-in Tools:
+    ☑ read - Read file contents [RECOMMENDED]
+    ☑ grep - Search file contents [RECOMMENDED]
+    ☑ glob - Find files by pattern [RECOMMENDED]
+    ☑ list - List directory contents [RECOMMENDED]
+    ☐ write - Create/overwrite files
+    ☐ edit - Modify existing files
+    ☐ bash - Execute shell commands
+    ☐ patch - Apply patches
+    ☐ webfetch - Fetch web content
+    ☑ todoread - Read todo lists [RECOMMENDED]
+    ☐ todowrite - Manage todo lists
 
-   MCP Server: aws-cdk (15 tools)
-   ☐ Enable all aws-cdk_* tools
-   ☐ Select specific tools
-   ☐ Disable all
+    MCP Server: aws-cdk (15 tools)
+    ☐ Enable all aws-cdk_* tools
+    ☐ Select specific tools
+    ☐ Disable all
 
-   MCP Server: aws-cloudwatch (12 tools)
-   ☐ Enable all aws-cloudwatch_* tools
-   ☐ Select specific tools
-   ☐ Disable all
+    MCP Server: aws-cloudwatch (12 tools)
+    ☐ Enable all aws-cloudwatch_* tools
+    ☐ Select specific tools
+    ☐ Disable all
 
-   [Continue for each MCP server...]
+    [Continue for each MCP server...]
 
-   Would you like to enable any custom tools or plugins?
-   ```
+    Would you like to enable any custom tools or plugins?
+    ```
 
 5. Generate tools configuration based on selection:
 
-   **Preset Pattern Example:**
+    **Preset Pattern Example:**
 
-   ```yaml
-   tools:
-     write: false
-     edit: false
-     bash: false
-     patch: false
-     webfetch: false
-     todowrite: false
-     # read, grep, glob, list, todoread remain enabled (default true)
-     # Disable all MCP servers
-     aws-cdk_*: false
-     aws-cloudwatch_*: false
-     playwright_*: false
-   ```
+    ```yaml
+    tools:
+        write: false
+        edit: false
+        bash: false
+        patch: false
+        webfetch: false
+        todowrite: false
+        # read, grep, glob, list, todoread remain enabled (default true)
+        # Disable all MCP servers
+        aws-cdk_*: false
+        aws-cloudwatch_*: false
+        playwright_*: false
+    ```
 
-   **Granular Selection Example:**
+    **Granular Selection Example:**
 
-   ```yaml
-   tools:
-     # File operations
-     read: true
-     write: true
-     edit: true
-     bash: false
+    ```yaml
+    tools:
+        # File operations
+        read: true
+        write: true
+        edit: true
+        bash: false
 
-     # Search
-     grep: true
-     glob: true
-     list: true
+        # Search
+        grep: true
+        glob: true
+        list: true
 
-     # Network
-     webfetch: true
+        # Network
+        webfetch: true
 
-     # Task management
-     todoread: true
-     todowrite: false
+        # Task management
+        todoread: true
+        todowrite: false
 
-     # MCP servers
-     aws-documentation_*: true # Enable AWS docs tools
-     aws-cdk_*: false # Disable CDK tools
-     playwright_*: false # Disable browser automation
-   ```
+        # MCP servers
+        aws-documentation_*: true # Enable AWS docs tools
+        aws-cdk_*: false # Disable CDK tools
+        playwright_*: false # Disable browser automation
+    ```
 
 6. Configure permissions for enabled tools (if needed):
 
-   ```yaml
-   permission:
-     edit: ask # Prompt before editing
-     bash:
-       'git status': allow
-       'git diff': allow
-       'git log*': allow
-       '*': ask # Prompt for other commands
-     webfetch: allow
-   ```
+    ```yaml
+    permission:
+        edit: ask # Prompt before editing
+        bash:
+            'git status': allow
+            'git diff': allow
+            'git log*': allow
+            '*': ask # Prompt for other commands
+        webfetch: allow
+    ```
 
 7. Document tool selection rationale:
-   - Why certain tools were enabled
-   - Why others were disabled
-   - Security considerations
-   - Workflow requirements
+    - Why certain tools were enabled
+    - Why others were disabled
+    - Security considerations
+    - Workflow requirements
 
 **Tools Used:**
 
@@ -379,32 +379,32 @@ Agent Purpose Analysis
 1. Create agent file in `agent/[kebab-case-name].md`
 2. Write frontmatter with all required fields:
 
-   ```yaml
-   ---
-   description: Clear one-line description
-   mode: subagent | all | primary
-   temperature: 0.0-1.0
-   tools:
-     write: true/false
-     edit: true/false
-     read: true/false
-     bash: true/false
-     webfetch: true/false
-   permission: # Optional
-     tool_name: ask | allow | deny
-   ---
-   ```
+    ```yaml
+    ---
+    description: Clear one-line description
+    mode: subagent | all | primary
+    temperature: 0.0-1.0
+    tools:
+        write: true/false
+        edit: true/false
+        read: true/false
+        bash: true/false
+        webfetch: true/false
+    permission: # Optional
+        tool_name: ask | allow | deny
+    ---
+    ```
 
 3. Write comprehensive system prompt:
-   - Title and overview (H1)
-   - Core responsibilities section
-   - Resource references section
-   - Capabilities and key use cases
-   - Workflow or approach section
-   - Integration points
-   - Available commands (if applicable)
-   - Best practices and guidelines
-   - Examples (if applicable)
+    - Title and overview (H1)
+    - Core responsibilities section
+    - Resource references section
+    - Capabilities and key use cases
+    - Workflow or approach section
+    - Integration points
+    - Available commands (if applicable)
+    - Best practices and guidelines
+    - Examples (if applicable)
 
 **Tools Used:**
 
@@ -422,14 +422,14 @@ Agent Purpose Analysis
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "agent", file: "agent-filename" })
-   validate_resource_content({ type: "agent", file: "agent-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "agent", file: "agent-filename" })
+    validate_resource_content({ type: "agent", file: "agent-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Apply the OpenCode Agent Checklist (`.opencode/checklist/opencode-agent.md`)
 3. Verify all required frontmatter fields present and compliant
@@ -496,27 +496,27 @@ Agent Purpose Analysis
 The task generates two primary outputs:
 
 1. **Agent File** (`agent/[name].md`)
-   - Valid YAML frontmatter with configuration
-   - **Tool configuration** (from Step 4.5: Interactive Tool Selection)
-     - Built-in tools (enabled/disabled)
-     - MCP server wildcards
-     - Custom tool settings
-     - Permission configurations
-   - Comprehensive system prompt
-   - Resource references section
-   - Core responsibilities
-   - Capabilities and use cases
-   - Workflow/approach documentation
-   - Integration points
-   - Examples (if applicable)
+    - Valid YAML frontmatter with configuration
+    - **Tool configuration** (from Step 4.5: Interactive Tool Selection)
+        - Built-in tools (enabled/disabled)
+        - MCP server wildcards
+        - Custom tool settings
+        - Permission configurations
+    - Comprehensive system prompt
+    - Resource references section
+    - Core responsibilities
+    - Capabilities and use cases
+    - Workflow/approach documentation
+    - Integration points
+    - Examples (if applicable)
 
 2. **Integration Documentation**
-   - Commands that invoke agent
-   - Tasks agent should execute
-   - Checklists agent references
-   - Knowledge bases for agent domain
-   - **Tool selection rationale** (why certain tools were enabled/disabled)
-   - Usage notes and examples
+    - Commands that invoke agent
+    - Tasks agent should execute
+    - Checklists agent references
+    - Knowledge bases for agent domain
+    - **Tool selection rationale** (why certain tools were enabled/disabled)
+    - Usage notes and examples
 
 ## Success Criteria
 
@@ -527,11 +527,11 @@ The task generates two primary outputs:
 - ✅ Appropriate mode for use case
 - ✅ Temperature matches task type
 - ✅ **Tool configuration complete (from Step 4.5)**
-  - ✅ Built-in tools appropriately enabled/disabled
-  - ✅ MCP server wildcards configured
-  - ✅ Permission settings defined (if needed)
-  - ✅ Tool selection follows security best practices
-  - ✅ Tool rationale documented
+    - ✅ Built-in tools appropriately enabled/disabled
+    - ✅ MCP server wildcards configured
+    - ✅ Permission settings defined (if needed)
+    - ✅ Tool selection follows security best practices
+    - ✅ Tool rationale documented
 - ✅ Comprehensive system prompt
 - ✅ Resource references section included
 - ✅ Follows template structure
@@ -626,30 +626,30 @@ The checklist includes 625+ validation items organized into:
 2. Review template: Study configuration options
 3. Study examples: Review analysis-focused agents
 4. Design:
-   - Mode: subagent (specialized)
-   - Temperature: 0.1 (deterministic analysis)
-     4.5. **Interactive Tool Selection**:
-   - Executed `/list-mcp` to enumerate available tools
-   - Recommended "Security Auditor" preset pattern
-   - User selected preset with modifications:
-     - Built-in: read, grep, glob, bash (limited)
-     - MCP: All disabled except security-specific tools
-     - Permissions: bash commands require approval except safe git commands
-   - Generated tools configuration:
+    - Mode: subagent (specialized)
+    - Temperature: 0.1 (deterministic analysis)
+      4.5. **Interactive Tool Selection**:
+    - Executed `/list-mcp` to enumerate available tools
+    - Recommended "Security Auditor" preset pattern
+    - User selected preset with modifications:
+        - Built-in: read, grep, glob, bash (limited)
+        - MCP: All disabled except security-specific tools
+        - Permissions: bash commands require approval except safe git commands
+    - Generated tools configuration:
 
-     ```yaml
-     tools:
-       write: false
-       edit: false
-       bash: true
-       aws-cdk_*: false
-       playwright_*: false
-     permission:
-       bash:
-         'git status': allow
-         'git diff': allow
-         '*': ask
-     ```
+        ```yaml
+        tools:
+            write: false
+            edit: false
+            bash: true
+            aws-cdk_*: false
+            playwright_*: false
+        permission:
+            bash:
+                'git status': allow
+                'git diff': allow
+                '*': ask
+        ```
 
 5. Create: Agent with security-focused system prompt
 6. Validate: Check configuration and structure
@@ -678,10 +678,10 @@ The checklist includes 625+ validation items organized into:
 2. Review template: Study tool and temperature settings
 3. Study examples: Review `documentalist.md` for patterns
 4. Design:
-   - Mode: subagent (specialized docs)
-   - Temperature: 0.3 (slightly creative for docs)
-   - Tools: write, edit, read, grep (for generation)
-   - No bash/webfetch (focused on files)
+    - Mode: subagent (specialized docs)
+    - Temperature: 0.3 (slightly creative for docs)
+    - Tools: write, edit, read, grep (for generation)
+    - No bash/webfetch (focused on files)
 5. Create: Agent with API documentation focus
 6. Validate: Check tool permissions and structure
 7. Document: Add to agent-resource-mapping.md
@@ -709,10 +709,10 @@ The checklist includes 625+ validation items organized into:
 2. Review template: Study mode and tool options
 3. Study examples: Review `pipeline-architect.md` and `jenkins.md`
 4. Design:
-   - Mode: all (can be primary or subagent)
-   - Temperature: 0.2 (technical but flexible)
-   - Tools: write, edit, read, bash (full toolset)
-   - Permissions: bash git push = ask (safety)
+    - Mode: all (can be primary or subagent)
+    - Temperature: 0.2 (technical but flexible)
+    - Tools: write, edit, read, bash (full toolset)
+    - Permissions: bash git push = ask (safety)
 5. Create: Agent with DevOps workflows
 6. Validate: Check permissions and safety
 7. Document: Add to agent-resource-mapping.md

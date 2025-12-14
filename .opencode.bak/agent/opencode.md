@@ -3,30 +3,30 @@ description: Builder agent for creating new OpenCode agents, commands, tasks, ch
 mode: subagent
 temperature: 0.2
 tools:
-  write: true
-  edit: true
-  read: true
-  list: true
-  glob: true
-  grep: true
-  bash: true
-  webfetch: true
-  validate_frontmatter: true
-  validate_resource_content: true
+    write: true
+    edit: true
+    read: true
+    list: true
+    glob: true
+    grep: true
+    bash: true
+    webfetch: true
+    validate_frontmatter: true
+    validate_resource_content: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': ask
-  webfetch: ask
+    bash:
+        rm *: deny
+        git push: deny
+        '*': ask
+    webfetch: ask
 type: agent
 category: Development
 tags:
-  - agent
-  - opencode
-  - builder
-  - creating
-  - validation
+    - agent
+    - opencode
+    - builder
+    - creating
+    - validation
 version: 1.1.0
 last_updated: 2025-11-19
 ---
@@ -175,17 +175,17 @@ description: Clear one-line description for agent discovery
 mode: subagent | all | primary
 temperature: 0.1-0.3 (deterministic) | 0.4-0.6 (balanced) | 0.7+ (creative)
 tools:
-  write: true/false
-  edit: true/false
-  read: true/false
-  bash: true/false
-  webfetch: true/false
+    write: true/false
+    edit: true/false
+    read: true/false
+    bash: true/false
+    webfetch: true/false
 permission: # Optional, for fine-grained control
-  bash:
-    'git push': ask
-    'rm -rf': deny
-    '*': ask # Conservative default
-  webfetch: ask # If enabled
+    bash:
+        'git push': ask
+        'rm -rf': deny
+        '*': ask # Conservative default
+    webfetch: ask # If enabled
 ---
 ```
 
@@ -264,9 +264,9 @@ version: 1.0.0
 last_updated: YYYY-MM-DD
 category: Development | Documentation | Operations | Quality | Security # Standard categories
 tags:
-  - specific-tag-1 # 3-5 descriptive tags (NOT just "task")
-  - specific-tag-2 # Include technology keywords (docker, kubernetes, etc.)
-  - specific-tag-3 # Include action verbs (analyze, deploy, validate, etc.)
+    - specific-tag-1 # 3-5 descriptive tags (NOT just "task")
+    - specific-tag-2 # Include technology keywords (docker, kubernetes, etc.)
+    - specific-tag-3 # Include action verbs (analyze, deploy, validate, etc.)
 estimated_duration: '5-10 minutes' # Recommended for task planning
 type: task # REQUIRED
 ---
@@ -310,9 +310,9 @@ last_updated: YYYY-MM-DD
 reference: Optional reference to standards/RFCs
 category: Development | Documentation | Operations | Quality | Security
 tags:
-  - validation # 3-5 specific tags
-  - checklist-topic
-  - standards
+    - validation # 3-5 specific tags
+    - checklist-topic
+    - standards
 type: checklist # REQUIRED
 ---
 ```
@@ -356,9 +356,9 @@ category: Documentation | Development | Operations | Quality | Security
 version: 1.0.0
 last_updated: YYYY-MM-DD
 tags:
-  - topic-keyword-1 # 3-5 specific descriptive tags
-  - topic-keyword-2
-  - patterns # or best-practices, reference, etc.
+    - topic-keyword-1 # 3-5 specific descriptive tags
+    - topic-keyword-2
+    - patterns # or best-practices, reference, etc.
 ---
 ```
 
@@ -440,12 +440,12 @@ validate_resource_content({ type: 'task', file: 'my-new-task' });
 - ✅ **Code examples**: Proper formatting, adequate quantity
 - ✅ **Best practices**: Good/bad examples for knowledge bases
 - ✅ **Type-specific content**:
-  - Tasks: Shell commands in code blocks, success criteria, duration mention
-  - Agents: Tool documentation, mode explanation, invocation format
-  - Commands: Argument documentation, context gathering examples
-  - Checklists: Sufficient items (15-30+), proper organization
-  - Knowledge Bases: Working examples, good/bad patterns, related resources
-  - Templates: Frontmatter examples, multiple use cases
+    - Tasks: Shell commands in code blocks, success criteria, duration mention
+    - Agents: Tool documentation, mode explanation, invocation format
+    - Commands: Argument documentation, context gathering examples
+    - Checklists: Sufficient items (15-30+), proper organization
+    - Knowledge Bases: Working examples, good/bad patterns, related resources
+    - Templates: Frontmatter examples, multiple use cases
 - ✅ **Quality metrics**: Lines, sections, examples, code blocks, links, checklist items
 - ✅ **Overall score**: 0-100 quality score with emoji indicator
 
@@ -509,10 +509,10 @@ validate_resource_content({ type: 'task', file: 'deployment-strategy' });
 - ⚠️ **Warnings**: SHOULD fix most (content quality issues)
 - ℹ️ **Recommendations**: OPTIONAL improvements (additional documentation)
 - **Quality Score**:
-  - 🟢 80-100: Excellent (target)
-  - 🟡 60-79: Good (acceptable, but improve if possible)
-  - 🟠 40-59: Needs Improvement (fix warnings)
-  - 🔴 0-39: Poor (major rework required)
+    - 🟢 80-100: Excellent (target)
+    - 🟡 60-79: Good (acceptable, but improve if possible)
+    - 🟠 40-59: Needs Improvement (fix warnings)
+    - 🔴 0-39: Poor (major rework required)
 
 #### When to Use Validation Tools
 
@@ -776,11 +776,11 @@ When creating resources:
 2. Use `read` to review `.opencode/agent/documentalist.md` and `.opencode/agent/php-logging-quality-agent.md`
 3. Use `read` to consult `.opencode/knowledge-base/opencode-tools-reference.md` for Read-Only Agent pattern
 4. Create agent with:
-   - mode: subagent (specialized task)
-   - temperature: 0.1 (deterministic analysis)
-   - tools: read, grep, glob, list only (Read-Only pattern from tools KB)
-   - bash: false (no command execution for pure analysis)
-   - Resources: Create or reference code quality checklists
+    - mode: subagent (specialized task)
+    - temperature: 0.1 (deterministic analysis)
+    - tools: read, grep, glob, list only (Read-Only pattern from tools KB)
+    - bash: false (no command execution for pure analysis)
+    - Resources: Create or reference code quality checklists
 5. Define clear focus areas: security, performance, maintainability
 6. Write system prompt emphasizing analysis without modification
 7. **Validate frontmatter**: `validate_frontmatter({ type: "agent", file: "code-reviewer" })`
@@ -799,9 +799,9 @@ When creating resources:
 1. Use `read` to read `.opencode/template/opencode-command-tmpl.yaml`
 2. Use `read` to review `.opencode/command/commit.md` for shell integration patterns
 3. Create command with:
-   - Shell commands to run tests: !`npm test` (uses `bash` tool at execution)
-   - Failure analysis instructions
-   - Reference to testing best practices if available
+    - Shell commands to run tests: !`npm test` (uses `bash` tool at execution)
+    - Failure analysis instructions
+    - Reference to testing best practices if available
 4. Set agent: general (standard analysis)
 5. Add instructions for fixing common failures
 6. **Validate frontmatter**: `validate_frontmatter({ type: "command", file: "test-and-fix" })`
@@ -820,17 +820,17 @@ When creating resources:
 1. Use `read` to read `.opencode/template/opencode-task-tmpl.yaml`
 2. Use `read` to review `.opencode/task/technology-detection.md` for structure
 3. Create task with:
-   - Clear security audit objectives
-   - 5-7 sequential steps (dependency scan, code review, config audit, etc.)
-   - Tools specified per step: `grep` (code search), `bash` (run scanners), `read` (config review)
-   - Success criteria: no high-severity issues, compliance met
-   - 2-3 examples: web app audit, API audit, infrastructure audit
-   - Frontmatter with: description (under 120 chars), category: "Security", tags: ["security", "audit", "compliance",
-     "vulnerability-scanning"]
+    - Clear security audit objectives
+    - 5-7 sequential steps (dependency scan, code review, config audit, etc.)
+    - Tools specified per step: `grep` (code search), `bash` (run scanners), `read` (config review)
+    - Success criteria: no high-severity issues, compliance met
+    - 2-3 examples: web app audit, API audit, infrastructure audit
+    - Frontmatter with: description (under 120 chars), category: "Security", tags: ["security", "audit", "compliance",
+      "vulnerability-scanning"]
 4. **Validate frontmatter**: `validate_frontmatter({ type: "task", file: "security-audit" })`
-   - Check: description present, tags sufficient (3-5), category valid
+    - Check: description present, tags sufficient (3-5), category valid
 5. **Validate content**: `validate_resource_content({ type: "task", file: "security-audit" })`
-   - Check: Purpose section, success criteria, examples (100+ chars), shell commands in code blocks
+    - Check: Purpose section, success criteria, examples (100+ chars), shell commands in code blocks
 6. Fix issues: Add duration estimate, improve examples, ensure success criteria is clear
 7. Re-validate until quality score 80+/100
 

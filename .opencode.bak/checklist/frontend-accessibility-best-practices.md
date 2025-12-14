@@ -1,16 +1,16 @@
 ---
 description:
-  Comprehensive accessibility checklist following WCAG 2.1 guidelines for building inclusive web applications with
-  proper semantic HTML, ARIA, and keyboard navigation
+    Comprehensive accessibility checklist following WCAG 2.1 guidelines for building inclusive web applications with
+    proper semantic HTML, ARIA, and keyboard navigation
 type: checklist
 category: Quality
 tags:
-  - accessibility
-  - a11y
-  - wcag
-  - frontend
-  - quality-assurance
-  - testing
+    - accessibility
+    - a11y
+    - wcag
+    - frontend
+    - quality-assurance
+    - testing
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -421,7 +421,7 @@ Use these OpenCode MCP tools for accessibility testing:
 
 <!-- Navigation -->
 <nav aria-label="Main navigation">
-  <a href="/" aria-current="page">Home</a>
+    <a href="/" aria-current="page">Home</a>
 </nav>
 
 <!-- Live regions -->
@@ -429,7 +429,7 @@ Use these OpenCode MCP tools for accessibility testing:
 
 <!-- Modals -->
 <div role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <h2 id="modal-title">Confirmation</h2>
+    <h2 id="modal-title">Confirmation</h2>
 </div>
 ```
 

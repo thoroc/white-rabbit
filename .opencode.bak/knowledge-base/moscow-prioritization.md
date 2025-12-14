@@ -5,10 +5,10 @@ type: knowledge-base
 category: development
 version: 1.0.0
 tags:
-  - knowledge
-  - development
-  - moscow
-  - prioritization
+    - knowledge
+    - development
+    - moscow
+    - prioritization
 last_updated: 2025-11-19
 ---
 
@@ -218,28 +218,28 @@ Before categorizing, agree on:
 For each item, work through the questions:
 
 1. **Is it a Must Have?**
-   - Cannot launch without it?
-   - Legal requirement?
-   - Core to the value proposition?
-   - If YES to any → Must Have
+    - Cannot launch without it?
+    - Legal requirement?
+    - Core to the value proposition?
+    - If YES to any → Must Have
 
 2. **Is it a Should Have?**
-   - Adds significant value?
-   - Can be delayed without breaking core?
-   - Important for satisfaction but not critical?
-   - If YES to most → Should Have
+    - Adds significant value?
+    - Can be delayed without breaking core?
+    - Important for satisfaction but not critical?
+    - If YES to most → Should Have
 
 3. **Is it a Could Have?**
-   - Nice to have but not essential?
-   - Enhances but doesn't define?
-   - Can be easily delayed?
-   - If YES → Could Have
+    - Nice to have but not essential?
+    - Enhances but doesn't define?
+    - Can be easily delayed?
+    - If YES → Could Have
 
 4. **Is it a Won't Have?**
-   - Out of scope for this phase?
-   - Too complex right now?
-   - Conflicts with current strategy?
-   - If YES → Won't Have
+    - Out of scope for this phase?
+    - Too complex right now?
+    - Conflicts with current strategy?
+    - If YES → Won't Have
 
 ### Step 4: Validate and Balance
 

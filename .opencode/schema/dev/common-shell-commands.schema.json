@@ -4,7 +4,14 @@
     "title": "Common Shell Commands Template Schema",
     "description": "Validates the structure of common shell commands template YAML files for project analysis",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",
@@ -66,9 +73,18 @@
             "type": "object",
             "description": "Guidelines for using shell commands",
             "properties": {
-                "when_to_use": { "type": "array", "items": { "type": "string" } },
-                "when_to_load_tasks": { "type": "array", "items": { "type": "string" } },
-                "best_practices": { "type": "array", "items": { "type": "string" } }
+                "when_to_use": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "when_to_load_tasks": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "best_practices": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
             },
             "additionalProperties": true
         },

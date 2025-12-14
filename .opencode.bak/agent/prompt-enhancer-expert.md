@@ -3,27 +3,27 @@ description: Enhances user-provided prompts through multi-agent brainstorming an
 mode: all
 temperature: 0.1
 tools:
-  write: true
-  edit: true
-  bash: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  webfetch: true
+    write: true
+    edit: true
+    bash: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    webfetch: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - prompt
-  - enhancer
-  - enhances
-  - user-provided
+    - agent
+    - prompt
+    - enhancer
+    - enhances
+    - user-provided
 version: 1.0.0
 last_updated: 2025-11-19
 ---

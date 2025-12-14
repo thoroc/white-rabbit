@@ -62,14 +62,14 @@ according to
 ## Outputs Generated
 
 1. **Detailed Assessment Report** (`./docs/tool-reviews/[tool-name]-assessment-[date].md`)
-   - Comprehensive evaluation across all criteria
-   - Risk analysis with evidence
-   - Mitigation strategies
+    - Comprehensive evaluation across all criteria
+    - Risk analysis with evidence
+    - Mitigation strategies
 
 2. **RFC Submission** (`./docs/tool-reviews/[tool-name]-rfc-submission-[date].md`)
-   - Formatted for RFC forum submission
-   - Complete criteria checklist
-   - Executive summary and recommendation
+    - Formatted for RFC forum submission
+    - Complete criteria checklist
+    - Executive summary and recommendation
 
 ## Tool Categories
 

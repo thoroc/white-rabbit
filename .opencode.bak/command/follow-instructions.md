@@ -4,10 +4,10 @@ agent: general
 type: command
 category: Development
 tags:
-  - command
-  - follow
-  - instructions
-  - specified
+    - command
+    - follow
+    - instructions
+    - specified
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -37,10 +37,10 @@ You have been provided with instructions from the file: **$1**
 1. **Read and understand** the complete instructions provided above from the file
 2. **Execute the instructions** exactly as specified in the file
 3. **Follow all requirements** including:
-   - Any specified format or structure
-   - Quality standards mentioned
-   - Constraints and limitations
-   - Expected outputs or deliverables
+    - Any specified format or structure
+    - Quality standards mentioned
+    - Constraints and limitations
+    - Expected outputs or deliverables
 4. **Ask for clarification** if the instructions are ambiguous or incomplete
 5. **Report completion** when all instructions have been executed
 

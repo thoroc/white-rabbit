@@ -3,27 +3,27 @@ description: Expert advisor on software architecture, design patterns, and engin
 mode: all
 temperature: 0.2
 tools:
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  write: false
-  edit: false
-  webfetch: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    bash: true
+    write: false
+    edit: false
+    webfetch: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - code
-  - architect
-  - expert
-  - advisor
+    - agent
+    - code
+    - architect
+    - expert
+    - advisor
 version: 1.0.0
 last_updated: 2025-11-19
 ---

@@ -3,12 +3,12 @@ description: Comprehensive quality assurance checklist for creating and validati
 type: checklist
 category: Quality
 tags:
-  - tool
-  - validation
-  - typescript
-  - quality
-  - opencode
-  - zod
+    - tool
+    - validation
+    - typescript
+    - quality
+    - opencode
+    - zod
 version: 1.0.0
 last_updated: 2025-11-21
 title: OpenCode Tool Validation Checklist

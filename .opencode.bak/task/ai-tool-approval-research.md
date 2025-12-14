@@ -1,19 +1,19 @@
 ---
 description: Automated task for comprehensive AI tool research, evaluation, and
-  approval documentation generation
+    approval documentation generation
 mode: task
 temperature: 0.3
 type: task
 category: Operations
 tags:
-  - tool
-  - approval
-  - automated
-  - comprehensive
-  - research
-  - evaluation
-  - security
-  - compliance
+    - tool
+    - approval
+    - automated
+    - comprehensive
+    - research
+    - evaluation
+    - security
+    - compliance
 version: 1.0.0
 last_updated: 2025-11-19
 title: Ai Tool Approval Research Task
@@ -260,28 +260,28 @@ Risk Score = (Data Sensitivity × Likelihood of Exposure) +
 **Report Sections:**
 
 1. Executive Summary
-   - Tool overview
-   - Recommendation (Approve/Reject/Conditional)
-   - Key findings and risk rating
+    - Tool overview
+    - Recommendation (Approve/Reject/Conditional)
+    - Key findings and risk rating
 
 2. Business Context
-   - Use case and justification
-   - Current status
-   - Alternatives considered
+    - Use case and justification
+    - Current status
+    - Alternatives considered
 
 3. Detailed Assessment
-   - Data Privacy & Security (Step 2 outputs)
-   - Compliance & Legal (Step 3 outputs)
-   - Security Assessment (Step 4 outputs)
-   - Operational Assessment (Step 5 outputs)
+    - Data Privacy & Security (Step 2 outputs)
+    - Compliance & Legal (Step 3 outputs)
+    - Security Assessment (Step 4 outputs)
+    - Operational Assessment (Step 5 outputs)
 
 4. Risk Analysis (Step 6 outputs)
 
 5. Recommendation
-   - Decision with justification
-   - Usage guidelines (if approved)
-   - Restrictions and conditions
-   - Monitoring plan
+    - Decision with justification
+    - Usage guidelines (if approved)
+    - Restrictions and conditions
+    - Monitoring plan
 
 **Output Location:** `./docs/tool-reviews/[tool-name]-assessment-[YYYY-MM-DD].md`
 
@@ -326,21 +326,21 @@ Risk Score = (Data Sensitivity × Likelihood of Exposure) +
 The task generates three primary documents:
 
 1. **Assessment Report** (Detailed)
-   - Comprehensive findings
-   - Evidence and citations
-   - Risk analysis
-   - Monitoring plan
+    - Comprehensive findings
+    - Evidence and citations
+    - Risk analysis
+    - Monitoring plan
 
 2. **RFC Submission** (Structured)
-   - Forum-ready format
-   - Checklist completion
-   - Clear recommendation
-   - Implementation plan
+    - Forum-ready format
+    - Checklist completion
+    - Clear recommendation
+    - Implementation plan
 
 3. **Checklist Report** (Quick Reference)
-   - All criteria addressed
-   - Completion tracking
-   - Risk summary
+    - All criteria addressed
+    - Completion tracking
+    - Risk summary
 
 ## Success Criteria
 

@@ -5,22 +5,22 @@ This document provides comprehensive documentation for all available OpenCode ag
 ## Table of Contents
 
 - [OpenCode Agents Reference](#opencode-agents-reference)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Available Agents](#available-agents)
-    - [AI Tool Reviewer](#ai-tool-reviewer)
-    - [Atlassian](#atlassian)
-    - [Documentalist](#documentalist)
-    - [Jenkins](#jenkins)
-    - [PHP Logging Quality Agent](#php-logging-quality-agent)
-    - [Pipeline Architect](#pipeline-architect)
-    - [Prompt Enhancer Expert](#prompt-enhancer-expert)
-  - [Using Agents](#using-agents)
-    - [Invoking Agents](#invoking-agents)
-    - [Agent Selection Guide](#agent-selection-guide)
-    - [Best Practices](#best-practices)
-  - [Extending Agents](#extending-agents)
-  - [Related Documentation](#related-documentation)
+    - [Table of Contents](#table-of-contents)
+    - [Overview](#overview)
+    - [Available Agents](#available-agents)
+        - [AI Tool Reviewer](#ai-tool-reviewer)
+        - [Atlassian](#atlassian)
+        - [Documentalist](#documentalist)
+        - [Jenkins](#jenkins)
+        - [PHP Logging Quality Agent](#php-logging-quality-agent)
+        - [Pipeline Architect](#pipeline-architect)
+        - [Prompt Enhancer Expert](#prompt-enhancer-expert)
+    - [Using Agents](#using-agents)
+        - [Invoking Agents](#invoking-agents)
+        - [Agent Selection Guide](#agent-selection-guide)
+        - [Best Practices](#best-practices)
+    - [Extending Agents](#extending-agents)
+    - [Related Documentation](#related-documentation)
 
 ## Overview
 
@@ -431,11 +431,11 @@ To create or modify agents:
 
 1. Create markdown file in `agent/` directory
 2. Include frontmatter with:
-   - `description`: Clear purpose statement
-   - `mode`: Execution mode
-   - `temperature`: Response style
-   - `tools`: Available tool access
-   - `permission`: Access controls if needed
+    - `description`: Clear purpose statement
+    - `mode`: Execution mode
+    - `temperature`: Response style
+    - `tools`: Available tool access
+    - `permission`: Access controls if needed
 3. Write comprehensive instructions
 4. Test with realistic scenarios
 

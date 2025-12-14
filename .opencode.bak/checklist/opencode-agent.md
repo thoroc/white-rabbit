@@ -5,10 +5,10 @@ type: checklist
 category: meta
 version: 1.0.0
 tags:
-  - checklist
-  - meta
-  - opencode
-  - agent
+    - checklist
+    - meta
+    - opencode
+    - agent
 last_updated: 2025-11-19
 ---
 
@@ -47,9 +47,9 @@ system.
 - ✅ **temperature** set appropriately for agent type
 - ✅ Temperature range is 0.0-1.0
 - ✅ Temperature matches agent purpose:
-  - `0.0-0.2`: Code analysis, planning, security audits (deterministic)
-  - `0.3-0.5`: General development, balanced tasks
-  - `0.6-1.0`: Brainstorming, creative tasks, exploration
+    - `0.0-0.2`: Code analysis, planning, security audits (deterministic)
+    - `0.3-0.5`: General development, balanced tasks
+    - `0.6-1.0`: Brainstorming, creative tasks, exploration
 
 ### Optional Configuration
 
@@ -499,9 +499,9 @@ description: Analyzes code without making changes
 mode: subagent
 temperature: 0.1
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 ```
 
@@ -513,13 +513,13 @@ description: Complete development with all tools
 mode: primary
 temperature: 0.3
 tools:
-  write: true
-  edit: true
-  bash: true
+    write: true
+    edit: true
+    bash: true
 permission:
-  bash:
-    'git push': ask
-    '*': allow
+    bash:
+        'git push': ask
+        '*': allow
 ---
 ```
 
@@ -531,9 +531,9 @@ description: Creates and maintains documentation
 mode: subagent
 temperature: 0.4
 tools:
-  write: true
-  edit: true
-  bash: false
+    write: true
+    edit: true
+    bash: false
 ---
 ```
 
@@ -545,14 +545,14 @@ description: Security analysis and vulnerability detection
 mode: subagent
 temperature: 0.1
 tools:
-  write: false
-  edit: false
-  bash: true
+    write: false
+    edit: false
+    bash: true
 permission:
-  bash:
-    'npm audit': allow
-    'git diff': allow
-    '*': ask
+    bash:
+        'npm audit': allow
+        'git diff': allow
+        '*': ask
 ---
 ```
 
@@ -564,13 +564,13 @@ description: Code review with constructive feedback
 mode: subagent
 temperature: 0.2
 tools:
-  write: false
-  edit: false
+    write: false
+    edit: false
 permission:
-  bash:
-    'git diff': allow
-    'git log*': allow
-    '*': deny
+    bash:
+        'git diff': allow
+        'git log*': allow
+        '*': deny
 ---
 ```
 

@@ -4,7 +4,14 @@
     "title": "OpenCode Task Template Schema",
     "description": "Validates the structure of OpenCode task template YAML files",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",
@@ -62,7 +69,10 @@
                     "format": { "type": "string" },
                     "content": { "type": "string" },
                     "pattern": { "type": "string" },
-                    "subsections": { "type": "array", "items": { "type": "string" } },
+                    "subsections": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                    },
                     "note": { "type": "string" },
                     "required": { "type": "boolean" }
                 },

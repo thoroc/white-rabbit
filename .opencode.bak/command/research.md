@@ -4,10 +4,10 @@ agent: researcher
 type: command
 category: Development
 tags:
-  - command
-  - research
-  - conduct
-  - exhaustive
+    - command
+    - research
+    - conduct
+    - exhaustive
 version: 1.0.0
 last_updated: 2025-11-19
 ---

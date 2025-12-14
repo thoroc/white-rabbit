@@ -4,7 +4,14 @@
     "title": "OpenCode Knowledge Base Template Schema",
     "description": "Validates the structure of OpenCode knowledge base template YAML files",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",

@@ -4,7 +4,14 @@
     "title": "OpenCode Task Reference Template Schema",
     "description": "Validates the structure of task reference template YAML files used for referencing tasks in documentation commands",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",

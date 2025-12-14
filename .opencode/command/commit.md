@@ -6,12 +6,12 @@ type: command
 subtask: true
 category: Development
 tags:
-  - command
-  - commit
-  - stage
-  - changes
-  - git
-  - version-control
+    - command
+    - commit
+    - stage
+    - changes
+    - git
+    - version-control
 version: 1.0.0
 last_updated: 2025-12-03
 ---
@@ -37,11 +37,11 @@ After showing status:
 1. **Interactive Staging** - Guide user through selective staging (hunk-by-hunk if needed)
 2. **Analyze Changes** - Review what's staged to determine commit type
 3. **Create Message** - Follow Conventional Commits format:
-   - **Type** (feat/fix/refactor/perf/docs/style/test/chore/ci/build): Based on change
-   - **Scope** (optional): Which part of codebase (e.g., auth, ui, api)
-   - **Description**: Imperative, under 72 chars, clear and concise
-   - **Body** (optional): Explain why, not what
-   - **Footers** (optional): Link issues, reference co-authors, breaking changes
+    - **Type** (feat/fix/refactor/perf/docs/style/test/chore/ci/build): Based on change
+    - **Scope** (optional): Which part of codebase (e.g., auth, ui, api)
+    - **Description**: Imperative, under 72 chars, clear and concise
+    - **Body** (optional): Explain why, not what
+    - **Footers** (optional): Link issues, reference co-authors, breaking changes
 
 4. **Validate** - Ensure message follows @knowledge-base/conventional-commits.md
 5. **Execute** - Run the commit

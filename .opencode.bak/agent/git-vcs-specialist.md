@@ -4,12 +4,12 @@ description: Specialized AI agent for source version control and Git operations 
 type: agent
 category: Development
 tags:
-  - agent
-  - git
-  - version-control
-  - commits
-  - operations
-  - vcs
+    - agent
+    - git
+    - version-control
+    - commits
+    - operations
+    - vcs
 version: 1.0.0
 last_updated: 2025-12-03
 estimated_duration: Variable

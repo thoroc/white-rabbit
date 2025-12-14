@@ -7,13 +7,13 @@ last_updated: 2025-11-11
 category: Development
 type: task
 tags:
-  - opencode
-  - checklist
-  - creating
-  - checklists
-  - creation
-  - validation
-  - quality
+    - opencode
+    - checklist
+    - creating
+    - checklists
+    - creation
+    - validation
+    - quality
 title: Opencode Checklist Task
 estimated_duration: 5-10 minutes
 ---
@@ -152,33 +152,33 @@ Use this task when you need to:
 **Actions:**
 
 1. Design frontmatter
-   - Title
-   - Description
-   - Version (1.0.0)
-   - Last updated date
-   - Optional reference to standards
-   - Category
+    - Title
+    - Description
+    - Version (1.0.0)
+    - Last updated date
+    - Optional reference to standards
+    - Category
 
 2. Plan section structure (8-12 major sections)
-   - Overview/Introduction section
-   - Prerequisites/Requirements section
-   - Core process sections (3-5 sections)
-   - Quality standards section
-   - Specialized sections (as applicable)
-   - Review/Validation section
+    - Overview/Introduction section
+    - Prerequisites/Requirements section
+    - Core process sections (3-5 sections)
+    - Quality standards section
+    - Specialized sections (as applicable)
+    - Review/Validation section
 
 3. Design items for each section
-   - Make items verifiable (yes/no)
-   - Use clear, action-oriented language
-   - Add context where needed
-   - Include sub-items for complex requirements
-   - Use bold for key points
+    - Make items verifiable (yes/no)
+    - Use clear, action-oriented language
+    - Add context where needed
+    - Include sub-items for complex requirements
+    - Use bold for key points
 
 4. Plan formatting
-   - Section emojis (📋, ✅, 🎯, 📊, 🔍)
-   - Checkbox hierarchy
-   - Tables for complex categorization
-   - Code blocks for technical examples
+    - Section emojis (📋, ✅, 🎯, 📊, 🔍)
+    - Checkbox hierarchy
+    - Tables for complex categorization
+    - Code blocks for technical examples
 
 **Tools Used:**
 
@@ -202,27 +202,27 @@ Use this task when you need to:
 
 2. Write frontmatter:
 
-   ```yaml
-   ---
-   title: Checklist Name
-   description: Brief description of what this validates
-   version: 1.0.0
-   last_updated: YYYY-MM-DD
-   reference: Optional reference to standards/RFCs
-   category: Documentation | Development | Operations | Quality
-   ---
-   ```
+    ```yaml
+    ---
+    title: Checklist Name
+    description: Brief description of what this validates
+    version: 1.0.0
+    last_updated: YYYY-MM-DD
+    reference: Optional reference to standards/RFCs
+    category: Documentation | Development | Operations | Quality
+    ---
+    ```
 
 3. Write introduction (1-2 paragraphs)
-   - Purpose and importance
-   - When to use
-   - How to use
+    - Purpose and importance
+    - When to use
+    - How to use
 
 4. Create 8-12 major sections with emojis:
-   - Use `## 📋 1. [Section Name]` format
-   - Add subsections with `### [Subsection Name]`
-   - Create checkbox items: `- [ ] **Key Point**: Explanation`
-   - Add nested items: `- [ ] Sub-item` (2-space indent)
+    - Use `## 📋 1. [Section Name]` format
+    - Add subsections with `### [Subsection Name]`
+    - Create checkbox items: `- [ ] **Key Point**: Explanation`
+    - Add nested items: `- [ ] Sub-item` (2-space indent)
 
 5. Add quality standards section: `## 🎯 Quality Standards`
 
@@ -248,14 +248,14 @@ Use this task when you need to:
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "checklist", file: "checklist-filename" })
-   validate_resource_content({ type: "checklist", file: "checklist-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "checklist", file: "checklist-filename" })
+    validate_resource_content({ type: "checklist", file: "checklist-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Verify frontmatter is valid YAML and compliant
 3. Check description is clear and concise
@@ -311,15 +311,15 @@ Use this task when you need to:
 The task generates one primary file:
 
 1. **Checklist File** (`checklist/[name].md`)
-   - Valid YAML frontmatter with metadata
-   - Clear introduction explaining purpose and usage
-   - 8-12 major sections with emoji icons
-   - Verifiable checkbox items (yes/no answers)
-   - Subsections for organization
-   - Quality standards section
-   - Specialized sections (as applicable)
-   - Review checklist
-   - References section
+    - Valid YAML frontmatter with metadata
+    - Clear introduction explaining purpose and usage
+    - 8-12 major sections with emoji icons
+    - Verifiable checkbox items (yes/no answers)
+    - Subsections for organization
+    - Quality standards section
+    - Specialized sections (as applicable)
+    - Review checklist
+    - References section
 
 ## Success Criteria
 
@@ -428,9 +428,9 @@ The task generates one primary file:
 2. Review template: Study structure and formatting
 3. Study examples: Review quality-focused checklists
 4. Design:
-   - 9 sections: Overview, Prerequisites, Code Structure, Testing, Documentation, Security, Performance, Error Handling,
-     Review
-   - ~60 items total
+    - 9 sections: Overview, Prerequisites, Code Structure, Testing, Documentation, Security, Performance, Error Handling,
+      Review
+    - ~60 items total
 5. Create: Checklist with verifiable items
 6. Validate: Check item count and clarity
 7. Document: Note PR review integration
@@ -459,9 +459,9 @@ The task generates one primary file:
 2. Review template: Study comprehensive checklist patterns
 3. Study examples: Review `api-documentation.md` for patterns
 4. Design:
-   - 12 sections: Overview, Requirements, Design, Endpoints, Authentication, Data Models, Error Handling, Documentation,
-     Security, Performance, Testing, Review
-   - ~150 items total
+    - 12 sections: Overview, Requirements, Design, Endpoints, Authentication, Data Models, Error Handling, Documentation,
+      Security, Performance, Testing, Review
+    - ~150 items total
 5. Create: Comprehensive checklist
 6. Validate: Check completeness and balance
 7. Document: Note API development workflow integration
@@ -490,8 +490,8 @@ The task generates one primary file:
 2. Review template: Study quick checklist patterns
 3. Study examples: Review operational checklists
 4. Design:
-   - 5 sections: Prerequisites, Build, Tests, Configuration, Final Checks
-   - ~25 items total
+    - 5 sections: Prerequisites, Build, Tests, Configuration, Final Checks
+    - ~25 items total
 5. Create: Focused quick checklist
 6. Validate: Check coverage and brevity
 7. Document: Note deployment workflow integration
@@ -572,8 +572,8 @@ The task generates one primary file:
 
 ```markdown
 - [ ] Parent requirement
-  - [ ] Sub-requirement 1
-  - [ ] Sub-requirement 2
+    - [ ] Sub-requirement 1
+    - [ ] Sub-requirement 2
 ```
 
 ## Template Reference

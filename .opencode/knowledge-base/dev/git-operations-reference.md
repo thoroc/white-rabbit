@@ -8,9 +8,9 @@ difficulty: expert
 audience: [devops, developers, ci-cd-engineers]
 tags: [git, version-control, operations, branching, merge-strategy]
 related_resources:
-  - checklist/checklist-git-operations-pre-commit.md
-  - task/task-git-operations-execution.md
-  - template/template-git-command-execution-report.md
+    - checklist/checklist-git-operations-pre-commit.md
+    - task/task-git-operations-execution.md
+    - template/template-git-command-execution-report.md
 ---
 
 # Git Operations Reference

@@ -1,19 +1,19 @@
 ---
 title: Deployment Strategy Task
 description: Analyze deployment strategies, CI/CD pipelines, containerization,
-  and operational infrastructure
+    and operational infrastructure
 type: task
 category: Operations
 version: 1.0.0
 tags:
-  - cicd
-  - deployment
-  - strategy
-  - docker
-  - kubernetes
-  - containers
-  - pipeline
-  - orchestration
+    - cicd
+    - deployment
+    - strategy
+    - docker
+    - kubernetes
+    - containers
+    - pipeline
+    - orchestration
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19

@@ -5,10 +5,10 @@ subtask: true
 type: command
 category: Development
 tags:
-  - command
-  - docs
-  - generate
-  - documentation
+    - command
+    - docs
+    - generate
+    - documentation
 version: 1.0.0
 last_updated: 2025-11-19
 ---

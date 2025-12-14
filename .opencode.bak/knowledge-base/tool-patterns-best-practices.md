@@ -5,12 +5,12 @@ type: knowledge-base
 category: Development
 version: 1.0.0
 tags:
-  - tool
-  - patterns
-  - best-practices
-  - typescript
-  - zod
-  - examples
+    - tool
+    - patterns
+    - best-practices
+    - typescript
+    - zod
+    - examples
 last_updated: 2025-11-21
 ---
 
@@ -38,12 +38,12 @@ This knowledge base provides battle-tested patterns for building tools that are:
 ```typescript
 // tools/git-status.ts
 export default tool({
-  description: 'Get current git status',
-  args: {},
-  async execute() {
-    const result = await Bun.$`git status --porcelain`;
-    return result.text();
-  },
+    description: 'Get current git status',
+    args: {},
+    async execute() {
+        const result = await Bun.$`git status --porcelain`;
+        return result.text();
+    },
 });
 ```
 
@@ -52,21 +52,21 @@ export default tool({
 ```typescript
 // DON'T: Tool does too many unrelated things
 export default tool({
-  description: 'Git operations and package management',
-  args: {
-    operation: tool.schema.enum(['git-status', 'npm-install', 'yarn-add']),
-  },
-  async execute(args) {
-    if (args.operation === 'git-status') {
-      /* ... */
-    }
-    if (args.operation === 'npm-install') {
-      /* ... */
-    }
-    if (args.operation === 'yarn-add') {
-      /* ... */
-    }
-  },
+    description: 'Git operations and package management',
+    args: {
+        operation: tool.schema.enum(['git-status', 'npm-install', 'yarn-add']),
+    },
+    async execute(args) {
+        if (args.operation === 'git-status') {
+            /* ... */
+        }
+        if (args.operation === 'npm-install') {
+            /* ... */
+        }
+        if (args.operation === 'yarn-add') {
+            /* ... */
+        }
+    },
 });
 ```
 
@@ -83,25 +83,25 @@ export default tool({
 ```typescript
 // tools/math.ts
 export const add = tool({
-  description: 'Add two numbers',
-  args: {
-    a: tool.schema.number().describe('First number'),
-    b: tool.schema.number().describe('Second number'),
-  },
-  async execute(args) {
-    return args.a + args.b;
-  },
+    description: 'Add two numbers',
+    args: {
+        a: tool.schema.number().describe('First number'),
+        b: tool.schema.number().describe('Second number'),
+    },
+    async execute(args) {
+        return args.a + args.b;
+    },
 });
 
 export const multiply = tool({
-  description: 'Multiply two numbers',
-  args: {
-    a: tool.schema.number().describe('First number'),
-    b: tool.schema.number().describe('Second number'),
-  },
-  async execute(args) {
-    return args.a * args.b;
-  },
+    description: 'Multiply two numbers',
+    args: {
+        a: tool.schema.number().describe('First number'),
+        b: tool.schema.number().describe('Second number'),
+    },
+    async execute(args) {
+        return args.a * args.b;
+    },
 });
 
 // Creates: math_add and math_multiply
@@ -128,19 +128,19 @@ export const multiply = tool({
 
 ```typescript
 export default tool({
-  description: 'Query database',
-  args: {
-    query: tool.schema.string().describe('SQL query'),
-  },
-  async execute(args) {
-    try {
-      const db = new Database('project.db');
-      const results = db.query(args.query).all();
-      return JSON.stringify(results, null, 2);
-    } catch (error) {
-      return `Database error: ${error.message}\nPlease check your query syntax.`;
-    }
-  },
+    description: 'Query database',
+    args: {
+        query: tool.schema.string().describe('SQL query'),
+    },
+    async execute(args) {
+        try {
+            const db = new Database('project.db');
+            const results = db.query(args.query).all();
+            return JSON.stringify(results, null, 2);
+        } catch (error) {
+            return `Database error: ${error.message}\nPlease check your query syntax.`;
+        }
+    },
 });
 ```
 
@@ -166,26 +166,26 @@ async execute(args) {
 
 ```typescript
 export default tool({
-  description: 'Process file',
-  args: {
-    path: tool.schema.string().min(1).describe('File path'),
-  },
-  async execute(args) {
-    // Zod validates path is non-empty string
+    description: 'Process file',
+    args: {
+        path: tool.schema.string().min(1).describe('File path'),
+    },
+    async execute(args) {
+        // Zod validates path is non-empty string
 
-    // Additional runtime validation
-    if (!args.path.startsWith('/')) {
-      return 'Error: Path must be absolute';
-    }
+        // Additional runtime validation
+        if (!args.path.startsWith('/')) {
+            return 'Error: Path must be absolute';
+        }
 
-    const file = Bun.file(args.path);
-    if (!(await file.exists())) {
-      return `Error: File not found: ${args.path}`;
-    }
+        const file = Bun.file(args.path);
+        if (!(await file.exists())) {
+            return `Error: File not found: ${args.path}`;
+        }
 
-    // Process file...
-    return await file.text();
-  },
+        // Process file...
+        return await file.text();
+    },
 });
 ```
 
@@ -290,26 +290,26 @@ args: {
 
 ```typescript
 export default tool({
-  description: 'Search files by pattern',
-  args: {
-    pattern: tool.schema.string().describe('Search pattern'),
-  },
-  async execute(args) {
-    try {
-      // Escape special characters
-      const safePattern = args.pattern.replace(/[;&|`$]/g, '\\$&');
+    description: 'Search files by pattern',
+    args: {
+        pattern: tool.schema.string().describe('Search pattern'),
+    },
+    async execute(args) {
+        try {
+            // Escape special characters
+            const safePattern = args.pattern.replace(/[;&|`$]/g, '\\$&');
 
-      const result = await Bun.$`grep -r ${safePattern} .`.throws(false);
+            const result = await Bun.$`grep -r ${safePattern} .`.throws(false);
 
-      if (result.exitCode !== 0) {
-        return `No matches found for pattern: ${args.pattern}`;
-      }
+            if (result.exitCode !== 0) {
+                return `No matches found for pattern: ${args.pattern}`;
+            }
 
-      return result.text();
-    } catch (error) {
-      return `Search error: ${error.message}`;
-    }
-  },
+            return result.text();
+        } catch (error) {
+            return `Search error: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -337,7 +337,7 @@ async execute(args) {
 const result = await Bun.$`git status`.throws(false);
 
 if (result.exitCode !== 0) {
-  return `Git error: ${result.stderr.toString()}\nIs this a git repository?`;
+    return `Git error: ${result.stderr.toString()}\nIs this a git repository?`;
 }
 
 return result.stdout.toString();
@@ -498,19 +498,20 @@ print(json.dumps(result))
 
 ```typescript
 export default tool({
-  description: 'Process data using Python',
-  args: {
-    value: tool.schema.number().describe('Value to process'),
-  },
-  async execute(args) {
-    try {
-      const input = JSON.stringify({ value: args.value });
-      const result = await Bun.$`python3 tool/scripts/process.py ${input}`.text();
-      return result.trim();
-    } catch (error) {
-      return `Python error: ${error.message}\nIs Python 3 installed?`;
-    }
-  },
+    description: 'Process data using Python',
+    args: {
+        value: tool.schema.number().describe('Value to process'),
+    },
+    async execute(args) {
+        try {
+            const input = JSON.stringify({ value: args.value });
+            const result =
+                await Bun.$`python3 tool/scripts/process.py ${input}`.text();
+            return result.trim();
+        } catch (error) {
+            return `Python error: ${error.message}\nIs Python 3 installed?`;
+        }
+    },
 });
 ```
 
@@ -526,30 +527,30 @@ export default tool({
 
 ```typescript
 export default tool({
-  description: 'Fetch data from API',
-  args: {
-    endpoint: tool.schema.string().url().describe('API endpoint URL'),
-  },
-  async execute(args) {
-    try {
-      const response = await fetch(args.endpoint, {
-        timeout: 10000,
-        headers: { Accept: 'application/json' },
-      });
+    description: 'Fetch data from API',
+    args: {
+        endpoint: tool.schema.string().url().describe('API endpoint URL'),
+    },
+    async execute(args) {
+        try {
+            const response = await fetch(args.endpoint, {
+                timeout: 10000,
+                headers: { Accept: 'application/json' },
+            });
 
-      if (!response.ok) {
-        return `API error: ${response.status} ${response.statusText}`;
-      }
+            if (!response.ok) {
+                return `API error: ${response.status} ${response.statusText}`;
+            }
 
-      const data = await response.json();
-      return JSON.stringify(data, null, 2);
-    } catch (error) {
-      if (error.name === 'TimeoutError') {
-        return 'API request timed out after 10 seconds';
-      }
-      return `Network error: ${error.message}`;
-    }
-  },
+            const data = await response.json();
+            return JSON.stringify(data, null, 2);
+        } catch (error) {
+            if (error.name === 'TimeoutError') {
+                return 'API request timed out after 10 seconds';
+            }
+            return `Network error: ${error.message}`;
+        }
+    },
 });
 ```
 
@@ -602,22 +603,28 @@ async execute(args) {
 
 ```typescript
 export default tool({
-  description: 'Get user details',
-  args: {
-    userId: tool.schema.number().describe('User ID'),
-    includeOrders: tool.schema.boolean().default(false),
-  },
-  async execute(args) {
-    const user = await db.query('SELECT * FROM users WHERE id = ?', args.userId);
+    description: 'Get user details',
+    args: {
+        userId: tool.schema.number().describe('User ID'),
+        includeOrders: tool.schema.boolean().default(false),
+    },
+    async execute(args) {
+        const user = await db.query(
+            'SELECT * FROM users WHERE id = ?',
+            args.userId
+        );
 
-    if (!args.includeOrders) {
-      return JSON.stringify(user);
-    }
+        if (!args.includeOrders) {
+            return JSON.stringify(user);
+        }
 
-    // Only fetch orders if requested
-    const orders = await db.query('SELECT * FROM orders WHERE user_id = ?', args.userId);
-    return JSON.stringify({ ...user, orders });
-  },
+        // Only fetch orders if requested
+        const orders = await db.query(
+            'SELECT * FROM orders WHERE user_id = ?',
+            args.userId
+        );
+        return JSON.stringify({ ...user, orders });
+    },
 });
 ```
 
@@ -636,21 +643,21 @@ const cache = new Map<string, { data: any; timestamp: number }>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 export default tool({
-  description: 'Get project statistics (cached)',
-  args: {},
-  async execute() {
-    const cacheKey = 'project-stats';
-    const cached = cache.get(cacheKey);
+    description: 'Get project statistics (cached)',
+    args: {},
+    async execute() {
+        const cacheKey = 'project-stats';
+        const cached = cache.get(cacheKey);
 
-    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-      return `${JSON.stringify(cached.data, null, 2)}\n(cached)`;
-    }
+        if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+            return `${JSON.stringify(cached.data, null, 2)}\n(cached)`;
+        }
 
-    const stats = await computeExpensiveStats();
-    cache.set(cacheKey, { data: stats, timestamp: Date.now() });
+        const stats = await computeExpensiveStats();
+        cache.set(cacheKey, { data: stats, timestamp: Date.now() });
 
-    return JSON.stringify(stats, null, 2);
-  },
+        return JSON.stringify(stats, null, 2);
+    },
 });
 ```
 
@@ -669,19 +676,19 @@ export default tool({
 ```typescript
 // test-utils.ts
 export const createMockContext = (overrides = {}) => ({
-  sessionID: 'test-session',
-  messageID: 'test-message',
-  agent: 'general',
-  abort: undefined,
-  ...overrides,
+    sessionID: 'test-session',
+    messageID: 'test-message',
+    agent: 'general',
+    abort: undefined,
+    ...overrides,
 });
 
 // my-tool.test.ts
 import { createMockContext } from './test-utils';
 
 it('should work', async () => {
-  const result = await myTool.execute({ param: 'test' }, createMockContext());
-  expect(result).toBeDefined();
+    const result = await myTool.execute({ param: 'test' }, createMockContext());
+    expect(result).toBeDefined();
 });
 ```
 
@@ -697,24 +704,26 @@ it('should work', async () => {
 
 ```typescript
 describe('divide', () => {
-  it('should divide positive numbers', async () => {
-    const result = await divide.execute({ a: 10, b: 2 }, mockContext);
-    expect(result).toBe('5');
-  });
+    it('should divide positive numbers', async () => {
+        const result = await divide.execute({ a: 10, b: 2 }, mockContext);
+        expect(result).toBe('5');
+    });
 
-  it('should handle negative numbers', async () => {
-    const result = await divide.execute({ a: -10, b: 2 }, mockContext);
-    expect(result).toBe('-5');
-  });
+    it('should handle negative numbers', async () => {
+        const result = await divide.execute({ a: -10, b: 2 }, mockContext);
+        expect(result).toBe('-5');
+    });
 
-  it('should handle division by zero', async () => {
-    const result = await divide.execute({ a: 10, b: 0 }, mockContext);
-    expect(result).toContain('Error');
-  });
+    it('should handle division by zero', async () => {
+        const result = await divide.execute({ a: 10, b: 0 }, mockContext);
+        expect(result).toContain('Error');
+    });
 
-  it('should validate arguments', async () => {
-    await expect(divide.execute({ a: 'not a number', b: 2 }, mockContext)).rejects.toThrow();
-  });
+    it('should validate arguments', async () => {
+        await expect(
+            divide.execute({ a: 'not a number', b: 2 }, mockContext)
+        ).rejects.toThrow();
+    });
 });
 ```
 
@@ -730,18 +739,18 @@ describe('divide', () => {
 
 ```typescript
 export default tool({
-  description: 'Do everything related to files and git',
-  args: {
-    action: tool.schema.enum(['read', 'write', 'delete', 'commit', 'push']),
-    // ... many more args
-  },
-  async execute(args) {
-    switch (
-      args.action
-      // Hundreds of lines...
-    ) {
-    }
-  },
+    description: 'Do everything related to files and git',
+    args: {
+        action: tool.schema.enum(['read', 'write', 'delete', 'commit', 'push']),
+        // ... many more args
+    },
+    async execute(args) {
+        switch (
+            args.action
+            // Hundreds of lines...
+        ) {
+        }
+    },
 });
 ```
 
@@ -807,12 +816,12 @@ async execute(args) {
 let counter = 0; // Global state
 
 export default tool({
-  description: 'Count invocations',
-  args: {},
-  async execute() {
-    counter++;
-    return `Called ${counter} times`;
-  },
+    description: 'Count invocations',
+    args: {},
+    async execute() {
+        counter++;
+        return `Called ${counter} times`;
+    },
 });
 ```
 
@@ -831,32 +840,32 @@ export default tool({
 ```typescript
 // Shared helper
 function formatOutput(data: any, format: 'json' | 'table'): string {
-  if (format === 'json') {
-    return JSON.stringify(data, null, 2);
-  }
-  // Table formatting logic...
+    if (format === 'json') {
+        return JSON.stringify(data, null, 2);
+    }
+    // Table formatting logic...
 }
 
 export const listUsers = tool({
-  description: 'List users',
-  args: {
-    format: tool.schema.enum(['json', 'table']).default('table'),
-  },
-  async execute(args) {
-    const users = await db.query('SELECT * FROM users').all();
-    return formatOutput(users, args.format);
-  },
+    description: 'List users',
+    args: {
+        format: tool.schema.enum(['json', 'table']).default('table'),
+    },
+    async execute(args) {
+        const users = await db.query('SELECT * FROM users').all();
+        return formatOutput(users, args.format);
+    },
 });
 
 export const listOrders = tool({
-  description: 'List orders',
-  args: {
-    format: tool.schema.enum(['json', 'table']).default('table'),
-  },
-  async execute(args) {
-    const orders = await db.query('SELECT * FROM orders').all();
-    return formatOutput(orders, args.format);
-  },
+    description: 'List orders',
+    args: {
+        format: tool.schema.enum(['json', 'table']).default('table'),
+    },
+    async execute(args) {
+        const orders = await db.query('SELECT * FROM orders').all();
+        return formatOutput(orders, args.format);
+    },
 });
 ```
 

@@ -53,13 +53,13 @@ applies_to: [rest-api, graphql-api]
 mode: subagent # subagent|all|primary
 temperature: 0.2 # LLM temperature (0.0-1.0)
 tools: # Tool availability
-  read: true
-  write: true
-  bash: true
+    read: true
+    write: true
+    bash: true
 permissions: # Permission controls
-  bash:
-    'rm *': deny
-    '*': allow
+    bash:
+        'rm *': deny
+        '*': allow
 ```
 
 ### Checklist-Specific
@@ -99,9 +99,9 @@ output_format: string # Output format specification (e.g., markdown, yaml)
 agent: string # Agent to use (general|specific-agent)
 subtask: boolean # Is this a subtask/helper command?
 arguments: # Command arguments
-  - name: focus
-    description: Specific aspect to document
-    optional: true
+    - name: focus
+      description: Specific aspect to document
+      optional: true
 ```
 
 ## Validation Rules
@@ -233,9 +233,9 @@ description: API docs
 
 ```yaml
 related_resources:
-  - checklist/api-documentation.md
-  - knowledge-base/api-design-patterns.md
-  - task/api-testing.md
+    - checklist/api-documentation.md
+    - knowledge-base/api-design-patterns.md
+    - task/api-testing.md
 ```
 
 ## Troubleshooting

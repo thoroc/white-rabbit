@@ -5,9 +5,9 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - checklist
-  - documentation
-  - pipeline
+    - checklist
+    - documentation
+    - pipeline
 last_updated: 2025-11-19
 ---
 
@@ -44,10 +44,10 @@ This checklist ensures that all CI/CD pipelines in the repository are thoroughly
 - [ ] **Short Description**: High-level description of repository's CI/CD setup
 - [ ] **Detected Platforms**: List all detected platforms (GitHub Actions, GitLab CI, Jenkins, etc.)
 - [ ] **Pipeline Table/List**: Table or list of detected pipelines with:
-  - [ ] Pipeline name
-  - [ ] One-line description
-  - [ ] Key triggers
-  - [ ] Link to detailed documentation (relative path)
+    - [ ] Pipeline name
+    - [ ] One-line description
+    - [ ] Key triggers
+    - [ ] Link to detailed documentation (relative path)
 - [ ] **High-Level Diagram**: Mermaid diagram showing pipeline overview and environment promotion
 - [ ] **Quick Troubleshooting**: Pointers to common issues and solutions
 - [ ] **Important Conventions**: Team conventions and best practices

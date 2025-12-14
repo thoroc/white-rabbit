@@ -3,11 +3,11 @@ description: Comprehensive performance optimization checklist for frontend appli
 type: checklist
 category: Quality
 tags:
-  - performance
-  - optimization
-  - core-web-vitals
-  - frontend
-  - quality-assurance
+    - performance
+    - optimization
+    - core-web-vitals
+    - frontend
+    - quality-assurance
 version: 1.0.0
 last_updated: 2025-11-20
 ---
@@ -273,9 +273,9 @@ This checklist ensures optimal frontend performance with focus on Core Web Vital
 
 - [ ] Use **Chrome DevTools Performance** tab regularly
 - [ ] Use **Chrome DevTools MCP tools** for automated testing:
-  - `chrome-devtools_performance_start_trace`
-  - `chrome-devtools_performance_stop_trace`
-  - `chrome-devtools_performance_analyze_insight`
+    - `chrome-devtools_performance_start_trace`
+    - `chrome-devtools_performance_stop_trace`
+    - `chrome-devtools_performance_analyze_insight`
 - [ ] Run **Lighthouse audits** regularly (aim for score > 90)
 - [ ] Implement **Real User Monitoring (RUM)**
 - [ ] Use **synthetic monitoring** for proactive detection

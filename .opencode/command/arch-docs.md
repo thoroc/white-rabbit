@@ -5,11 +5,11 @@ subtask: true
 type: command
 category: Development
 tags:
-  - command
-  - arch
-  - docs
-  - generate
-  - architecture
+    - command
+    - arch
+    - docs
+    - generate
+    - architecture
 version: 1.0.0
 last_updated: 2025-11-19
 ---

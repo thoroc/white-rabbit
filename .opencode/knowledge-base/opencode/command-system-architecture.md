@@ -5,15 +5,15 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - commands
-  - architecture
-  - meta
-  - slash-commands
-  - system
+    - commands
+    - architecture
+    - meta
+    - slash-commands
+    - system
 related_resources:
-  - ../command/list-commands.md
-  - ../template/opencode-command-tmpl.yaml
-  - ../task/opencode-command.md
+    - ../command/list-commands.md
+    - ../template/opencode-command-tmpl.yaml
+    - ../task/opencode-command.md
 last_updated: 2025-11-19
 ---
 

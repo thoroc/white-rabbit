@@ -4,7 +4,14 @@
     "title": "OpenCode Template Template Schema",
     "description": "Validates the structure of OpenCode meta-template YAML files (templates for creating templates)",
     "type": "object",
-    "required": ["type", "description", "category", "tags", "version", "last_updated"],
+    "required": [
+        "type",
+        "description",
+        "category",
+        "tags",
+        "version",
+        "last_updated"
+    ],
     "properties": {
         "type": {
             "type": "string",
@@ -58,9 +65,18 @@
             "type": "object",
             "description": "Guidelines for using this template",
             "properties": {
-                "when_to_use": { "type": "array", "items": { "type": "string" } },
-                "when_not_to_use": { "type": "array", "items": { "type": "string" } },
-                "best_practices": { "type": "array", "items": { "type": "string" } }
+                "when_to_use": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "when_not_to_use": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "best_practices": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
             },
             "additionalProperties": true
         },

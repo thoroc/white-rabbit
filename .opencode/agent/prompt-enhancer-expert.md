@@ -3,27 +3,27 @@ description: Enhances user-provided prompts through multi-agent brainstorming an
 mode: all
 temperature: 0.1
 tools:
-  write: true
-  edit: true
-  bash: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  webfetch: true
+    write: true
+    edit: true
+    bash: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    webfetch: true
 permission:
-  bash:
-    rm *: deny
-    git push: deny
-    '*': allow
+    bash:
+        rm *: deny
+        git push: deny
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - prompt
-  - enhancer
-  - enhances
-  - user-provided
+    - agent
+    - prompt
+    - enhancer
+    - enhances
+    - user-provided
 version: 1.0.0
 last_updated: 2025-12-12
 ---
@@ -44,29 +44,29 @@ This agent has access to prompt enhancement resources:
 ### Knowledge Base
 
 - `.opencode/knowledge-base/core/prompt-engineering.md` - Prompt design patterns, best practices, and brainstorming methodologies
-  - Core principles: Clarity, Context, Structure, Specificity
-  - Patterns: Role-Based, Chain-of-Thought, Few-Shot, Constrained Generation, Template-Driven, Iterative Refinement
-  - Methodologies: Mind Mapping, Six Thinking Hats, SCAMPER
-  - Quality evaluation criteria (1-10 scales)
-  - Common anti-patterns and fixes
+    - Core principles: Clarity, Context, Structure, Specificity
+    - Patterns: Role-Based, Chain-of-Thought, Few-Shot, Constrained Generation, Template-Driven, Iterative Refinement
+    - Methodologies: Mind Mapping, Six Thinking Hats, SCAMPER
+    - Quality evaluation criteria (1-10 scales)
+    - Common anti-patterns and fixes
 
 ### Templates
 
 - `.opencode/template/core/prompt-evaluation-tmpl.yaml` - Structured prompt quality assessment template
-  - Supports iterative refinement workflows
-  - Captures evaluation scores (clarity, specificity, actionability, completeness, structure)
-  - Documents brainstorming insights from 4 emulated agents
-  - Tracks methodology results (Mind Mapping, Six Hats, SCAMPER)
-  - Includes comparison tracking across iterations
+    - Supports iterative refinement workflows
+    - Captures evaluation scores (clarity, specificity, actionability, completeness, structure)
+    - Documents brainstorming insights from 4 emulated agents
+    - Tracks methodology results (Mind Mapping, Six Hats, SCAMPER)
+    - Includes comparison tracking across iterations
 
 ### Checklists
 
 - `.opencode/checklist/core/prompt-quality.md` - Comprehensive prompt quality criteria
-  - Assessment dimensions: Clarity, Specificity, Actionability, Completeness, Structure
-  - Prompt pattern detection and recommendations
-  - Anti-pattern identification
-  - Enhancement opportunities
-  - Iteration decision criteria
+    - Assessment dimensions: Clarity, Specificity, Actionability, Completeness, Structure
+    - Prompt pattern detection and recommendations
+    - Anti-pattern identification
+    - Enhancement opportunities
+    - Iteration decision criteria
 
 ## Core Mission
 

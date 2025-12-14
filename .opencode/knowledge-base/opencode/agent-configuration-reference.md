@@ -6,17 +6,17 @@ category: configuration
 version: 1.0.0
 difficulty: intermediate
 tags:
-  - agent
-  - configuration
-  - reference
-  - modes
-  - tools
-  - permissions
-  - patterns
+    - agent
+    - configuration
+    - reference
+    - modes
+    - tools
+    - permissions
+    - patterns
 related_resources:
-  - .opencode/template/opencode-agent-tmpl.yaml
-  - .opencode/checklist/opencode-agent.md
-  - .opencode/command/create-agent.md
+    - .opencode/template/opencode-agent-tmpl.yaml
+    - .opencode/checklist/opencode-agent.md
+    - .opencode/command/create-agent.md
 last_updated: 2025-11-19
 ---
 
@@ -58,18 +58,18 @@ specific tasks and workflows with custom prompts, models, and tool access.
 **Types**:
 
 1. **Primary Agents**
-   - Main assistants you interact with directly
-   - Switchable using Tab key or `switch_agent` keybind
-   - Handle main conversation
-   - Access all configured tools
-   - Examples: Build, Plan
+    - Main assistants you interact with directly
+    - Switchable using Tab key or `switch_agent` keybind
+    - Handle main conversation
+    - Access all configured tools
+    - Examples: Build, Plan
 
 2. **Subagents**
-   - Specialized assistants for specific tasks
-   - Invoked by @ mention or automatically by primary agents
-   - Focused on particular domains
-   - Can create child sessions
-   - Example: General
+    - Specialized assistants for specific tasks
+    - Invoked by @ mention or automatically by primary agents
+    - Focused on particular domains
+    - Can create child sessions
+    - Example: General
 
 **Purpose**:
 
@@ -129,18 +129,18 @@ mode: subagent # Only invokable with @agent-name
 
 ```json
 {
-  "tools": {
-    "write": true,
-    "bash": true
-  },
-  "agent": {
-    "plan": {
-      "tools": {
-        "write": false, // Overrides global
-        "bash": false // Overrides global
-      }
+    "tools": {
+        "write": true,
+        "bash": true
+    },
+    "agent": {
+        "plan": {
+            "tools": {
+                "write": false, // Overrides global
+                "bash": false // Overrides global
+            }
+        }
     }
-  }
 }
 ```
 
@@ -153,19 +153,19 @@ mode: subagent # Only invokable with @agent-name
 **Built-in Agents**:
 
 1. **Build** (Primary)
-   - All tools enabled by default
-   - Standard agent for development work
-   - Full file operations and system commands
+    - All tools enabled by default
+    - Standard agent for development work
+    - Full file operations and system commands
 
 2. **Plan** (Primary)
-   - Restricted permissions (all set to `ask`)
-   - Designed for analysis and planning
-   - Prevents unintended changes
+    - Restricted permissions (all set to `ask`)
+    - Designed for analysis and planning
+    - Prevents unintended changes
 
 3. **General** (Subagent)
-   - General-purpose research agent
-   - Code search capabilities
-   - Multi-step task execution
+    - General-purpose research agent
+    - Code search capabilities
+    - Multi-step task execution
 
 **Purpose**: Provide ready-to-use agents for common workflows.
 
@@ -235,18 +235,18 @@ temperature: 0.1
 
 ```json
 {
-  "agent": {
-    "analyze": {
-      "temperature": 0.1,
-      "prompt": "{file:./prompts/analysis.txt}"
-    },
-    "build": {
-      "temperature": 0.3
-    },
-    "brainstorm": {
-      "temperature": 0.7
+    "agent": {
+        "analyze": {
+            "temperature": 0.1,
+            "prompt": "{file:./prompts/analysis.txt}"
+        },
+        "build": {
+            "temperature": 0.3
+        },
+        "brainstorm": {
+            "temperature": 0.7
+        }
     }
-  }
 }
 ```
 
@@ -273,14 +273,14 @@ model: anthropic/claude-haiku-4-20250514
 
 ```json
 {
-  "agent": {
-    "plan": {
-      "model": "anthropic/claude-haiku-4-20250514"
-    },
-    "build": {
-      "model": "anthropic/claude-sonnet-4-20250514"
+    "agent": {
+        "plan": {
+            "model": "anthropic/claude-haiku-4-20250514"
+        },
+        "build": {
+            "model": "anthropic/claude-sonnet-4-20250514"
+        }
     }
-  }
 }
 ```
 
@@ -296,9 +296,9 @@ model: anthropic/claude-haiku-4-20250514
 ```yaml
 ---
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 ```
 
@@ -306,15 +306,15 @@ tools:
 
 ```json
 {
-  "agent": {
-    "readonly": {
-      "tools": {
-        "mymcp_*": false, // Disable all tools from MCP server
-        "write": false,
-        "edit": false
-      }
+    "agent": {
+        "readonly": {
+            "tools": {
+                "mymcp_*": false, // Disable all tools from MCP server
+                "write": false,
+                "edit": false
+            }
+        }
     }
-  }
 }
 ```
 
@@ -338,12 +338,12 @@ tools:
 ```yaml
 ---
 permission:
-  edit: ask
-  bash:
-    'git status': allow
-    'git *': ask
-    '*': ask
-  webfetch: deny
+    edit: ask
+    bash:
+        'git status': allow
+        'git *': ask
+        '*': ask
+    webfetch: deny
 ---
 ```
 
@@ -357,18 +357,18 @@ permission:
 
 ```json
 {
-  "agent": {
-    "build": {
-      "permission": {
-        "bash": {
-          "git status": "allow", // Specific command
-          "git push": "ask", // Specific command
-          "git *": "ask", // Glob pattern
-          "*": "ask" // Wildcard for all other commands
+    "agent": {
+        "build": {
+            "permission": {
+                "bash": {
+                    "git status": "allow", // Specific command
+                    "git push": "ask", // Specific command
+                    "git *": "ask", // Glob pattern
+                    "*": "ask" // Wildcard for all other commands
+                }
+            }
         }
-      }
     }
-  }
 }
 ```
 
@@ -383,11 +383,11 @@ permission:
 
 ```json
 {
-  "agent": {
-    "review": {
-      "prompt": "{file:./prompts/code-review.txt}"
+    "agent": {
+        "review": {
+            "prompt": "{file:./prompts/code-review.txt}"
+        }
     }
-  }
 }
 ```
 
@@ -414,11 +414,11 @@ You are a code reviewer. Focus on quality, security, and maintainability.
 
 ```json
 {
-  "agent": {
-    "review": {
-      "disable": true
+    "agent": {
+        "review": {
+            "disable": true
+        }
     }
-  }
 }
 ```
 
@@ -433,14 +433,14 @@ You are a code reviewer. Focus on quality, security, and maintainability.
 
 ```json
 {
-  "agent": {
-    "deep-thinker": {
-      "description": "High reasoning effort for complex problems",
-      "model": "openai/gpt-5",
-      "reasoningEffort": "high",
-      "textVerbosity": "low"
+    "agent": {
+        "deep-thinker": {
+            "description": "High reasoning effort for complex problems",
+            "model": "openai/gpt-5",
+            "reasoningEffort": "high",
+            "textVerbosity": "low"
+        }
     }
-  }
 }
 ```
 
@@ -464,9 +464,9 @@ description: Analyzes code without making changes
 mode: subagent
 temperature: 0.1
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 You are a code analyst. Review code for quality, security, and best practices without making any modifications.
 ```
@@ -500,11 +500,11 @@ description: Creates and maintains documentation
 mode: subagent
 temperature: 0.4
 tools:
-  write: true
-  edit: true
-  bash: false
+    write: true
+    edit: true
+    bash: false
 permission:
-  edit: ask
+    edit: ask
 ---
 You are a technical writer. Create clear, comprehensive documentation with proper structure, examples, and formatting.
 ```
@@ -539,15 +539,15 @@ description: Complete development with all tools
 mode: primary
 temperature: 0.3
 tools:
-  write: true
-  edit: true
-  bash: true
+    write: true
+    edit: true
+    bash: true
 permission:
-  bash:
-    'git push': ask
-    'kubectl apply': ask
-    '*': allow
-  edit: ask
+    bash:
+        'git push': ask
+        'kubectl apply': ask
+        '*': allow
+    edit: ask
 ---
 You are a full-stack developer. Implement features, fix bugs, and handle all development tasks with appropriate caution.
 ```
@@ -629,27 +629,27 @@ Look for:
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
-  "agent": {
-    "agent-name": {
-      "description": "Agent description",
-      "mode": "primary",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "temperature": 0.3,
-      "prompt": "{file:./prompts/agent.txt}",
-      "tools": {
-        "write": true,
-        "edit": true
-      },
-      "permission": {
-        "edit": "ask",
-        "bash": {
-          "git push": "ask",
-          "*": "allow"
+    "$schema": "https://opencode.ai/config.json",
+    "agent": {
+        "agent-name": {
+            "description": "Agent description",
+            "mode": "primary",
+            "model": "anthropic/claude-sonnet-4-20250514",
+            "temperature": 0.3,
+            "prompt": "{file:./prompts/agent.txt}",
+            "tools": {
+                "write": true,
+                "edit": true
+            },
+            "permission": {
+                "edit": "ask",
+                "bash": {
+                    "git push": "ask",
+                    "*": "allow"
+                }
+            }
         }
-      }
     }
-  }
 }
 ```
 
@@ -684,9 +684,9 @@ mode: subagent
 model: anthropic/claude-sonnet-4-20250514
 temperature: 0.1
 tools:
-  write: false
-  edit: false
-  bash: false
+    write: false
+    edit: false
+    bash: false
 ---
 
 You are in code review mode. Focus on:
@@ -748,17 +748,17 @@ mode: subagent
 
 ```json
 {
-  "agent": {
-    "security": {
-      "temperature": 0.1 // Deterministic for security analysis
-    },
-    "docs": {
-      "temperature": 0.4 // Balanced for documentation
-    },
-    "brainstorm": {
-      "temperature": 0.7 // Creative for ideation
+    "agent": {
+        "security": {
+            "temperature": 0.1 // Deterministic for security analysis
+        },
+        "docs": {
+            "temperature": 0.4 // Balanced for documentation
+        },
+        "brainstorm": {
+            "temperature": 0.7 // Creative for ideation
+        }
     }
-  }
 }
 ```
 
@@ -778,9 +778,9 @@ mode: subagent
 ---
 description: Code reviewer
 tools:
-  write: false # Read-only
-  edit: false # No modifications
-  bash: false # No commands
+    write: false # Read-only
+    edit: false # No modifications
+    bash: false # No commands
 ---
 ```
 
@@ -799,11 +799,11 @@ tools:
 ```yaml
 ---
 permission:
-  bash:
-    'git status': allow # Safe command
-    'git push': ask # Requires approval
-    'rm -rf *': deny # Blocked entirely
-    '*': ask # Default to ask
+    bash:
+        'git status': allow # Safe command
+        'git push': ask # Requires approval
+        'rm -rf *': deny # Blocked entirely
+        '*': ask # Default to ask
 ---
 ```
 
@@ -821,17 +821,17 @@ permission:
 
 ```json
 {
-  "tools": {
-    "write": true, // Global default
-    "bash": true
-  },
-  "agent": {
-    "review": {
-      "tools": {
-        "write": false // Override for this agent only
-      }
+    "tools": {
+        "write": true, // Global default
+        "bash": true
+    },
+    "agent": {
+        "review": {
+            "tools": {
+                "write": false // Override for this agent only
+            }
+        }
     }
-  }
 }
 ```
 
@@ -853,11 +853,11 @@ permission:
 ---
 description: Documentation writer
 tools:
-  write: true
-  edit: true
-  bash: true # ❌ Not needed for docs
+    write: true
+    edit: true
+    bash: true # ❌ Not needed for docs
 permission:
-  bash: allow # ❌ Too permissive
+    bash: allow # ❌ Too permissive
 ---
 ```
 
@@ -867,11 +867,11 @@ permission:
 ---
 description: Documentation writer
 tools:
-  write: true
-  edit: true
-  bash: false # ✅ Not needed
+    write: true
+    edit: true
+    bash: false # ✅ Not needed
 permission:
-  edit: ask # ✅ User control
+    edit: ask # ✅ User control
 ---
 ```
 
@@ -1049,16 +1049,16 @@ mode: subagent
 
 ```json
 {
-  "tools": {
-    "write": true // Global default
-  },
-  "agent": {
-    "review": {
-      "tools": {
-        "write": false // ✅ Agent override takes precedence
-      }
+    "tools": {
+        "write": true // Global default
+    },
+    "agent": {
+        "review": {
+            "tools": {
+                "write": false // ✅ Agent override takes precedence
+            }
+        }
     }
-  }
 }
 ```
 
@@ -1089,10 +1089,10 @@ mode: subagent
 ```yaml
 ---
 permission:
-  edit: ask # ✅ Prompt for edits
-  bash:
-    'git push': ask # ✅ Prompt for dangerous commands
-    '*': ask # ✅ Prompt for other commands
+    edit: ask # ✅ Prompt for edits
+    bash:
+        'git push': ask # ✅ Prompt for dangerous commands
+        '*': ask # ✅ Prompt for other commands
 ---
 ```
 
@@ -1127,9 +1127,9 @@ description: 'Code security analyzer'
 mode: subagent
 temperature: 0.1 # ✅ Deterministic for analysis
 tools:
-  write: false # ✅ Read-only
-  edit: false
-  bash: false
+    write: false # ✅ Read-only
+    edit: false
+    bash: false
 ---
 You are a security analyst. Focus exclusively on identifying vulnerabilities. Do not suggest fixes or make changes -
 only analyze and report.

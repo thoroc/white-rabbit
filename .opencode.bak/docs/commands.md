@@ -669,17 +669,17 @@ criteria.
 
 1. **In OpenCode CLI**:
 
-   ```bash
-   opencode /command-name
-   opencode /command-name with arguments
-   ```
+    ```bash
+    opencode /command-name
+    opencode /command-name with arguments
+    ```
 
 2. **In Chat Interface**:
 
-   ```
-   /command-name
-   /command-name with specific focus areas
-   ```
+    ```
+    /command-name
+    /command-name with specific focus areas
+    ```
 
 ### Command Selection Decision Tree
 
@@ -770,13 +770,13 @@ To create a new command:
 1. Create markdown file in `command/` directory
 2. Include frontmatter:
 
-   ```yaml
-   ---
-   description: Clear description of command purpose
-   agent: general # or specific agent name
-   subtask: false # true if used by other commands
-   ---
-   ```
+    ```yaml
+    ---
+    description: Clear description of command purpose
+    agent: general # or specific agent name
+    subtask: false # true if used by other commands
+    ---
+    ```
 
 3. Write comprehensive instructions
 4. Include usage examples

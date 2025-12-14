@@ -3,11 +3,11 @@ description: Lint, Format, Type check, Unit test
 type: command
 category: Development
 tags:
-  - command
-  - linting
-  - formatting
-  - type checking
-  - unit test
+    - command
+    - linting
+    - formatting
+    - type checking
+    - unit test
 version: 1.0.0
 last_updated: 2025-11-19
 ---

@@ -5,15 +5,15 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - knowledge-base
-  - architecture
-  - meta
-  - documentation
-  - system
+    - knowledge-base
+    - architecture
+    - meta
+    - documentation
+    - system
 related_resources:
-  - ../command/list-knowledge-bases.md
-  - ../template/opencode-knowledge-base-tmpl.yaml
-  - ../task/opencode-knowledge-base.md
+    - ../command/list-knowledge-bases.md
+    - ../template/opencode-knowledge-base-tmpl.yaml
+    - ../task/opencode-knowledge-base.md
 last_updated: 2025-11-19
 ---
 

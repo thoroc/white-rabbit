@@ -3,11 +3,11 @@ description: Instruct the agent to limit all work to a specific directory
 type: command
 category: Development
 tags:
-  - command
-  - limit
-  - scope
-  - instruct
-  - agent
+    - command
+    - limit
+    - scope
+    - instruct
+    - agent
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -25,14 +25,14 @@ Behavior
 
 1. Resolve the provided $ARGUMENTS to an absolute, canonical path (expand `~`, resolve `.` and `..`).
 2. Validate the path:
-   - It must exist and be a directory.
-   - It must be inside the current user's home directory. Valid if equal to `$HOME` or begins with `$HOME/`.
-   - It must NOT be `/` or any path outside the user's home directory.
+    - It must exist and be a directory.
+    - It must be inside the current user's home directory. Valid if equal to `$HOME` or begins with `$HOME/`.
+    - It must NOT be `/` or any path outside the user's home directory.
 3. If validation fails, respond with a clear error message and do NOT change scope.
 4. If validation succeeds, the agent MUST restrict all future file operations to the given directory and its descendants.
 5. After successfully setting the scope, the agent MUST output the following exact acknowledgment (replace $ARGUMENTS with the resolved absolute path):
 
-   ACKNOLEDGED - I will be working only on <directory-path>
+    ACKNOLEDGED - I will be working only on <directory-path>
 
 Notes and safety constraints
 
@@ -43,9 +43,9 @@ Notes and safety constraints
 Validation examples (for implementers)
 
 - Shell-style validation (conceptual):
-  - Resolve: `realpath --canonicalize-existing "<path>"` or use language builtins to expand and canonicalize.
-  - Check directory: `[ -d "<resolved>" ]`
-  - Check containment: `case "$resolved" in "$HOME"|"$HOME"/*) ;; *) invalid ;; esac`
+    - Resolve: `realpath --canonicalize-existing "<path>"` or use language builtins to expand and canonicalize.
+    - Check directory: `[ -d "<resolved>" ]`
+    - Check containment: `case "$resolved" in "$HOME"|"$HOME"/*) ;; *) invalid ;; esac`
 
 Example session
 

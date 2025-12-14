@@ -7,12 +7,12 @@ last_updated: 2025-11-21
 category: Development
 type: task
 tags:
-  - opencode
-  - tool
-  - creating
-  - typescript
-  - custom
-  - function
+    - opencode
+    - tool
+    - creating
+    - typescript
+    - custom
+    - function
 title: Opencode Tool Task
 estimated_duration: 10-15 minutes
 ---
@@ -152,28 +152,28 @@ Refer to `.opencode/template/opencode-tool-tmpl.yaml` for complete examples:
 **Actions:**
 
 1. Design tool signature
-   - Choose descriptive function name
-   - Define all required parameters
-   - Define optional parameters with defaults
-   - Specify return type
+    - Choose descriptive function name
+    - Define all required parameters
+    - Define optional parameters with defaults
+    - Specify return type
 
 2. Design argument schema
-   - Use appropriate Zod types (string, number, boolean, enum, array, object)
-   - Add validation rules (min, max, url, email, etc.)
-   - Add .describe() for each parameter
-   - Make parameters optional where appropriate
+    - Use appropriate Zod types (string, number, boolean, enum, array, object)
+    - Add validation rules (min, max, url, email, etc.)
+    - Add .describe() for each parameter
+    - Make parameters optional where appropriate
 
 3. Design implementation
-   - Pure TypeScript function
-   - Shell command integration (Bun.$)
-   - Python/Rust script integration
-   - Database/API integration
-   - File system operations
+    - Pure TypeScript function
+    - Shell command integration (Bun.$)
+    - Python/Rust script integration
+    - Database/API integration
+    - File system operations
 
 4. Design error handling
-   - Try-catch blocks
-   - Meaningful error messages
-   - Graceful degradation
+    - Try-catch blocks
+    - Meaningful error messages
+    - Graceful degradation
 
 **Tools Used:**
 
@@ -196,18 +196,18 @@ Refer to `.opencode/template/opencode-tool-tmpl.yaml` for complete examples:
 2. Add imports: `import { tool } from "@opencode-ai/plugin"`
 3. Define tool using `tool()` helper:
 
-   ```typescript
-   export default tool({
-     description: 'Clear description of what tool does',
-     args: {
-       param: tool.schema.string().describe('Parameter description'),
-     },
-     async execute(args, context) {
-       // Implementation
-       return result;
-     },
-   });
-   ```
+    ```typescript
+    export default tool({
+        description: 'Clear description of what tool does',
+        args: {
+            param: tool.schema.string().describe('Parameter description'),
+        },
+        async execute(args, context) {
+            // Implementation
+            return result;
+        },
+    });
+    ```
 
 4. Add argument validation with Zod schemas
 5. Implement execute function
@@ -230,30 +230,30 @@ Refer to `.opencode/template/opencode-tool-tmpl.yaml` for complete examples:
 
 1. **Verify TypeScript Compilation** (REQUIRED):
 
-   ```bash
-   cd tool && bun build tool-filename.ts --target=bun
-   # OR use TypeScript compiler directly
-   npx tsc tool-filename.ts --noEmit
-   ```
+    ```bash
+    cd tool && bun build tool-filename.ts --target=bun
+    # OR use TypeScript compiler directly
+    npx tsc tool-filename.ts --noEmit
+    ```
 
-   - Fix all TypeScript errors
-   - Verify imports resolve correctly
-   - Target: No compilation errors
+    - Fix all TypeScript errors
+    - Verify imports resolve correctly
+    - Target: No compilation errors
 
 2. Verify tool structure
-   - Import statement correct
-   - Export pattern correct (default or named exports)
-   - Description is clear and specific
-   - All arguments have .describe()
-   - Argument types are appropriate
-   - Execute function is async
-   - Return type is JSON-serializable
+    - Import statement correct
+    - Export pattern correct (default or named exports)
+    - Description is clear and specific
+    - All arguments have .describe()
+    - Argument types are appropriate
+    - Execute function is async
+    - Return type is JSON-serializable
 
 3. Test tool execution
-   - Verify TypeScript compiles
-   - Test with sample inputs
-   - Verify error handling works
-   - Check return value format
+    - Verify TypeScript compiles
+    - Test with sample inputs
+    - Verify error handling works
+    - Check return value format
 
 **Tools Used:**
 
@@ -307,13 +307,13 @@ Refer to `.opencode/template/opencode-tool-tmpl.yaml` for complete examples:
 The task generates one primary file:
 
 1. **Tool File** (`tool/[name].ts`)
-   - Proper TypeScript imports
-   - Tool definition using `tool()` helper
-   - Clear description for LLM
-   - Well-defined argument schema with Zod
-   - Async execute function
-   - Error handling
-   - Meaningful return values
+    - Proper TypeScript imports
+    - Tool definition using `tool()` helper
+    - Clear description for LLM
+    - Well-defined argument schema with Zod
+    - Async execute function
+    - Error handling
+    - Meaningful return values
 
 ## Success Criteria
 
@@ -571,45 +571,56 @@ import { describe, it, expect } from 'bun:test';
 import myTool from './my-tool';
 
 const mockContext = {
-  sessionID: 'test-session',
-  messageID: 'test-message',
-  agent: 'general',
-  abort: undefined,
+    sessionID: 'test-session',
+    messageID: 'test-message',
+    agent: 'general',
+    abort: undefined,
 };
 
 describe('my-tool', () => {
-  it('should execute successfully with valid input', async () => {
-    const result = await myTool.execute({ param: 'test-value' }, mockContext);
+    it('should execute successfully with valid input', async () => {
+        const result = await myTool.execute(
+            { param: 'test-value' },
+            mockContext
+        );
 
-    expect(result).toBeDefined();
-    expect(typeof result).toBe('string');
-  });
+        expect(result).toBeDefined();
+        expect(typeof result).toBe('string');
+    });
 
-  it('should validate arguments correctly', async () => {
-    // This will throw a Zod validation error
-    await expect(myTool.execute({ param: 123 }, mockContext)).rejects.toThrow();
-  });
+    it('should validate arguments correctly', async () => {
+        // This will throw a Zod validation error
+        await expect(
+            myTool.execute({ param: 123 }, mockContext)
+        ).rejects.toThrow();
+    });
 
-  it('should handle errors gracefully', async () => {
-    const result = await myTool.execute({ param: 'invalid-input' }, mockContext);
+    it('should handle errors gracefully', async () => {
+        const result = await myTool.execute(
+            { param: 'invalid-input' },
+            mockContext
+        );
 
-    expect(result).toContain('Error');
-  });
+        expect(result).toContain('Error');
+    });
 
-  it('should respect abort signal', async () => {
-    const abortController = new AbortController();
-    const contextWithAbort = {
-      ...mockContext,
-      abort: abortController.signal,
-    };
+    it('should respect abort signal', async () => {
+        const abortController = new AbortController();
+        const contextWithAbort = {
+            ...mockContext,
+            abort: abortController.signal,
+        };
 
-    // Abort immediately
-    abortController.abort();
+        // Abort immediately
+        abortController.abort();
 
-    const result = await myTool.execute({ param: 'test' }, contextWithAbort);
+        const result = await myTool.execute(
+            { param: 'test' },
+            contextWithAbort
+        );
 
-    expect(result).toContain('Cancelled');
-  });
+        expect(result).toContain('Cancelled');
+    });
 });
 ```
 

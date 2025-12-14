@@ -5,11 +5,11 @@ subtask: false
 type: command
 category: Development
 tags:
-  - command
-  - generate
-  - docs
-  - comprehensive
-  - documentation
+    - command
+    - generate
+    - docs
+    - comprehensive
+    - documentation
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -59,26 +59,26 @@ Run specific analysis commands from `.opencode/task/project-context.md` as neede
 Each document type must follow the structure defined in its respective checklist:
 
 1. **Architecture Document** (`docs/architecture.md`)
-   - Follow `.opencode/checklist/architecture-documentation.md`
-   - Must include: System overview, architecture diagrams, component descriptions, data flow, deployment architecture, technology stack
-   - Minimum 3 Mermaid diagrams: system architecture, data flow, deployment
+    - Follow `.opencode/checklist/architecture-documentation.md`
+    - Must include: System overview, architecture diagrams, component descriptions, data flow, deployment architecture, technology stack
+    - Minimum 3 Mermaid diagrams: system architecture, data flow, deployment
 
 2. **Development Guide** (`docs/development.md`)
-   - Follow `.opencode/checklist/development-documentation.md`
-   - Must include: Prerequisites, setup instructions, build commands, testing guidelines, debugging tips
-   - Include working code examples and commands
+    - Follow `.opencode/checklist/development-documentation.md`
+    - Must include: Prerequisites, setup instructions, build commands, testing guidelines, debugging tips
+    - Include working code examples and commands
 
 3. **API Documentation** (`docs/api.md`)
-   - Follow `.opencode/checklist/api-documentation.md`
-   - Must include: Base URL, authentication, endpoints with full specifications, error handling
-   - Complete request/response examples for all endpoints
+    - Follow `.opencode/checklist/api-documentation.md`
+    - Must include: Base URL, authentication, endpoints with full specifications, error handling
+    - Complete request/response examples for all endpoints
 
 4. **Onboarding Document** (`docs/onboarding.md`)
-   - Quick start guide (5-minute setup)
-   - Project overview and key concepts
-   - Common development tasks
-   - Troubleshooting guide
-   - Next steps checklist
+    - Quick start guide (5-minute setup)
+    - Project overview and key concepts
+    - Common development tasks
+    - Troubleshooting guide
+    - Next steps checklist
 
 ## Documentation Focus
 
@@ -92,20 +92,20 @@ $ARGUMENTS
 
 1. **Discover Existing Documentation**: **CRITICAL FIRST STEP**
 
-   **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → Section 2: Existing Documentation Discovery for complete guidance.
+    **COMMON SECTIONS**: See `.opencode/template/doc-command-common-sections-tmpl.yaml` → Section 2: Existing Documentation Discovery for complete guidance.
 
-   **Run Comprehensive Discovery** from `.opencode/task/documentation-discovery.md`:
+    **Run Comprehensive Discovery** from `.opencode/task/documentation-discovery.md`:
 
-   !`echo "## Discovering existing documentation (All Depths)"; find . -type d \( -name "docs" -o -name "documentation" \) ! -path "*/node_modules/*" ! -path "*/.git/*" 2>/dev/null | sort; find . -type f -name "*.md" \( -iname "*readme*" -o -iname "*doc*" -o -path "*/docs/*" \) ! -path "*/node_modules/*" ! -path "*/.git/*" ! -path "*/vendor/*" 2>/dev/null | head -20`
-   - READ each existing documentation file to understand structure
-   - Identify document types at any depth
-   - Note locations, naming, and organizational patterns
+    !`echo "## Discovering existing documentation (All Depths)"; find . -type d \( -name "docs" -o -name "documentation" \) ! -path "*/node_modules/*" ! -path "*/.git/*" 2>/dev/null | sort; find . -type f -name "*.md" \( -iname "*readme*" -o -iname "*doc*" -o -path "*/docs/*" \) ! -path "*/node_modules/*" ! -path "*/.git/*" ! -path "*/vendor/*" 2>/dev/null | head -20`
+    - READ each existing documentation file to understand structure
+    - Identify document types at any depth
+    - Note locations, naming, and organizational patterns
 
 2. **Load Checklists**: Load the comprehensive checklists for each document type you're creating or updating
 3. **Analyze Project**: Use tasks to understand the technology stack and architecture
 4. **Generate or Update Documents**:
-   - **If documentation exists**: UPDATE it in its current location, preserving valuable content
-   - **If documentation doesn't exist**: CREATE new document following checklist requirements exactly
+    - **If documentation exists**: UPDATE it in its current location, preserving valuable content
+    - **If documentation doesn't exist**: CREATE new document following checklist requirements exactly
 5. **Quality Assurance**: Verify each document meets all checklist criteria before completion
 6. **Consistency Check**: Ensure terminology and style are consistent across all documents
 

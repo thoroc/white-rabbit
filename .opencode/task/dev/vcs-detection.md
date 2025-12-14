@@ -5,11 +5,11 @@ type: task
 category: Operations
 version: 1.0.0
 tags:
-  - git
-  - jujutsu
-  - version-control
-  - vcs
-  - detection
+    - git
+    - jujutsu
+    - version-control
+    - vcs
+    - detection
 mode: task
 temperature: 0.1
 last_updated: 2025-12-03

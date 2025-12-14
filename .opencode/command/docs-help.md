@@ -3,11 +3,11 @@ description: Show documentation directory structure and available commands
 type: command
 category: Development
 tags:
-  - command
-  - docs
-  - help
-  - documentation
-  - directory
+    - command
+    - docs
+    - help
+    - documentation
+    - directory
 version: 1.0.0
 last_updated: 2025-11-19
 ---

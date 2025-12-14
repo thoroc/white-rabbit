@@ -5,12 +5,12 @@ temperature: 0.3
 type: task
 category: Operations
 tags:
-  - tool
-  - approval
-  - automated
-  - research
-  - evaluation
-  - security
+    - tool
+    - approval
+    - automated
+    - research
+    - evaluation
+    - security
 version: 1.0.0
 last_updated: 2025-11-19
 title: Ai Tool Approval Research Task
@@ -26,12 +26,14 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 ## When to Use This Task
 
 **Use when:**
+
 - Starting a new tool evaluation from scratch
 - Need comprehensive research across all evaluation criteria
 - Want to automate documentation gathering
 - Creating approval requests for RFC submission
 
 **Do NOT use if:**
+
 - Tool already has recent assessment (check registry first)
 - Only need to update existing assessment
 - Performing emergency/temporary approval (use expedited process)
@@ -39,6 +41,7 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 ## Input Requirements
 
 ### Required Information
+
 - **Tool Name**: Official name
 - **Version**: Current version or "latest"
 - **Vendor/Maintainer**: Company, organization, or individual
@@ -46,6 +49,7 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 - **Primary Use Case**: Problem it solves
 
 ### Optional Information
+
 - Repository URL (for open source)
 - Official website URL
 - Known license type
@@ -66,6 +70,7 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 **Actions**: Parse privacy policy for training data usage, identify opt-out mechanisms, determine storage locations, extract retention policies, verify encryption, list subprocessors
 
 **Risk Scoring**:
+
 - High: Mandatory training, no opt-out, vague policies
 - Medium: Optional training, complex opt-out
 - Low: No training, clear policies, enterprise guarantees
@@ -101,6 +106,7 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 **Formula**: Risk Score = (Data Sensitivity × Likelihood) + (Compliance Gaps × Severity) + Security Posture - Mitigation
 
 **Score Interpretation**:
+
 - 0-10: Low Risk → Approve
 - 11-20: Medium Risk → Conditional Approval
 - 21-30: High Risk → Reject or Heavy Restrictions
@@ -111,6 +117,7 @@ Automate the labor-intensive research phase of tool evaluation by fetching docum
 ### Step 7: Generate Assessment Report
 
 **Report Sections**:
+
 1. Executive Summary (tool overview, recommendation, key findings)
 2. Business Context (use case, status, alternatives)
 3. Detailed Assessment (privacy, compliance, security, operations)
@@ -151,18 +158,21 @@ The task generates three documents:
 ## Quality Checks
 
 ### Completeness
+
 - All checklist items addressed or marked N/A
 - All documentation URLs verified and accessible
 - Evidence cited for all claims
 - Version numbers and dates current
 
 ### Accuracy
+
 - Privacy policy interpretation verified
 - License terms correctly understood
 - Vulnerability data current (within 7 days)
 - Certification claims verified
 
 ### Clarity
+
 - Executive summary understandable by non-technical stakeholders
 - Risk ratings consistent across document
 - Recommendations actionable and specific
@@ -183,31 +193,38 @@ The task generates three documents:
 ## Integration with Approval Process
 
 ### Pre-Screening
+
 Task output used for initial review: submission completeness, criteria coverage, recommendation justification
 
 ### License Assessment
+
 License required → Vendor vetting process | No license → Fast-track review
 
 ### Decision Recording
+
 Task outputs attached to RFC discussion for detailed reference and discussion basis
 
 ### Registry Update
+
 Upon approval, key information populates registry: tool name/version/vendor, category, restrictions/guidelines, review dates
 
 ## Examples
 
 ### Example 1: ChatGPT Enterprise
+
 **Input**: ChatGPT, Latest, OpenAI, AI Assistant, Documentation assistance
 **Findings**: No training on enterprise data, DPA available, SOC 2 certified, Medium risk (cloud-only but good controls)
 **Recommendation**: Approve with restrictions (no PII, no customer data)
 
 ### Example 2: Abandoned Open Source Library
+
 **Input**: example-ml-library, 2.1.0, Individual, Python ML library, Data preprocessing
 **Findings**: Last commit 18 months ago, 3 critical CVEs, no SECURITY.md, MIT license
 **Risk**: High (security vulnerabilities, no maintenance)
 **Recommendation**: Reject, suggest alternatives with active maintenance
 
 ### Example 3: Ollama (Local LLM)
+
 **Input**: Ollama, Latest, Ollama team, Local LLM runtime, Local AI experimentation
 **Findings**: Active repo, MIT license, fully local, no telemetry, GPU recommended, model licenses separate
 **Risk**: Low (data stays local, good license)
@@ -218,16 +235,19 @@ Upon approval, key information populates registry: tool name/version/vendor, cat
 ### Configuration Options
 
 **Research Depth**:
+
 - `quick`: Basic documentation review (30 min)
 - `standard`: Full evaluation per RFC 98 (2-3 hours)
 - `comprehensive`: Includes vendor outreach, detailed testing (1-2 days)
 
 **Output Format**:
+
 - `markdown`: Standard markdown documents (default)
 - `pdf`: Generated PDF reports
 - `confluence`: Direct Confluence page creation
 
 **Automation Level**:
+
 - `manual-review`: Generate drafts, require human review
 - `auto-approve-low-risk`: Auto-approve low-risk, flag others
 - `full-manual`: All decisions require human approval
@@ -235,6 +255,7 @@ Upon approval, key information populates registry: tool name/version/vendor, cat
 ## Maintenance
 
 ### Task Updates Required When
+
 - RFC 98 process changes
 - Evaluation criteria updated
 - New tool categories emerge
@@ -242,6 +263,7 @@ Upon approval, key information populates registry: tool name/version/vendor, cat
 - Template formats revised
 
 ### Review Schedule
+
 - Quarterly: Check outdated tool assessment approaches
 - Annually: Major review of task logic and outputs
 - Ad-hoc: After significant policy changes

@@ -5,16 +5,16 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - schema
-  - validation
-  - json-schema
-  - templates
+    - schema
+    - validation
+    - json-schema
+    - templates
 related_resources:
-  - ./template-system-architecture.md
-  - ../schema/core/feature.schema.json
-  - ../schema/core/research.schema.json
-  - ../schema/opencode/agent.schema.json
-  - ../schema/opencode/command.schema.json
+    - ./template-system-architecture.md
+    - ../schema/core/feature.schema.json
+    - ../schema/core/research.schema.json
+    - ../schema/opencode/agent.schema.json
+    - ../schema/opencode/command.schema.json
 last_updated: 2025-12-12
 ---
 
@@ -53,6 +53,7 @@ Define properties with types, formats (date-time, uri, email), and constraints (
 ### Additional Properties
 
 Control validation strictness:
+
 - `additionalProperties: true` - Allow extra properties (flexible)
 - `additionalProperties: false` - Strict validation (exact structure)
 
@@ -111,6 +112,7 @@ Template → Generate Content → Validate with Schema → Valid Resource
 ```
 
 **Workflow:**
+
 1. Template defines structure and placeholders
 2. Agent/command fills template with values
 3. Schema validates generated content
@@ -118,16 +120,16 @@ Template → Generate Content → Validate with Schema → Valid Resource
 
 ### Template-Schema Correspondence
 
-| Template | Schema | Purpose |
-|----------|--------|---------|
-| `feature-tmpl.yml` | `feature.schema.json` | Feature documents |
-| `research-tmpl.yml` | `research.schema.json` | Research documents |
-| `agent-tmpl.yml` | `agent.schema.json` | Agent definitions |
-| `command-tmpl.yml` | `command.schema.json` | Command definitions |
-| `task-tmpl.yaml` | (missing) | Task definitions |
-| `checklist-tmpl.yaml` | (missing) | Checklist definitions |
-| `knowledge-base-tmpl.yaml` | (missing) | KB articles |
-| `template-tmpl.yaml` | (missing) | Template definitions |
+| Template                   | Schema                 | Purpose               |
+| -------------------------- | ---------------------- | --------------------- |
+| `feature-tmpl.yml`         | `feature.schema.json`  | Feature documents     |
+| `research-tmpl.yml`        | `research.schema.json` | Research documents    |
+| `agent-tmpl.yml`           | `agent.schema.json`    | Agent definitions     |
+| `command-tmpl.yml`         | `command.schema.json`  | Command definitions   |
+| `task-tmpl.yaml`           | (missing)              | Task definitions      |
+| `checklist-tmpl.yaml`      | (missing)              | Checklist definitions |
+| `knowledge-base-tmpl.yaml` | (missing)              | KB articles           |
+| `template-tmpl.yaml`       | (missing)              | Template definitions  |
 
 ## Schema Validation Rules
 
@@ -156,6 +158,7 @@ Restrict to specific values using `enum` keyword.
 ### Schema Creation
 
 **DO:**
+
 - Use consistent JSON Schema draft version
 - Define reusable sub-schemas in $defs
 - Set appropriate additionalProperties values
@@ -163,6 +166,7 @@ Restrict to specific values using `enum` keyword.
 - Reference related schemas in documentation
 
 **DON'T:**
+
 - Mix different JSON Schema draft versions
 - Duplicate sub-schema definitions
 - Use overly permissive validation
@@ -171,12 +175,14 @@ Restrict to specific values using `enum` keyword.
 ### Schema Validation
 
 **DO:**
+
 - Validate all generated resources
 - Keep schemas synchronized with templates
 - Test schemas with valid and invalid data
 - Version schemas on breaking changes
 
 **DON'T:**
+
 - Skip validation to save time
 - Let schemas drift from templates
 - Create schemas after resources are generated
@@ -184,11 +190,13 @@ Restrict to specific values using `enum` keyword.
 ### Schema Maintenance
 
 **DO:**
+
 - Review schemas when templates change
 - Test schema changes thoroughly
 - Document schema version changes
 
 **DON'T:**
+
 - Remove required fields without migration plan
 - Change validation rules without testing
 - Delete schemas still in use
@@ -246,6 +254,7 @@ When creating schemas for missing templates:
 9. Reference template in schema $id or description
 
 **Priority Order (based on template usage):**
+
 1. `task.schema.json` (task-tmpl.yaml)
 2. `checklist.schema.json` (checklist-tmpl.yaml)
 3. `knowledge-base.schema.json` (knowledge-base-tmpl.yaml)

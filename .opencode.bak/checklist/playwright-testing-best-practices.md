@@ -1,15 +1,15 @@
 ---
 description:
-  Comprehensive checklist of best practices for Playwright testing with MCP tools including test architecture, locators,
-  and reliability patterns
+    Comprehensive checklist of best practices for Playwright testing with MCP tools including test architecture, locators,
+    and reliability patterns
 type: checklist
 category: Quality
 tags:
-  - testing
-  - playwright
-  - best-practices
-  - mcp
-  - quality-assurance
+    - testing
+    - playwright
+    - best-practices
+    - mcp
+    - quality-assurance
 version: 1.0.0
 last_updated: 2025-11-19
 ---

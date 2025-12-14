@@ -5,15 +5,15 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - commands
-  - discovery
-  - validation
-  - documentation
+    - commands
+    - discovery
+    - validation
+    - documentation
 reference: ../knowledge-base/command-system-architecture.md
 applies_to:
-  - command-documentation
-  - command-discovery
-  - tui-development
+    - command-documentation
+    - command-discovery
+    - tui-development
 last_updated: 2025-11-19
 ---
 
@@ -89,43 +89,43 @@ This checklist ensures:
 ### Category Assignment
 
 - [ ] **Documentation category**: Identify documentation generation commands
-  - [ ] api-docs
-  - [ ] arch-docs
-  - [ ] dev-docs
-  - [ ] deploy-docs
-  - [ ] pipeline-docs
-  - [ ] onboard-docs
+    - [ ] api-docs
+    - [ ] arch-docs
+    - [ ] dev-docs
+    - [ ] deploy-docs
+    - [ ] pipeline-docs
+    - [ ] onboard-docs
 
 - [ ] **Development category**: Identify resource creation commands
-  - [ ] create-command
-  - [ ] create-agent
-  - [ ] feature
+    - [ ] create-command
+    - [ ] create-agent
+    - [ ] feature
 
 - [ ] **Git category**: Identify version control commands
-  - [ ] commit
-  - [ ] gh-flow
+    - [ ] commit
+    - [ ] gh-flow
 
 - [ ] **Analysis category**: Identify analysis and research commands
-  - [ ] research
-  - [ ] document
+    - [ ] research
+    - [ ] document
 
 - [ ] **Workflow category**: Identify process workflow commands
-  - [ ] create-ticket
-  - [ ] review-tool
+    - [ ] create-ticket
+    - [ ] review-tool
 
 - [ ] **Utility category**: Identify helper and utility commands
-  - [ ] list-commands
-  - [ ] list-tasks
-  - [ ] list-templates
-  - [ ] list-knowledge-bases
-  - [ ] list-checklists
-  - [ ] docs-help
+    - [ ] list-commands
+    - [ ] list-tasks
+    - [ ] list-templates
+    - [ ] list-knowledge-bases
+    - [ ] list-checklists
+    - [ ] docs-help
 
 - [ ] **Session category**: Identify session management commands
-  - [ ] save-session
-  - [ ] resume-session
-  - [ ] list-sessions
-  - [ ] update-session
+    - [ ] save-session
+    - [ ] resume-session
+    - [ ] list-sessions
+    - [ ] update-session
 
 ### Category Organization
 

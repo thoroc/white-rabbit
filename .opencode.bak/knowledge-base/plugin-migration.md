@@ -5,10 +5,10 @@ type: knowledge-base
 category: meta
 version: 1.0.0
 tags:
-  - knowledge
-  - meta
-  - plugin
-  - migration
+    - knowledge
+    - meta
+    - plugin
+    - migration
 last_updated: 2025-11-19
 ---
 
@@ -46,19 +46,19 @@ last_updated: 2025-11-19
 **Tools Implemented**:
 
 1. **`analyze_project`** - Replaces all shell-based project analysis
-   - Intelligent 5-minute caching
-   - Native JavaScript file analysis
-   - Structured JSON responses
-   - Basic/comprehensive analysis modes
+    - Intelligent 5-minute caching
+    - Native JavaScript file analysis
+    - Structured JSON responses
+    - Basic/comprehensive analysis modes
 
 2. **`load_docs_resource`** - Replaces manual file loading
-   - Cached file loading with TTL
-   - Section extraction capability
-   - Support for checklists, skills, knowledge-base
+    - Cached file loading with TTL
+    - Section extraction capability
+    - Support for checklists, skills, knowledge-base
 
 3. **`clear_docs_cache`** - Cache management
-   - Selective cache clearing
-   - Cache statistics and monitoring
+    - Selective cache clearing
+    - Cache statistics and monitoring
 
 ### 🔄 Benefits Already Realized
 
@@ -98,17 +98,22 @@ last_updated: 2025-11-19
 
 ```javascript
 generate_docs: tool({
-  description: 'Generate comprehensive documentation',
-  args: {
-    type: tool.schema.enum(['api', 'architecture', 'deployment', 'comprehensive']),
-    focus: tool.schema.string().optional(),
-    include_diagrams: tool.schema.boolean().default(true),
-  },
-  async execute(args, ctx) {
-    // Smart documentation generation
-    // Automatic checklist loading and validation
-    // Integrated Mermaid diagram creation
-  },
+    description: 'Generate comprehensive documentation',
+    args: {
+        type: tool.schema.enum([
+            'api',
+            'architecture',
+            'deployment',
+            'comprehensive',
+        ]),
+        focus: tool.schema.string().optional(),
+        include_diagrams: tool.schema.boolean().default(true),
+    },
+    async execute(args, ctx) {
+        // Smart documentation generation
+        // Automatic checklist loading and validation
+        // Integrated Mermaid diagram creation
+    },
 });
 ```
 

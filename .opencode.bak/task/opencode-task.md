@@ -7,13 +7,13 @@ last_updated: 2025-11-11
 category: Development
 type: task
 tags:
-  - opencode
-  - creating
-  - tasks
-  - task
-  - workflow
-  - automation
-  - execution
+    - opencode
+    - creating
+    - tasks
+    - task
+    - workflow
+    - automation
+    - execution
 title: Opencode Task Task
 estimated_duration: 5-10 minutes
 ---
@@ -152,46 +152,46 @@ Use this task when you need to:
 **Actions:**
 
 1. Design frontmatter
-   - Description (clear, one-line, required)
-   - Mode (always "task")
-   - Temperature (based on task type)
-   - Version (1.0.0)
-   - Last updated (current date)
-   - Category (Analysis, Documentation, Development, Operations)
+    - Description (clear, one-line, required)
+    - Mode (always "task")
+    - Temperature (based on task type)
+    - Version (1.0.0)
+    - Last updated (current date)
+    - Category (Analysis, Documentation, Development, Operations)
 
 2. Write overview paragraph
-   - One paragraph explaining what task accomplishes
+    - One paragraph explaining what task accomplishes
 
 3. Design Purpose section
-   - Task goals and objectives
-   - Target users
-   - Value proposition
+    - Task goals and objectives
+    - Target users
+    - Value proposition
 
 4. Plan "When to Use This Task" section
-   - Use cases (when to use)
-   - Anti-patterns (when NOT to use)
+    - Use cases (when to use)
+    - Anti-patterns (when NOT to use)
 
 5. Define Input Requirements
-   - Required information (what's mandatory)
-   - Optional information (what's helpful)
+    - Required information (what's mandatory)
+    - Optional information (what's helpful)
 
 6. Design execution steps (3-7 steps)
-   - Step name
-   - Actions (what to do)
-   - Tools Used (which OpenCode tools)
-   - Outputs (what's produced)
+    - Step name
+    - Actions (what to do)
+    - Tools Used (which OpenCode tools)
+    - Outputs (what's produced)
 
 7. Specify outputs
-   - Primary artifacts generated
-   - Format and location
+    - Primary artifacts generated
+    - Format and location
 
 8. Define success criteria
-   - Measurable completion indicators
+    - Measurable completion indicators
 
 9. Create quality checks
-   - Completeness check
-   - Accuracy check
-   - Clarity check
+    - Completeness check
+    - Accuracy check
+    - Clarity check
 
 10. Plan examples (2-3 minimum)
     - Different use case scenarios
@@ -223,16 +223,16 @@ Use this task when you need to:
 
 2. Write frontmatter:
 
-   ```yaml
-   ---
-   description: Brief one-line description
-   mode: task
-   temperature: 0.0-1.0
-   version: 1.0.0
-   last_updated: YYYY-MM-DD
-   category: Analysis | Documentation | Development | Operations
-   ---
-   ```
+    ```yaml
+    ---
+    description: Brief one-line description
+    mode: task
+    temperature: 0.0-1.0
+    version: 1.0.0
+    last_updated: YYYY-MM-DD
+    category: Analysis | Documentation | Development | Operations
+    ---
+    ```
 
 3. Write one-paragraph overview
 
@@ -241,28 +241,28 @@ Use this task when you need to:
 5. Write "When to Use This Task" section with use cases and anti-patterns
 
 6. Document Input Requirements
-   - Required Information subsection
-   - Optional Information subsection
+    - Required Information subsection
+    - Optional Information subsection
 
 7. Create Task Execution Steps (3-7 steps)
 
-   ```markdown
-   ### Step N: [Step Name]
+    ```markdown
+    ### Step N: [Step Name]
 
-   **Actions:**
+    **Actions:**
 
-   1. Action item
+    1. Action item
 
-   **Tools Used:**
+    **Tools Used:**
 
-   - Tool for purpose
+    - Tool for purpose
 
-   **Outputs:**
+    **Outputs:**
 
-   - Output description
+    - Output description
 
-   ---
-   ```
+    ---
+    ```
 
 8. Write Task Output Summary describing primary artifacts
 
@@ -317,14 +317,14 @@ Use this task when you need to:
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "task", file: "task-filename" })
-   validate_resource_content({ type: "task", file: "task-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "task", file: "task-filename" })
+    validate_resource_content({ type: "task", file: "task-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Verify frontmatter is valid YAML and compliant
 3. Check description is clear and one-line (under 120 chars)
@@ -384,20 +384,20 @@ Use this task when you need to:
 The task generates one primary file:
 
 1. **Task File** (`task/[name].md`)
-   - Valid YAML frontmatter with metadata
-   - One paragraph overview
-   - Purpose section with goals
-   - When to Use section with use cases and anti-patterns
-   - Input Requirements with required and optional info
-   - 3-7 sequential execution steps with Actions/Tools/Outputs
-   - Task Output Summary describing artifacts
-   - Success Criteria with ✅ items
-   - Quality Checks with [ ] items
-   - Error Handling (optional)
-   - 2-3 comprehensive examples
-   - Task Parameters (optional)
-   - Maintenance (optional)
-   - References section
+    - Valid YAML frontmatter with metadata
+    - One paragraph overview
+    - Purpose section with goals
+    - When to Use section with use cases and anti-patterns
+    - Input Requirements with required and optional info
+    - 3-7 sequential execution steps with Actions/Tools/Outputs
+    - Task Output Summary describing artifacts
+    - Success Criteria with ✅ items
+    - Quality Checks with [ ] items
+    - Error Handling (optional)
+    - 2-3 comprehensive examples
+    - Task Parameters (optional)
+    - Maintenance (optional)
+    - References section
 
 ## Success Criteria
 
@@ -513,9 +513,9 @@ The task generates one primary file:
 2. Review template: Study analysis task patterns
 3. Study examples: Review `technology-detection.md`
 4. Design:
-   - Temperature: 0.2 (deterministic)
-   - 4 steps: Discover dependencies, Scan for vulnerabilities, Analyze results, Report findings
-   - 2 examples: Node.js project, Python project
+    - Temperature: 0.2 (deterministic)
+    - 4 steps: Discover dependencies, Scan for vulnerabilities, Analyze results, Report findings
+    - 2 examples: Node.js project, Python project
 5. Create: Task with clear analysis steps
 6. Validate: Check structure and examples
 7. Document: Note integration with security commands
@@ -544,10 +544,10 @@ The task generates one primary file:
 2. Review template: Study generation task patterns
 3. Study examples: Review `opencode-command.md` for generation patterns
 4. Design:
-   - Temperature: 0.3 (slightly creative for docs)
-   - 6 steps: Analyze codebase, Extract API endpoints, Document schemas, Generate examples, Validate completeness,
-     Format output
-   - 3 examples: REST API, GraphQL API, gRPC API
+    - Temperature: 0.3 (slightly creative for docs)
+    - 6 steps: Analyze codebase, Extract API endpoints, Document schemas, Generate examples, Validate completeness,
+      Format output
+    - 3 examples: REST API, GraphQL API, gRPC API
 5. Create: Task with generation workflow
 6. Validate: Check all steps and outputs
 7. Document: Note documentation command integration
@@ -576,10 +576,10 @@ The task generates one primary file:
 2. Review template: Study complex workflow patterns
 3. Study examples: Review `ai-tool-approval-research.md` for multi-stage workflows
 4. Design:
-   - Temperature: 0.2 (deterministic analysis)
-   - 8 steps: Planning, Dependency scan, Code analysis, Configuration review, Access control audit, Data flow analysis,
-     Report generation, Recommendations
-   - 3 examples: Web application, API service, Infrastructure audit
+    - Temperature: 0.2 (deterministic analysis)
+    - 8 steps: Planning, Dependency scan, Code analysis, Configuration review, Access control audit, Data flow analysis,
+      Report generation, Recommendations
+    - 3 examples: Web application, API service, Infrastructure audit
 5. Create: Task with comprehensive workflow
 6. Validate: Check all steps, quality checks, examples
 7. Document: Note security command integration
@@ -624,11 +624,11 @@ The task generates one primary file:
 ### Temperature Guidelines
 
 - **0.0-0.2**: Highly deterministic
-  - Use for: Security audits, compliance checks, data analysis
+    - Use for: Security audits, compliance checks, data analysis
 - **0.3-0.5**: Balanced
-  - Use for: Documentation generation, code review, general workflows
+    - Use for: Documentation generation, code review, general workflows
 - **0.6-1.0**: Creative
-  - Use for: Brainstorming, content generation, exploration
+    - Use for: Brainstorming, content generation, exploration
 
 **Recommendation**: Use 0.0-0.3 for most tasks to ensure consistency
 

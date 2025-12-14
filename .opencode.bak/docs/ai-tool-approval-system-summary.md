@@ -470,37 +470,37 @@ After running `/review-tool GitHub Copilot`, you'll get:
 ### For Reviewers
 
 1. **Read the Knowledge Base** (`knowledge-base/ai-tool-approval-patterns.md`)
-   - Understand common patterns
-   - Learn from historical precedents
-   - Review approval decision frameworks
+    - Understand common patterns
+    - Learn from historical precedents
+    - Review approval decision frameworks
 
 2. **Review Example Outputs**
-   - Run `/review-tool` on a known tool (e.g., ChatGPT)
-   - Examine generated documents
-   - Understand evaluation depth
+    - Run `/review-tool` on a known tool (e.g., ChatGPT)
+    - Examine generated documents
+    - Understand evaluation depth
 
 3. **Practice with Checklist**
-   - Use `checklist/ai-tool-approval.md` manually first
-   - Understand all 174 criteria
-   - Learn risk scoring methodology
+    - Use `checklist/ai-tool-approval.md` manually first
+    - Understand all 174 criteria
+    - Learn risk scoring methodology
 
 ### For Tool Requesters
 
 1. **Read the Quick Guide** (`docs/ai-tool-review-guide.md`)
-   - Understand the process
-   - Know what information is needed
-   - Learn what makes a strong request
+    - Understand the process
+    - Know what information is needed
+    - Learn what makes a strong request
 
 2. **Check Registry First**
-   - Tool may already be approved
-   - Review similar tool decisions
-   - Understand common restrictions
+    - Tool may already be approved
+    - Review similar tool decisions
+    - Understand common restrictions
 
 3. **Prepare Information**
-   - Tool name, version, vendor
-   - Clear use case and business justification
-   - Estimated user count
-   - Alternative tools considered
+    - Tool name, version, vendor
+    - Clear use case and business justification
+    - Estimated user count
+    - Alternative tools considered
 
 ---
 
@@ -515,17 +515,17 @@ After running `/review-tool GitHub Copilot`, you'll get:
 1. User runs: `/review-tool Cursor`
 2. Agent prompts for: version, use case, user count
 3. Agent researches:
-   - Cursor website and documentation
-   - Privacy policy (checks training data usage)
-   - Terms of Service
-   - Pricing tiers
+    - Cursor website and documentation
+    - Privacy policy (checks training data usage)
+    - Terms of Service
+    - Pricing tiers
 4. Agent evaluates:
-   - Risk: Medium (cloud-based, some data transmission)
-   - Finding: Free tier trains on code, paid tier opt-out available
+    - Risk: Medium (cloud-based, some data transmission)
+    - Finding: Free tier trains on code, paid tier opt-out available
 5. Agent generates:
-   - Assessment: Recommends paid tier only
-   - RFC: Ready for committee submission
-   - Checklist: 92% complete (some vendor confirmation needed)
+    - Assessment: Recommends paid tier only
+    - RFC: Ready for committee submission
+    - Checklist: 92% complete (some vendor confirmation needed)
 6. Committee reviews and decides
 7. If approved: Registry updated, users notified
 
@@ -542,13 +542,13 @@ After running `/review-tool GitHub Copilot`, you'll get:
 1. User runs: `/review-tool ml-preprocessing-lib`
 2. Agent clones repository
 3. Agent performs:
-   - Dependency scan (finds 2 medium CVEs)
-   - License check (MIT - permissive)
-   - Maintenance assessment (active, good community)
-   - Security policy review (SECURITY.md present)
+    - Dependency scan (finds 2 medium CVEs)
+    - License check (MIT - permissive)
+    - Maintenance assessment (active, good community)
+    - Security policy review (SECURITY.md present)
 4. Agent evaluates:
-   - Risk: Medium-Low (vulnerabilities fixable, good maintenance)
-   - Recommendation: Conditional approval (update dependencies first)
+    - Risk: Medium-Low (vulnerabilities fixable, good maintenance)
+    - Recommendation: Conditional approval (update dependencies first)
 5. Agent generates complete documentation
 6. Committee approves with condition
 7. Team updates dependencies, library approved
@@ -565,10 +565,10 @@ After running `/review-tool GitHub Copilot`, you'll get:
 
 1. User runs: `/review-tool --urgent tool-name`
 2. Agent prompts for:
-   - Sponsor (manager/team lead)
-   - Urgent business justification
-   - Proposed risk mitigation
-   - Expiry date (≤90 days)
+    - Sponsor (manager/team lead)
+    - Urgent business justification
+    - Proposed risk mitigation
+    - Expiry date (≤90 days)
 3. Agent performs quick assessment (30-60 min)
 4. Agent generates expedited documents
 5. Sponsor reviews and approves temporary use

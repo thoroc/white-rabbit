@@ -4,11 +4,11 @@ agent: atlassian
 type: command
 category: Development
 tags:
-  - command
-  - create
-  - ticket
-  - standardized
-  - templates,
+    - command
+    - create
+    - ticket
+    - standardized
+    - templates,
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -105,14 +105,14 @@ Based on the Must Have requirements:
 **Choose the appropriate format:**
 
 1. **Scenario-Oriented (Given/When/Then)** - Use when:
-   - Describing user interactions
-   - Multiple workflows or paths exist
-   - Testing requires specific sequences
+    - Describing user interactions
+    - Multiple workflows or paths exist
+    - Testing requires specific sequences
 
 2. **Rule-Oriented (Checklist)** - Use when:
-   - Listing system behaviors
-   - Describing validation rules
-   - Multiple independent requirements exist
+    - Listing system behaviors
+    - Describing validation rules
+    - Multiple independent requirements exist
 
 **Quality Guidelines:**
 

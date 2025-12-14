@@ -4,11 +4,11 @@ description: Test-only command to verify plugin trigger for `/hello-world`
 type: command
 category: Development
 tags:
-  - command
-  - hello
-  - world
-  - test-only
-  - verify
+    - command
+    - hello
+    - world
+    - test-only
+    - verify
 version: 1.0.0
 last_updated: 2025-11-19
 ---

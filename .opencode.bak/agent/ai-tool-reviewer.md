@@ -3,27 +3,27 @@ description: Specialist in reviewing AI and open source tools for organizational
 mode: subagent
 temperature: 0.3
 tools:
-  write: true
-  edit: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  webfetch: true
-  mcp-gitlab_get_file_content: true
-  mcp-gitlab_create_or_update_file: true
+    write: true
+    edit: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    bash: true
+    webfetch: true
+    mcp-gitlab_get_file_content: true
+    mcp-gitlab_create_or_update_file: true
 permission:
-  bash:
-    '*': allow
+    bash:
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - tool
-  - reviewer
-  - specialist
-  - reviewing
+    - agent
+    - tool
+    - reviewer
+    - specialist
+    - reviewing
 version: 1.0.0
 last_updated: 2025-11-19
 ---

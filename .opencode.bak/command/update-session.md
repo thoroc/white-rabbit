@@ -3,11 +3,11 @@ description: Update an existing session summary with current findings and progre
 type: command
 category: Development
 tags:
-  - command
-  - update
-  - session
-  - existing
-  - summary
+    - command
+    - update
+    - session
+    - existing
+    - summary
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -41,10 +41,10 @@ Capture current session state:
 
 1. **Read the existing session summary**: Load the content of the selected session file
 2. **Compare states**: Identify what has changed since the last session:
-   - New files created or modified
-   - Git commits added
-   - Tasks completed or progressed
-   - New challenges encountered
+    - New files created or modified
+    - Git commits added
+    - Tasks completed or progressed
+    - New challenges encountered
 
 ## Update Process
 
@@ -61,10 +61,10 @@ The updated session should maintain the original structure but include:
 ### New Section: "Session Updates"
 
 - **Update [Current Timestamp]**: !`date +"%Y-%m-%d %H:%M:%S"`
-  - Progress made since last session
-  - New tasks completed
-  - Additional challenges encountered
-  - New insights or decisions
+    - Progress made since last session
+    - New tasks completed
+    - Additional challenges encountered
+    - New insights or decisions
 
 ### Updated Sections
 

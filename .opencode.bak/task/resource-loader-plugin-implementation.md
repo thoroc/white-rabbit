@@ -4,10 +4,10 @@ description: Complete summary of the Resource Loader plugin implementation with 
 type: task
 category: Development
 tags:
-  - resource-loader
-  - plugin
-  - implementation
-  - deployment
+    - resource-loader
+    - plugin
+    - implementation
+    - deployment
 ---
 
 # Resource Loader Plugin - Implementation Summary
@@ -27,49 +27,49 @@ A comprehensive OpenCode plugin that dynamically loads and unloads resources fro
 **Features Implemented:**
 
 1. **Resource Discovery System**
-   - Automatic scanning of resource directories
-   - YAML frontmatter parsing for metadata extraction
-   - Intelligent caching per directory type
-   - Support for task, template, knowledge-base, and checklist types
+    - Automatic scanning of resource directories
+    - YAML frontmatter parsing for metadata extraction
+    - Intelligent caching per directory type
+    - Support for task, template, knowledge-base, and checklist types
 
 2. **Five Core Tools**
-   - `resource_list` - List resources with filtering
-   - `resource_search` - Search by query, type, category
-   - `resource_load` - Load resource into session
-   - `resource_unload` - Remove resource from session
-   - `resource_session_info` - View loaded resources
+    - `resource_list` - List resources with filtering
+    - `resource_search` - Search by query, type, category
+    - `resource_load` - Load resource into session
+    - `resource_unload` - Remove resource from session
+    - `resource_session_info` - View loaded resources
 
 3. **Smart Hooks**
-   - `chat.message` - Auto-detect and load referenced resources
-   - `event` - Cleanup when sessions end
+    - `chat.message` - Auto-detect and load referenced resources
+    - `event` - Cleanup when sessions end
 
 4. **Session Management**
-   - Per-session resource context tracking
-   - Automatic cleanup on session deletion
-   - Memory-efficient context isolation
+    - Per-session resource context tracking
+    - Automatic cleanup on session deletion
+    - Memory-efficient context isolation
 
 ### Documentation
 
 1. **Plugin README**
-   - File: `plugin/resource-loader/README.md`
-   - Complete feature documentation
-   - Tool reference with examples
-   - Architecture and integration guide
-   - Troubleshooting section
+    - File: `plugin/resource-loader/README.md`
+    - Complete feature documentation
+    - Tool reference with examples
+    - Architecture and integration guide
+    - Troubleshooting section
 
 2. **Integration Guide**
-   - File: `knowledge-base/resource-loader-integration-guide.md`
-   - Step-by-step usage examples
-   - Workflow patterns
-   - Best practices
-   - Advanced integration topics
+    - File: `knowledge-base/resource-loader-integration-guide.md`
+    - Step-by-step usage examples
+    - Workflow patterns
+    - Best practices
+    - Advanced integration topics
 
 3. **Quick Reference**
-   - File: `template/resource-loader-quick-reference.md`
-   - Commands at a glance
-   - Common patterns
-   - Troubleshooting table
-   - Performance tips
+    - File: `template/resource-loader-quick-reference.md`
+    - Commands at a glance
+    - Common patterns
+    - Troubleshooting table
+    - Performance tips
 
 ### Testing
 
@@ -304,7 +304,9 @@ Add to `~/.config/opencode/opencode.json`:
 
 ```json
 {
-  "plugin": ["file:///Users/thomas.roche/.config/opencode/plugin/resource-loader"]
+    "plugin": [
+        "file:///Users/thomas.roche/.config/opencode/plugin/resource-loader"
+    ]
 }
 ```
 

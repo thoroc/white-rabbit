@@ -5,11 +5,11 @@ subtask: true
 type: command
 category: Development
 tags:
-  - command
-  - deploy
-  - docs
-  - generate
-  - deployment
+    - command
+    - deploy
+    - docs
+    - generate
+    - deployment
 version: 1.0.0
 last_updated: 2025-11-19
 ---

@@ -7,13 +7,13 @@ last_updated: 2025-11-11
 category: Development
 type: task
 tags:
-  - opencode
-  - template
-  - creating
-  - templates
-  - structure
-  - standards
-  - format
+    - opencode
+    - template
+    - creating
+    - templates
+    - structure
+    - standards
+    - format
 title: Opencode Template Task
 estimated_duration: 5-10 minutes
 ---
@@ -161,57 +161,57 @@ Use this task when you need to:
 **Actions:**
 
 1. Design metadata section
-   - Title (descriptive)
-   - Description (one-line purpose)
-   - Version (1.0.0)
-   - Last updated (current date)
-   - Category (classification)
-   - Reference (optional documentation link)
+    - Title (descriptive)
+    - Description (one-line purpose)
+    - Version (1.0.0)
+    - Last updated (current date)
+    - Category (classification)
+    - Reference (optional documentation link)
 
 2. Write overview comment
-   - 2-3 sentences explaining what template defines
-   - Who should use it
-   - Usage context
+    - 2-3 sentences explaining what template defines
+    - Who should use it
+    - Usage context
 
 3. Plan structure guidelines
-   - 3-5 key structural requirements
-   - Numbered list format
+    - 3-5 key structural requirements
+    - Numbered list format
 
 4. Design structure section
-   - Component definitions
-   - Required vs optional flags
-   - Format specifications
-   - Pattern examples
-   - Usage notes
+    - Component definitions
+    - Required vs optional flags
+    - Format specifications
+    - Pattern examples
+    - Usage notes
 
 5. Define configuration options (if applicable)
-   - Option names and descriptions
-   - Types (string, boolean, number, array, object)
-   - Required vs optional
-   - Default values
-   - Possible values (if enumerated)
-   - Examples
+    - Option names and descriptions
+    - Types (string, boolean, number, array, object)
+    - Required vs optional
+    - Default values
+    - Possible values (if enumerated)
+    - Examples
 
 6. Create guidelines section
-   - When to use (3-5 use cases)
-   - When NOT to use (anti-patterns)
-   - Best practices (5-7 practices)
+    - When to use (3-5 use cases)
+    - When NOT to use (anti-patterns)
+    - Best practices (5-7 practices)
 
 7. Define content principles (if applicable)
-   - Clarity principles
-   - Completeness principles
-   - Actionability principles
-   - Organization principles
+    - Clarity principles
+    - Completeness principles
+    - Actionability principles
+    - Organization principles
 
 8. Document formatting standards (if applicable)
-   - Markdown elements (headings, emphasis, lists)
-   - Code blocks with syntax
-   - Tables format
+    - Markdown elements (headings, emphasis, lists)
+    - Code blocks with syntax
+    - Tables format
 
 9. Create examples (2-3 minimum)
-   - Basic example (minimal required fields)
-   - Complete example (all fields)
-   - Specific use case example
+    - Basic example (minimal required fields)
+    - Complete example (all fields)
+    - Specific use case example
 
 10. Document common patterns (if applicable)
     - Pattern name and description
@@ -285,127 +285,148 @@ Use this task when you need to:
 
 2. Write metadata header:
 
-   ```yaml
-   # OpenCode [Resource Type] Template
-   # Brief description of what this template is for and how it should be used
+    ```yaml
+    # OpenCode [Resource Type] Template
+    # Brief description of what this template is for and how it should be used
 
-   title: 'OpenCode [Resource Type] Template'
-   description: "Brief description of this template's purpose"
-   version: '1.0.0'
-   last_updated: 'YYYY-MM-DD'
-   category: '[Category]'
-   reference: '[Optional: URL or path to related documentation]'
-   ```
+    title: 'OpenCode [Resource Type] Template'
+    description: "Brief description of this template's purpose"
+    version: '1.0.0'
+    last_updated: 'YYYY-MM-DD'
+    category: '[Category]'
+    reference: '[Optional: URL or path to related documentation]'
+    ```
 
 3. Add overview comment:
 
-   ```yaml
-   # Overview:
-   # [2-3 sentences explaining what this template defines and who should use it]
-   # [Explain the context in which this template is used]
-   ```
+    ```yaml
+    # Overview:
+    # [2-3 sentences explaining what this template defines and who should use it]
+    # [Explain the context in which this template is used]
+    ```
 
 4. Create structure guidelines comment:
 
-   ```yaml
-   # Structure Guidelines:
-   # [Numbered list of key structural requirements]
-   # 1. [Guideline 1]
-   # 2. [Guideline 2]
-   # 3. [Guideline 3]
-   ```
+    ```yaml
+    # Structure Guidelines:
+    # [Numbered list of key structural requirements]
+    # 1. [Guideline 1]
+    # 2. [Guideline 2]
+    # 3. [Guideline 3]
+    ```
 
 5. Define structure section:
 
-   ```yaml
-   structure:
-     # Define the core structure of what this template describes
+    ```yaml
+    structure:
+        # Define the core structure of what this template describes
 
-     component_name:
-       description: 'What this component is for'
-       format: '[Format or pattern]'
-       required: true # or false
+        component_name:
+            description: 'What this component is for'
+            format: '[Format or pattern]'
+            required: true # or false
 
-     another_component:
-       description: 'What this component does'
-       pattern: |
-         [Multi-line pattern example]
-         [Second line of pattern]
-       note: 'Additional guidance or context'
-   ```
+        another_component:
+            description: 'What this component does'
+            pattern: |
+                [Multi-line pattern example]
+                [Second line of pattern]
+            note: 'Additional guidance or context'
+    ```
 
 6. Add configuration options (if applicable):
 
-   ```yaml
-   # Configuration Options:
-   # [If applicable - detailed configuration parameters]
+    ```yaml
+    # Configuration Options:
+    # [If applicable - detailed configuration parameters]
 
-   options:
-     option_name:
-       description: 'What this option controls'
-       type: 'string' # or boolean, number, array, object
-       required: false
-       default: 'default value'
-       values: ['possible', 'values', 'if', 'enumerated']
-       example: 'option_name: example value'
-   ```
+    options:
+        option_name:
+            description: 'What this option controls'
+            type: 'string' # or boolean, number, array, object
+            required: false
+            default: 'default value'
+            values: ['possible', 'values', 'if', 'enumerated']
+            example: 'option_name: example value'
+    ```
 
 7. Create guidelines section:
 
-   ```yaml
-   # Guidelines:
-   # [Domain-specific guidance for using this template]
+    ```yaml
+    # Guidelines:
+    # [Domain-specific guidance for using this template]
 
-   guidelines:
-     when_to_use:
-       - 'Use case 1'
-       - 'Use case 2'
-       - 'Use case 3'
+    guidelines:
+        when_to_use:
+            - 'Use case 1'
+            - 'Use case 2'
+            - 'Use case 3'
 
-     when_not_to_use:
-       - 'Anti-pattern 1'
-       - 'Anti-pattern 2'
+        when_not_to_use:
+            - 'Anti-pattern 1'
+            - 'Anti-pattern 2'
 
-     best_practices:
-       - 'Best practice 1'
-       - 'Best practice 2'
-       - 'Best practice 3'
-   ```
+        best_practices:
+            - 'Best practice 1'
+            - 'Best practice 2'
+            - 'Best practice 3'
+    ```
 
 8. Add content principles (if applicable):
 
-   ```yaml
-   # Content Principles:
-   # [If applicable - principles for content creation]
+    ```yaml
+    # Content Principles:
+    # [If applicable - principles for content creation]
 
-   content_principles:
-     clarity: ['Clear language', 'Specific details', 'Define terms', 'Consistent terminology']
-     completeness:
-       ['Cover all aspects', 'Include examples', 'Document edge cases', 'Link to resources']
-     actionability:
-       ['Make it executable', 'Provide examples', 'Include verification steps', 'Link to tools']
-     organization:
-       ['Logical order', 'Group related items', 'Use consistent formatting', 'Balance depth']
-   ```
+    content_principles:
+        clarity:
+            [
+                'Clear language',
+                'Specific details',
+                'Define terms',
+                'Consistent terminology',
+            ]
+        completeness:
+            [
+                'Cover all aspects',
+                'Include examples',
+                'Document edge cases',
+                'Link to resources',
+            ]
+        actionability:
+            [
+                'Make it executable',
+                'Provide examples',
+                'Include verification steps',
+                'Link to tools',
+            ]
+        organization:
+            [
+                'Logical order',
+                'Group related items',
+                'Use consistent formatting',
+                'Balance depth',
+            ]
+    ```
 
 9. Document formatting standards (if applicable):
 
-   ```yaml
-   # Formatting Standards:
-   # [If applicable - markdown or other formatting conventions]
+    ```yaml
+    # Formatting Standards:
+    # [If applicable - markdown or other formatting conventions]
 
-   formatting:
-     markdown_elements:
-       headings:
-         - '# [Title] - Main title (use once)'
-         - '## [Section] - Major sections'
-         - '### [Subsection] - Subsections'
+    formatting:
+        markdown_elements:
+            headings:
+                - '# [Title] - Main title (use once)'
+                - '## [Section] - Major sections'
+                - '### [Subsection] - Subsections'
 
-       emphasis:
-         - '**[Bold]** for key terms and important points'
-         - '_[Italic]_ for emphasis'
-         - '`[Code]` for inline code, commands, or technical terms'
-   ```
+            emphasis:
+                - '**[Bold]** for key terms and important points'
+                - '_[Italic]_ for emphasis'
+                - '`[Code]` for inline code, commands, or technical terms'
+    ```
 
 10. Add examples section (2-3 examples):
 
@@ -414,16 +435,16 @@ Use this task when you need to:
     # [Complete working example showing how to use this template]
 
     example_basic: |
-      [Simple example with minimal required fields]
-      [Show the most common use case]
+        [Simple example with minimal required fields]
+        [Show the most common use case]
 
     example_complete: |
-      [Comprehensive example with all fields]
-      [Show advanced usage with optional fields]
+        [Comprehensive example with all fields]
+        [Show advanced usage with optional fields]
 
     example_specific_use_case: |
-      [Example for a specific scenario]
-      [Demonstrate particular pattern or feature]
+        [Example for a specific scenario]
+        [Demonstrate particular pattern or feature]
     ```
 
 11. Document common patterns (if applicable):
@@ -433,13 +454,13 @@ Use this task when you need to:
     # [If applicable - recurring patterns or approaches]
 
     common_patterns:
-      pattern_name:
-        description: 'What this pattern is for'
-        use_case: 'When to use this pattern'
-        example: |
-          [Code or configuration example]
-          pattern:
-            property: value
+        pattern_name:
+            description: 'What this pattern is for'
+            use_case: 'When to use this pattern'
+            example: |
+                [Code or configuration example]
+                pattern:
+                  property: value
     ```
 
 12. Define types/variants (if applicable):
@@ -449,11 +470,11 @@ Use this task when you need to:
     # [If applicable - different types or variants of what this template describes]
 
     types:
-      type_name:
-        description: 'What distinguishes this type'
-        use_case: 'When to use this type'
-        characteristics: ['Characteristic 1', 'Characteristic 2']
-        example: 'Example reference or short example'
+        type_name:
+            description: 'What distinguishes this type'
+            use_case: 'When to use this type'
+            characteristics: ['Characteristic 1', 'Characteristic 2']
+            example: 'Example reference or short example'
     ```
 
 13. Add size guidelines:
@@ -463,11 +484,11 @@ Use this task when you need to:
     # All templates should target 250-300 lines
 
     recommended_size:
-      target: '250-300 lines'
-      minimum: '225 lines (250 - 10%)'
-      maximum: '330 lines (300 + 10%)'
-      tolerance: '±10% allowed'
-      note: 'Keep templates focused and comprehensive within this range. Split larger topics into multiple templates.'
+        target: '250-300 lines'
+        minimum: '225 lines (250 - 10%)'
+        maximum: '330 lines (300 + 10%)'
+        tolerance: '±10% allowed'
+        note: 'Keep templates focused and comprehensive within this range. Split larger topics into multiple templates.'
     ```
 
 14. Document integration:
@@ -477,9 +498,9 @@ Use this task when you need to:
     # [How this template integrates with other parts of the system]
 
     integration:
-      with_component_a: 'How this integrates with component A'
-      with_component_b: 'How this integrates with component B'
-      with_component_c: 'How this integrates with component C'
+        with_component_a: 'How this integrates with component A'
+        with_component_b: 'How this integrates with component B'
+        with_component_c: 'How this integrates with component C'
     ```
 
 15. Add usage notes:
@@ -489,10 +510,10 @@ Use this task when you need to:
     # [Important notes about using this template]
 
     usage_notes:
-      - 'Important note 1'
-      - 'Important note 2'
-      - 'Important note 3'
-      - 'Common gotcha or pitfall to avoid'
+        - 'Important note 1'
+        - 'Important note 2'
+        - 'Important note 3'
+        - 'Common gotcha or pitfall to avoid'
     ```
 
 16. Create maintenance section:
@@ -502,9 +523,10 @@ Use this task when you need to:
     # [Information about maintaining content created from this template]
 
     maintenance:
-      review_frequency: 'When to review (e.g., Quarterly, Annually)'
-      update_triggers: ['Trigger 1', 'Trigger 2', 'Trigger 3']
-      version_control: ['Version control guideline 1', 'Version control guideline 2']
+        review_frequency: 'When to review (e.g., Quarterly, Annually)'
+        update_triggers: ['Trigger 1', 'Trigger 2', 'Trigger 3']
+        version_control:
+            ['Version control guideline 1', 'Version control guideline 2']
     ```
 
 17. Add best practices summary:
@@ -514,11 +536,11 @@ Use this task when you need to:
     # [Condensed list of key best practices]
 
     best_practices:
-      - 'Key practice 1'
-      - 'Key practice 2'
-      - 'Key practice 3'
-      - 'Key practice 4'
-      - 'Key practice 5'
+        - 'Key practice 1'
+        - 'Key practice 2'
+        - 'Key practice 3'
+        - 'Key practice 4'
+        - 'Key practice 5'
     ```
 
 18. Document troubleshooting (if applicable):
@@ -528,10 +550,10 @@ Use this task when you need to:
     # [If applicable - common issues and solutions]
 
     troubleshooting:
-      issue_1:
-        problem: 'Description of the problem'
-        solution: 'How to resolve it'
-        prevention: 'How to avoid this issue'
+        issue_1:
+            problem: 'Description of the problem'
+            solution: 'How to resolve it'
+            prevention: 'How to avoid this issue'
     ```
 
 19. List anti-patterns (if applicable):
@@ -541,11 +563,11 @@ Use this task when you need to:
     # [Common mistakes and how to avoid them]
 
     anti_patterns:
-      pattern_name_1:
-        description: 'What the anti-pattern looks like'
-        why_bad: 'Why this causes problems'
-        correct_approach: 'How to do it properly'
-        example: 'Example showing the right way'
+        pattern_name_1:
+            description: 'What the anti-pattern looks like'
+            why_bad: 'Why this causes problems'
+            correct_approach: 'How to do it properly'
+            example: 'Example showing the right way'
     ```
 
 20. Add related resources:
@@ -555,9 +577,9 @@ Use this task when you need to:
     # [Links to related templates or resources]
 
     related_resources:
-      templates: ['template-name-1.yaml', 'template-name-2.yaml']
-      documentation: ['docs/related-doc.md']
-      knowledge_bases: ['knowledge-base/related-kb.md']
+        templates: ['template-name-1.yaml', 'template-name-2.yaml']
+        documentation: ['docs/related-doc.md']
+        knowledge_bases: ['knowledge-base/related-kb.md']
     ```
 
 21. Include references:
@@ -567,13 +589,13 @@ Use this task when you need to:
     # [Links to related documentation, standards, or resources]
 
     references:
-      - name: 'Reference Document 1'
-        path: 'path/to/document.md'
-        purpose: 'What this reference provides'
+        - name: 'Reference Document 1'
+          path: 'path/to/document.md'
+          purpose: 'What this reference provides'
 
-      - name: 'External Resource'
-        url: 'https://example.com'
-        purpose: 'What this resource provides'
+        - name: 'External Resource'
+          url: 'https://example.com'
+          purpose: 'What this resource provides'
     ```
 
 **Tools Used:**
@@ -592,14 +614,14 @@ Use this task when you need to:
 
 1. **Run Validation Tools** (REQUIRED):
 
-   ```
-   validate_frontmatter({ type: "template", file: "template-filename" })
-   validate_resource_content({ type: "template", file: "template-filename" })
-   ```
+    ```
+    validate_frontmatter({ type: "template", file: "template-filename" })
+    validate_resource_content({ type: "template", file: "template-filename" })
+    ```
 
-   - Fix all errors (prevent resource loading)
-   - Address warnings (affect quality)
-   - Target quality score: 80+/100
+    - Fix all errors (prevent resource loading)
+    - Address warnings (affect quality)
+    - Target quality score: 80+/100
 
 2. Verify metadata is complete (title, description, version, date, category)
 3. Check overview explains purpose clearly
@@ -663,26 +685,26 @@ Use this task when you need to:
 The task generates one primary file:
 
 1. **Template File** (`template/[name]-tmpl.yaml`)
-   - Metadata header (title, description, version, date, category)
-   - Overview comment (2-3 sentences)
-   - Structure guidelines (3-5 numbered items)
-   - Structure section with component definitions
-   - Configuration options (if applicable)
-   - Guidelines (when-to-use, when-not-to-use, best-practices)
-   - Content principles (if applicable)
-   - Formatting standards (if applicable)
-   - Examples (2-3 minimum: basic, complete, specific)
-   - Common patterns (if applicable)
-   - Types/variants (if applicable)
-   - Size guidelines (250-300 lines, ±10%)
-   - Integration documentation
-   - Usage notes (3-5 items)
-   - Maintenance guidance
-   - Best practices summary
-   - Troubleshooting (if applicable)
-   - Anti-patterns (if applicable)
-   - Related resources
-   - References
+    - Metadata header (title, description, version, date, category)
+    - Overview comment (2-3 sentences)
+    - Structure guidelines (3-5 numbered items)
+    - Structure section with component definitions
+    - Configuration options (if applicable)
+    - Guidelines (when-to-use, when-not-to-use, best-practices)
+    - Content principles (if applicable)
+    - Formatting standards (if applicable)
+    - Examples (2-3 minimum: basic, complete, specific)
+    - Common patterns (if applicable)
+    - Types/variants (if applicable)
+    - Size guidelines (250-300 lines, ±10%)
+    - Integration documentation
+    - Usage notes (3-5 items)
+    - Maintenance guidance
+    - Best practices summary
+    - Troubleshooting (if applicable)
+    - Anti-patterns (if applicable)
+    - Related resources
+    - References
 
 ## Success Criteria
 
@@ -825,10 +847,10 @@ The task generates one primary file:
 2. Review meta-template: Study configuration template patterns
 3. Study examples: Review `opencode-agent-tmpl.yaml` for configuration patterns
 4. Design:
-   - Category: Configuration
-   - Structure: host, port, database, credentials, pool_settings
-   - Options: SSL, timeout, retry_policy
-   - 3 examples: MySQL, PostgreSQL, MongoDB
+    - Category: Configuration
+    - Structure: host, port, database, credentials, pool_settings
+    - Options: SSL, timeout, retry_policy
+    - 3 examples: MySQL, PostgreSQL, MongoDB
 5. Create: Template with configuration structure
 6. Validate: Check size (270 lines), examples, structure
 7. Document: Note usage in deployment tasks
@@ -857,11 +879,11 @@ The task generates one primary file:
 2. Review meta-template: Study documentation template patterns
 3. Study examples: Review `standard-doc-structure-tmpl.yaml`
 4. Design:
-   - Category: Documentation
-   - Structure: endpoint, method, parameters, request_body, responses, examples
-   - Formatting: Markdown for documentation, code blocks for examples
-   - 3 examples: GET endpoint, POST endpoint, complex query endpoint
-   - Types: REST, GraphQL, gRPC variants
+    - Category: Documentation
+    - Structure: endpoint, method, parameters, request_body, responses, examples
+    - Formatting: Markdown for documentation, code blocks for examples
+    - 3 examples: GET endpoint, POST endpoint, complex query endpoint
+    - Types: REST, GraphQL, gRPC variants
 5. Create: Template with documentation structure
 6. Validate: Check size (295 lines), formatting, examples
 7. Document: Note usage in API documentation tasks
@@ -891,13 +913,13 @@ The task generates one primary file:
 2. Review meta-template: Study workflow template patterns
 3. Study examples: Review `opencode-task-tmpl.yaml` for workflow patterns
 4. Design:
-   - Category: Operations
-   - Structure: stages, jobs, triggers, environment, variables, artifacts
-   - Options: Caching, parallelization, dependencies
-   - Common patterns: Build, test, deploy, rollback
-   - Types: GitLab CI, GitHub Actions, Jenkins variants
-   - 3 examples: Simple pipeline, multi-stage pipeline, deployment pipeline
-   - Troubleshooting: Common pipeline issues
+    - Category: Operations
+    - Structure: stages, jobs, triggers, environment, variables, artifacts
+    - Options: Caching, parallelization, dependencies
+    - Common patterns: Build, test, deploy, rollback
+    - Types: GitLab CI, GitHub Actions, Jenkins variants
+    - 3 examples: Simple pipeline, multi-stage pipeline, deployment pipeline
+    - Troubleshooting: Common pipeline issues
 5. Create: Template with comprehensive workflow structure
 6. Validate: Check size (318 lines), patterns, troubleshooting
 7. Document: Note usage in pipeline architect task

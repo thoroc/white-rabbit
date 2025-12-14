@@ -3,27 +3,27 @@ description: Specializes in creating and optimizing CI/CD pipeline configuration
 mode: subagent
 temperature: 0.2
 tools:
-  write: true
-  edit: true
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  webfetch: true
+    write: true
+    edit: true
+    read: true
+    grep: true
+    glob: true
+    list: true
+    bash: true
+    webfetch: true
 permission:
-  bash:
-    rm *: ask
-    docker *: ask
-    '*': allow
+    bash:
+        rm *: ask
+        docker *: ask
+        '*': allow
 type: agent
 category: Development
 tags:
-  - agent
-  - pipeline
-  - architect
-  - specializes
-  - creating
+    - agent
+    - pipeline
+    - architect
+    - specializes
+    - creating
 version: 1.0.0
 last_updated: 2025-11-19
 ---

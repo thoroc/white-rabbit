@@ -7,9 +7,9 @@
 ## Rule
 
 - All new knowledge-base filenames must be lowercase and use kebab-case (dash-separated). Examples:
-  - `conventional-commits.md`
-  - `opencode-agents.md`
-  - `tool-usage.md`
+    - `conventional-commits.md`
+    - `opencode-agents.md`
+    - `tool-usage.md`
 
 ## Why
 
@@ -18,9 +18,9 @@
 ## Enforcement
 
 - Agents that create or validate knowledge-base items must:
-  - Reject or suggest a corrected filename if the provided name is not lowercase kebab-case.
-  - Offer an auto-converted filename suggestion when possible (e.g., `CONVENTIONAL_COMMITS.md` → `conventional-commits.md`).
-  - Update existing references to use the new kebab-cased filenames when renames are performed.
+    - Reject or suggest a corrected filename if the provided name is not lowercase kebab-case.
+    - Offer an auto-converted filename suggestion when possible (e.g., `CONVENTIONAL_COMMITS.md` → `conventional-commits.md`).
+    - Update existing references to use the new kebab-cased filenames when renames are performed.
 
 ## Notes
 

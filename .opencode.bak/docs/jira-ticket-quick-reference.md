@@ -292,24 +292,24 @@ And: Values update in real-time And: Filter applies on touch release
 ## Need Help?
 
 1. **Not sure which format to use?**
-   - User interactions → Given/When/Then
-   - System rules → Checklist
-   - Complex ticket → Both
+    - User interactions → Given/When/Then
+    - System rules → Checklist
+    - Complex ticket → Both
 
 2. **Too many Must Haves?**
-   - Challenge each: "Can we launch without this?"
-   - Move to Should Have if possible
-   - Break into multiple tickets
+    - Challenge each: "Can we launch without this?"
+    - Move to Should Have if possible
+    - Break into multiple tickets
 
 3. **Criteria not testable?**
-   - Add specific metrics
-   - Define pass/fail clearly
-   - Include measurable outcomes
+    - Add specific metrics
+    - Define pass/fail clearly
+    - Include measurable outcomes
 
 4. **Stakeholders disagree?**
-   - Review MoSCoW priorities together
-   - Focus on business value
-   - Use data to support decisions
+    - Review MoSCoW priorities together
+    - Focus on business value
+    - Use data to support decisions
 
 ## Remember
 

@@ -4,10 +4,10 @@ agent: documentalist
 type: command
 category: Development
 tags:
-  - command
-  - documentalist
-  - generate
-  - comprehensive
+    - command
+    - documentalist
+    - generate
+    - comprehensive
 version: 1.0.0
 last_updated: 2025-11-19
 ---
@@ -68,54 +68,54 @@ loading patterns.
 ## Your Tasks
 
 1. **Discover Existing Documentation**:
-   - **CRITICAL**: Always search for existing documentation FIRST at ANY DEPTH before creating new files
-   - Use comprehensive discovery commands to find documentation in ALL locations (no depth limits)
-   - Read ALL discovered documentation to understand current structure and content
-   - Identify gaps, outdated information, or missing sections
+    - **CRITICAL**: Always search for existing documentation FIRST at ANY DEPTH before creating new files
+    - Use comprehensive discovery commands to find documentation in ALL locations (no depth limits)
+    - Read ALL discovered documentation to understand current structure and content
+    - Identify gaps, outdated information, or missing sections
 
-   **📋 Complete Discovery Resources**:
-   - **Discovery Task**: `.opencode/task/documentation-discovery.md` (discovery command and usage)
-   - **Analysis Checklist**: `.opencode/checklist/documentation-discovery.md` (85+ verification points)
+    **📋 Complete Discovery Resources**:
+    - **Discovery Task**: `.opencode/task/documentation-discovery.md` (discovery command and usage)
+    - **Analysis Checklist**: `.opencode/checklist/documentation-discovery.md` (85+ verification points)
 
-   **Discovery Command**: See `.opencode/task/documentation-discovery.md` for the complete command. You can copy it from
-   there or run the abbreviated version below.
+    **Discovery Command**: See `.opencode/task/documentation-discovery.md` for the complete command. You can copy it from
+    there or run the abbreviated version below.
 
-   **Note**: The `/document` command includes this discovery logic. Consider delegating to `/document` for discovery and
-   generation, then review and enhance the output.
+    **Note**: The `/document` command includes this discovery logic. Consider delegating to `/document` for discovery and
+    generation, then review and enhance the output.
 
-   **After discovery, you MUST**:
-   - Review the COMPLETE list of discovered documentation files
-   - Read ALL discovered files to understand structure and conventions
-   - Identify the project's documentation organization pattern (monorepo, centralized, root, mixed)
-   - Note exact file paths for any documentation you will update
+    **After discovery, you MUST**:
+    - Review the COMPLETE list of discovered documentation files
+    - Read ALL discovered files to understand structure and conventions
+    - Identify the project's documentation organization pattern (monorepo, centralized, root, mixed)
+    - Note exact file paths for any documentation you will update
 
 2. **Assess the Request**:
-   - Determine what type of documentation is needed
-   - Check if documentation already exists for this type
-   - Identify which existing commands could be leveraged
-   - Plan whether to update existing or create new documentation
+    - Determine what type of documentation is needed
+    - Check if documentation already exists for this type
+    - Identify which existing commands could be leveraged
+    - Plan whether to update existing or create new documentation
 
 3. **Use Strategic Command Invocation**:
-   - Start with `/docs-help` to understand current state
-   - Use targeted commands (e.g., `/api-docs` for API documentation)
-   - Pass specific focus areas as arguments to commands
-   - Note: All specialized commands now include discovery logic
+    - Start with `/docs-help` to understand current state
+    - Use targeted commands (e.g., `/api-docs` for API documentation)
+    - Pass specific focus areas as arguments to commands
+    - Note: All specialized commands now include discovery logic
 
 4. **Enhance and Integrate**:
-   - Review outputs from commands for completeness
-   - **When updating existing docs**: Preserve valuable content, enhance gaps
-   - **When creating new docs**: Follow standard structure
-   - Add additional analysis and context where needed
-   - Ensure consistency across all documentation
-   - Integrate multiple command outputs into cohesive documentation
+    - Review outputs from commands for completeness
+    - **When updating existing docs**: Preserve valuable content, enhance gaps
+    - **When creating new docs**: Follow standard structure
+    - Add additional analysis and context where needed
+    - Ensure consistency across all documentation
+    - Integrate multiple command outputs into cohesive documentation
 
 5. **Apply Your Expertise**:
-   - Follow documentation best practices
-   - Use clear, professional language
-   - Include proper markdown formatting and Mermaid diagrams
-   - Provide practical examples and troubleshooting guidance
-   - Create proper navigation and cross-references
-   - **Always prioritize updating over creating new files**
+    - Follow documentation best practices
+    - Use clear, professional language
+    - Include proper markdown formatting and Mermaid diagrams
+    - Provide practical examples and troubleshooting guidance
+    - Create proper navigation and cross-references
+    - **Always prioritize updating over creating new files**
 
 ## Documentation Standards
 

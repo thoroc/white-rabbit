@@ -10,4 +10,4 @@ Files:
 
 Regenerate by running:
 
-	npm run docs:api	# or: bun ./scripts/extract-sdk-docs.ts
+    npm run docs:api	# or: bun ./scripts/extract-sdk-docs.ts

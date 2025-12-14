@@ -5,15 +5,15 @@ type: checklist
 category: documentation
 version: 1.0.0
 tags:
-  - templates
-  - discovery
-  - validation
-  - documentation
+    - templates
+    - discovery
+    - validation
+    - documentation
 reference: ../knowledge-base/template-system-architecture.md
 applies_to:
-  - template-documentation
-  - template-discovery
-  - command-development
+    - template-documentation
+    - template-discovery
+    - command-development
 last_updated: 2025-11-19
 ---
 
@@ -91,31 +91,31 @@ This checklist ensures:
 ### Category Assignment
 
 - [ ] **OpenCode Resource Templates**: Identify meta-templates creating resources
-  - [ ] opencode-agent-tmpl.yaml
-  - [ ] opencode-command-tmpl.yaml
-  - [ ] opencode-task-tmpl.yaml
-  - [ ] opencode-checklist-tmpl.yaml
-  - [ ] opencode-knowledge-base-tmpl.yaml
-  - [ ] opencode-template-tmpl.yaml
+    - [ ] opencode-agent-tmpl.yaml
+    - [ ] opencode-command-tmpl.yaml
+    - [ ] opencode-task-tmpl.yaml
+    - [ ] opencode-checklist-tmpl.yaml
+    - [ ] opencode-knowledge-base-tmpl.yaml
+    - [ ] opencode-template-tmpl.yaml
 
 - [ ] **Documentation Templates**: Identify documentation structure templates
-  - [ ] standard-doc-structure-tmpl.yaml
+    - [ ] standard-doc-structure-tmpl.yaml
 
 - [ ] **Workflow Templates**: Identify process and workflow templates
-  - [ ] jira-ticket-description-tmpl.yaml
-  - [ ] ai-tool-assessment-report-tmpl.yaml
-  - [ ] ai-tool-rfc-submission-tmpl.yaml
+    - [ ] jira-ticket-description-tmpl.yaml
+    - [ ] ai-tool-assessment-report-tmpl.yaml
+    - [ ] ai-tool-rfc-submission-tmpl.yaml
 
 - [ ] **Reference Templates**: Identify quick reference templates
-  - [ ] common-shell-commands-tmpl.yaml
-  - [ ] task-reference-template-tmpl.yaml
-  - [ ] task-listing-format-tmpl.yaml
-  - [ ] template-listing-format-tmpl.yaml
+    - [ ] common-shell-commands-tmpl.yaml
+    - [ ] task-reference-template-tmpl.yaml
+    - [ ] task-listing-format-tmpl.yaml
+    - [ ] template-listing-format-tmpl.yaml
 
 - [ ] **Domain-Specific Templates**: Identify specialized domain templates
-  - [ ] AI tool approval templates
-  - [ ] Pipeline configuration templates
-  - [ ] Security assessment templates
+    - [ ] AI tool approval templates
+    - [ ] Pipeline configuration templates
+    - [ ] Security assessment templates
 
 ### Category Organization
 

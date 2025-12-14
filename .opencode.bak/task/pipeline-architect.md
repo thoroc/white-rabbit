@@ -1,17 +1,17 @@
 ---
 title: Pipeline Architect Task
 description: Create optimized CI/CD pipeline configurations with multi-stage
-  builds, security scanning, and deployment automation
+    builds, security scanning, and deployment automation
 type: task
 category: Operations
 version: 1.0.0
 tags:
-  - cicd
-  - pipeline
-  - architect
-  - gitlab
-  - jenkins
-  - github-actions
+    - cicd
+    - pipeline
+    - architect
+    - gitlab
+    - jenkins
+    - github-actions
 mode: task
 temperature: 0.3
 last_updated: 2025-11-19
