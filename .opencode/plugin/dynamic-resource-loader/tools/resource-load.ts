@@ -9,9 +9,12 @@ import { getOrCreateSessionState } from '../session';
 import {
     validateResourceExists,
     checkSessionLimits,
+} from './resource-validation';
+import {
+    createLoadReferences,
     loadResourceContent,
-    formatResourceOutput,
-} from './helpers';
+} from './resource-loader-helpers';
+import { formatResourceOutput } from './resource-formatting';
 
 export const createResourceLoadTool = (
     context: ToolContext,
