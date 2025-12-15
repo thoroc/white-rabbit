@@ -2,14 +2,14 @@
  * Cache management for resource index
  */
 
-import type { ResourceIndex, SerializedIndex } from './types.ts';
-import { fileExists, ensureDir } from './utils.ts';
+import type { ResourceIndex, SerializedIndex } from './types';
+import { fileExists, ensureDir } from './utils';
 import { dirname } from 'node:path';
 
 /**
  * Serialize resource index for storage
  */
-export function serializeIndex(index: ResourceIndex): SerializedIndex {
+export const serializeIndex = (index: ResourceIndex): SerializedIndex => {
     return {
         version: index.version,
         generatedAt: index.generatedAt,
@@ -48,12 +48,14 @@ export function serializeIndex(index: ResourceIndex): SerializedIndex {
             ),
         },
     };
-}
+};
 
 /**
  * Deserialize resource index from storage
  */
-export function deserializeIndex(serialized: SerializedIndex): ResourceIndex {
+export const deserializeIndex = (
+    serialized: SerializedIndex
+): ResourceIndex => {
     return {
         version: serialized.version,
         generatedAt: serialized.generatedAt,
@@ -80,15 +82,15 @@ export function deserializeIndex(serialized: SerializedIndex): ResourceIndex {
             ),
         },
     };
-}
+};
 
 /**
  * Save index to cache file
  */
-export async function saveIndexCache(
+export const saveIndexCache = async (
     index: ResourceIndex,
     cachePath: string
-): Promise<void> {
+): Promise<void> => {
     try {
         // Ensure cache directory exists
         const cacheDir = dirname(cachePath);
@@ -102,14 +104,14 @@ export async function saveIndexCache(
     } catch (error) {
         console.warn('[ResourceLoader] Failed to save index cache:', error);
     }
-}
+};
 
 /**
  * Load index from cache file
  */
-export async function loadIndexCache(
+export const loadIndexCache = async (
     cachePath: string
-): Promise<ResourceIndex | null> {
+): Promise<ResourceIndex | null> => {
     try {
         if (!(await fileExists(cachePath))) {
             return null;
@@ -125,12 +127,12 @@ export async function loadIndexCache(
         console.warn('[ResourceLoader] Failed to load index cache:', error);
         return null;
     }
-}
+};
 
 /**
  * Delete cache file
  */
-export async function deleteCacheFile(cachePath: string): Promise<void> {
+export const deleteCacheFile = async (cachePath: string): Promise<void> => {
     try {
         if (await fileExists(cachePath)) {
             await Bun.$`rm ${cachePath}`;
@@ -139,4 +141,4 @@ export async function deleteCacheFile(cachePath: string): Promise<void> {
     } catch (error) {
         console.warn('[ResourceLoader] Failed to delete cache file:', error);
     }
-}
+};

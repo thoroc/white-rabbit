@@ -13,7 +13,7 @@ import {
     isResourceType,
     isDomain,
     extractInlineReferences,
-} from '../utils.ts';
+} from '../utils';
 
 describe('Utility Functions', () => {
     describe('formatBytes', () => {

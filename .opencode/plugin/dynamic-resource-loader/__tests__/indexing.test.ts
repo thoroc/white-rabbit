@@ -7,8 +7,8 @@ import {
     parseFrontmatter,
     addResourceToIndex,
     buildReferenceGraph,
-} from '../indexing.ts';
-import type { ResourceIndex, ResourceMetadata } from '../types.ts';
+} from '../indexing';
+import type { ResourceIndex, ResourceMetadata } from '../types';
 
 describe('Indexing Functions', () => {
     describe('parseFrontmatter', () => {

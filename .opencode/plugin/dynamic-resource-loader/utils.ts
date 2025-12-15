@@ -3,23 +3,23 @@
  */
 
 import { resolve, relative } from 'node:path';
-import type { Domain, ResourceType, ResourceError } from './types.ts';
+import type { Domain, ResourceType, ResourceError } from './types';
 
 /**
  * Format bytes to human-readable string
  */
-export function formatBytes(bytes: number): string {
+export const formatBytes = (bytes: number): string => {
     if (bytes === 0) return '0 B';
     const k = 1024;
     const sizes = ['B', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return `${(bytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
-}
+};
 
 /**
  * Get intersection of two sets
  */
-export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+export const intersection = <T>(setA: Set<T>, setB: Set<T>): Set<T> => {
     const result = new Set<T>();
     for (const item of setA) {
         if (setB.has(item)) {
@@ -27,42 +27,42 @@ export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
         }
     }
     return result;
-}
+};
 
 /**
  * Derive resource ID from file path
  */
-export function deriveIdFromPath(path: string): string {
+export const deriveIdFromPath = (path: string): string => {
     const basename = path.split('/').pop()!;
     return basename.replace(/\.(md|json)$/, '');
-}
+};
 
 /**
  * Derive display name from path
  */
-export function deriveNameFromPath(path: string): string {
+export const deriveNameFromPath = (path: string): string => {
     const id = deriveIdFromPath(path);
     return id
         .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
-}
+};
 
 /**
  * Derive domain from file path based on CLAUDE.md conventions
  */
-export function deriveDomainFromPath(filePath: string): Domain {
+export const deriveDomainFromPath = (filePath: string): Domain => {
     if (filePath.includes('/opencode/')) return 'opencode';
     if (filePath.includes('/core/')) return 'core';
     if (filePath.includes('/docs/')) return 'docs';
     if (filePath.includes('/dev/')) return 'dev';
     return 'common';
-}
+};
 
 /**
  * Check if a path is a resource path
  */
-export function isResourcePath(path: string): boolean {
+export const isResourcePath = (path: string): boolean => {
     const resourceTypes = [
         'checklist',
         'knowledge-base',
@@ -71,12 +71,12 @@ export function isResourcePath(path: string): boolean {
         'template',
     ];
     return resourceTypes.some((type) => path.includes(`/.opencode/${type}/`));
-}
+};
 
 /**
  * Type guard for ResourceType
  */
-export function isResourceType(type: string): type is ResourceType {
+export const isResourceType = (type: string): type is ResourceType => {
     return [
         'checklist',
         'knowledge-base',
@@ -84,41 +84,41 @@ export function isResourceType(type: string): type is ResourceType {
         'task',
         'template',
     ].includes(type);
-}
+};
 
 /**
  * Type guard for Domain
  */
-export function isDomain(domain: string): domain is Domain {
+export const isDomain = (domain: string): domain is Domain => {
     return ['opencode', 'core', 'docs', 'dev', 'common'].includes(domain);
-}
+};
 
 /**
  * Sanitize path to prevent path traversal attacks
  */
-export function sanitizePath(path: string, projectRoot: string): string {
+export const sanitizePath = (path: string, projectRoot: string): string => {
     const resolved = resolve(projectRoot, path);
     if (!resolved.startsWith(projectRoot)) {
         throw new Error('Path traversal detected');
     }
     return resolved;
-}
+};
 
 /**
  * Get relative path from project root
  */
-export function getRelativePath(
+export const getRelativePath = (
     absolutePath: string,
     projectRoot: string
-): string {
+): string => {
     return relative(projectRoot, absolutePath);
-}
+};
 
 /**
  * Extract inline references from markdown content
- * Looks for patterns like: @reference-id or [[reference-id]]
+ * Looks for patterns like: `@reference-id` or `[[reference-id]]`
  */
-export function extractInlineReferences(content: string): string[] {
+export const extractInlineReferences = (content: string): string[] => {
     const references = new Set<string>();
 
     // Pattern: @reference-id
@@ -135,12 +135,12 @@ export function extractInlineReferences(content: string): string[] {
     }
 
     return Array.from(references);
-}
+};
 
 /**
  * Format error for display
  */
-export function formatError(error: ResourceError): string {
+export const formatError = (error: ResourceError): string => {
     switch (error.type) {
         case 'ResourceNotFound':
             return JSON.stringify(
@@ -215,14 +215,14 @@ export function formatError(error: ResourceError): string {
                 2
             );
     }
-}
+};
 
 /**
  * Get file statistics using Bun's native API
  */
-export async function getFileStats(
+export const getFileStats = async (
     filePath: string
-): Promise<{ size: number; mtime: number }> {
+): Promise<{ size: number; mtime: number }> => {
     try {
         const file = Bun.file(filePath);
         const stat = await file.stat();
@@ -233,15 +233,15 @@ export async function getFileStats(
     } catch (error) {
         throw new Error(`Failed to get file stats: ${error}`);
     }
-}
+};
 
 /**
  * Read file content using Bun's native API with size limit
  */
-export async function readResourceFile(
+export const readResourceFile = async (
     path: string,
     maxSize = 1024 * 1024
-): Promise<string> {
+): Promise<string> => {
     const file = Bun.file(path);
     const stat = await file.stat();
 
@@ -252,27 +252,27 @@ export async function readResourceFile(
     }
 
     return await file.text();
-}
+};
 
 /**
  * Check if file exists
  */
-export async function fileExists(path: string): Promise<boolean> {
+export const fileExists = async (path: string): Promise<boolean> => {
     try {
         const file = Bun.file(path);
         return await file.exists();
     } catch {
         return false;
     }
-}
+};
 
 /**
  * Create directory if it doesn't exist
  */
-export async function ensureDir(dirPath: string): Promise<void> {
+export const ensureDir = async (dirPath: string): Promise<void> => {
     try {
         await Bun.write(`${dirPath}/.keep`, '', { createPath: true });
     } catch (error) {
         console.warn(`Failed to create directory ${dirPath}:`, error);
     }
-}
+};

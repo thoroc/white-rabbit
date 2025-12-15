@@ -4,7 +4,7 @@
 
 import matter from 'gray-matter';
 import { Glob } from 'bun';
-import type { ResourceIndex, ResourceMetadata, ResourceType } from './types.ts';
+import type { ResourceIndex, ResourceMetadata, ResourceType } from './types';
 import {
     deriveDomainFromPath,
     deriveIdFromPath,
@@ -13,12 +13,13 @@ import {
     getFileStats,
     getRelativePath,
     readResourceFile,
-} from './utils.ts';
+} from './utils';
 
 /**
  * Parse frontmatter from file content using gray-matter
  */
-export function parseFrontmatter(content: string): Record<string, any> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const parseFrontmatter = (content: string): Record<string, any> => {
     try {
         const { data } = matter(content);
         return data;
@@ -26,16 +27,16 @@ export function parseFrontmatter(content: string): Record<string, any> {
         console.warn('[ResourceIndex] Error parsing frontmatter:', error);
         return {};
     }
-}
+};
 
 /**
  * Extract resource metadata from file
  */
-export async function extractResourceMetadata(
+export const extractResourceMetadata = async (
     filePath: string,
     type: ResourceType,
     projectRoot: string
-): Promise<ResourceMetadata | null> {
+): Promise<ResourceMetadata | null> => {
     try {
         // Read file content
         const content = await readResourceFile(filePath);
@@ -66,7 +67,7 @@ export async function extractResourceMetadata(
             relativePath: getRelativePath(filePath, projectRoot),
             name:
                 frontmatter.title ||
-                frontmatter.name ||
+                frontmatter.title ||
                 deriveNameFromPath(filePath),
             domain,
             category: frontmatter.category,
@@ -92,15 +93,15 @@ export async function extractResourceMetadata(
         );
         return null;
     }
-}
+};
 
 /**
  * Add resource to index with all secondary indexes
  */
-export function addResourceToIndex(
+export const addResourceToIndex = (
     index: ResourceIndex,
     metadata: ResourceMetadata
-): void {
+): void => {
     const { id, type, domain, tags, referencedBy } = metadata;
 
     // Add to primary storage
@@ -137,12 +138,12 @@ export function addResourceToIndex(
             index.byReference.get(ref)!.add(id);
         }
     }
-}
+};
 
 /**
  * Build reference graph from indexed resources
  */
-export function buildReferenceGraph(index: ResourceIndex): void {
+export const buildReferenceGraph = (index: ResourceIndex): void => {
     // Build forward and backward reference graphs
     for (const [id, metadata] of index.resources) {
         if (metadata.references && metadata.references.length > 0) {
@@ -163,12 +164,15 @@ export function buildReferenceGraph(index: ResourceIndex): void {
             }
         }
     }
-}
+};
 
 /**
  * Scan files using Bun's glob
  */
-async function scanFiles(baseDir: string, pattern: string): Promise<string[]> {
+const scanFiles = async (
+    baseDir: string,
+    pattern: string
+): Promise<string[]> => {
     const files: string[] = [];
     const glob = new Glob(pattern);
 
@@ -181,15 +185,15 @@ async function scanFiles(baseDir: string, pattern: string): Promise<string[]> {
     }
 
     return files;
-}
+};
 
 /**
  * Index agent and command references by scanning agent/command files
  */
-export async function indexAgentCommandReferences(
+export const indexAgentCommandReferences = async (
     worktree: string,
     index: ResourceIndex
-): Promise<void> {
+): Promise<void> => {
     try {
         // Scan agent files
         const agentDir = `${worktree}/.opencode/agent`;
@@ -254,14 +258,14 @@ export async function indexAgentCommandReferences(
             error
         );
     }
-}
+};
 
 /**
  * Build complete resource index
  */
-export async function buildResourceIndex(
+export const buildResourceIndex = async (
     worktree: string
-): Promise<ResourceIndex> {
+): Promise<ResourceIndex> => {
     const index: ResourceIndex = {
         version: '1.0.0',
         generatedAt: Date.now(),
@@ -328,4 +332,4 @@ export async function buildResourceIndex(
     );
 
     return index;
-}
+};

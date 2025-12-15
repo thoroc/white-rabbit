@@ -9,7 +9,7 @@ import type { Plugin, PluginInput, Hooks } from '@opencode-ai/plugin';
 import { readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createTUILogger, type TUILogger } from './lib/tui-logger.ts';
+import { createTUILogger, type TUILogger } from './lib/tui-logger';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

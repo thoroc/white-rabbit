@@ -6,15 +6,15 @@ import type {
     SessionResourceState,
     LoadedResource,
     PluginState,
-} from './types.ts';
+} from './types';
 
 /**
  * Get or create session state
  */
-export function getOrCreateSessionState(
+export const getOrCreateSessionState = (
     sessions: Map<string, SessionResourceState>,
     sessionID: string
-): SessionResourceState {
+): SessionResourceState => {
     let sessionState = sessions.get(sessionID);
 
     if (!sessionState) {
@@ -31,15 +31,15 @@ export function getOrCreateSessionState(
     }
 
     return sessionState;
-}
+};
 
 /**
  * Auto-prune resources that have been flagged or released
  */
-export async function autoPruneResources(
+export const autoPruneResources = async (
     sessionID: string,
     state: PluginState
-): Promise<void> {
+): Promise<void> => {
     const sessionState = state.sessions.get(sessionID);
     if (!sessionState) return;
 
@@ -64,12 +64,12 @@ export async function autoPruneResources(
             `[ResourceLoader] Auto-pruned ${toPrune.length} resources from session ${sessionID}`
         );
     }
-}
+};
 
 /**
  * Cleanup old sessions periodically
  */
-export function cleanupOldSessions(state: PluginState): void {
+export const cleanupOldSessions = (state: PluginState): void => {
     const now = Date.now();
     const maxAge = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -81,35 +81,35 @@ export function cleanupOldSessions(state: PluginState): void {
             );
         }
     }
-}
+};
 
 /**
  * Add loaded resource to session
  */
-export function addLoadedResource(
+export const addLoadedResource = (
     sessionState: SessionResourceState,
     resource: LoadedResource
-): void {
+): void => {
     sessionState.loaded.set(resource.id, resource);
     sessionState.totalLoaded++;
     sessionState.totalSize += resource.size;
     sessionState.lastActivity = Date.now();
-}
+};
 
 /**
  * Check if resource is already loaded in session
  */
-export function isResourceLoaded(
+export const isResourceLoaded = (
     sessionState: SessionResourceState,
     resourceId: string
-): boolean {
+): boolean => {
     return sessionState.loaded.has(resourceId);
-}
+};
 
 /**
  * Get session statistics
  */
-export function getSessionStats(sessionState: SessionResourceState) {
+export const getSessionStats = (sessionState: SessionResourceState) => {
     return {
         sessionID: sessionState.sessionID,
         activeResources: sessionState.loaded.size,
@@ -118,15 +118,15 @@ export function getSessionStats(sessionState: SessionResourceState) {
         createdAt: new Date(sessionState.createdAt).toISOString(),
         lastActivity: new Date(sessionState.lastActivity).toISOString(),
     };
-}
+};
 
 /**
  * Release resources from session
  */
-export function releaseResources(
+export const releaseResources = (
     sessionState: SessionResourceState,
     resourceIds: string[]
-): { released: string[]; notFound: string[] } {
+): { released: string[]; notFound: string[] } => {
     const released: string[] = [];
     const notFound: string[] = [];
 
@@ -142,15 +142,15 @@ export function releaseResources(
     }
 
     return { released, notFound };
-}
+};
 
 /**
  * Flag resources for pruning (called after message)
  */
-export function flagResourcesForPruning(
+export const flagResourcesForPruning = (
     sessionState: SessionResourceState,
     currentMessageID: string
-): number {
+): number => {
     let flagged = 0;
 
     for (const resource of sessionState.loaded.values()) {
@@ -165,16 +165,18 @@ export function flagResourcesForPruning(
     }
 
     return flagged;
-}
+};
 
 /**
  * Reactivate resources (called when resource-load is used again)
  */
-export function reactivateResources(sessionState: SessionResourceState): void {
+export const reactivateResources = (
+    sessionState: SessionResourceState
+): void => {
     for (const resource of sessionState.loaded.values()) {
         if (resource.status === 'flagged') {
             resource.status = 'active';
             resource.flaggedAt = undefined;
         }
     }
-}
+};
