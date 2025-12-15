@@ -128,9 +128,9 @@ export class TUILogger {
 /**
  * Factory function to create a TUILogger instance
  */
-export function createTUILogger(
+export const createTUILogger = (
     client: PluginInput['client'],
     config?: TUILoggerConfig
-): TUILogger {
+): TUILogger => {
     return new TUILogger(client, config);
-}
+};

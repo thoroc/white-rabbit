@@ -378,6 +378,50 @@ export default (async ({ directory, worktree }: PluginInput) => {
         }
     };
 
+    const filterResources = (
+        index: ResourceIndex,
+        type?: string,
+        domain?: string,
+        tags?: string[],
+        referencedBy?: string
+    ): Set<string> => {
+        let candidateIds = new Set(index.resources.keys());
+
+        if (type && type !== 'all') {
+            const typeIds = index.byType.get(type as ResourceType);
+            candidateIds = typeIds
+                ? intersection(candidateIds, typeIds)
+                : new Set();
+        }
+
+        if (domain) {
+            const domainIds = index.byDomain.get(domain as Domain);
+            candidateIds = domainIds
+                ? intersection(candidateIds, domainIds)
+                : new Set();
+        }
+
+        if (tags && tags.length > 0) {
+            for (const tag of tags) {
+                const tagIds = index.byTag.get(tag);
+                if (!tagIds) {
+                    candidateIds.clear();
+                    break;
+                }
+                candidateIds = intersection(candidateIds, tagIds);
+            }
+        }
+
+        if (referencedBy) {
+            const refIds = index.byReference.get(referencedBy);
+            candidateIds = refIds
+                ? intersection(candidateIds, refIds)
+                : new Set();
+        }
+
+        return candidateIds;
+    };
+
     // Tool 1: resource-query
     const resourceQueryTool = tool({
         description:
@@ -432,48 +476,14 @@ export default (async ({ directory, worktree }: PluginInput) => {
                 // Ensure index is built
                 const index = await ensureIndex();
 
-                // Start with all resources
-                let candidateIds = new Set(index.resources.keys());
-
-                // Apply filters
-                if (args.type && args.type !== 'all') {
-                    const typeIds = index.byType.get(args.type as ResourceType);
-                    if (typeIds) {
-                        candidateIds = intersection(candidateIds, typeIds);
-                    } else {
-                        candidateIds.clear();
-                    }
-                }
-
-                if (args.domain) {
-                    const domainIds = index.byDomain.get(args.domain as Domain);
-                    if (domainIds) {
-                        candidateIds = intersection(candidateIds, domainIds);
-                    } else {
-                        candidateIds.clear();
-                    }
-                }
-
-                if (args.tags && args.tags.length > 0) {
-                    for (const tag of args.tags) {
-                        const tagIds = index.byTag.get(tag);
-                        if (tagIds) {
-                            candidateIds = intersection(candidateIds, tagIds);
-                        } else {
-                            candidateIds.clear();
-                            break;
-                        }
-                    }
-                }
-
-                if (args.referencedBy) {
-                    const refIds = index.byReference.get(args.referencedBy);
-                    if (refIds) {
-                        candidateIds = intersection(candidateIds, refIds);
-                    } else {
-                        candidateIds.clear();
-                    }
-                }
+                // Apply filters using helper function
+                let candidateIds = filterResources(
+                    index,
+                    args.type,
+                    args.domain,
+                    args.tags,
+                    args.referencedBy
+                );
 
                 // Apply text search
                 const results: ResourceMetadata[] = [];

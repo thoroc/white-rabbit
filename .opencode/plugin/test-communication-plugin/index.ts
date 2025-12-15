@@ -202,10 +202,10 @@ export class TestCommunicationPlugin {
 }
 
 // Export factory function
-export function createPlugin(
+export const createPlugin = (
     config?: Partial<PluginConfig>
-): TestCommunicationPlugin {
+): TestCommunicationPlugin => {
     return new TestCommunicationPlugin(config);
-}
+};
 
 export default createPlugin;

@@ -33,7 +33,7 @@ export const createResourceLoadTool = (
         },
     },
 
-    async execute(args: any, ctxt: any) {
+    execute: async (args: any, ctxt: any) => {
         try {
             // Ensure index is built
             const index = await context.ensureIndex();

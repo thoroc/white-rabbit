@@ -8,6 +8,48 @@ import type { ResourceType, Domain, ResourceMetadata } from '../types';
 import type { ToolContext } from './types';
 import { intersection, formatBytes } from '../utils';
 
+const filterQueryResources = (
+    index: any,
+    type?: string,
+    domain?: string,
+    tags?: string[],
+    referencedBy?: string
+): Set<any> => {
+    let candidateIds = new Set(index.resources.keys());
+
+    if (type && type !== 'all') {
+        const typeIds = index.byType.get(type as ResourceType);
+        candidateIds = typeIds
+            ? intersection(candidateIds, typeIds)
+            : new Set();
+    }
+
+    if (domain) {
+        const domainIds = index.byDomain.get(domain as Domain);
+        candidateIds = domainIds
+            ? intersection(candidateIds, domainIds)
+            : new Set();
+    }
+
+    if (tags && tags.length > 0) {
+        for (const tag of tags) {
+            const tagIds = index.byTag.get(tag);
+            if (!tagIds) {
+                candidateIds.clear();
+                break;
+            }
+            candidateIds = intersection(candidateIds, tagIds);
+        }
+    }
+
+    if (referencedBy) {
+        const refIds = index.byReference.get(referencedBy);
+        candidateIds = refIds ? intersection(candidateIds, refIds) : new Set();
+    }
+
+    return candidateIds;
+};
+
 export const createResourceQueryTool = (context: ToolContext) => ({
     description:
         'Search for available resources (checklists, knowledge-base, schemas, tasks, templates) by type, name, tags, domain, or references. Use this to discover what resources are available before loading them.',
@@ -63,53 +105,19 @@ export const createResourceQueryTool = (context: ToolContext) => ({
         },
     },
 
-    async execute(args: any, _context: any) {
+    execute: async (args: any, _context: any) => {
         try {
             // Ensure index is built
             const index = await context.ensureIndex();
 
-            // Start with all resources
-            let candidateIds = new Set(index.resources.keys());
-
-            // Apply filters
-            if (args.type && args.type !== 'all') {
-                const typeIds = index.byType.get(args.type as ResourceType);
-                if (typeIds) {
-                    candidateIds = intersection(candidateIds, typeIds);
-                } else {
-                    candidateIds.clear();
-                }
-            }
-
-            if (args.domain) {
-                const domainIds = index.byDomain.get(args.domain as Domain);
-                if (domainIds) {
-                    candidateIds = intersection(candidateIds, domainIds);
-                } else {
-                    candidateIds.clear();
-                }
-            }
-
-            if (args.tags && args.tags.length > 0) {
-                for (const tag of args.tags) {
-                    const tagIds = index.byTag.get(tag);
-                    if (tagIds) {
-                        candidateIds = intersection(candidateIds, tagIds);
-                    } else {
-                        candidateIds.clear();
-                        break;
-                    }
-                }
-            }
-
-            if (args.referencedBy) {
-                const refIds = index.byReference.get(args.referencedBy);
-                if (refIds) {
-                    candidateIds = intersection(candidateIds, refIds);
-                } else {
-                    candidateIds.clear();
-                }
-            }
+            // Apply filters using helper function
+            let candidateIds = filterQueryResources(
+                index,
+                args.type,
+                args.domain,
+                args.tags,
+                args.referencedBy
+            );
 
             // Apply text search
             const results: ResourceMetadata[] = [];

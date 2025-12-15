@@ -70,6 +70,6 @@ export class Logger {
     }
 }
 
-export function createLogger(config: LoggerConfig): Logger {
+export const createLogger = (config: LoggerConfig): Logger => {
     return new Logger(config);
-}
+};

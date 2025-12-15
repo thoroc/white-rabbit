@@ -13,7 +13,7 @@ export const createResourceListLoadedTool = (context: ToolContext) => ({
         'List all resources currently loaded in this session context, including their status and metadata',
     args: {},
 
-    async execute(_args: any, ctxt: any) {
+    execute: async (_args: any, ctxt: any) => {
         try {
             const sessionState = context.state.sessions.get(ctxt.sessionID);
 

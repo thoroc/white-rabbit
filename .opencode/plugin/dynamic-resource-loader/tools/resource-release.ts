@@ -27,7 +27,7 @@ export const createResourceReleaseTool = (context: ToolContext) => ({
         },
     },
 
-    async execute(args: any, ctxt: any) {
+    execute: async (args: any, ctxt: any) => {
         try {
             const sessionState = context.state.sessions.get(ctxt.sessionID);
 
