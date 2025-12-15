@@ -30,10 +30,13 @@ export class TUILogger {
     }
 
     /**
-     * Log an informational message to the TUI
+     * Send message to TUI with optional data
      */
-    async log(message: string, data?: unknown): Promise<void> {
-        const formattedMessage = this.formatMessage(message);
+    private async sendToTUI(
+        message: string,
+        data?: unknown,
+        consoleFallback?: (msg: string, d?: unknown) => void
+    ): Promise<void> {
         try {
             await this.client.session.prompt({
                 path: { id: 'current' },
@@ -41,13 +44,13 @@ export class TUILogger {
                     parts: [
                         {
                             type: 'text',
-                            text: formattedMessage,
+                            text: message,
                         },
                     ],
                 },
             });
 
-            // If data is provided, log it as well
+            // If data is provided, send it as well
             if (data !== undefined) {
                 await this.client.session.prompt({
                     path: { id: 'current' },
@@ -62,10 +65,18 @@ export class TUILogger {
                 });
             }
         } catch (error) {
-            if (this.config.fallbackToConsole) {
-                console.log(formattedMessage, data ?? '');
+            if (this.config.fallbackToConsole && consoleFallback) {
+                consoleFallback(message, data);
             }
         }
+    }
+
+    /**
+     * Log an informational message to the TUI
+     */
+    async log(message: string, data?: unknown): Promise<void> {
+        const formattedMessage = this.formatMessage(message);
+        await this.sendToTUI(formattedMessage, data, console.log);
     }
 
     /**
@@ -73,37 +84,7 @@ export class TUILogger {
      */
     async warn(message: string, data?: unknown): Promise<void> {
         const formattedMessage = this.formatMessage(`⚠️  ${message}`);
-        try {
-            await this.client.session.prompt({
-                path: { id: 'current' },
-                body: {
-                    parts: [
-                        {
-                            type: 'text',
-                            text: formattedMessage,
-                        },
-                    ],
-                },
-            });
-
-            if (data !== undefined) {
-                await this.client.session.prompt({
-                    path: { id: 'current' },
-                    body: {
-                        parts: [
-                            {
-                                type: 'text',
-                                text: `  ${JSON.stringify(data, null, 2)}`,
-                            },
-                        ],
-                    },
-                });
-            }
-        } catch (error) {
-            if (this.config.fallbackToConsole) {
-                console.warn(formattedMessage, data ?? '');
-            }
-        }
+        await this.sendToTUI(formattedMessage, data, console.warn);
     }
 
     /**
@@ -116,18 +97,7 @@ export class TUILogger {
         const formattedMessage = this.formatMessage(`❌ ${errorMsg}`);
 
         try {
-            // Send error to session
-            await this.client.session.prompt({
-                path: { id: 'current' },
-                body: {
-                    parts: [
-                        {
-                            type: 'text',
-                            text: formattedMessage,
-                        },
-                    ],
-                },
-            });
+            await this.sendToTUI(formattedMessage, undefined, console.error);
 
             // Show toast notification for critical errors
             if (this.config.showErrorToasts) {

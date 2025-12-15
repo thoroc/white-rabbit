@@ -261,6 +261,64 @@ export const indexAgentCommandReferences = async (
 };
 
 /**
+ * Define resource paths for scanning
+ */
+const getResourcePaths = (
+    worktree: string
+): Array<[ResourceType, string, string]> => [
+    ['checklist', `${worktree}/.opencode/checklist`, '**/*.md'],
+    ['knowledge-base', `${worktree}/.opencode/knowledge-base`, '**/*.md'],
+    ['schema', `${worktree}/.opencode/schema`, '**/*.json'],
+    ['task', `${worktree}/.opencode/task`, '**/*.md'],
+    ['template', `${worktree}/.opencode/template`, '**/*.md'],
+];
+
+/**
+ * Process a single resource file and add to index
+ */
+const processResourceFile = async (
+    filePath: string,
+    type: ResourceType,
+    worktree: string,
+    index: ResourceIndex
+): Promise<void> => {
+    try {
+        const metadata = await extractResourceMetadata(
+            filePath,
+            type,
+            worktree
+        );
+
+        if (metadata) {
+            addResourceToIndex(index, metadata);
+        }
+    } catch (error) {
+        console.warn(`[ResourceIndex] Error processing ${filePath}:`, error);
+    }
+};
+
+/**
+ * Scan and process all files for a given resource type
+ */
+const scanResourceType = async (
+    type: ResourceType,
+    baseDir: string,
+    pattern: string,
+    worktree: string,
+    index: ResourceIndex
+): Promise<void> => {
+    try {
+        const files = await scanFiles(baseDir, pattern);
+
+        for (const filePath of files) {
+            await processResourceFile(filePath, type, worktree, index);
+        }
+    } catch (error) {
+        console.error(`[ResourceIndex] Error scanning ${type}:`, error);
+    }
+};
+
+/**
  * Build complete resource index
  */
 export const buildResourceIndex = async (
@@ -283,42 +341,10 @@ export const buildResourceIndex = async (
         },
     };
 
-    // Define resource paths
-    const resourcePaths: Array<[ResourceType, string, string]> = [
-        ['checklist', `${worktree}/.opencode/checklist`, '**/*.md'],
-        ['knowledge-base', `${worktree}/.opencode/knowledge-base`, '**/*.md'],
-        ['schema', `${worktree}/.opencode/schema`, '**/*.json'],
-        ['task', `${worktree}/.opencode/task`, '**/*.md'],
-        ['template', `${worktree}/.opencode/template`, '**/*.md'],
-    ];
-
     // Scan each resource type
+    const resourcePaths = getResourcePaths(worktree);
     for (const [type, baseDir, pattern] of resourcePaths) {
-        try {
-            const files = await scanFiles(baseDir, pattern);
-
-            // Process each file
-            for (const filePath of files) {
-                try {
-                    const metadata = await extractResourceMetadata(
-                        filePath,
-                        type,
-                        worktree
-                    );
-
-                    if (metadata) {
-                        addResourceToIndex(index, metadata);
-                    }
-                } catch (error) {
-                    console.warn(
-                        `[ResourceIndex] Error processing ${filePath}:`,
-                        error
-                    );
-                }
-            }
-        } catch (error) {
-            console.error(`[ResourceIndex] Error scanning ${type}:`, error);
-        }
+        await scanResourceType(type, baseDir, pattern, worktree, index);
     }
 
     // Build reference graph
