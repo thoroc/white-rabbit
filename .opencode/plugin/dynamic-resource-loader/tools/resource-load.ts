@@ -15,7 +15,8 @@ import {
 
 export const createResourceLoadTool = (
     context: ToolContext,
-    loadReferencesImpl: any
+    loadReferencesImpl: any,
+    maxReferencesDepth: number
 ) => ({
     description:
         'Load and return the full content of a resource by ID. Resources remain loaded in the session until explicitly released or automatically pruned.',
@@ -75,7 +76,8 @@ export const createResourceLoadTool = (
                 content,
                 args.includeReferences,
                 ctxt,
-                loadReferencesImpl
+                loadReferencesImpl,
+                maxReferencesDepth
             );
         } catch (error) {
             return JSON.stringify(

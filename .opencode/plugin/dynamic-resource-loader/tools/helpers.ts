@@ -16,23 +16,98 @@ import {
 import { formatBytes, readResourceFile } from '../utils';
 
 /**
- * Load referenced resources recursively
+ * Create loadReferences function with access to state
  */
-export const loadReferences = async (
-    references: string[],
-    sessionID: string,
-    toolCallID: string,
-    currentDepth: number,
-    maxDepth: number
-): Promise<string[]> => {
-    if (currentDepth > maxDepth) {
-        return [];
-    }
+export const createLoadReferences = (
+    state: any,
+    ensureIndex: () => Promise<ResourceIndex>
+) => {
+    const loadReferences = async (
+        references: string[],
+        sessionID: string,
+        toolCallID: string,
+        currentDepth: number,
+        maxDepth: number
+    ): Promise<string[]> => {
+        if (currentDepth > maxDepth) {
+            return [];
+        }
 
-    const results: string[] = [];
-    // Implementation would go here - this is a placeholder
-    // The actual implementation needs access to the index and readResourceFile
-    return results;
+        const index = await ensureIndex();
+        const sessionState = getOrCreateSessionState(state.sessions, sessionID);
+        const results: string[] = [];
+
+        for (const refId of references) {
+            const metadata = index.resources.get(refId);
+            if (!metadata) {
+                continue;
+            }
+
+            // Check if already loaded
+            if (isResourceLoaded(sessionState, refId)) {
+                continue;
+            }
+
+            // Check session limits
+            if (
+                sessionState.loaded.size >= state.config.maxResourcesPerSession
+            ) {
+                break;
+            }
+
+            try {
+                const content = await readResourceFile(metadata.path);
+
+                // Track loaded resource
+                const loadedResource: LoadedResource = {
+                    id: refId,
+                    type: metadata.type,
+                    path: metadata.path,
+                    loadedAt: Date.now(),
+                    loadedInMessage: toolCallID,
+                    toolCallID,
+                    status: 'active',
+                    size: metadata.size,
+                    includeReferences: false,
+                };
+
+                addLoadedResource(sessionState, loadedResource);
+                state.stats.totalLoads++;
+
+                // Format output
+                const output = [
+                    `## Referenced: ${metadata.name}`,
+                    `**Type:** ${metadata.type} | **Domain:** ${metadata.domain}`,
+                    `**ID:** ${metadata.id}`,
+                    '',
+                    content,
+                ].join('\n');
+
+                results.push(output);
+
+                // Recursively load nested references
+                if (metadata.references && metadata.references.length > 0) {
+                    const nestedResults = await loadReferences(
+                        metadata.references,
+                        sessionID,
+                        toolCallID,
+                        currentDepth + 1,
+                        maxDepth
+                    );
+                    results.push(...nestedResults);
+                }
+            } catch (error) {
+                console.warn(
+                    `[ResourceLoader] Failed to load reference ${refId}:`,
+                    error
+                );
+            }
+        }
+
+        return results;
+    };
+
+    return loadReferences;
 };
 
 /**
@@ -139,7 +214,8 @@ export const formatResourceOutput = async (
         tid: string,
         depth: number,
         maxDepth: number
-    ) => Promise<string[]>
+    ) => Promise<string[]>,
+    maxReferencesDepth: number
 ): Promise<string> => {
     let referencedContent = '';
     if (
@@ -152,7 +228,7 @@ export const formatResourceOutput = async (
             context.sessionID,
             context.messageID || context.sessionID,
             1,
-            5 // maxReferencesDepth
+            maxReferencesDepth
         );
         if (refResults.length > 0) {
             referencedContent =
