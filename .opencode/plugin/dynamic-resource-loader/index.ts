@@ -14,6 +14,7 @@ import type {
     ResourceType,
     Domain,
     ResourceMetadata,
+    SessionResourceState,
 } from './types';
 import { buildResourceIndex } from './indexing';
 import { loadIndexCache, saveIndexCache, deleteCacheFile } from './cache';
@@ -181,6 +182,151 @@ export default (async ({ directory, worktree }: PluginInput) => {
 
         return results;
     }
+
+    /**
+     * Validate that a resource exists in the index
+     */
+    const validateResourceExists = (
+        index: ResourceIndex,
+        id: string
+    ): ResourceMetadata | string => {
+        const metadata = index.resources.get(id);
+        if (!metadata) {
+            return JSON.stringify(
+                {
+                    error: 'ResourceNotFound',
+                    message: `Resource with ID '${id}' does not exist`,
+                    suggestion:
+                        'Use resource-query to find available resources',
+                },
+                null,
+                2
+            );
+        }
+        return metadata;
+    };
+
+    /**
+     * Check session limits before loading a resource
+     */
+    const checkSessionLimits = (
+        sessionState: SessionResourceState,
+        resourceId: string,
+        maxResources: number
+    ): string | null => {
+        if (isResourceLoaded(sessionState, resourceId)) {
+            return JSON.stringify(
+                {
+                    warning: 'AlreadyLoaded',
+                    message: `Resource '${resourceId}' is already loaded in this session`,
+                    loadedAt: sessionState.loaded
+                        .get(resourceId)!
+                        .loadedAt.toString(),
+                },
+                null,
+                2
+            );
+        }
+
+        if (sessionState.loaded.size >= maxResources) {
+            return JSON.stringify(
+                {
+                    error: 'SessionLimitReached',
+                    message: `Maximum of ${maxResources} resources per session`,
+                    suggestion: 'Use resource-release to free up space',
+                },
+                null,
+                2
+            );
+        }
+
+        return null;
+    };
+
+    /**
+     * Load resource content and track it in session
+     */
+    const loadResourceContent = async (
+        metadata: ResourceMetadata,
+        resourceId: string,
+        sessionState: SessionResourceState,
+        context: { sessionID: string; messageID?: string },
+        includeReferences: boolean
+    ): Promise<string> => {
+        const content = await readResourceFile(metadata.path);
+
+        const loadedResource: LoadedResource = {
+            id: resourceId,
+            type: metadata.type,
+            path: metadata.path,
+            loadedAt: Date.now(),
+            loadedInMessage: context.messageID || context.sessionID,
+            toolCallID: context.sessionID,
+            status: 'active',
+            size: metadata.size,
+            includeReferences,
+        };
+
+        addLoadedResource(sessionState, loadedResource);
+        state.stats.totalLoads++;
+
+        return content;
+    };
+
+    /**
+     * Format resource output with metadata and optional references
+     */
+    const formatResourceOutput = async (
+        metadata: ResourceMetadata,
+        content: string,
+        includeReferences: boolean,
+        context: { sessionID: string; messageID?: string }
+    ): Promise<string> => {
+        let referencedContent = '';
+        if (
+            includeReferences &&
+            metadata.references &&
+            metadata.references.length > 0
+        ) {
+            const refResults = await loadReferences(
+                metadata.references,
+                context.sessionID,
+                context.messageID || context.sessionID,
+                1,
+                state.config.maxReferencesDepth
+            );
+            if (refResults.length > 0) {
+                referencedContent =
+                    '\n\n---\n\n# Referenced Resources\n\n' +
+                    refResults.join('\n\n---\n\n');
+            }
+        }
+
+        const output = [
+            `# Resource: ${metadata.name}`,
+            `**Type:** ${metadata.type}`,
+            `**Domain:** ${metadata.domain}`,
+            `**ID:** ${metadata.id}`,
+            metadata.description
+                ? `**Description:** ${metadata.description}`
+                : '',
+            metadata.tags && metadata.tags.length > 0
+                ? `**Tags:** ${metadata.tags.join(', ')}`
+                : '',
+            metadata.version ? `**Version:** ${metadata.version}` : '',
+            `**Path:** ${metadata.relativePath}`,
+            `**Size:** ${formatBytes(metadata.size)}`,
+            '',
+            '---',
+            '',
+            content,
+            referencedContent,
+        ]
+            .filter(Boolean)
+            .join('\n');
+
+        return output;
+    };
 
     // Tool 1: resource-query
     const resourceQueryTool = tool({
@@ -372,19 +518,11 @@ export default (async ({ directory, worktree }: PluginInput) => {
                 const index = await ensureIndex();
 
                 // Validate resource exists
-                const metadata = index.resources.get(args.id);
-                if (!metadata) {
-                    return JSON.stringify(
-                        {
-                            error: 'ResourceNotFound',
-                            message: `Resource with ID '${args.id}' does not exist`,
-                            suggestion:
-                                'Use resource-query to find available resources',
-                        },
-                        null,
-                        2
-                    );
+                const validationResult = validateResourceExists(index, args.id);
+                if (typeof validationResult === 'string') {
+                    return validationResult;
                 }
+                const metadata = validationResult;
 
                 // Check session limits
                 const sessionState = getOrCreateSessionState(
@@ -392,102 +530,31 @@ export default (async ({ directory, worktree }: PluginInput) => {
                     context.sessionID
                 );
 
-                if (isResourceLoaded(sessionState, args.id)) {
-                    return JSON.stringify(
-                        {
-                            warning: 'AlreadyLoaded',
-                            message: `Resource '${args.id}' is already loaded in this session`,
-                            loadedAt: sessionState.loaded
-                                .get(args.id)!
-                                .loadedAt.toString(),
-                        },
-                        null,
-                        2
-                    );
-                }
-
-                if (
-                    sessionState.loaded.size >=
+                const limitError = checkSessionLimits(
+                    sessionState,
+                    args.id,
                     state.config.maxResourcesPerSession
-                ) {
-                    return JSON.stringify(
-                        {
-                            error: 'SessionLimitReached',
-                            message: `Maximum of ${state.config.maxResourcesPerSession} resources per session`,
-                            suggestion: 'Use resource-release to free up space',
-                        },
-                        null,
-                        2
-                    );
+                );
+                if (limitError) {
+                    return limitError;
                 }
 
-                // Read file content
-                const content = await readResourceFile(metadata.path);
+                // Load resource content and track in session
+                const content = await loadResourceContent(
+                    metadata,
+                    args.id,
+                    sessionState,
+                    context,
+                    args.includeReferences
+                );
 
-                // Track loaded resource
-                const loadedResource: LoadedResource = {
-                    id: args.id,
-                    type: metadata.type,
-                    path: metadata.path,
-                    loadedAt: Date.now(),
-                    loadedInMessage: context.messageID || context.sessionID,
-                    toolCallID: context.sessionID,
-                    status: 'active',
-                    size: metadata.size,
-                    includeReferences: args.includeReferences,
-                };
-
-                addLoadedResource(sessionState, loadedResource);
-
-                // Update stats
-                state.stats.totalLoads++;
-
-                // Load references if requested
-                let referencedContent = '';
-                if (
-                    args.includeReferences &&
-                    metadata.references &&
-                    metadata.references.length > 0
-                ) {
-                    const refResults = await loadReferences(
-                        metadata.references,
-                        context.sessionID,
-                        context.messageID || context.sessionID,
-                        1,
-                        state.config.maxReferencesDepth
-                    );
-                    if (refResults.length > 0) {
-                        referencedContent =
-                            '\n\n---\n\n# Referenced Resources\n\n' +
-                            refResults.join('\n\n---\n\n');
-                    }
-                }
-
-                // Format output
-                const output = [
-                    `# Resource: ${metadata.name}`,
-                    `**Type:** ${metadata.type}`,
-                    `**Domain:** ${metadata.domain}`,
-                    `**ID:** ${metadata.id}`,
-                    metadata.description
-                        ? `**Description:** ${metadata.description}`
-                        : '',
-                    metadata.tags && metadata.tags.length > 0
-                        ? `**Tags:** ${metadata.tags.join(', ')}`
-                        : '',
-                    metadata.version ? `**Version:** ${metadata.version}` : '',
-                    `**Path:** ${metadata.relativePath}`,
-                    `**Size:** ${formatBytes(metadata.size)}`,
-                    '',
-                    '---',
-                    '',
+                // Format and return output with optional references
+                return await formatResourceOutput(
+                    metadata,
                     content,
-                    referencedContent,
-                ]
-                    .filter(Boolean)
-                    .join('\n');
-
-                return output;
+                    args.includeReferences,
+                    context
+                );
             } catch (error) {
                 return JSON.stringify(
                     {

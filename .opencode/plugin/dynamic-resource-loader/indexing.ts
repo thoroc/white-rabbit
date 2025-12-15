@@ -67,7 +67,7 @@ export const extractResourceMetadata = async (
             relativePath: getRelativePath(filePath, projectRoot),
             name:
                 frontmatter.title ||
-                frontmatter.title ||
+                frontmatter.name ||
                 deriveNameFromPath(filePath),
             domain,
             category: frontmatter.category,

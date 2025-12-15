@@ -135,7 +135,8 @@ export const loadIndexCache = async (
 export const deleteCacheFile = async (cachePath: string): Promise<void> => {
     try {
         if (await fileExists(cachePath)) {
-            await Bun.$`rm ${cachePath}`;
+            const { unlink } = await import('node:fs/promises');
+            await unlink(cachePath);
             console.log('[ResourceLoader] Cache file deleted');
         }
     } catch (error) {
