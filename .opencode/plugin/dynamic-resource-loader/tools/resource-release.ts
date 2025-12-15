@@ -4,7 +4,11 @@
  * Mark loaded resources as no longer needed for pruning.
  */
 
-import type { ToolContext } from './types';
+import type {
+    ToolContext,
+    ToolExecuteContext,
+    ResourceReleaseArgs,
+} from './types';
 import { releaseResources } from '../session';
 
 export const createResourceReleaseTool = (context: ToolContext) => ({
@@ -27,7 +31,7 @@ export const createResourceReleaseTool = (context: ToolContext) => ({
         },
     },
 
-    execute: async (args: any, ctxt: any) => {
+    execute: async (args: ResourceReleaseArgs, ctxt: ToolExecuteContext) => {
         try {
             const sessionState = context.state.sessions.get(ctxt.sessionID);
 

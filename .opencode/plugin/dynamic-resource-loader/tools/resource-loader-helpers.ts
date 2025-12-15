@@ -7,7 +7,12 @@ import type {
     ResourceMetadata,
     SessionResourceState,
     LoadedResource,
+    PluginState,
+    PluginConfig,
+    ResourceType,
+    Domain,
 } from '../types';
+import type { FormatQueryResultsArgs } from './types';
 import {
     getOrCreateSessionState,
     addLoadedResource,
@@ -28,14 +33,14 @@ export const filterQueryResources = (
     let candidateIds = new Set(index.resources.keys());
 
     if (type && type !== 'all') {
-        const typeIds = index.byType.get(type as any);
+        const typeIds = index.byType.get(type as ResourceType);
         candidateIds = typeIds
             ? intersection(candidateIds, typeIds)
             : new Set();
     }
 
     if (domain) {
-        const domainIds = index.byDomain.get(domain as any);
+        const domainIds = index.byDomain.get(domain as Domain);
         candidateIds = domainIds
             ? intersection(candidateIds, domainIds)
             : new Set();
@@ -64,7 +69,11 @@ export const filterQueryResources = (
  * Create loadReferences function with access to state
  */
 export const createLoadReferences = (
-    state: any,
+    state: {
+        sessions: Map<string, SessionResourceState>;
+        config: { maxResourcesPerSession: number };
+        stats: { totalLoads: number };
+    },
     ensureIndex: () => Promise<ResourceIndex>
 ) => {
     const loadReferences = async (
@@ -194,7 +203,7 @@ export const applyTextSearch = (
  * Format query results for output
  */
 export const formatQueryResults = (
-    args: any,
+    args: FormatQueryResultsArgs,
     limitedResults: ResourceMetadata[],
     totalResults: number
 ): string => {

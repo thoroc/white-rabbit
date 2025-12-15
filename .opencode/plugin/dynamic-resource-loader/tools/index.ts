@@ -7,7 +7,16 @@ export { createResourceLoadTool } from './resource-load';
 export { createResourceListLoadedTool } from './resource-list-loaded';
 export { createResourceReleaseTool } from './resource-release';
 export type { ToolContext } from './types';
-export * from './resource-loader-helpers';
-export * from './resource-validation';
+export {
+    createLoadReferences,
+    applyTextSearch,
+    formatQueryResults,
+    loadResourceContent,
+    filterQueryResources as filterResourcesForLoad,
+} from './resource-loader-helpers';
+export {
+    validateResourceExists,
+    checkSessionLimits,
+    filterQueryResources,
+} from './resource-validation';
 export * from './resource-formatting';
-export { applyTextSearch, formatQueryResults } from './resource-loader-helpers';

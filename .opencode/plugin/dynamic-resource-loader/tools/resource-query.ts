@@ -4,17 +4,26 @@
  * Search for available resources by type, name, tags, domain, or references.
  */
 
-import type { ResourceType, Domain, ResourceMetadata } from '../types';
-import type { ToolContext } from './types';
+import type {
+    ResourceType,
+    Domain,
+    ResourceMetadata,
+    ResourceIndex,
+} from '../types';
+import type {
+    ToolContext,
+    ToolExecuteContext,
+    ResourceQueryArgs,
+} from './types';
 import { intersection, formatBytes } from '../utils';
 
 const filterQueryResources = (
-    index: any,
+    index: ResourceIndex,
     type?: string,
     domain?: string,
     tags?: string[],
     referencedBy?: string
-): Set<any> => {
+): Set<string> => {
     let candidateIds = new Set(index.resources.keys());
 
     if (type && type !== 'all') {
@@ -105,7 +114,7 @@ export const createResourceQueryTool = (context: ToolContext) => ({
         },
     },
 
-    execute: async (args: any, _context: any) => {
+    execute: async (args: ResourceQueryArgs, _context: ToolExecuteContext) => {
         try {
             // Ensure index is built
             const index = await context.ensureIndex();

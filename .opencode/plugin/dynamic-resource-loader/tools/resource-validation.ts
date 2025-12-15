@@ -6,8 +6,11 @@ import type {
     ResourceIndex,
     ResourceMetadata,
     SessionResourceState,
+    Domain,
+    ResourceType,
 } from '../types';
 import { isResourceLoaded } from '../session';
+import { intersection } from '../utils';
 
 /**
  * Filter resources by type, domain, tags, and references
@@ -29,7 +32,7 @@ export const filterQueryResources = (
     }
 
     if (domain) {
-        const domainIds = index.byDomain.get(domain as any);
+        const domainIds = index.byDomain.get(domain as Domain);
         candidateIds = domainIds
             ? intersection(candidateIds, domainIds)
             : new Set();

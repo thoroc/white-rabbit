@@ -4,7 +4,11 @@
  * List all resources currently loaded in the session.
  */
 
-import type { ToolContext } from './types';
+import type {
+    ToolContext,
+    ToolExecuteContext,
+    ResourceListLoadedArgs,
+} from './types';
 import { formatBytes } from '../utils';
 import { getSessionStats } from '../session';
 
@@ -13,7 +17,10 @@ export const createResourceListLoadedTool = (context: ToolContext) => ({
         'List all resources currently loaded in this session context, including their status and metadata',
     args: {},
 
-    execute: async (_args: any, ctxt: any) => {
+    execute: async (
+        _args: ResourceListLoadedArgs,
+        ctxt: ToolExecuteContext
+    ) => {
         try {
             const sessionState = context.state.sessions.get(ctxt.sessionID);
 

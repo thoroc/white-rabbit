@@ -4,7 +4,11 @@
  * Load and return the full content of a resource by ID.
  */
 
-import type { ToolContext } from './types';
+import type {
+    ToolContext,
+    ToolExecuteContext,
+    ResourceLoadArgs,
+} from './types';
 import { getOrCreateSessionState } from '../session';
 import {
     validateResourceExists,
@@ -18,7 +22,13 @@ import { formatResourceOutput } from './resource-formatting';
 
 export const createResourceLoadTool = (
     context: ToolContext,
-    loadReferencesImpl: any,
+    loadReferencesImpl: (
+        references: string[],
+        sessionID: string,
+        toolCallID: string,
+        currentDepth: number,
+        maxDepth: number
+    ) => Promise<string[]>,
     maxReferencesDepth: number
 ) => ({
     description:
@@ -36,7 +46,7 @@ export const createResourceLoadTool = (
         },
     },
 
-    execute: async (args: any, ctxt: any) => {
+    execute: async (args: ResourceLoadArgs, ctxt: ToolExecuteContext) => {
         try {
             // Ensure index is built
             const index = await context.ensureIndex();
@@ -69,7 +79,7 @@ export const createResourceLoadTool = (
                 args.id,
                 sessionState,
                 ctxt,
-                args.includeReferences,
+                args.includeReferences || false,
                 context.state.stats
             );
 
@@ -77,7 +87,7 @@ export const createResourceLoadTool = (
             return await formatResourceOutput(
                 metadata,
                 content,
-                args.includeReferences,
+                args.includeReferences || false,
                 ctxt,
                 loadReferencesImpl,
                 maxReferencesDepth
