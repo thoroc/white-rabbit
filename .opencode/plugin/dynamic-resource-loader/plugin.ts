@@ -30,11 +30,15 @@ import {
     reactivateResources,
 } from './session';
 import {
-    formatBytes,
     intersection,
     readResourceFile,
     isResourcePath,
+    formatBytes,
 } from './utils';
+import {
+    applyTextSearch,
+    formatQueryResults,
+} from './tools/resource-loader-helpers';
 
 export default (async ({ directory, worktree }: PluginInput) => {
     console.log(`[ResourceLoader] Initializing plugin`);
@@ -485,60 +489,24 @@ export default (async ({ directory, worktree }: PluginInput) => {
                     args.referencedBy
                 );
 
-                // Apply text search
-                const results: ResourceMetadata[] = [];
-                for (const id of candidateIds) {
-                    const metadata = index.resources.get(id);
-                    if (!metadata) continue;
-
-                    if (args.query) {
-                        const query = args.query.toLowerCase();
-                        const searchText = [
-                            metadata.name,
-                            metadata.description || '',
-                            ...(metadata.tags || []),
-                        ]
-                            .join(' ')
-                            .toLowerCase();
-
-                        if (searchText.includes(query)) {
-                            results.push(metadata);
-                        }
-                    } else {
-                        results.push(metadata);
-                    }
-                }
+                // Apply text search using helper function
+                const searchResults = applyTextSearch(
+                    index,
+                    candidateIds,
+                    args.query
+                );
 
                 // Sort by relevance (simple: by name)
-                results.sort((a, b) => a.name.localeCompare(b.name));
+                searchResults.sort((a, b) => a.name.localeCompare(b.name));
 
                 // Limit results
-                const limited = results.slice(0, args.limit);
+                const limited = searchResults.slice(0, args.limit);
 
                 // Update stats
                 state.stats.totalQueries++;
 
-                // Format output
-                return JSON.stringify(
-                    {
-                        query: args,
-                        results: limited.map((m) => ({
-                            id: m.id,
-                            type: m.type,
-                            name: m.name,
-                            domain: m.domain,
-                            description: m.description,
-                            tags: m.tags,
-                            path: m.relativePath,
-                            size: formatBytes(m.size),
-                        })),
-                        total: results.length,
-                        showing: limited.length,
-                        hint: 'Use resource-load with an ID to fetch the full content',
-                    },
-                    null,
-                    2
-                );
+                // Format output using helper function
+                return formatQueryResults(args, limited, searchResults.length);
             } catch (error) {
                 return JSON.stringify(
                     {

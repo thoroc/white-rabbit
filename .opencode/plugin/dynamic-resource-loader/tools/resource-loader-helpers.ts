@@ -13,7 +13,52 @@ import {
     addLoadedResource,
     isResourceLoaded,
 } from '../session';
-import { readResourceFile } from '../utils';
+import { readResourceFile, formatBytes, intersection } from '../utils';
+
+/**
+ * Filter resources by type, domain, tags, and references
+ */
+export const filterQueryResources = (
+    index: ResourceIndex,
+    type?: string,
+    domain?: string,
+    tags?: string[],
+    referencedBy?: string
+): Set<string> => {
+    let candidateIds = new Set(index.resources.keys());
+
+    if (type && type !== 'all') {
+        const typeIds = index.byType.get(type as any);
+        candidateIds = typeIds
+            ? intersection(candidateIds, typeIds)
+            : new Set();
+    }
+
+    if (domain) {
+        const domainIds = index.byDomain.get(domain as any);
+        candidateIds = domainIds
+            ? intersection(candidateIds, domainIds)
+            : new Set();
+    }
+
+    if (tags && tags.length > 0) {
+        for (const tag of tags) {
+            const tagIds = index.byTag.get(tag);
+            if (!tagIds) {
+                candidateIds.clear();
+                break;
+            }
+            candidateIds = intersection(candidateIds, tagIds);
+        }
+    }
+
+    if (referencedBy) {
+        const refIds = index.byReference.get(referencedBy);
+        candidateIds = refIds ? intersection(candidateIds, refIds) : new Set();
+    }
+
+    return candidateIds;
+};
 
 /**
  * Create loadReferences function with access to state
@@ -108,6 +153,71 @@ export const createLoadReferences = (
     };
 
     return loadReferences;
+};
+
+/**
+ * Apply text search to filtered resources
+ */
+export const applyTextSearch = (
+    index: ResourceIndex,
+    candidateIds: Set<string>,
+    query?: string
+): ResourceMetadata[] => {
+    const results: ResourceMetadata[] = [];
+
+    for (const id of candidateIds) {
+        const metadata = index.resources.get(id);
+        if (!metadata) continue;
+
+        if (query) {
+            const queryLower = query.toLowerCase();
+            const searchText = [
+                metadata.name,
+                metadata.description || '',
+                ...(metadata.tags || []),
+            ]
+                .join(' ')
+                .toLowerCase();
+
+            if (searchText.includes(queryLower)) {
+                results.push(metadata);
+            }
+        } else {
+            results.push(metadata);
+        }
+    }
+
+    return results;
+};
+
+/**
+ * Format query results for output
+ */
+export const formatQueryResults = (
+    args: any,
+    limitedResults: ResourceMetadata[],
+    totalResults: number
+): string => {
+    return JSON.stringify(
+        {
+            query: args,
+            results: limitedResults.map((m) => ({
+                id: m.id,
+                type: m.type,
+                name: m.name,
+                domain: m.domain,
+                description: m.description,
+                tags: m.tags,
+                path: m.relativePath,
+                size: formatBytes(m.size),
+            })),
+            total: totalResults,
+            showing: limitedResults.length,
+            hint: 'Use resource-load with an ID to fetch full content',
+        },
+        null,
+        2
+    );
 };
 
 /**

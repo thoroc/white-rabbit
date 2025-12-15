@@ -10,3 +10,4 @@ export type { ToolContext } from './types';
 export * from './resource-loader-helpers';
 export * from './resource-validation';
 export * from './resource-formatting';
+export { applyTextSearch, formatQueryResults } from './resource-loader-helpers';
