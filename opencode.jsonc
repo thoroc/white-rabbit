@@ -17,7 +17,7 @@
     "tools": {
         "commit": true,
     },
-    "enabled_providers": ["amazon-bedrock", "github-copilot"],
+    "enabled_providers": ["amazon-bedrock", "github-copilot", "opencode"],
     // "provider": {
     //     "amazon-bedrock": {
     //         "models": {

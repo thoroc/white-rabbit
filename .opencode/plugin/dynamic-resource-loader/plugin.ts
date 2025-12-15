@@ -69,7 +69,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
     /**
      * Ensure index is built and cached
      */
-    async function ensureIndex(): Promise<ResourceIndex> {
+    const ensureIndex = async (): Promise<ResourceIndex> => {
         // Return cached index if available
         if (state.index) {
             state.stats.cacheHits++;
@@ -114,29 +114,29 @@ export default (async ({ directory, worktree }: PluginInput) => {
         })();
 
         return await state.indexBuilding;
-    }
+    };
 
     /**
      * Invalidate index cache
      */
-    function invalidateIndexCache(): void {
+    const invalidateIndexCache = (): void => {
         state.index = null;
         if (state.config.persistCache) {
             deleteCacheFile(state.config.indexCachePath);
         }
         console.log('[ResourceLoader] Index cache invalidated');
-    }
+    };
 
     /**
      * Load referenced resources recursively
      */
-    async function loadReferences(
+    const loadReferences = async (
         references: string[],
         sessionID: string,
         messageID: string,
         currentDepth: number,
         maxDepth: number
-    ): Promise<string[]> {
+    ): Promise<string[]> => {
         if (currentDepth >= maxDepth) {
             return [];
         }
@@ -181,7 +181,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
         }
 
         return results;
-    }
+    };
 
     /**
      * Validate that a resource exists in the index
@@ -427,7 +427,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
                 .describe('Maximum number of results to return'),
         },
 
-        async execute(args, _context) {
+        execute: async (args, _context) => {
             try {
                 // Ensure index is built
                 const index = await ensureIndex();
@@ -562,7 +562,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
                 ),
         },
 
-        async execute(args, context) {
+        execute: async (args, context) => {
             try {
                 // Ensure index is built
                 const index = await ensureIndex();
@@ -627,7 +627,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
             'List all resources currently loaded in this session context, including their status and metadata',
         args: {},
 
-        async execute(_args, context) {
+        execute: async (_args, context) => {
             try {
                 const sessionState = state.sessions.get(context.sessionID);
 
@@ -707,7 +707,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
                 ),
         },
 
-        async execute(args, context) {
+        execute: async (args, context) => {
             try {
                 const sessionState = state.sessions.get(context.sessionID);
 
@@ -790,7 +790,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
             'resource-release': resourceReleaseTool,
         },
 
-        async 'chat.message'(input, _output) {
+        'chat.message': async (input, _output) => {
             try {
                 const sessionState = getOrCreateSessionState(
                     state.sessions,
@@ -810,7 +810,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
             }
         },
 
-        async 'tool.execute.after'(input, output) {
+        'tool.execute.after': async (input, output) => {
             try {
                 // Track resource-load tool executions
                 if (input.tool === 'resource-load') {
@@ -835,7 +835,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
             }
         },
 
-        async event(input) {
+        event: async (input) => {
             try {
                 const event = input.event;
 
@@ -861,7 +861,7 @@ export default (async ({ directory, worktree }: PluginInput) => {
             }
         },
 
-        async cleanup() {
+        cleanup: async () => {
             // Clear cleanup interval
             clearInterval(cleanupInterval);
             console.log('[ResourceLoader] Plugin cleanup complete');

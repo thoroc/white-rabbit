@@ -96,12 +96,6 @@ export default [
         },
     },
     {
-        files: ['src/sound-data/*.ts', 'src/test-utils.ts'],
-        rules: {
-            'max-lines': 'off',
-        },
-    },
-    {
         files: ['.opencode/**'],
         rules: {
             'jsdoc/require-jsdoc': 'off',

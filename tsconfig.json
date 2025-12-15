@@ -12,6 +12,6 @@
         "types": ["node"],
         "baseUrl": "."
     },
-    "include": ["src", ".opencode/**/*", "types", "**/*.ts"],
+    "include": ["src", ".opencode/plugin", ".opencode/tool", "types", "**/*.ts"],
     "exclude": ["node_modules", "dist"]
 }

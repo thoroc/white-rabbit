@@ -29,4 +29,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
-!.opencode/
+!.opencode/**/*.ts
+!.opencode/**/*.json
+!.opencode/**/*.md
